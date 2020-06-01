@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="PanelData.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="DataProcess.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -195,8 +196,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>lmtest</code>有<code>grangertest()</code>做双变量格兰杰因果检验。<code>MTS::GrangerTest(regdata[,-c(1,2)],2,locInput = 1)</code>也可以，而且可以做多个变量是不是某个变量的格兰杰原因。<code>locInput</code>表示因变量是第几列。</li>
 <li><code>stats4</code>包提供了函数<code>mle</code>可以进行极大似然估计，还可以固定部分参数，优化其他参数，这其实是集中似然的思想。关键是它还返回方差协方差矩阵。语法如下，</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="TS.html#cb1-1"></a><span class="kw">mle</span>(minuslogl, <span class="dt">start =</span> <span class="kw">formals</span>(minuslogl), <span class="dt">method =</span> <span class="st">&quot;BFGS&quot;</span>,</span>
-<span id="cb1-2"><a href="TS.html#cb1-2"></a>    <span class="dt">fixed =</span> <span class="kw">list</span>(), nobs, ...) <span class="co"># 注意它的初值是一个list</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="TS.html#cb3-1"></a><span class="kw">mle</span>(minuslogl, <span class="dt">start =</span> <span class="kw">formals</span>(minuslogl), <span class="dt">method =</span> <span class="st">&quot;BFGS&quot;</span>,</span>
+<span id="cb3-2"><a href="TS.html#cb3-2"></a>    <span class="dt">fixed =</span> <span class="kw">list</span>(), nobs, ...) <span class="co"># 注意它的初值是一个list</span></span></code></pre></div>
 <ul>
 <li><code>dynlm::dynlm</code>包一个比<code>lm</code>更强大线性回归结构，优点有三：
 <ul>
@@ -216,14 +217,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>highfrequance</code>里面有不少意思的函数，包括<code>HAR</code>。
 ## 回归中关于公式的理解和构造</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="TS.html#cb2-1"></a><span class="co"># 构造公式, 只要包含波浪线就意味着这是一个公式。</span></span>
-<span id="cb2-2"><a href="TS.html#cb2-2"></a>F1 &lt;-<span class="st"> </span>dist <span class="op">~</span><span class="st"> </span>speed <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb2-3"><a href="TS.html#cb2-3"></a><span class="co"># 获得公式中所有的变量</span></span>
-<span id="cb2-4"><a href="TS.html#cb2-4"></a>mf1 &lt;-<span class="st"> </span><span class="kw">model.frame</span>(F1,<span class="dt">data =</span> cars)</span>
-<span id="cb2-5"><a href="TS.html#cb2-5"></a><span class="co"># 抽取因变量</span></span>
-<span id="cb2-6"><a href="TS.html#cb2-6"></a><span class="kw">model.response</span>(mf1)</span>
-<span id="cb2-7"><a href="TS.html#cb2-7"></a><span class="co"># 抽取自变量</span></span>
-<span id="cb2-8"><a href="TS.html#cb2-8"></a><span class="kw">model.matrix</span>(F1, <span class="dt">data =</span> cars)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="TS.html#cb4-1"></a><span class="co"># 构造公式, 只要包含波浪线就意味着这是一个公式。</span></span>
+<span id="cb4-2"><a href="TS.html#cb4-2"></a>F1 &lt;-<span class="st"> </span>dist <span class="op">~</span><span class="st"> </span>speed <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb4-3"><a href="TS.html#cb4-3"></a><span class="co"># 获得公式中所有的变量</span></span>
+<span id="cb4-4"><a href="TS.html#cb4-4"></a>mf1 &lt;-<span class="st"> </span><span class="kw">model.frame</span>(F1,<span class="dt">data =</span> cars)</span>
+<span id="cb4-5"><a href="TS.html#cb4-5"></a><span class="co"># 抽取因变量</span></span>
+<span id="cb4-6"><a href="TS.html#cb4-6"></a><span class="kw">model.response</span>(mf1)</span>
+<span id="cb4-7"><a href="TS.html#cb4-7"></a><span class="co"># 抽取自变量</span></span>
+<span id="cb4-8"><a href="TS.html#cb4-8"></a><span class="kw">model.matrix</span>(F1, <span class="dt">data =</span> cars)</span></code></pre></div>
 <p>公式的高级应用还有一个包<code>Formula</code>，其说明文件很到位。主要阐述了<code>|</code>的使用方式。</p>
 </div>
 <div id="gmm估计" class="section level2">
@@ -246,8 +247,8 @@ E(i_{t-3}\varepsilon_t) = 0\\
 E(i_{t-4}\varepsilon_t) = 0
 \end{align}\]</span></p>
 <p>利用这些矩条件的GMM估计在<code>gmm</code>包中的写法为，</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="TS.html#cb3-1"></a>gmmrlt &lt;-<span class="st"> </span><span class="kw">gmm</span>(<span class="dt">g =</span> it <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it1, <span class="dt">x =</span> <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it2 <span class="op">+</span><span class="st"> </span>it3 <span class="op">+</span><span class="st"> </span>it4,<span class="dt">data =</span> dwg0)</span>
-<span id="cb3-2"><a href="TS.html#cb3-2"></a><span class="kw">summary</span>(gmmrlt)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="TS.html#cb5-1"></a>gmmrlt &lt;-<span class="st"> </span><span class="kw">gmm</span>(<span class="dt">g =</span> it <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it1, <span class="dt">x =</span> <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it2 <span class="op">+</span><span class="st"> </span>it3 <span class="op">+</span><span class="st"> </span>it4,<span class="dt">data =</span> dwg0)</span>
+<span id="cb5-2"><a href="TS.html#cb5-2"></a><span class="kw">summary</span>(gmmrlt)</span></code></pre></div>
 <p>其中<code>g</code>可直接写成公式，<code>x</code>即为工具变量集。</p>
 </div>
 <div id="季节调整" class="section level2">
@@ -258,19 +259,19 @@ E(i_{t-4}\varepsilon_t) = 0
 - 要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
 - 仅可处理R中内置的时间序列对象<code>ts</code>。
 - 示例代码：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="TS.html#cb4-1"></a><span class="kw">library</span>(x12)</span>
-<span id="cb4-2"><a href="TS.html#cb4-2"></a><span class="kw">data</span>(AirPassengers)</span>
-<span id="cb4-3"><a href="TS.html#cb4-3"></a>x12out &lt;-<span class="st"> </span><span class="kw">x12work</span>(AirPassengers,</span>
-<span id="cb4-4"><a href="TS.html#cb4-4"></a>             <span class="dt">x12path =</span> <span class="st">&#39;C:</span><span class="ch">\\</span><span class="st">ado</span><span class="ch">\\</span><span class="st">plus</span><span class="ch">\\</span><span class="st">WinX12</span><span class="ch">\\</span><span class="st">x12a</span><span class="ch">\\</span><span class="st">x12a.exe&#39;</span>,<span class="dt">keep_x12out =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb4-5"><a href="TS.html#cb4-5"></a>x12out<span class="op">$</span>d11 <span class="co">#此即为调整后的时间序列</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="TS.html#cb6-1"></a><span class="kw">library</span>(x12)</span>
+<span id="cb6-2"><a href="TS.html#cb6-2"></a><span class="kw">data</span>(AirPassengers)</span>
+<span id="cb6-3"><a href="TS.html#cb6-3"></a>x12out &lt;-<span class="st"> </span><span class="kw">x12work</span>(AirPassengers,</span>
+<span id="cb6-4"><a href="TS.html#cb6-4"></a>             <span class="dt">x12path =</span> <span class="st">&#39;C:</span><span class="ch">\\</span><span class="st">ado</span><span class="ch">\\</span><span class="st">plus</span><span class="ch">\\</span><span class="st">WinX12</span><span class="ch">\\</span><span class="st">x12a</span><span class="ch">\\</span><span class="st">x12a.exe&#39;</span>,<span class="dt">keep_x12out =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb6-5"><a href="TS.html#cb6-5"></a>x12out<span class="op">$</span>d11 <span class="co">#此即为调整后的时间序列</span></span></code></pre></div>
 <p>其中，<code>keep_x12out</code>参数表示是否要保留计算后的文件。</p>
 </div>
 <div id="seasonal包有x13处理更加便捷" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> <code>seasonal</code>包有x13处理，更加便捷</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="TS.html#cb5-1"></a><span class="kw">library</span>(seasonal)</span>
-<span id="cb5-2"><a href="TS.html#cb5-2"></a>m &lt;-<span class="st"> </span><span class="kw">seas</span>(AirPassengers) <span class="co"># x13 处理</span></span>
-<span id="cb5-3"><a href="TS.html#cb5-3"></a><span class="kw">final</span>(m) <span class="co"># 最终调整序列</span></span>
-<span id="cb5-4"><a href="TS.html#cb5-4"></a><span class="kw">plot</span>(m) <span class="co"># 绘制调整和未调整序列</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="TS.html#cb7-1"></a><span class="kw">library</span>(seasonal)</span>
+<span id="cb7-2"><a href="TS.html#cb7-2"></a>m &lt;-<span class="st"> </span><span class="kw">seas</span>(AirPassengers) <span class="co"># x13 处理</span></span>
+<span id="cb7-3"><a href="TS.html#cb7-3"></a><span class="kw">final</span>(m) <span class="co"># 最终调整序列</span></span>
+<span id="cb7-4"><a href="TS.html#cb7-4"></a><span class="kw">plot</span>(m) <span class="co"># 绘制调整和未调整序列</span></span></code></pre></div>
 
 </div>
 </div>
@@ -281,7 +282,7 @@ E(i_{t-4}\varepsilon_t) = 0
         </div>
       </div>
 <a href="PanelData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DataProcess.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

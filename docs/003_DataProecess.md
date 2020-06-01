@@ -1,0 +1,76 @@
+
+# 数据处理 {#DataProcess}
+- `dbplyr`可以连接到几乎任何数据库。
+- `wbstats`下载世界银行数据，很牛逼。Stata里面的`wbopendata`包更牛逼。
+- `stationaRy`:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。
+- `qs`包可以快速读入与保存
+- `tor`: 提供允许用户同时导入多个文件的功能.
+- 读入excel中的sheet名：`openxlsx::getSheetNames(file)`
+- `XLConect`处理excel最强大的包。但需要JRE（java run enviornment）。
+- 使用`as.Date`来生成日期，必须带有年月日三个要素，使用`format`来输出日期格式，此时可以只输出年和月。如`as.Date('2010/05/01') %>% format(.,format = '%Y%m')`
+- `seq.Date()`生成日期序列，包括日、星期、月、年。
+- `readstata13`包可以读入更高版本的stata数据格式。
+- `zoo::rollapply(x, 30, mean)`就是30天的移动平均求值。
+
+- `select`是一个很牛逼的函数
+
+```r
+select(regdata,id, year) # 选择regdata数据框的id和year两列
+select(regdata,starts_with('abc')) # 匹配以'abc'开头的列
+select(regdata,ends_with('abc')) # 匹配以'abc'结尾的列
+select(regdata,contains('abc')) # 匹配包含'abc'的列
+select(regdata,matches('abc')) # 正则表达匹配
+select(regdata,num_range('x',1:3)) # 匹配x1, x2,x3的列
+```
+- R语言给数组各维数命名
+
+```r
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+column.names <- c("COL1","COL2","COL3")
+row.names <- c("ROW1","ROW2","ROW3")
+matrix.names <- c("Matrix1","Matrix2")
+
+# Take these vectors as input to the array.
+result <- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,column.names,
+                                                                  matrix.names))
+print(result)
+```
+
+```
+## , , Matrix1
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+## 
+## , , Matrix2
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+```
+
+-  `pdftools`包的函数可以读PDF文件：
+
+```r
+pdf_info(pdf, opw = "", upw = "")
+
+pdf_text(pdf, opw = "", upw = "")
+
+pdf_data(pdf, opw = "", upw = "")
+
+pdf_fonts(pdf, opw = "", upw = "")
+
+pdf_attachments(pdf, opw = "", upw = "")
+
+pdf_toc(pdf, opw = "", upw = "")
+
+pdf_pagesize(pdf, opw = "", upw = "")
+```
+
+
+同时，利用`qpdf`包的`pdf_subset,pdf_combine,pdf_split`可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
