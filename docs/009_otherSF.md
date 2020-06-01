@@ -1,0 +1,46 @@
+
+# 与其他软件的交互 {#otherSF}
+- `stargazer`的一个模版调用：
+
+```r
+stargazer(regression,type = 'text',out = "../PicTab/cmp.html",no.space = T,report = c('vcp'))
+```
+`report`意味着报告变量、系数与p值。
+
+- `officer`: 与微软软件互动的一个包
+- `readstata13`包读Stata13以后的数据格式。
+- R语言调用stata
+
+用RStata包可以从R里面调用stata，不过要先用`chooseBinStata()`先设置stata的安装路径。 也可以在R的启动环境中进行配置。
+注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
+`options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")`
+
+- R语言调用Matlab
+
+Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
+    - 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
+    - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
+
+```r
+    library(matlabr)
+    MatlabCode <- '
+    a = 3;
+    b = a+1;
+    '
+    run_matlab_code(MatlabCode)
+```
+- R语言读取SPSS（中文字符）
+
+```r
+# 读英文字符
+library(foreign)  
+mydata=read.spss("data.sav")  
+# 或者如下
+library(Hmisc)  
+data=spss.get("data.sav") 
+
+# 读中文字符
+library(memisc)
+data1 = as.data.set(spss.system.file("data.sav"))
+data = as.data.frame(data1)
+```

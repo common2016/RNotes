@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R语言笔记</title>
-  <meta name="description" content="R语言笔记" />
+  <title>9 与其他软件的交互 | R语言笔记</title>
+  <meta name="description" content="9 与其他软件的交互 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R语言笔记" />
+  <meta property="og:title" content="9 与其他软件的交互 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R语言笔记" />
+  <meta name="twitter:title" content="9 与其他软件的交互 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="PanelData.html"/>
+<link rel="prev" href="ML.html"/>
+<link rel="next" href="其他.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -148,10 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a><ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
+<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
@@ -170,6 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a><ul>
 <li class="chapter" data-level="8.1" data-path="ML.html"><a href="ML.html#一句话tips-5"><i class="fa fa-check"></i><b>8.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="8.2" data-path="ML.html"><a href="ML.html#roc曲线绘制"><i class="fa fa-check"></i><b>8.2</b> ROC曲线绘制</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a></li>
 <li class="chapter" data-level="10" data-path="其他.html"><a href="其他.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
@@ -191,17 +193,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R语言笔记</h1>
-<p class="author"><em>云腾足下</em></p>
-<p class="date"><em>2020年5月</em></p>
-</div>
-<div id="简介" class="section level1 unnumbered">
-<h1>简介</h1>
-<blockquote>
-<p>十步杀一人，千里不留行
-事了拂衣去，不留功与名</p>
-</blockquote>
+<div id="otherSF" class="section level1">
+<h1><span class="header-section-number">9</span> 与其他软件的交互</h1>
+<ul>
+<li><code>stargazer</code>的一个模版调用：</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="otherSF.html#cb2-1"></a><span class="kw">stargazer</span>(regression,<span class="dt">type =</span> <span class="st">&#39;text&#39;</span>,<span class="dt">out =</span> <span class="st">&quot;../PicTab/cmp.html&quot;</span>,<span class="dt">no.space =</span> T,<span class="dt">report =</span> <span class="kw">c</span>(<span class="st">&#39;vcp&#39;</span>))</span></code></pre></div>
+<p><code>report</code>意味着报告变量、系数与p值。</p>
+<ul>
+<li><code>officer</code>: 与微软软件互动的一个包</li>
+<li><code>readstata13</code>包读Stata13以后的数据格式。</li>
+<li>R语言调用stata</li>
+</ul>
+<p>用RStata包可以从R里面调用stata，不过要先用<code>chooseBinStata()</code>先设置stata的安装路径。 也可以在R的启动环境中进行配置。
+注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
+<code>options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")</code></p>
+<ul>
+<li>R语言调用Matlab</li>
+</ul>
+<p>Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
+- 安装R.matlab包。使用<code>writemat(filename,A=A,B=B)</code>把R里面的数据写进Matlab并保存成<code>.mat</code>格式。
+- 安装matlabr包。使用<code>run_matlab_script</code>命令来执行一个<code>.m</code>脚本。或者使用<code>R.matlab</code>包里面的<code>evaluate</code>来一个一个地执行matlab命令。或者类似于调用stata：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="otherSF.html#cb3-1"></a>    <span class="kw">library</span>(matlabr)</span>
+<span id="cb3-2"><a href="otherSF.html#cb3-2"></a>    MatlabCode &lt;-<span class="st"> &#39;</span></span>
+<span id="cb3-3"><a href="otherSF.html#cb3-3"></a><span class="st">    a = 3;</span></span>
+<span id="cb3-4"><a href="otherSF.html#cb3-4"></a><span class="st">    b = a+1;</span></span>
+<span id="cb3-5"><a href="otherSF.html#cb3-5"></a><span class="st">    &#39;</span></span>
+<span id="cb3-6"><a href="otherSF.html#cb3-6"></a>    <span class="kw">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
+<ul>
+<li>R语言读取SPSS（中文字符）</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="otherSF.html#cb4-1"></a><span class="co"># 读英文字符</span></span>
+<span id="cb4-2"><a href="otherSF.html#cb4-2"></a><span class="kw">library</span>(foreign)  </span>
+<span id="cb4-3"><a href="otherSF.html#cb4-3"></a>mydata=<span class="kw">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
+<span id="cb4-4"><a href="otherSF.html#cb4-4"></a><span class="co"># 或者如下</span></span>
+<span id="cb4-5"><a href="otherSF.html#cb4-5"></a><span class="kw">library</span>(Hmisc)  </span>
+<span id="cb4-6"><a href="otherSF.html#cb4-6"></a>data=<span class="kw">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
+<span id="cb4-7"><a href="otherSF.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="otherSF.html#cb4-8"></a><span class="co"># 读中文字符</span></span>
+<span id="cb4-9"><a href="otherSF.html#cb4-9"></a><span class="kw">library</span>(memisc)</span>
+<span id="cb4-10"><a href="otherSF.html#cb4-10"></a>data1 =<span class="st"> </span><span class="kw">as.data.set</span>(<span class="kw">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
+<span id="cb4-11"><a href="otherSF.html#cb4-11"></a>data =<span class="st"> </span><span class="kw">as.data.frame</span>(data1)</span></code></pre></div>
 
 </div>
             </section>
@@ -209,8 +241,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="PanelData.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ML.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="其他.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -260,20 +292,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 数据处理 | R语言笔记</title>
-  <meta name="description" content="3 数据处理 | R语言笔记" />
+  <title>4 统计 | R语言笔记</title>
+  <meta name="description" content="4 统计 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 数据处理 | R语言笔记" />
+  <meta property="og:title" content="4 统计 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 数据处理 | R语言笔记" />
+  <meta name="twitter:title" content="4 统计 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="TS.html"/>
-<link rel="next" href="统计.html"/>
+<link rel="prev" href="DataProcess.html"/>
+<link rel="next" href="rawR.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -191,78 +191,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="DataProcess" class="section level1">
-<h1><span class="header-section-number">3</span> 数据处理</h1>
+<div id="统计" class="section level1">
+<h1><span class="header-section-number">4</span> 统计</h1>
 <ul>
-<li>因子操作</li>
+<li><code>cmna::mcint</code>可以进行蒙特卡洛积分。</li>
+<li>数值积分：<code>pracma::integral</code></li>
+<li>多元正态分布随机抽样：<code>SimDesign::rmvnorm</code>，还有<code>mvnfast</code></li>
+<li><code>KSgeneral</code>包执行KS检验，比较一个分布是否来自某个理论分布。<code>stats</code>包的<code>ks.test</code>和<code>dgof</code>包的<code>ks.test</code>也可以,并且可以比较双样本是否来自同一个分布。</li>
+<li><code>choose(n,k)</code>：组合公式，n个里面选k个，有多少种组合方式。<code>utils::combn(n,k)</code>也可以。 <code>e1071::permutations</code>实现排列。</li>
+<li><code>qrandom</code>: 利用量子波动产生真随机数.</li>
+<li>主成分分析可以调用<code>psych</code>包两个步骤实现：</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="DataProcess.html#cb8-1"></a><span class="co"># 如下命令意味着前面这四个因子是按后面那个levels来排序的。</span></span>
-<span id="cb8-2"><a href="DataProcess.html#cb8-2"></a><span class="co"># 否则，它按字母顺序排这四个字符串。</span></span>
-<span id="cb8-3"><a href="DataProcess.html#cb8-3"></a>    <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&#39;Dec&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;Jam&#39;</span>,<span class="st">&#39;Mar&#39;</span>), <span class="dt">levels =</span> (<span class="st">&#39;Jan&#39;</span>,<span class="st">&#39;Feb&#39;</span>,<span class="st">&#39;Mar&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;May&#39;</span>))</span></code></pre></div>
-<ul>
-<li><p><code>dbplyr</code>可以连接到几乎任何数据库。</p></li>
-<li><p><code>wbstats</code>下载世界银行数据，很牛逼。Stata里面的<code>wbopendata</code>包更牛逼。</p></li>
-<li><p><code>stationaRy</code>:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。</p></li>
-<li><p><code>qs</code>包可以快速读入与保存</p></li>
-<li><p><code>tor</code>: 提供允许用户同时导入多个文件的功能.</p></li>
-<li><p>读入excel中的sheet名：<code>openxlsx::getSheetNames(file)</code></p></li>
-<li><p><code>XLConect</code>处理excel最强大的包。但需要JRE（java run enviornment）。</p></li>
-<li><p>使用<code>as.Date</code>来生成日期，必须带有年月日三个要素，使用<code>format</code>来输出日期格式，此时可以只输出年和月。如<code>as.Date('2010/05/01') %&gt;% format(.,format = '%Y%m')</code></p></li>
-<li><p><code>seq.Date()</code>生成日期序列，包括日、星期、月、年。</p></li>
-<li><p><code>readstata13</code>包可以读入更高版本的stata数据格式。</p></li>
-<li><p><code>zoo::rollapply(x, 30, mean)</code>就是30天的移动平均求值。</p></li>
-<li><p><code>select</code>是一个很牛逼的函数</p></li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="DataProcess.html#cb9-1"></a><span class="kw">select</span>(regdata,id, year) <span class="co"># 选择regdata数据框的id和year两列</span></span>
-<span id="cb9-2"><a href="DataProcess.html#cb9-2"></a><span class="kw">select</span>(regdata,<span class="kw">starts_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;开头的列</span></span>
-<span id="cb9-3"><a href="DataProcess.html#cb9-3"></a><span class="kw">select</span>(regdata,<span class="kw">ends_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;结尾的列</span></span>
-<span id="cb9-4"><a href="DataProcess.html#cb9-4"></a><span class="kw">select</span>(regdata,<span class="kw">contains</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配包含&#39;abc&#39;的列</span></span>
-<span id="cb9-5"><a href="DataProcess.html#cb9-5"></a><span class="kw">select</span>(regdata,<span class="kw">matches</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 正则表达匹配</span></span>
-<span id="cb9-6"><a href="DataProcess.html#cb9-6"></a><span class="kw">select</span>(regdata,<span class="kw">num_range</span>(<span class="st">&#39;x&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># 匹配x1, x2,x3的列</span></span></code></pre></div>
-<ul>
-<li>R语言给数组各维数命名</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="DataProcess.html#cb10-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
-<span id="cb10-2"><a href="DataProcess.html#cb10-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb10-3"><a href="DataProcess.html#cb10-3"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
-<span id="cb10-4"><a href="DataProcess.html#cb10-4"></a>column.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
-<span id="cb10-5"><a href="DataProcess.html#cb10-5"></a>row.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
-<span id="cb10-6"><a href="DataProcess.html#cb10-6"></a>matrix.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
-<span id="cb10-7"><a href="DataProcess.html#cb10-7"></a></span>
-<span id="cb10-8"><a href="DataProcess.html#cb10-8"></a><span class="co"># Take these vectors as input to the array.</span></span>
-<span id="cb10-9"><a href="DataProcess.html#cb10-9"></a>result &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(vector1,vector2),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="dt">dimnames =</span> <span class="kw">list</span>(row.names,column.names,</span>
-<span id="cb10-10"><a href="DataProcess.html#cb10-10"></a>                                                                  matrix.names))</span>
-<span id="cb10-11"><a href="DataProcess.html#cb10-11"></a><span class="kw">print</span>(result)</span></code></pre></div>
-<pre><code>## , , Matrix1
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15
-## 
-## , , Matrix2
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15</code></pre>
-<ul>
-<li><code>pdftools</code>包的函数可以读PDF文件：</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="DataProcess.html#cb12-1"></a><span class="kw">pdf_info</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-2"><a href="DataProcess.html#cb12-2"></a></span>
-<span id="cb12-3"><a href="DataProcess.html#cb12-3"></a><span class="kw">pdf_text</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-4"><a href="DataProcess.html#cb12-4"></a></span>
-<span id="cb12-5"><a href="DataProcess.html#cb12-5"></a><span class="kw">pdf_data</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-6"><a href="DataProcess.html#cb12-6"></a></span>
-<span id="cb12-7"><a href="DataProcess.html#cb12-7"></a><span class="kw">pdf_fonts</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-8"><a href="DataProcess.html#cb12-8"></a></span>
-<span id="cb12-9"><a href="DataProcess.html#cb12-9"></a><span class="kw">pdf_attachments</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-10"><a href="DataProcess.html#cb12-10"></a></span>
-<span id="cb12-11"><a href="DataProcess.html#cb12-11"></a><span class="kw">pdf_toc</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb12-12"><a href="DataProcess.html#cb12-12"></a></span>
-<span id="cb12-13"><a href="DataProcess.html#cb12-13"></a><span class="kw">pdf_pagesize</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p>同时，利用<code>qpdf</code>包的<code>pdf_subset,pdf_combine,pdf_split</code>可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="统计.html#cb13-1"></a><span class="co"># 画个图选特征值数目：</span></span>
+<span id="cb13-2"><a href="统计.html#cb13-2"></a><span class="co"># 1. 特征值在1以上的才行； 2. 特征值大于模拟的平均特征才可行； 3. 碎石图</span></span>
+<span id="cb13-3"><a href="统计.html#cb13-3"></a><span class="kw">library</span>(psych)</span>
+<span id="cb13-4"><a href="统计.html#cb13-4"></a><span class="kw">fa.parallel</span>(regdata, <span class="dt">fa =</span> <span class="st">&#39;pc&#39;</span>)</span>
+<span id="cb13-5"><a href="统计.html#cb13-5"></a><span class="co"># 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数</span></span>
+<span id="cb13-6"><a href="统计.html#cb13-6"></a> <span class="kw">principal</span>(regdata,<span class="dt">nfactors =</span> <span class="dv">2</span>,<span class="dt">rotate =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
 
 </div>
             </section>
@@ -270,8 +215,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="TS.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="统计.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DataProcess.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rawR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

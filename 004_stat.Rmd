@@ -1,0 +1,21 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# 统计
+- `cmna::mcint `可以进行蒙特卡洛积分。
+- 数值积分：`pracma::integral` 
+- 多元正态分布随机抽样：`SimDesign::rmvnorm`，还有`mvnfast`
+- `KSgeneral`包执行KS检验，比较一个分布是否来自某个理论分布。`stats`包的`ks.test`和`dgof`包的`ks.test`也可以,并且可以比较双样本是否来自同一个分布。
+- `choose(n,k)`：组合公式，n个里面选k个，有多少种组合方式。`utils::combn(n,k)`也可以。 `e1071::permutations`实现排列。
+- `qrandom`: 利用量子波动产生真随机数.
+- 主成分分析可以调用`psych`包两个步骤实现：
+```{r eval=FALSE}
+# 画个图选特征值数目：
+# 1. 特征值在1以上的才行； 2. 特征值大于模拟的平均特征才可行； 3. 碎石图
+library(psych)
+fa.parallel(regdata, fa = 'pc')
+# 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数
+ principal(regdata,nfactors = 2,rotate = 'none')
+```
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R语言笔记</title>
-  <meta name="description" content="R语言笔记" />
+  <title>5 原生的R | R语言笔记</title>
+  <meta name="description" content="5 原生的R | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R语言笔记" />
+  <meta property="og:title" content="5 原生的R | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R语言笔记" />
+  <meta name="twitter:title" content="5 原生的R | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="PanelData.html"/>
+<link rel="prev" href="统计.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -156,23 +156,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
 <li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a></li>
-<li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
-<li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-2"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.2</b> 打印到文件</a></li>
+<li class="chapter" data-level="5" data-path="原生的r.html"><a href="原生的r.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
+<li class="chapter" data-level="5.1" data-path="原生的r.html"><a href="原生的r.html#一句话tips-2"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="5.2" data-path="原生的r.html"><a href="原生的r.html#打印到文件"><i class="fa fa-check"></i><b>5.2</b> 打印到文件</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
-<li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-3"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="6.2" data-path="Eco.html"><a href="Eco.html#wwz的贸易增加值分解"><i class="fa fa-check"></i><b>6.2</b> wwz的贸易增加值分解</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a><ul>
-<li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-4"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a><ul>
-<li class="chapter" data-level="8.1" data-path="ML.html"><a href="ML.html#一句话tips-5"><i class="fa fa-check"></i><b>8.1</b> 一句话Tips</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a></li>
-<li class="chapter" data-level="10" data-path="其他.html"><a href="其他.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -191,26 +178,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R语言笔记</h1>
-<p class="author"><em>云腾足下</em></p>
-<p class="date"><em>2020年5月</em></p>
-</div>
-<div id="简介" class="section level1 unnumbered">
-<h1>简介</h1>
+<div id="原生的r" class="section level1">
+<h1><span class="header-section-number">5</span> 原生的R</h1>
+<div id="一句话tips-2" class="section level2">
+<h2><span class="header-section-number">5.1</span> 一句话Tips</h2>
+<ul>
+<li><code>system</code>或<code>shell</code>运行Shell命令。</li>
+<li>更新所有的包<code>update.packages(checkBuilt=TRUE, ask=FALSE)</code></li>
+<li><code>pkgsearch</code>包的<code>ps</code>函数提供CRAN的关键词搜寻。</li>
+<li><code>detach(package:dplyr)</code>可以去掉加载的包。</li>
+<li><code>foreach</code>包提供循环的平行计算</li>
+<li>在jupyter里面安装R，只需在anaconda里面的命令行中（anaconda prompt）输入，</li>
+</ul>
+<pre><code>conda install -c r r-essentials</code></pre>
+<ul>
+<li>工作目录下所有文件名<code>dir()</code></li>
+<li><code>file.copy, file.create, file.remove, file.rename, dir.creat, file.exists, file.info</code></li>
+<li><code>file.rename</code>批量修改文件名</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="原生的r.html#cb15-1"></a>fr =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb15-2"><a href="原生的r.html#cb15-2"></a>to =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/hp&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb15-3"><a href="原生的r.html#cb15-3"></a><span class="kw">file.rename</span>(<span class="dt">from =</span> fr,<span class="dt">to =</span> to)</span></code></pre></div>
+<ul>
+<li><code>down.file</code>只要给出第一个参数：网址（包括ftp的）和第二个参数，下载的文件要保存的文件名，就可以直接在网上下载文件。如果中国乱码，记得使用fileEncoding = ’UTF-8’来修正。</li>
+<li><code>getAnywhere(predict.Arima)</code>查看源代码</li>
+<li><code>.rs.restartR()</code>重启一个新的R会话</li>
+<li>平行计算。光使用<code>foreach</code>包是不够的，还需要注册一个平行背景注册，否则<code>foreach</code>包在运算完以后会返回警告：</li>
+</ul>
 <blockquote>
-<p>十步杀一人，千里不留行
-事了拂衣去，不留功与名</p>
+<p>Warning message:</p>
+<p>executing %dopar% sequentially: no parallel backend registered</p>
 </blockquote>
+<p>A: 如何注册呢？调用<code>doParallel</code>包，代码如下：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="原生的r.html#cb16-1"></a><span class="kw">library</span>(doParallel)</span>
+<span id="cb16-2"><a href="原生的r.html#cb16-2"></a>cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">2</span>)</span>
+<span id="cb16-3"><a href="原生的r.html#cb16-3"></a><span class="kw">registerDoParallel</span>(cl)</span>
+<span id="cb16-4"><a href="原生的r.html#cb16-4"></a><span class="kw">foreach</span>(<span class="dt">i=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">.pacakages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span><span class="kw">sqrt</span>(i)</span>
+<span id="cb16-5"><a href="原生的r.html#cb16-5"></a><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
+<ul>
+<li>如何安装已经过期的包？
+<ol style="list-style-type: decimal">
+<li>点<a href="https://cran.r-project.org/src/contrib/Archive/">这里</a>找到过期的包，然后下载下来。</li>
+<li>用这个命令安装本地的包：<code>install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')</code></li>
+</ol></li>
+</ul>
+</div>
+<div id="打印到文件" class="section level2">
+<h2><span class="header-section-number">5.2</span> 打印到文件</h2>
+<ul>
+<li><code>sink</code>函数：在代码开始前加一行：<code>sink(“output.txt”)</code>，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用<code>sink()</code>切换回来。 示例：</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="原生的r.html#cb17-1"></a><span class="kw">sink</span>(<span class="st">&quot;a.txt&quot;</span>) </span>
+<span id="cb17-2"><a href="原生的r.html#cb17-2"></a>x&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
+<span id="cb17-3"><a href="原生的r.html#cb17-3"></a><span class="kw">mean</span>(x) </span>
+<span id="cb17-4"><a href="原生的r.html#cb17-4"></a><span class="kw">sink</span>()</span></code></pre></div>
+<ul>
+<li><code>cat</code>函数：<code>cat('abc','OK!',file = 'a.txt',sep = '\n',append = T)</code></li>
+<li><code>stargazer</code>函数：</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="原生的r.html#cb18-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="PanelData.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="统计.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

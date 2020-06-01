@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 普通回归和时间序列序列 | R语言笔记</title>
-  <meta name="description" content="2 普通回归和时间序列序列 | R语言笔记" />
+  <title>8 机器学习和微观计量 | R语言笔记</title>
+  <meta name="description" content="8 机器学习和微观计量 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 普通回归和时间序列序列 | R语言笔记" />
+  <meta property="og:title" content="8 机器学习和微观计量 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 普通回归和时间序列序列 | R语言笔记" />
+  <meta name="twitter:title" content="8 机器学习和微观计量 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="PanelData.html"/>
-<link rel="next" href="DataProcess.html"/>
+<link rel="prev" href="math.html"/>
+<link rel="next" href="otherSF.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -191,107 +191,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="TS" class="section level1">
-<h1><span class="header-section-number">2</span> 普通回归和时间序列序列</h1>
-<div id="一句话tips-1" class="section level2">
-<h2><span class="header-section-number">2.1</span> 一句话Tips</h2>
+<div id="ML" class="section level1">
+<h1><span class="header-section-number">8</span> 机器学习和微观计量</h1>
+<div id="一句话tips-5" class="section level2">
+<h2><span class="header-section-number">8.1</span> 一句话Tips</h2>
 <ul>
-<li><code>confint</code>函数返回系数的置信区间</li>
-<li><code>bssm</code>拟合非线性卡尔曼滤波的包。<code>pomp</code>，<code>KFAS</code>也是。<code>pomp</code>好像接口更简单些，第四节有一个非线性的例子。</li>
-<li><code>NlinTS</code>一个利用神经网络的格兰杰因果非线性检验。</li>
-<li><code>slider</code>: 在任何R数据类型上提供类型稳定的滚动窗口函数，并支持累积窗口和扩展窗口。</li>
-<li><code>testcorr</code>: 提供计算单变量时间序列中自相关显著性、双变量时间序列中互相关显著性、多变量序列中皮尔逊相关显著性和单变量序列i.i.d.特性的测试统计量的功能。<br />
-</li>
-<li><code>apt</code>一个阈值协整包。</li>
-<li><code>fDMA</code>动态平均模型。卡尔曼滤波的贝叶斯模型平均。</li>
-<li><code>MuMIn</code>利用信息准则进行模型平均的包。</li>
-<li><code>MSBVAR</code>提供了贝叶斯框架下的马尔科夫转移VAR。<code>MSwM</code>是一个单方程（非单变量）的马尔科夫转移模型估计。</li>
-<li>因子变虚拟变量：<code>model.matrix</code>可以生成回归所需要的矩阵，可以把因子变量变成虚拟变量。</li>
-<li><code>mfGARCH</code>包估计混频GARCH。</li>
-<li><code>TED::ur.za.fast</code>和<code>urca::ur.za</code>未知断点的单位根检验。</li>
-<li><code>mFilter</code>包有各种经济和金融常用的滤波，如HP，BK等滤波（好像没有更新了，官网包的镜像没有找到）。但是可以使用<code>FRAPO</code>包的<code>trdhp</code>函数来计算HP滤波 。</li>
-<li><code>svars</code>是一个数据驱动的结构VAR包。<code>vars</code>是一个VAR各种估计和诊断的标准包。<code>tsDyn</code>也有线性VAR和VECM的估计，其中它还允许包含外生变量。</li>
-<li><code>lmtest</code>有<code>grangertest()</code>做双变量格兰杰因果检验。<code>MTS::GrangerTest(regdata[,-c(1,2)],2,locInput = 1)</code>也可以，而且可以做多个变量是不是某个变量的格兰杰原因。<code>locInput</code>表示因变量是第几列。</li>
-<li><code>stats4</code>包提供了函数<code>mle</code>可以进行极大似然估计，还可以固定部分参数，优化其他参数，这其实是集中似然的思想。关键是它还返回方差协方差矩阵。语法如下，</li>
+<li><code>gfoRmula</code>：一个处理时变处理干扰的R包。</li>
+<li><code>oem</code>包可以执行各类lasso，group lasso等算法。</li>
+<li><code>gsynth</code>广义合成控制包。考虑了交互固定效应。</li>
+<li><code>ArCo</code>: 一个人工反事实的包</li>
+<li><code>randomForestSRC</code>一个性能更佳，速度更快的随机森林包。</li>
+<li><code>ForecastComb</code>一个集成预测的包，包括stacking 方法。</li>
+<li><code>htree</code>基于历史回归树，所以可以用于面板数据的随机森林模型。</li>
+<li><code>tsensembler</code>一个对机器学习多种预测方法进行集成的包，包括随机森林，装袋，支持向量回归等。</li>
+<li><code>knerlab</code>支持向量机和支持向量回归，他的vig写得好。</li>
+<li><code>grf</code>，一个因果树的包。</li>
+<li><code>spikeslab</code>，一个选择变量的贝叶斯方法的包。</li>
+<li><code>orf</code>: 实现Lechner和Okasa（2019）中开发的有序森林估计量，以估计具有有序分类结果的模型（有序选择模型）的条件概率.</li>
+<li><code>MatchIt</code>做匹配感觉很好。主要函数是<code>matchit</code>，针对这个函数得到的类，使用<code>summay</code>可以得到匹配前后均值变化，经验分位变化等。这个函数返回的类包含有一个元素<code>match.matrix</code>，里面有被匹配的控制组信息。
+## ROC曲线绘制
+ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴为1-特异度(1-specificity)，纵轴为灵敏度（sensitivity）.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="TS.html#cb3-1"></a><span class="kw">mle</span>(minuslogl, <span class="dt">start =</span> <span class="kw">formals</span>(minuslogl), <span class="dt">method =</span> <span class="st">&quot;BFGS&quot;</span>,</span>
-<span id="cb3-2"><a href="TS.html#cb3-2"></a>    <span class="dt">fixed =</span> <span class="kw">list</span>(), nobs, ...) <span class="co"># 注意它的初值是一个list</span></span></code></pre></div>
+<p>调用<code>pROC</code>包即可计算。该包的参数如下：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ML.html#cb23-1"></a><span class="kw">roc</span>(response, predictor, controls, cases,</span>
+<span id="cb23-2"><a href="ML.html#cb23-2"></a>density.controls, density.cases,</span>
+<span id="cb23-3"><a href="ML.html#cb23-3"></a><span class="dt">levels=</span>base<span class="op">::</span><span class="kw">levels</span>(<span class="kw">as.factor</span>(response)), <span class="dt">percent=</span><span class="ot">FALSE</span>, <span class="dt">na.rm=</span><span class="ot">TRUE</span>,</span>
+<span id="cb23-4"><a href="ML.html#cb23-4"></a><span class="dt">direction=</span><span class="kw">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&gt;&quot;</span>), <span class="dt">algorithm =</span> <span class="dv">5</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb23-5"><a href="ML.html#cb23-5"></a><span class="dt">smooth=</span><span class="ot">FALSE</span>, <span class="dt">auc=</span><span class="ot">TRUE</span>, <span class="dt">ci=</span><span class="ot">FALSE</span>, <span class="dt">plot=</span><span class="ot">FALSE</span>, <span class="dt">smooth.method=</span><span class="st">&quot;binormal&quot;</span>,</span>
+<span id="cb23-6"><a href="ML.html#cb23-6"></a><span class="dt">ci.method=</span><span class="ot">NULL</span>, <span class="dt">density=</span><span class="ot">NULL</span>, ...)</span></code></pre></div>
 <ul>
-<li><code>dynlm::dynlm</code>包一个比<code>lm</code>更强大线性回归结构，优点有三：
-<ul>
-<li>可以使用差分、滞后等表述，如<code>d(y)~L(y,2)</code>，可以直接添加趋势项<code>trend(y)</code>将使用<code>$(1:n)/Freq$</code>作为回归元。</li>
-<li>可以进行工具变量估计。
-但要注意，他的数据不是数据框，而是一个<code>ts</code>对象。</li>
-</ul></li>
-<li><code>nardl</code>估计非线性协整分布滞后模型。</li>
-<li><code>rugarch</code>：单变量garch建模。一个比<code>forcast</code>更好用的时序建模包。可以用<code>show</code>函数来返回一个丰富的结果，包括一些检验结果。</li>
-<li><code>rmgarch</code>：多变量garch建模。包括dcc,adcc,gdcc等。</li>
-<li><code>stats</code>包中的<code>ARMAtoMA</code>函数可以计算AR变成MA。<code>vars</code>包的<code>Phi</code>返回VAR的移动平均系数。</li>
-<li><code>vars</code>包里面的<code>Phi</code>函数可以把VAR变成VMA。使用<code>summary</code>函数来摘要var的估计结果，会给粗特征根，残差相关矩阵等。</li>
-<li><code>tsDyn</code>包的<code>VECM</code>函数比较好用，可以包括外生变量，可以选择OLS或Joson方法。这个包也是可以估计线性VAR的，主要是他的<code>lineVar</code>函数。<code>egcm</code>包是恩格尔格兰杰协整检验，这个检验在<code>urca</code>包里业可行。</li>
-<li><code>TSA::periodogram</code>可以做谱分解。</li>
-<li><code>bvarsv</code>时变参数var建模</li>
-<li><code>nls</code>非线性最小二乘法函数</li>
-<li><code>highfrequance</code>里面有不少意思的函数，包括<code>HAR</code>。
-## 回归中关于公式的理解和构造</li>
+<li><code>response</code>: 原始的<code>$y$</code>;</li>
+<li><code>pridictor</code>: 估计的<code>$\hat y$</code>;</li>
+<li><code>smooth</code>:是否平滑ROC曲线；</li>
+<li><code>percent</code>:是否百分比的形式显示相关信息，如AUC；</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="TS.html#cb4-1"></a><span class="co"># 构造公式, 只要包含波浪线就意味着这是一个公式。</span></span>
-<span id="cb4-2"><a href="TS.html#cb4-2"></a>F1 &lt;-<span class="st"> </span>dist <span class="op">~</span><span class="st"> </span>speed <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb4-3"><a href="TS.html#cb4-3"></a><span class="co"># 获得公式中所有的变量</span></span>
-<span id="cb4-4"><a href="TS.html#cb4-4"></a>mf1 &lt;-<span class="st"> </span><span class="kw">model.frame</span>(F1,<span class="dt">data =</span> cars)</span>
-<span id="cb4-5"><a href="TS.html#cb4-5"></a><span class="co"># 抽取因变量</span></span>
-<span id="cb4-6"><a href="TS.html#cb4-6"></a><span class="kw">model.response</span>(mf1)</span>
-<span id="cb4-7"><a href="TS.html#cb4-7"></a><span class="co"># 抽取自变量</span></span>
-<span id="cb4-8"><a href="TS.html#cb4-8"></a><span class="kw">model.matrix</span>(F1, <span class="dt">data =</span> cars)</span></code></pre></div>
-<p>公式的高级应用还有一个包<code>Formula</code>，其说明文件很到位。主要阐述了<code>|</code>的使用方式。</p>
-</div>
-<div id="gmm估计" class="section level2">
-<h2><span class="header-section-number">2.2</span> GMM估计</h2>
-<p><span class="math display">\[
-i _t =\beta_0 + \beta_1pi_t + \beta_2GDP_t + \beta_3hp_t + \beta_4i_{t-1} + \varepsilon_t
-\]</span></p>
-<p>因包含因变量的滞后项从而有内生性，欲使用<span class="math inline">\(i_{t-2},i_{t-3},i_{t-4}\)</span>作为工具变量，从而做一个GMM估计，亦即整个方程的矩条件为，</p>
-<p><span class="math display">\[\begin{align}
-E(pi_t\varepsilon_t) = 0\\
 
-E(GDP_t\varepsilon_t) = 0\\
-
-E(hp_t\varepsilon_t) = 0\\
-
-E(i_{t-2}\varepsilon_t) = 0\\
-
-E(i_{t-3}\varepsilon_t) = 0\\
-
-E(i_{t-4}\varepsilon_t) = 0
-\end{align}\]</span></p>
-<p>利用这些矩条件的GMM估计在<code>gmm</code>包中的写法为，</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="TS.html#cb5-1"></a>gmmrlt &lt;-<span class="st"> </span><span class="kw">gmm</span>(<span class="dt">g =</span> it <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it1, <span class="dt">x =</span> <span class="op">~</span><span class="st"> </span>pi <span class="op">+</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>it2 <span class="op">+</span><span class="st"> </span>it3 <span class="op">+</span><span class="st"> </span>it4,<span class="dt">data =</span> dwg0)</span>
-<span id="cb5-2"><a href="TS.html#cb5-2"></a><span class="kw">summary</span>(gmmrlt)</span></code></pre></div>
-<p>其中<code>g</code>可直接写成公式，<code>x</code>即为工具变量集。</p>
-</div>
-<div id="季节调整" class="section level2">
-<h2><span class="header-section-number">2.3</span> 季节调整</h2>
-<div id="r中有x12包可以做季节处理" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> R中有<code>x12</code>包可以做季节处理</h3>
-<p>注意：
-- 要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
-- 仅可处理R中内置的时间序列对象<code>ts</code>。
-- 示例代码：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="TS.html#cb6-1"></a><span class="kw">library</span>(x12)</span>
-<span id="cb6-2"><a href="TS.html#cb6-2"></a><span class="kw">data</span>(AirPassengers)</span>
-<span id="cb6-3"><a href="TS.html#cb6-3"></a>x12out &lt;-<span class="st"> </span><span class="kw">x12work</span>(AirPassengers,</span>
-<span id="cb6-4"><a href="TS.html#cb6-4"></a>             <span class="dt">x12path =</span> <span class="st">&#39;C:</span><span class="ch">\\</span><span class="st">ado</span><span class="ch">\\</span><span class="st">plus</span><span class="ch">\\</span><span class="st">WinX12</span><span class="ch">\\</span><span class="st">x12a</span><span class="ch">\\</span><span class="st">x12a.exe&#39;</span>,<span class="dt">keep_x12out =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb6-5"><a href="TS.html#cb6-5"></a>x12out<span class="op">$</span>d11 <span class="co">#此即为调整后的时间序列</span></span></code></pre></div>
-<p>其中，<code>keep_x12out</code>参数表示是否要保留计算后的文件。</p>
-</div>
-<div id="seasonal包有x13处理更加便捷" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> <code>seasonal</code>包有x13处理，更加便捷</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="TS.html#cb7-1"></a><span class="kw">library</span>(seasonal)</span>
-<span id="cb7-2"><a href="TS.html#cb7-2"></a>m &lt;-<span class="st"> </span><span class="kw">seas</span>(AirPassengers) <span class="co"># x13 处理</span></span>
-<span id="cb7-3"><a href="TS.html#cb7-3"></a><span class="kw">final</span>(m) <span class="co"># 最终调整序列</span></span>
-<span id="cb7-4"><a href="TS.html#cb7-4"></a><span class="kw">plot</span>(m) <span class="co"># 绘制调整和未调整序列</span></span></code></pre></div>
-
-</div>
 </div>
 </div>
             </section>
@@ -299,8 +233,8 @@ E(i_{t-4}\varepsilon_t) = 0
           </div>
         </div>
       </div>
-<a href="PanelData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="DataProcess.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="math.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otherSF.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

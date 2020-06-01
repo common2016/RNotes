@@ -1,5 +1,13 @@
 
 # 数据处理 {#DataProcess}
+- 因子操作
+
+```r
+# 如下命令意味着前面这四个因子是按后面那个levels来排序的。
+# 否则，它按字母顺序排这四个字符串。
+	factor(c('Dec','Apr','Jam','Mar'), levels = ('Jan','Feb','Mar','Apr','May'))
+```
+
 - `dbplyr`可以连接到几乎任何数据库。
 - `wbstats`下载世界银行数据，很牛逼。Stata里面的`wbopendata`包更牛逼。
 - `stationaRy`:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。
