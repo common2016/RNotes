@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>简介</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
 <li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a><ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
@@ -148,11 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a><ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
-<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
@@ -198,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>stargazer</code>的一个模版调用：</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="otherSF.html#cb2-1"></a><span class="kw">stargazer</span>(regression,<span class="dt">type =</span> <span class="st">&#39;text&#39;</span>,<span class="dt">out =</span> <span class="st">&quot;../PicTab/cmp.html&quot;</span>,<span class="dt">no.space =</span> T,<span class="dt">report =</span> <span class="kw">c</span>(<span class="st">&#39;vcp&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="otherSF.html#cb24-1"></a><span class="kw">stargazer</span>(regression,<span class="dt">type =</span> <span class="st">&#39;text&#39;</span>,<span class="dt">out =</span> <span class="st">&quot;../PicTab/cmp.html&quot;</span>,<span class="dt">no.space =</span> T,<span class="dt">report =</span> <span class="kw">c</span>(<span class="st">&#39;vcp&#39;</span>))</span></code></pre></div>
 <p><code>report</code>意味着报告变量、系数与p值。</p>
 <ul>
 <li><code>officer</code>: 与微软软件互动的一个包</li>
@@ -214,26 +213,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
 - 安装R.matlab包。使用<code>writemat(filename,A=A,B=B)</code>把R里面的数据写进Matlab并保存成<code>.mat</code>格式。
 - 安装matlabr包。使用<code>run_matlab_script</code>命令来执行一个<code>.m</code>脚本。或者使用<code>R.matlab</code>包里面的<code>evaluate</code>来一个一个地执行matlab命令。或者类似于调用stata：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="otherSF.html#cb3-1"></a>    <span class="kw">library</span>(matlabr)</span>
-<span id="cb3-2"><a href="otherSF.html#cb3-2"></a>    MatlabCode &lt;-<span class="st"> &#39;</span></span>
-<span id="cb3-3"><a href="otherSF.html#cb3-3"></a><span class="st">    a = 3;</span></span>
-<span id="cb3-4"><a href="otherSF.html#cb3-4"></a><span class="st">    b = a+1;</span></span>
-<span id="cb3-5"><a href="otherSF.html#cb3-5"></a><span class="st">    &#39;</span></span>
-<span id="cb3-6"><a href="otherSF.html#cb3-6"></a>    <span class="kw">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="otherSF.html#cb25-1"></a>    <span class="kw">library</span>(matlabr)</span>
+<span id="cb25-2"><a href="otherSF.html#cb25-2"></a>    MatlabCode &lt;-<span class="st"> &#39;</span></span>
+<span id="cb25-3"><a href="otherSF.html#cb25-3"></a><span class="st">    a = 3;</span></span>
+<span id="cb25-4"><a href="otherSF.html#cb25-4"></a><span class="st">    b = a+1;</span></span>
+<span id="cb25-5"><a href="otherSF.html#cb25-5"></a><span class="st">    &#39;</span></span>
+<span id="cb25-6"><a href="otherSF.html#cb25-6"></a>    <span class="kw">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
 <ul>
 <li>R语言读取SPSS（中文字符）</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="otherSF.html#cb4-1"></a><span class="co"># 读英文字符</span></span>
-<span id="cb4-2"><a href="otherSF.html#cb4-2"></a><span class="kw">library</span>(foreign)  </span>
-<span id="cb4-3"><a href="otherSF.html#cb4-3"></a>mydata=<span class="kw">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
-<span id="cb4-4"><a href="otherSF.html#cb4-4"></a><span class="co"># 或者如下</span></span>
-<span id="cb4-5"><a href="otherSF.html#cb4-5"></a><span class="kw">library</span>(Hmisc)  </span>
-<span id="cb4-6"><a href="otherSF.html#cb4-6"></a>data=<span class="kw">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
-<span id="cb4-7"><a href="otherSF.html#cb4-7"></a></span>
-<span id="cb4-8"><a href="otherSF.html#cb4-8"></a><span class="co"># 读中文字符</span></span>
-<span id="cb4-9"><a href="otherSF.html#cb4-9"></a><span class="kw">library</span>(memisc)</span>
-<span id="cb4-10"><a href="otherSF.html#cb4-10"></a>data1 =<span class="st"> </span><span class="kw">as.data.set</span>(<span class="kw">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
-<span id="cb4-11"><a href="otherSF.html#cb4-11"></a>data =<span class="st"> </span><span class="kw">as.data.frame</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="otherSF.html#cb26-1"></a><span class="co"># 读英文字符</span></span>
+<span id="cb26-2"><a href="otherSF.html#cb26-2"></a><span class="kw">library</span>(foreign)  </span>
+<span id="cb26-3"><a href="otherSF.html#cb26-3"></a>mydata=<span class="kw">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
+<span id="cb26-4"><a href="otherSF.html#cb26-4"></a><span class="co"># 或者如下</span></span>
+<span id="cb26-5"><a href="otherSF.html#cb26-5"></a><span class="kw">library</span>(Hmisc)  </span>
+<span id="cb26-6"><a href="otherSF.html#cb26-6"></a>data=<span class="kw">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
+<span id="cb26-7"><a href="otherSF.html#cb26-7"></a></span>
+<span id="cb26-8"><a href="otherSF.html#cb26-8"></a><span class="co"># 读中文字符</span></span>
+<span id="cb26-9"><a href="otherSF.html#cb26-9"></a><span class="kw">library</span>(memisc)</span>
+<span id="cb26-10"><a href="otherSF.html#cb26-10"></a>data1 =<span class="st"> </span><span class="kw">as.data.set</span>(<span class="kw">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
+<span id="cb26-11"><a href="otherSF.html#cb26-11"></a>data =<span class="st"> </span><span class="kw">as.data.frame</span>(data1)</span></code></pre></div>
 
 </div>
             </section>
@@ -292,6 +291,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
