@@ -1,0 +1,288 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R语言笔记},
+  pdfauthor={云腾足下},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{ctex}
+
+%\usepackage{xltxtra} % XeLaTeX的一些额外符号
+% 设置中文字体
+%\setCJKmainfont[BoldFont={黑体},ItalicFont={楷体}]{新宋体}
+
+% 设置边距
+\usepackage{geometry}
+\geometry{%
+  left=2.0cm, right=2.0cm, top=3.5cm, bottom=2.5cm} 
+
+\usepackage{amsthm,mathrsfs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{R语言笔记}
+\author{云腾足下}
+\date{2020年5月}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{ux7b80ux4ecb}{%
+\chapter*{简介}\label{ux7b80ux4ecb}}
+\addcontentsline{toc}{chapter}{简介}
+
+\begin{quote}
+十步杀一人，千里不留行
+事了拂衣去，不留功与名
+\end{quote}
+
+\hypertarget{PanelData}{%
+\chapter{面板数据}\label{PanelData}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{PSTR}:面板平滑转移模型。
+\item
+  \texttt{MSCMT}:多个结果变量的合成控制方法的包。
+\item
+  检查面板数据是否平衡：使用\texttt{table(PanelData{[},1:2{]})}或者\texttt{is.banance}。
+\item
+  \texttt{phtt}包，交互效应的面板模型，用的Bai (2009)的估计方法。It offers the possibility of analyzing panel data with large dimensions n and T and can be considered when the unobserved heterogeneity effects are time-varying.
+\end{itemize}
+
+\hypertarget{plmux5305}{%
+\section{\texorpdfstring{\texttt{plm}包}{plm包}}\label{plmux5305}}
+
+\begin{itemize}
+\tightlist
+\item
+  包中的\texttt{vcovG}函数可以计算聚类标准误。一般这么用:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(plm, }\DataTypeTok{vcov =} \KeywordTok{vcovG}\NormalTok{(plm, }\DataTypeTok{cluster =} \StringTok{'group'}\NormalTok{, }\DataTypeTok{inner =} \StringTok{'cluster'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  包中的\texttt{fixef}函数可以返回个体截距项(\texttt{type\ =\ level})。
+\item
+  \texttt{updata(object,\ formula)}函数可以更新公式重新估计。
+\end{itemize}
+
+\hypertarget{ux52a8ux6001ux9762ux677fux9608ux503cux4f30ux8ba1rux8bedux8a00ux4e2dux6709ux4e00ux4e2aux5305dtpux5176ux4f30ux8ba1ux51fdux6570ux4e3a}{%
+\section{\texorpdfstring{动态面板阈值估计：R语言中有一个包\texttt{dtp}，其估计函数为：}{动态面板阈值估计：R语言中有一个包dtp，其估计函数为：}}\label{ux52a8ux6001ux9762ux677fux9608ux503cux4f30ux8ba1rux8bedux8a00ux4e2dux6709ux4e00ux4e2aux5305dtpux5176ux4f30ux8ba1ux51fdux6570ux4e3a}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(Mena)}
+\NormalTok{reg<-}\KeywordTok{dtp}\NormalTok{(GDPPC }\OperatorTok{~}\StringTok{ }\NormalTok{FDI}\OperatorTok{+}\NormalTok{OPEN}\OperatorTok{|}\NormalTok{INF}\OperatorTok{|}\NormalTok{INF,Mena,}\DataTypeTok{index=}\KeywordTok{c}\NormalTok{(}\StringTok{"pays"}\NormalTok{,}\StringTok{"ann"}\NormalTok{),}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\FloatTok{0.95}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DataTypeTok{graph =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(reg)}
+\end{Highlighting}
+\end{Shaded}
+
+注意：
+- 第一根\texttt{\textbar{}}前的变量是不依赖区制的变量，中间由\texttt{\textbar{}}夹住的变量是阈值变量，最后一个\texttt{\textbar{}}后面的变量是依赖区制的变量（好遗憾，貌似只允许一个这样的变量）。
+- \texttt{initnum}参数指的是模型中的内生变量。在动态面板中，一般是因变量的滞后值，因此在数据框中滞后因变量，然后选好该滞后因变量所在列的数字即可。注意，这个数字是在剔除了id和year标识之后的列的序号。
+- 数据上千以后，估计过程有点慢，耐心等待。
+- 输出中包含一个\texttt{gamma}参数，我揣摩是截距项。
+
+\hypertarget{TS}{%
+\chapter{普通回归和时间序列序列}\label{TS}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-1}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{confint}函数返回系数的置信区间
+\item
+  \texttt{bssm}拟合非线性卡尔曼滤波的包。\texttt{pomp}，\texttt{KFAS}也是。\texttt{pomp}好像接口更简单些，第四节有一个非线性的例子。
+\item
+  \texttt{NlinTS}一个利用神经网络的格兰杰因果非线性检验。
+\item
+  \texttt{slider}: 在任何R数据类型上提供类型稳定的滚动窗口函数，并支持累积窗口和扩展窗口。
+\item
+  \texttt{testcorr}: 提供计算单变量时间序列中自相关显著性、双变量时间序列中互相关显著性、多变量序列中皮尔逊相关显著性和单变量序列i.i.d.特性的测试统计量的功能。\\
+\item
+  \texttt{apt}一个阈值协整包。
+\item
+  \texttt{fDMA}动态平均模型。卡尔曼滤波的贝叶斯模型平均。
+\item
+  \texttt{MuMIn}利用信息准则进行模型平均的包。
+\item
+  \texttt{MSBVAR}提供了贝叶斯框架下的马尔科夫转移VAR。\texttt{MSwM}是一个单方程（非单变量）的马尔科夫转移模型估计。
+\item
+  因子变虚拟变量：\texttt{model.matrix}可以生成回归所需要的矩阵，可以把因子变量变成虚拟变量。
+\item
+  \texttt{mfGARCH}包估计混频GARCH。
+\item
+  \texttt{TED::ur.za.fast}和\texttt{urca::ur.za}未知断点的单位根检验。
+\item
+  \texttt{mFilter}包有各种经济和金融常用的滤波，如HP，BK等滤波（好像没有更新了，官网包的镜像没有找到）。但是可以使用\texttt{FRAPO}包的\texttt{trdhp}函数来计算HP滤波 。
+\item
+  \texttt{svars}是一个数据驱动的结构VAR包。\texttt{vars}是一个VAR各种估计和诊断的标准包。\texttt{tsDyn}也有线性VAR和VECM的估计，其中它还允许包含外生变量。
+\item
+  \texttt{lmtest}有\texttt{grangertest()}做双变量格兰杰因果检验。\texttt{MTS::GrangerTest(regdata{[},-c(1,2){]},2,locInput\ =\ 1)}也可以，而且可以做多个变量是不是某个变量的格兰杰原因。\texttt{locInput}表示因变量是第几列。
+\item
+  \texttt{stats4}包提供了函数\texttt{mle}可以进行极大似然估计，还可以固定部分参数，优化其他参数，这其实是集中似然的思想。关键是它还返回方差协方差矩阵。语法如下，
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mle}\NormalTok{(minuslogl, }\DataTypeTok{start =} \KeywordTok{formals}\NormalTok{(minuslogl), }\DataTypeTok{method =} \StringTok{"BFGS"}\NormalTok{,}
+    \DataTypeTok{fixed =} \KeywordTok{list}\NormalTok{(), nobs, ...) }\CommentTok{# 注意它的初值是一个list}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dynlm::dynlm}包一个比\texttt{lm}更强大线性回归结构，优点有三：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    可以使用差分、滞后等表述，如\texttt{d(y)\textasciitilde{}L(y,2)}，可以直接添加趋势项\texttt{trend(y)}将使用\texttt{\$(1:n)/Freq\$}作为回归元。
+  \item
+    可以进行工具变量估计。
+  \end{itemize}
+\end{itemize}
+
+但要注意，他的数据不是数据框，而是一个\texttt{ts}对象。
+- \texttt{nardl}估计非线性协整分布滞后模型。
+- \texttt{rugarch}：单变量garch建模。一个比\texttt{forcast}更好用的时序建模包。可以用\texttt{show}函数来返回一个丰富的结果，包括一些检验结果。
+- \texttt{rmgarch}：多变量garch建模。包括dcc,adcc,gdcc等。
+- \texttt{stats}包中的\texttt{ARMAtoMA}函数可以计算AR变成MA。\texttt{vars}包的\texttt{Phi}返回VAR的移动平均系数。
+- \texttt{vars}包里面的\texttt{Phi}函数可以把VAR变成VMA。使用\texttt{summary}函数来摘要var的估计结果，会给粗特征根，残差相关矩阵等。
+- \texttt{tsDyn}包的\texttt{VECM}函数比较好用，可以包括外生变量，可以选择OLS或Joson方法。这个包也是可以估计线性VAR的，主要是他的\texttt{lineVar}函数。\texttt{egcm}包是恩格尔格兰杰协整检验，这个检验在\texttt{urca}包里业可行。
+- \texttt{TSA::periodogram}可以做谱分解。
+- \texttt{bvarsv}时变参数var建模
+- \texttt{nls}非线性最小二乘法函数
+- \texttt{highfrequance}里面有不少意思的函数，包括\texttt{HAR}。
+
+  \bibliography{mybib.bib}
+
+\end{document}
