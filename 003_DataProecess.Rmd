@@ -4,15 +4,20 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 # 数据处理 {#DataProcess}
 - 因子操作
 ```{r eval=FALSE}
-# 如下命令意味着前面这四个因子是按后面那个levels来排序的。
-# 否则，它按字母顺序排这四个字符串。
+# 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA
+# 第二，仅按字母排序。
+# 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，
+# 只是相当于设定了范围和排序。
 	factor(c('Dec','Apr','Jam','Mar'), levels = ('Jan','Feb','Mar','Apr','May'))
+# 因子重编码, 把1改成unmarried等
+farcats::fct_recode(rawdata$marrige,
+           'unmarried'='1','married'='2','cohabitation'='3','divore'='4','wid'='5')
 ```
 
 - `dbplyr`可以连接到几乎任何数据库。
 - `wbstats`下载世界银行数据，很牛逼。Stata里面的`wbopendata`包更牛逼。
 - `stationaRy`:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。
-- `qs`包可以快速读入与保存
+- **当你发现你用`save`命令保存一个数据长达数分钟时**，建议你迅速调用`qs`包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。
 - `tor`: 提供允许用户同时导入多个文件的功能.
 - 读入excel中的sheet名：`openxlsx::getSheetNames(file)`
 - `XLConect`处理excel最强大的包。但需要JRE（java run enviornment）。

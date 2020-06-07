@@ -1,6 +1,7 @@
 
 
 # 统计
+## 一句话Tips
 - `cmna::mcint `可以进行蒙特卡洛积分。
 - 数值积分：`pracma::integral` 
 - 多元正态分布随机抽样：`SimDesign::rmvnorm`，还有`mvnfast`
@@ -17,4 +18,35 @@ fa.parallel(regdata, fa = 'pc')
 # 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数
  principal(regdata,nfactors = 2,rotate = 'none')
 ```
+
+## MCMC算法
+### 吉布斯抽样原理
+如果联合分布不好求，但条件分布好求，可以用这个算法。
+
+### 一些共轭先验分布的结论
+理解这些结论，对于后续使用吉布斯抽样、MH算法非常有用。
+
+**结论1** 若$x_1,\cdots,x_n$是从均值为$\mu$(**未知**)，方差为$\sigma^2$(**已知**且为正)中正态分布中所抽取的一个随机样本，同时假定$\mu\sim \mathcal{N}(\mu_0,\sigma_0^2)$，则给定数据和先验分布，$\mu$的后验分布也是一个正态分布，其后验均值和方差为，
+$$\mu_* = \frac{\sigma^2\mu_0+n\sigma_0^2\overline x}{\sigma^2+n\sigma_0^2},\hspace{2em}\sigma_*=\frac{\sigma^2\sigma^2_0}{\sigma^2+n\sigma^2_0},\;\;\;\text{其中},\overline x= \sum_i^n x_i/n$$
+
+推广到多变量，则可以写为，
+$${\mu}_*=\Sigma_*(\Sigma_0^{-1}{\mu}_0+\Sigma^{-1}\overline{\bf{x}}), \hspace{2em}\Sigma_*^{-1} = \Sigma_0^{-1}+n\Sigma^{-1}$$
+
+**结论2**  若$e_1,\cdots,e_n$是从均值为0，方差为$\sigma^2$的正态分布中抽取的随机样本，同时假定$\sigma^2$的先验分布是自由度为$\nu$的逆$\chi^2$分布，即$\frac{\nu\lambda}{\sigma^2}\sim \chi^2_\nu,\lambda>0$，则$\sigma^2$的后验分布也是逆$\chi^2$分布，自由度为$\nu+n$，
+$$\frac{\nu\lambda+\sum_i^ne_i^2}{\sigma^2}\sim \chi^2_{\nu+n}$$
+
+### 一个吉布斯抽样的典型案例
+一个带自相关的回归模型可以写为，
+\begin{align}
+y_t&=\beta_0+\beta_1x_{1t}+\cdots+\beta_kx_{kt}+z_t\\
+z_t&=\phi z_{t-1}+e_t
+\end{align}
+
+该模型需要估计的参数有三个，即$\theta = (\beta',\phi,\sigma^2)$。该参数的联合分布并不好求，但是条件分布则好求得多。
+
+
+### Metropolis 和 M-H算法
+如果后验分布除了那个归一化的常数不知道，但分子是知道的，那可以用这个算法。这个场景是不是在贝叶斯估计中很熟悉？
+
+`MCMCpack::MCMCmetrop1R`中有个例子提供了Metropolis算法，感觉还是很清晰。里面提到的'The proposal distribution'其实就是跳跃分布，即给定上一次抽样的参数，从这个跳跃分布中抽下一个参数。
 

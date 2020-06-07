@@ -155,22 +155,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
-<li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a></li>
+<li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a><ul>
+<li class="chapter" data-level="4.1" data-path="统计.html"><a href="统计.html#一句话tips-2"><i class="fa fa-check"></i><b>4.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="4.2" data-path="统计.html"><a href="统计.html#mcmc算法"><i class="fa fa-check"></i><b>4.2</b> MCMC算法</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="统计.html"><a href="统计.html#吉布斯抽样原理"><i class="fa fa-check"></i><b>4.2.1</b> 吉布斯抽样原理</a></li>
+<li class="chapter" data-level="4.2.2" data-path="统计.html"><a href="统计.html#一些共轭先验分布的结论"><i class="fa fa-check"></i><b>4.2.2</b> 一些共轭先验分布的结论</a></li>
+<li class="chapter" data-level="4.2.3" data-path="统计.html"><a href="统计.html#metropolis-和-m-h算法"><i class="fa fa-check"></i><b>4.2.3</b> Metropolis 和 M-H算法</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
-<li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-2"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-3"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.2</b> 打印到文件</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
-<li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-3"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-4"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="6.2" data-path="Eco.html"><a href="Eco.html#wwz的贸易增加值分解"><i class="fa fa-check"></i><b>6.2</b> wwz的贸易增加值分解</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a><ul>
-<li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-4"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-5"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a><ul>
-<li class="chapter" data-level="8.1" data-path="ML.html"><a href="ML.html#一句话tips-5"><i class="fa fa-check"></i><b>8.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="8.1" data-path="ML.html"><a href="ML.html#一句话tips-6"><i class="fa fa-check"></i><b>8.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="8.2" data-path="ML.html"><a href="ML.html#roc曲线绘制"><i class="fa fa-check"></i><b>8.2</b> ROC曲线绘制</a></li>
+<li class="chapter" data-level="8.3" data-path="ML.html"><a href="ML.html#randomforestsrc包使用报告"><i class="fa fa-check"></i><b>8.3</b> <code>randomForestSRC</code>包使用报告</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a></li>
 <li class="chapter" data-level="10" data-path="其他.html"><a href="其他.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
@@ -197,14 +205,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>因子操作</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="DataProcess.html#cb8-1"></a><span class="co"># 如下命令意味着前面这四个因子是按后面那个levels来排序的。</span></span>
-<span id="cb8-2"><a href="DataProcess.html#cb8-2"></a><span class="co"># 否则，它按字母顺序排这四个字符串。</span></span>
-<span id="cb8-3"><a href="DataProcess.html#cb8-3"></a>    <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&#39;Dec&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;Jam&#39;</span>,<span class="st">&#39;Mar&#39;</span>), <span class="dt">levels =</span> (<span class="st">&#39;Jan&#39;</span>,<span class="st">&#39;Feb&#39;</span>,<span class="st">&#39;Mar&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;May&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="DataProcess.html#cb8-1"></a><span class="co"># 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA</span></span>
+<span id="cb8-2"><a href="DataProcess.html#cb8-2"></a><span class="co"># 第二，仅按字母排序。</span></span>
+<span id="cb8-3"><a href="DataProcess.html#cb8-3"></a><span class="co"># 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，</span></span>
+<span id="cb8-4"><a href="DataProcess.html#cb8-4"></a><span class="co"># 只是相当于设定了范围和排序。</span></span>
+<span id="cb8-5"><a href="DataProcess.html#cb8-5"></a>    <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&#39;Dec&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;Jam&#39;</span>,<span class="st">&#39;Mar&#39;</span>), <span class="dt">levels =</span> (<span class="st">&#39;Jan&#39;</span>,<span class="st">&#39;Feb&#39;</span>,<span class="st">&#39;Mar&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;May&#39;</span>))</span>
+<span id="cb8-6"><a href="DataProcess.html#cb8-6"></a><span class="co"># 因子重编码, 把1改成unmarried等</span></span>
+<span id="cb8-7"><a href="DataProcess.html#cb8-7"></a>farcats<span class="op">::</span><span class="kw">fct_recode</span>(rawdata<span class="op">$</span>marrige,</span>
+<span id="cb8-8"><a href="DataProcess.html#cb8-8"></a>           <span class="st">&#39;unmarried&#39;</span>=<span class="st">&#39;1&#39;</span>,<span class="st">&#39;married&#39;</span>=<span class="st">&#39;2&#39;</span>,<span class="st">&#39;cohabitation&#39;</span>=<span class="st">&#39;3&#39;</span>,<span class="st">&#39;divore&#39;</span>=<span class="st">&#39;4&#39;</span>,<span class="st">&#39;wid&#39;</span>=<span class="st">&#39;5&#39;</span>)</span></code></pre></div>
 <ul>
 <li><p><code>dbplyr</code>可以连接到几乎任何数据库。</p></li>
 <li><p><code>wbstats</code>下载世界银行数据，很牛逼。Stata里面的<code>wbopendata</code>包更牛逼。</p></li>
 <li><p><code>stationaRy</code>:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。</p></li>
-<li><p><code>qs</code>包可以快速读入与保存</p></li>
+<li><p><strong>当你发现你用<code>save</code>命令保存一个数据长达数分钟时</strong>，建议你迅速调用<code>qs</code>包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。</p></li>
 <li><p><code>tor</code>: 提供允许用户同时导入多个文件的功能.</p></li>
 <li><p>读入excel中的sheet名：<code>openxlsx::getSheetNames(file)</code></p></li>
 <li><p><code>XLConect</code>处理excel最强大的包。但需要JRE（java run enviornment）。</p></li>
