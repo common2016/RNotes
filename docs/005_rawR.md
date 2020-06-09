@@ -2,6 +2,15 @@
 
 # 原生的R {#rawR}
 ## 一句话Tips
+- 只显示3位小数：
+
+```r
+round(0.123456,3)
+```
+
+```
+## [1] 0.123
+```
 - `remove.packages('dplyr')`，卸载已安装的包。
 - `system`或`shell`运行Shell命令。
 - 更新所有的包`update.packages(checkBuilt=TRUE, ask=FALSE)`

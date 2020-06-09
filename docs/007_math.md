@@ -1,6 +1,7 @@
 
 # 数学计算 {#math}
 ## 一句话Tips
+- `crossprod(x,y)`的意思是$x'y$，`tcrossprod(x,y)`的意思是$xy'$。在OLS估计时还蛮省事。
 - `matlab`包模拟了matlab软件中的许多矩阵函数。
 - 克罗内克积使用`%x%`或者`kronecker`。
 - `numDeriv`里面的`hession`计算海塞矩阵，它的逆的负数，就是极大似然估计的标准差。 

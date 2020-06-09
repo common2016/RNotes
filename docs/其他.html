@@ -160,7 +160,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="统计.html"><a href="统计.html#mcmc算法"><i class="fa fa-check"></i><b>4.2</b> MCMC算法</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="统计.html"><a href="统计.html#吉布斯抽样原理"><i class="fa fa-check"></i><b>4.2.1</b> 吉布斯抽样原理</a></li>
 <li class="chapter" data-level="4.2.2" data-path="统计.html"><a href="统计.html#一些共轭先验分布的结论"><i class="fa fa-check"></i><b>4.2.2</b> 一些共轭先验分布的结论</a></li>
-<li class="chapter" data-level="4.2.3" data-path="统计.html"><a href="统计.html#metropolis-和-m-h算法"><i class="fa fa-check"></i><b>4.2.3</b> Metropolis 和 M-H算法</a></li>
+<li class="chapter" data-level="4.2.3" data-path="统计.html"><a href="统计.html#一个吉布斯抽样的典型案例"><i class="fa fa-check"></i><b>4.2.3</b> 一个吉布斯抽样的典型案例</a></li>
+<li class="chapter" data-level="4.2.4" data-path="统计.html"><a href="统计.html#metropolis-和-m-h算法"><i class="fa fa-check"></i><b>4.2.4</b> Metropolis 和 M-H算法</a></li>
+<li class="chapter" data-level="4.2.5" data-path="统计.html"><a href="统计.html#一些带贝叶斯估计的r包使用报告"><i class="fa fa-check"></i><b>4.2.5</b> 一些带贝叶斯估计的R包使用报告</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
@@ -210,11 +212,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="其他.html#cb28-1"></a><span class="kw">library</span>(progress)</span>
-<span id="cb28-2"><a href="其他.html#cb28-2"></a>pb &lt;-<span class="st"> </span>progress_bar<span class="op">$</span><span class="kw">new</span>(<span class="dt">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb28-3"><a href="其他.html#cb28-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){</span>
-<span id="cb28-4"><a href="其他.html#cb28-4"></a>    pb<span class="op">$</span><span class="kw">tick</span>()</span>
-<span id="cb28-5"><a href="其他.html#cb28-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="其他.html#cb31-1"></a><span class="kw">library</span>(progress)</span>
+<span id="cb31-2"><a href="其他.html#cb31-2"></a>pb &lt;-<span class="st"> </span>progress_bar<span class="op">$</span><span class="kw">new</span>(<span class="dt">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb31-3"><a href="其他.html#cb31-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){</span>
+<span id="cb31-4"><a href="其他.html#cb31-4"></a>    pb<span class="op">$</span><span class="kw">tick</span>()</span>
+<span id="cb31-5"><a href="其他.html#cb31-5"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>
