@@ -167,7 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-3"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.2</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.2</b> 类和方法</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.2.1</b> S3类</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.3</b> 打印到文件</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
 <li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-4"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
@@ -284,10 +287,12 @@ E(i_{t-4}\varepsilon_t) = 0
 <h2><span class="header-section-number">2.3</span> 季节调整</h2>
 <div id="r中有x12包可以做季节处理" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> R中有<code>x12</code>包可以做季节处理</h3>
-<p>注意：
-- 要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
-- 仅可处理R中内置的时间序列对象<code>ts</code>。
-- 示例代码：</p>
+<p>注意：</p>
+<ul>
+<li>要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。</li>
+<li>仅可处理R中内置的时间序列对象<code>ts</code>。</li>
+<li>示例代码：</li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="TS.html#cb6-1"></a><span class="kw">library</span>(x12)</span>
 <span id="cb6-2"><a href="TS.html#cb6-2"></a><span class="kw">data</span>(AirPassengers)</span>
 <span id="cb6-3"><a href="TS.html#cb6-3"></a>x12out &lt;-<span class="st"> </span><span class="kw">x12work</span>(AirPassengers,</span>

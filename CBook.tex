@@ -141,13 +141,36 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{ux7b80ux4ecb}{%
-\chapter*{简介}\label{ux7b80ux4ecb}}
-\addcontentsline{toc}{chapter}{简介}
+\hypertarget{ux5e8f}{%
+\chapter*{序}\label{ux5e8f}}
+\addcontentsline{toc}{chapter}{序}
+
+不知道说啥，还是留首诗吧。
 
 \begin{quote}
-十步杀一人，千里不留行
-事了拂衣去，不留功与名
+赵客缦胡缨，吴钩霜雪明。
+
+银鞍照白马，飒沓如流星。
+
+十步杀一人，千里不留行。
+
+事了拂衣去，深藏身与名。
+
+闲过信陵饮，脱剑膝前横。
+
+将炙啖朱亥，持觞劝侯嬴。
+
+三杯吐然诺，五岳倒为轻。
+
+眼花耳热后，意气素霓生。
+
+救赵挥金锤，邯郸先震惊。
+
+千秋二壮士，烜赫大梁城。
+
+纵死侠骨香，不惭世上英。
+
+谁能书阁下，白首太玄经。
 \end{quote}
 
 \hypertarget{PanelData}{%
@@ -349,9 +372,16 @@ E(i_{t-4}\varepsilon_t) = 0
 \subsection{\texorpdfstring{R中有\texttt{x12}包可以做季节处理}{R中有x12包可以做季节处理}}\label{rux4e2dux6709x12ux5305ux53efux4ee5ux505aux5b63ux8282ux5904ux7406}}
 
 注意：
-- 要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
-- 仅可处理R中内置的时间序列对象\texttt{ts}。
-- 示例代码：
+
+\begin{itemize}
+\tightlist
+\item
+  要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
+\item
+  仅可处理R中内置的时间序列对象\texttt{ts}。
+\item
+  示例代码：
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -376,6 +406,793 @@ E(i_{t-4}\varepsilon_t) = 0
 \KeywordTok{plot}\NormalTok{(m) }\CommentTok{# 绘制调整和未调整序列}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{DataProcess}{%
+\chapter{数据处理}\label{DataProcess}}
+
+\begin{itemize}
+\tightlist
+\item
+  因子操作
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA}
+\CommentTok{# 第二，仅按字母排序。}
+\CommentTok{# 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，}
+\CommentTok{# 只是相当于设定了范围和排序。}
+    \KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{'Dec'}\NormalTok{,}\StringTok{'Apr'}\NormalTok{,}\StringTok{'Jam'}\NormalTok{,}\StringTok{'Mar'}\NormalTok{), }\DataTypeTok{levels =}\NormalTok{ (}\StringTok{'Jan'}\NormalTok{,}\StringTok{'Feb'}\NormalTok{,}\StringTok{'Mar'}\NormalTok{,}\StringTok{'Apr'}\NormalTok{,}\StringTok{'May'}\NormalTok{))}
+\CommentTok{# 因子重编码, 把1改成unmarried等}
+\NormalTok{farcats}\OperatorTok{::}\KeywordTok{fct_recode}\NormalTok{(rawdata}\OperatorTok{$}\NormalTok{marrige,}
+           \StringTok{'unmarried'}\NormalTok{=}\StringTok{'1'}\NormalTok{,}\StringTok{'married'}\NormalTok{=}\StringTok{'2'}\NormalTok{,}\StringTok{'cohabitation'}\NormalTok{=}\StringTok{'3'}\NormalTok{,}\StringTok{'divore'}\NormalTok{=}\StringTok{'4'}\NormalTok{,}\StringTok{'wid'}\NormalTok{=}\StringTok{'5'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \texttt{dbplyr}可以连接到几乎任何数据库。
+\item
+  \texttt{wbstats}下载世界银行数据，很牛逼。Stata里面的\texttt{wbopendata}包更牛逼。
+\item
+  \texttt{stationaRy}:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。
+\item
+  \textbf{当你发现你用\texttt{save}命令保存一个数据长达数分钟时}，建议你迅速调用\texttt{qs}包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。
+\item
+  \texttt{tor}: 提供允许用户同时导入多个文件的功能.
+\item
+  读入excel中的sheet名：\texttt{openxlsx::getSheetNames(file)}
+\item
+  \texttt{XLConect}处理excel最强大的包。但需要JRE（java run enviornment）。
+\item
+  使用\texttt{as.Date}来生成日期，必须带有年月日三个要素，使用\texttt{format}来输出日期格式，此时可以只输出年和月。如\texttt{as.Date(\textquotesingle{}2010/05/01\textquotesingle{})\ \%\textgreater{}\%\ format(.,format\ =\ \textquotesingle{}\%Y\%m\textquotesingle{})}
+\item
+  \texttt{seq.Date()}生成日期序列，包括日、星期、月、年。
+\item
+  \texttt{readstata13}包可以读入更高版本的stata数据格式。
+\item
+  \texttt{zoo::rollapply(x,\ 30,\ mean)}就是30天的移动平均求值。
+\item
+  \texttt{select}是一个很牛逼的函数
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(regdata,id, year) }\CommentTok{# 选择regdata数据框的id和year两列}
+\KeywordTok{select}\NormalTok{(regdata,}\KeywordTok{starts_with}\NormalTok{(}\StringTok{'abc'}\NormalTok{)) }\CommentTok{# 匹配以'abc'开头的列}
+\KeywordTok{select}\NormalTok{(regdata,}\KeywordTok{ends_with}\NormalTok{(}\StringTok{'abc'}\NormalTok{)) }\CommentTok{# 匹配以'abc'结尾的列}
+\KeywordTok{select}\NormalTok{(regdata,}\KeywordTok{contains}\NormalTok{(}\StringTok{'abc'}\NormalTok{)) }\CommentTok{# 匹配包含'abc'的列}
+\KeywordTok{select}\NormalTok{(regdata,}\KeywordTok{matches}\NormalTok{(}\StringTok{'abc'}\NormalTok{)) }\CommentTok{# 正则表达匹配}
+\KeywordTok{select}\NormalTok{(regdata,}\KeywordTok{num_range}\NormalTok{(}\StringTok{'x'}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)) }\CommentTok{# 匹配x1, x2,x3的列}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  R语言给数组各维数命名
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create two vectors of different lengths.}
+\NormalTok{vector1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+\NormalTok{column.names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"COL1"}\NormalTok{,}\StringTok{"COL2"}\NormalTok{,}\StringTok{"COL3"}\NormalTok{)}
+\NormalTok{row.names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ROW1"}\NormalTok{,}\StringTok{"ROW2"}\NormalTok{,}\StringTok{"ROW3"}\NormalTok{)}
+\NormalTok{matrix.names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Matrix1"}\NormalTok{,}\StringTok{"Matrix2"}\NormalTok{)}
+
+\CommentTok{# Take these vectors as input to the array.}
+\NormalTok{result <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\KeywordTok{c}\NormalTok{(vector1,vector2),}\DataTypeTok{dim =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}\DataTypeTok{dimnames =} \KeywordTok{list}\NormalTok{(row.names,column.names,}
+\NormalTok{                                                                  matrix.names))}
+\KeywordTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , Matrix1
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+## 
+## , , Matrix2
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pdftools}包的函数可以读PDF文件：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pdf_info}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_text}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_data}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_fonts}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_attachments}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_toc}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+
+\KeywordTok{pdf_pagesize}\NormalTok{(pdf, }\DataTypeTok{opw =} \StringTok{""}\NormalTok{, }\DataTypeTok{upw =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+同时，利用\texttt{qpdf}包的\texttt{pdf\_subset,pdf\_combine,pdf\_split}可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
+
+\hypertarget{ux7edfux8ba1}{%
+\chapter{统计}\label{ux7edfux8ba1}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-2}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cmna::mcint}可以进行蒙特卡洛积分。
+\item
+  数值积分：\texttt{pracma::integral}
+\item
+  多元正态分布随机抽样：\texttt{SimDesign::rmvnorm}，还有\texttt{mvnfast}
+\item
+  \texttt{KSgeneral}包执行KS检验，比较一个分布是否来自某个理论分布。\texttt{stats}包的\texttt{ks.test}和\texttt{dgof}包的\texttt{ks.test}也可以,并且可以比较双样本是否来自同一个分布。
+\item
+  \texttt{choose(n,k)}：组合公式，n个里面选k个，有多少种组合方式。\texttt{utils::combn(n,k)}也可以。 \texttt{e1071::permutations}实现排列。
+\item
+  \texttt{qrandom}: 利用量子波动产生真随机数.
+\item
+  主成分分析可以调用\texttt{psych}包两个步骤实现：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 画个图选特征值数目：}
+\CommentTok{# 1. 特征值在1以上的才行； 2. 特征值大于模拟的平均特征才可行； 3. 碎石图}
+\KeywordTok{library}\NormalTok{(psych)}
+\KeywordTok{fa.parallel}\NormalTok{(regdata, }\DataTypeTok{fa =} \StringTok{'pc'}\NormalTok{)}
+\CommentTok{# 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数}
+ \KeywordTok{principal}\NormalTok{(regdata,}\DataTypeTok{nfactors =} \DecValTok{2}\NormalTok{,}\DataTypeTok{rotate =} \StringTok{'none'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mcmcux7b97ux6cd5}{%
+\section{MCMC算法}\label{mcmcux7b97ux6cd5}}
+
+\hypertarget{ux5409ux5e03ux65afux62bdux6837ux539fux7406}{%
+\subsection{吉布斯抽样原理}\label{ux5409ux5e03ux65afux62bdux6837ux539fux7406}}
+
+如果联合分布不好求，但条件分布好求，可以用这个算法。
+
+\hypertarget{ux4e00ux4e9bux5171ux8f6dux5148ux9a8cux5206ux5e03ux7684ux7ed3ux8bba}{%
+\subsection{一些共轭先验分布的结论}\label{ux4e00ux4e9bux5171ux8f6dux5148ux9a8cux5206ux5e03ux7684ux7ed3ux8bba}}
+
+理解这些结论，对于后续使用吉布斯抽样、MH算法非常有用。
+
+\textbf{结论1} 若\(x_1,\cdots,x_n\)是从均值为\(\mu\)(\textbf{未知})，方差为\(\sigma^2\)(\textbf{已知}且为正)中正态分布中所抽取的一个随机样本，同时假定\(\mu\sim \mathcal{N}(\mu_0,\sigma_0^2)\)，则给定数据和先验分布，\(\mu\)的后验分布也是一个正态分布，其后验均值和方差为，
+\[\mu_* = \frac{\sigma^2\mu_0+n\sigma_0^2\overline x}{\sigma^2+n\sigma_0^2},\hspace{2em}\sigma_*=\frac{\sigma^2\sigma^2_0}{\sigma^2+n\sigma^2_0},\;\;\;\text{其中},\overline x= \sum_i^n x_i/n\]
+
+推广到多变量，则可以写为，
+\[{\mu}_*=\Sigma_*(\Sigma_0^{-1}{\mu}_0+\Sigma^{-1}\overline{\bf{x}}), \hspace{2em}\Sigma_*^{-1} = \Sigma_0^{-1}+n\Sigma^{-1}\]
+
+\textbf{结论2} 若\(e_1,\cdots,e_n\)是从均值为0，方差为\(\sigma^2\)的正态分布中抽取的随机样本，同时假定\(\sigma^2\)的先验分布是自由度为\(\nu\)的逆\(\chi^2\)分布，即\(\frac{\nu\lambda}{\sigma^2}\sim \chi^2_\nu,\lambda>0\)，则\(\sigma^2\)的后验分布也是逆\(\chi^2\)分布，自由度为\(\nu+n\)，
+\[\frac{\nu\lambda+\sum_i^ne_i^2}{\sigma^2}\sim \chi^2_{\nu+n}\]
+
+\hypertarget{ux4e00ux4e2aux5409ux5e03ux65afux62bdux6837ux7684ux5178ux578bux6848ux4f8b}{%
+\subsection{一个吉布斯抽样的典型案例}\label{ux4e00ux4e2aux5409ux5e03ux65afux62bdux6837ux7684ux5178ux578bux6848ux4f8b}}
+
+一个带自相关的回归模型可以写为，
+\begin{align}
+y_t&=\beta_0+\beta_1x_{1t}+\cdots+\beta_kx_{kt}+z_t\\
+z_t&=\phi z_{t-1}+e_t
+\end{align}
+
+该模型需要估计的参数有三个，即\(\theta = (\beta',\phi,\sigma^2)\)。该参数的联合分布并不好求，但是条件分布则好求得多。
+
+\hypertarget{metropolis-ux548c-m-hux7b97ux6cd5}{%
+\subsection{Metropolis 和 M-H算法}\label{metropolis-ux548c-m-hux7b97ux6cd5}}
+
+如果后验分布除了那个归一化的常数不知道，但分子是知道的，那可以用这个算法。这个场景是不是在贝叶斯估计中很熟悉？
+
+\texttt{MCMCpack::MCMCmetrop1R}中有个例子提供了Metropolis算法，感觉还是很清晰。里面提到的'The proposal distribution'其实就是跳跃分布，即给定上一次抽样的参数，从这个跳跃分布中抽下一个参数。
+
+\hypertarget{ux4e00ux4e9bux5e26ux8d1dux53f6ux65afux4f30ux8ba1ux7684rux5305ux4f7fux7528ux62a5ux544a}{%
+\subsection{一些带贝叶斯估计的R包使用报告}\label{ux4e00ux4e9bux5e26ux8d1dux53f6ux65afux4f30ux8ba1ux7684rux5305ux4f7fux7528ux62a5ux544a}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{MTS::BVAR}：这个包可以在一个一般的先验设定上估计VAR，先验可以是乏信息先验，也可以是明尼苏达先验，但问题是该包仅返回估计系数的均值和标准误，不返回抽样。
+\item
+  \texttt{bvartools}：在很大程度上可以定制BVAR的mcmc抽样，见它的一个优秀的引言。我用这个,自己写了乏信息先验的BVAR估计包。下次我再把明尼苏达先验添进去。
+\item
+  \texttt{MCMCpack::MCMCregress}:单方程的贝叶斯估计，它提供了\(\beta\)是多元正态先验，方程误差项的方差协方差是逆伽玛的先验估计。
+\item
+  \texttt{bayesm::runireg}：单方程的贝叶斯估计，它提供了\(\beta\)是多元正态先验，方程误差项的方差协方差是卡方分布的先验估计。
+\end{itemize}
+
+\hypertarget{rawR}{%
+\chapter{原生的R}\label{rawR}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-3}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  只显示3位小数：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\FloatTok{0.123456}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.123
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  属性赋值：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+\KeywordTok{attr}\NormalTok{(y,}\StringTok{'my_attribute'}\NormalTok{) <-}\StringTok{ 'This is a vector'}
+\KeywordTok{attr}\NormalTok{(y,}\StringTok{'my_attribute'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "This is a vector"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{remove.packages(\textquotesingle{}dplyr\textquotesingle{})}，卸载已安装的包。
+\item
+  \texttt{system}或\texttt{shell}运行Shell命令。
+\item
+  更新所有的包\texttt{update.packages(checkBuilt=TRUE,\ ask=FALSE)}
+\item
+  \texttt{pkgsearch}包的\texttt{ps}函数提供CRAN的关键词搜寻。
+\item
+  \texttt{detach(package:dplyr)}可以去掉加载的包。
+\item
+  \texttt{foreach}包提供循环的平行计算
+\item
+  在jupyter里面安装R，只需在anaconda里面的命令行中（anaconda prompt）输入，
+\end{itemize}
+
+\begin{verbatim}
+conda install -c r r-essentials
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  工作目录下所有文件名\texttt{dir()}
+\item
+  \texttt{file.copy,\ file.create,\ file.remove,\ file.rename,\ dir.creat,\ file.exists,\ file.info}
+\item
+  \texttt{file.rename}批量修改文件名
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fr =}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{'./加工贸易HS/2016/'}\NormalTok{,}\KeywordTok{dir}\NormalTok{(}\StringTok{'./加工贸易HS/2016'}\NormalTok{),}\DataTypeTok{sep =} \StringTok{''}\NormalTok{)}
+\NormalTok{to =}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{'./加工贸易HS/2016/hp'}\NormalTok{,}\KeywordTok{dir}\NormalTok{(}\StringTok{'./加工贸易HS/2016'}\NormalTok{),}\DataTypeTok{sep =} \StringTok{''}\NormalTok{)}
+\KeywordTok{file.rename}\NormalTok{(}\DataTypeTok{from =}\NormalTok{ fr,}\DataTypeTok{to =}\NormalTok{ to)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{down.file}只要给出第一个参数：网址（包括ftp的）和第二个参数，下载的文件要保存的文件名，就可以直接在网上下载文件。如果中国乱码，记得使用fileEncoding = 'UTF-8'来修正。
+\item
+  \texttt{getAnywhere(predict.Arima)}查看源代码
+\item
+  \texttt{.rs.restartR()}重启一个新的R会话
+\item
+  平行计算。光使用\texttt{foreach}包是不够的，还需要注册一个平行背景注册，否则\texttt{foreach}包在运算完以后会返回警告：
+\end{itemize}
+
+\begin{quote}
+Warning message:
+
+executing \%dopar\% sequentially: no parallel backend registered
+\end{quote}
+
+A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(doParallel)}
+\NormalTok{cl <-}\StringTok{ }\KeywordTok{makeCluster}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\KeywordTok{registerDoParallel}\NormalTok{(cl)}
+\KeywordTok{foreach}\NormalTok{(}\DataTypeTok{i=}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{.pacakages =} \StringTok{'tidyverse'}\NormalTok{) }\OperatorTok{%dopar%}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(i)}
+\KeywordTok{stopCluster}\NormalTok{(cl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  如何安装已经过期的包？
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    点\href{https://cran.r-project.org/src/contrib/Archive/}{这里}找到过期的包，然后下载下来。
+  \item
+    用这个命令安装本地的包：\texttt{install.packages(\textquotesingle{}D:/MSBVAR\_0.9-3.tar.gz\textquotesingle{},repos\ =\ NULL,\ type\ =\ \textquotesingle{}source\textquotesingle{})}
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{ux7c7bux548cux65b9ux6cd5}{%
+\section{类和方法}\label{ux7c7bux548cux65b9ux6cd5}}
+
+\hypertarget{s3ux7c7b}{%
+\subsection{S3类}\label{s3ux7c7b}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 查看属于一个泛型函数的所有方法：}
+\KeywordTok{methods}\NormalTok{(}\StringTok{'mean'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
+## [6] mean.quosure*
+## see '?methods' for accessing help and source code
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 反过来，查看一个类，都有何关联的泛型函数}
+\KeywordTok{methods}\NormalTok{(}\DataTypeTok{class =} \StringTok{'ts'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] [             [<-           aggregate     as.data.frame cbind        
+##  [6] coerce        cycle         diff          diffinv       initialize   
+## [11] kernapply     lines         Math          Math2         monthplot    
+## [16] na.omit       Ops           plot          print         show         
+## [21] slotsFromS3   t             time          window        window<-     
+## see '?methods' for accessing help and source code
+\end{verbatim}
+
+创建一个类，很多时候只需在最后返回一个这样的，就可以了，
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(foo) <-}\StringTok{ 'myclass'}   
+\end{Highlighting}
+\end{Shaded}
+
+然后为这个类创建一个泛型函数，只需要两步：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 创建一个类}
+\NormalTok{a <-}\StringTok{ }\KeywordTok{list}\NormalTok{()}
+\KeywordTok{class}\NormalTok{(a) <-}\StringTok{ 'a'}
+\CommentTok{# 第一步：增加一个新的泛型函数。记住，没有搭配该泛型函数的方法，泛型函数是没有用的。}
+\NormalTok{f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{UseMethod}\NormalTok{(}\StringTok{'f'}\NormalTok{) }
+\CommentTok{# 第二步，为此泛型函数添加方法。关键在于命名规则，属于该泛型函数的方法一定具有类似f.a格式的命名。}
+\CommentTok{# f是泛型函数, a是类,它们用点连起来。}
+\NormalTok{f.a <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\StringTok{'class a'}
+\NormalTok{mean.a <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\StringTok{'a'} \CommentTok{# 为已有的泛型函数增加方法}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6253ux5370ux5230ux6587ux4ef6}{%
+\section{打印到文件}\label{ux6253ux5370ux5230ux6587ux4ef6}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sink}函数：在代码开始前加一行：\texttt{sink(“output.txt”)}，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用\texttt{sink()}切换回来。 示例：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sink}\NormalTok{(}\StringTok{"a.txt"}\NormalTok{) }
+\NormalTok{x<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{) }
+\KeywordTok{mean}\NormalTok{(x) }
+\KeywordTok{sink}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cat}函数：\texttt{cat(\textquotesingle{}abc\textquotesingle{},\textquotesingle{}OK!\textquotesingle{},file\ =\ \textquotesingle{}a.txt\textquotesingle{},sep\ =\ \textquotesingle{}\textbackslash{}n\textquotesingle{},append\ =\ T)}
+\item
+  \texttt{stargazer}函数：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{stargazer}\NormalTok{(fit1, fit2, }\DataTypeTok{title =} \StringTok{"results"}\NormalTok{, }\DataTypeTok{align =}\NormalTok{ F, }\DataTypeTok{type =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{no.space =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{out =} \StringTok{"fit.html"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{Eco}{%
+\chapter{经济学中的各种专业计算}\label{Eco}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-4}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lpirfs}包局部线性投影脉冲响应函数。
+\item
+  \texttt{library(productivity)}计算满奎斯特效率指数，注意日期参数\texttt{time.var}以及个体\texttt{id.var}参数都要是整数。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tfp <-}\StringTok{ }\KeywordTok{malm}\NormalTok{(regdata, }\DataTypeTok{id.var =} \StringTok{'alphabets'}\NormalTok{,}\DataTypeTok{time.var =} \StringTok{'yr'}\NormalTok{, }\DataTypeTok{x.vars =} \KeywordTok{c}\NormalTok{(}\StringTok{'wage'}\NormalTok{,}\StringTok{'K'}\NormalTok{), }\DataTypeTok{y.vars =} \StringTok{'gdp'}\NormalTok{)}
+\KeywordTok{Changes}\NormalTok{(tfp) }\CommentTok{# 获得malmquist指数及其成份}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  产品编码之间的转换包：\texttt{concordance::concord}：
+  It supports concordance between HS (Combined), ISIC Rev.~2,3, and SITC1,2,3,4 product classification codes, as well as BEC, NAICS, and SIC classifications. It also provides code nomenclature / descriptions look-up, Rauch classification look-up (via concordance to SITC2) and trade elasticity look-up (via concordance to SITC2/3 or HS3.ss).
+\item
+  \texttt{ioanalysis}提供投入产出表的分析功能
+\item
+  出口增加值分解的包由\texttt{decompr}，这个包有Wang et at. (2013)的分解以及经典的里昂惕夫分解。以及\texttt{gvc}包。
+\item
+  \texttt{hhi}包可以算赫芬达尔指数。
+\end{itemize}
+
+\hypertarget{wwzux7684ux8d38ux6613ux589eux52a0ux503cux5206ux89e3}{%
+\section{wwz的贸易增加值分解}\label{wwzux7684ux8d38ux6613ux589eux52a0ux503cux5206ux89e3}}
+
+分解的主要函数是\texttt{decomp}。但是有一个\texttt{load\_table\_vectors}函数可以生成一个decompr class，这个类有很多我们想要的东西，如投入产出系数A，里昂惕夫矩阵B以及其他的一些数据。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# load example data}
+\KeywordTok{data}\NormalTok{(leather)}
+
+\CommentTok{# create intermediate object (class decompr)}
+\NormalTok{decompr_object <-}\StringTok{ }\KeywordTok{load_tables_vectors}\NormalTok{(inter,}
+\NormalTok{                                      final,}
+\NormalTok{                                      countries,}
+\NormalTok{                                      industries,}
+\NormalTok{                                      out        )}
+\end{Highlighting}
+\end{Shaded}
+
+这个类包含了如下内容，我挑一些我确切知道是啥的:
+
+\begin{itemize}
+\tightlist
+\item
+  B: 里昂惕夫矩阵，即\((I-A)^{-1}\)
+\item
+  Vc: 增加值系数矩阵
+\item
+  ESR: 总出口，包括中间品出口\texttt{Eint}和最终品\texttt{Efd}出口.
+\item
+  L: 单个国家的里昂惕夫逆矩阵
+\item
+  Y: 最终需求。几个国家就几列。
+\item
+  Yd: 自己对自己的需求。也就是在这个矩阵里面，自己对别人的需求都是0。
+\item
+  Ym: 自己对别人的需求。自己对自己的需求都是0。
+\item
+  Bm, Bd: 含义比照Ym, Yd.
+\end{itemize}
+
+\hypertarget{math}{%
+\chapter{数学计算}\label{math}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-5}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{crossprod(x,y)}的意思是\(x'y\)，\texttt{tcrossprod(x,y)}的意思是\(xy'\)。在OLS估计时还蛮省事。
+\item
+  \texttt{matlab}包模拟了matlab软件中的许多矩阵函数。
+\item
+  克罗内克积使用\texttt{\%x\%}或者\texttt{kronecker}。
+\item
+  \texttt{numDeriv}里面的\texttt{hession}计算海塞矩阵，它的逆的负数，就是极大似然估计的标准差。
+\item
+  \texttt{Matrix::bdiag(A,A)}生成以两个A为对角元素的分块对角矩阵。
+\item
+  \texttt{Mod}计算复数的模，不同于\texttt{mod}用来整除。
+\item
+  \texttt{caracas}: 通过提供对Python SymPy库的访问来实现计算机代数，从而使以符号方式解方程、寻找符号积分、符号和和其他重要量成为可能。
+\item
+  \texttt{calculus}: 针对数值和符号演算提供了C++优化函数，包括符号算术、张量演算、泰勒级数展开、多元埃尔米特多项式等.
+\item
+  \texttt{rootSolve}提供了非线性方程(组)的解，以及微分方程的稳态解的形式。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fun <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{ (x) }\KeywordTok{cos}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{x)}\OperatorTok{^}\DecValTok{3}
+\KeywordTok{curve}\NormalTok{(fun, }\DecValTok{0}\NormalTok{, }\DecValTok{8}\NormalTok{) }\CommentTok{# 先画个图看看解大约在哪里}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{3}\NormalTok{) }\CommentTok{# 把0轴搞出来}
+\NormalTok{uni <-}\StringTok{ }\KeywordTok{uniroot}\NormalTok{(fun, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{8}\NormalTok{))}\OperatorTok{$}\NormalTok{root }\CommentTok{# 此时求解}
+\end{Highlighting}
+\end{Shaded}
+
+方程组的根求解用\texttt{multiroot}。
+
+\hypertarget{ux6570ux503cux4f18ux5316}{%
+\section{数值优化}\label{ux6570ux503cux4f18ux5316}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{无约束优化}。\texttt{optimx}一个优化包，经常用它的\texttt{optimx}函数。但是它是无约束优化，尽管可以包含上下界的约束(盒子约束)。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{para <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{R1 =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{phi1 =} \FloatTok{0.8}\NormalTok{, }\DataTypeTok{H1 =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{A1 =} \FloatTok{0.8}\NormalTok{, }\DataTypeTok{intcp =} \DecValTok{1}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{()}
+\CommentTok{# par就是要优化的参数的初值}
+\CommentTok{# fn就是要优化的函数，譬如似然函数，这个函数可以包含多个参数，}
+\CommentTok{#    如这里的Y,X,r等。然后那个没写进来的参数就是要优化的参数。}
+\CommentTok{#    lnlik <- function(Y = Y, X = X,para = para, r = 1)\{...\}}
+\CommentTok{# gr和hess如果必要，可以包含进来。}
+\CommentTok{# lower,upper就是搜寻的上下界。}
+\NormalTok{a <-}\StringTok{ }\KeywordTok{optimx}\NormalTok{(}\DataTypeTok{par =}\NormalTok{ para, }\DataTypeTok{fn =}\NormalTok{ lnlik, }\DataTypeTok{Y =}\NormalTok{ Y, }\DataTypeTok{X =}\NormalTok{ X, }\DataTypeTok{r =} \DecValTok{1}\NormalTok{, }
+            \DataTypeTok{lower =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.01}\NormalTok{,}\OperatorTok{-}\OtherTok{Inf}\NormalTok{), }
+            \DataTypeTok{upper =} \KeywordTok{c}\NormalTok{(}\OtherTok{Inf}\NormalTok{, }\FloatTok{0.99}\NormalTok{,}\OtherTok{Inf}\NormalTok{,}\OtherTok{Inf}\NormalTok{,}\OtherTok{Inf}\NormalTok{),}\DataTypeTok{control =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{all.methods =}\NormalTok{ T))}
+\KeywordTok{gHgen}\NormalTok{(par, fn) }\CommentTok{# 创造得分矩阵，海塞矩阵。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{有约束优化}。\texttt{stats::constrOptim}和\texttt{alabama::constrOptim.nl}都可进行有约束的优化，后者是对前者的一个强化，不仅在算法上更牛逼，也可以放入非线性约束。后者是用函数如\texttt{hin(x)\textless{}=0}的形式来表达约束，需要理解的是，约束函数中的参数一定要与目标函数的参数一致，即便约束函数没有用到目标函数的参数。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 比如我的目标函数如下}
+\NormalTok{fn <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{ (x,a,b)\{}
+\NormalTok{    ...}
+\NormalTok{\}}
+\CommentTok{# 约束函数如下。一定要把a和b写进去，即便函数中未用到它}
+\NormalTok{hin <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, a, b)\{}
+\NormalTok{    ...}
+\NormalTok{\}}
+\CommentTok{# 优化函数如下}
+\KeywordTok{constrOptim.nl}\NormalTok{(par, fn, }\DataTypeTok{gr =} \OtherTok{NULL}\NormalTok{, }
+\DataTypeTok{hin =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{hin.jac =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{heq =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{heq.jac =} \OtherTok{NULL}\NormalTok{, }
+\DataTypeTok{control.outer=}\KeywordTok{list}\NormalTok{(), }\DataTypeTok{control.optim =} \KeywordTok{list}\NormalTok{(), ...)}
+\end{Highlighting}
+\end{Shaded}
+
+一旦得到优化函数，就可以调用\texttt{numDeriv::hessian(fn,\ par)}来计算海塞矩阵，从而得到标准误之类的。
+
+\hypertarget{ML}{%
+\chapter{机器学习和微观计量}\label{ML}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-6}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-6}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{gfoRmula}：一个处理时变处理干扰的R包。
+\item
+  \texttt{oem}包可以执行各类lasso，group lasso等算法。
+\item
+  \texttt{gsynth}广义合成控制包。考虑了交互固定效应。
+\item
+  \texttt{ArCo}: 一个人工反事实的包
+\item
+  \texttt{ForecastComb}一个集成预测的包，包括stacking 方法。
+\item
+  \texttt{htree}基于历史回归树，所以可以用于面板数据的随机森林模型。
+\item
+  \texttt{tsensembler}一个对机器学习多种预测方法进行集成的包，包括随机森林，装袋，支持向量回归等。
+\item
+  \texttt{knerlab}支持向量机和支持向量回归，他的vig写得好。
+\item
+  \texttt{grf}，一个因果树的包。
+\item
+  \texttt{spikeslab}，一个选择变量的贝叶斯方法的包。
+\item
+  \texttt{orf}: 实现Lechner和Okasa（2019）中开发的有序森林估计量，以估计具有有序分类结果的模型（有序选择模型）的条件概率.
+\item
+  \texttt{MatchIt}做匹配感觉很好。主要函数是\texttt{matchit}，针对这个函数得到的类，使用\texttt{summay}可以得到匹配前后均值变化，经验分位变化等。这个函数返回的类包含有一个元素\texttt{match.matrix}，里面有被匹配的控制组信息。
+\end{itemize}
+
+\hypertarget{rocux66f2ux7ebfux7ed8ux5236}{%
+\section{ROC曲线绘制}\label{rocux66f2ux7ebfux7ed8ux5236}}
+
+ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴为1-特异度(1-specificity)，纵轴为灵敏度（sensitivity）.
+
+调用\texttt{pROC}包即可计算。该包的参数如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{roc}\NormalTok{(response, predictor, controls, cases,}
+\NormalTok{density.controls, density.cases,}
+\DataTypeTok{levels=}\NormalTok{base}\OperatorTok{::}\KeywordTok{levels}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(response)), }\DataTypeTok{percent=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{,}
+\DataTypeTok{direction=}\KeywordTok{c}\NormalTok{(}\StringTok{"auto"}\NormalTok{, }\StringTok{"<"}\NormalTok{, }\StringTok{">"}\NormalTok{), }\DataTypeTok{algorithm =} \DecValTok{5}\NormalTok{, }\DataTypeTok{quiet =} \OtherTok{TRUE}\NormalTok{, }
+\DataTypeTok{smooth=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{auc=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ci=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{plot=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{smooth.method=}\StringTok{"binormal"}\NormalTok{,}
+\DataTypeTok{ci.method=}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{density=}\OtherTok{NULL}\NormalTok{, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{response}: 原始的\(y\);
+\item
+  \texttt{pridictor}: 估计的\(\hat y\);
+\item
+  \texttt{smooth}:是否平滑ROC曲线；
+\item
+  \texttt{percent}:是否百分比的形式显示相关信息，如AUC；
+\end{itemize}
+
+\hypertarget{randomforestsrcux5305ux4f7fux7528ux62a5ux544a}{%
+\section{\texorpdfstring{\texttt{randomForestSRC}包使用报告}{randomForestSRC包使用报告}}\label{randomforestsrcux5305ux4f7fux7528ux62a5ux544a}}
+
+这个包有几大特征，我就说我用过的几个：
+
+\begin{itemize}
+\tightlist
+\item
+  可以因变量多变量建模
+\item
+  重要性抽样有置信区间
+\item
+  偏效应计算接口更友好
+\end{itemize}
+
+\hypertarget{otherSF}{%
+\chapter{与其他软件的交互}\label{otherSF}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{stargazer}的一个模版调用：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{stargazer}\NormalTok{(regression,}\DataTypeTok{type =} \StringTok{'text'}\NormalTok{,}\DataTypeTok{out =} \StringTok{"../PicTab/cmp.html"}\NormalTok{,}\DataTypeTok{no.space =}\NormalTok{ T,}\DataTypeTok{report =} \KeywordTok{c}\NormalTok{(}\StringTok{'vcp'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{report}意味着报告变量、系数与p值。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{officer}: 与微软软件互动的一个包
+\item
+  \texttt{readstata13}包读Stata13以后的数据格式。
+\item
+  R语言调用stata
+\end{itemize}
+
+用RStata包可以从R里面调用stata，不过要先用\texttt{chooseBinStata()}先设置stata的安装路径。 也可以在R的启动环境中进行配置。
+注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
+\texttt{options(RStata.StataPath\ =\ "\textbackslash{}"D:\textbackslash{}\textbackslash{}Program\ Files\ (x86)\textbackslash{}\textbackslash{}Stata14\textbackslash{}\textbackslash{}StataMP-64\textbackslash{}"")}
+
+\begin{itemize}
+\tightlist
+\item
+  R语言调用Matlab
+\end{itemize}
+
+Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
+
+\begin{verbatim}
+- 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
+- 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \KeywordTok{library}\NormalTok{(matlabr)}
+\NormalTok{    MatlabCode <-}\StringTok{ '}
+\StringTok{    a = 3;}
+\StringTok{    b = a+1;}
+\StringTok{    '}
+    \KeywordTok{run_matlab_code}\NormalTok{(MatlabCode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  R语言读取SPSS（中文字符）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 读英文字符}
+\KeywordTok{library}\NormalTok{(foreign)  }
+\NormalTok{mydata=}\KeywordTok{read.spss}\NormalTok{(}\StringTok{"data.sav"}\NormalTok{)  }
+\CommentTok{# 或者如下}
+\KeywordTok{library}\NormalTok{(Hmisc)  }
+\NormalTok{data=}\KeywordTok{spss.get}\NormalTok{(}\StringTok{"data.sav"}\NormalTok{) }
+
+\CommentTok{# 读中文字符}
+\KeywordTok{library}\NormalTok{(memisc)}
+\NormalTok{data1 =}\StringTok{ }\KeywordTok{as.data.set}\NormalTok{(}\KeywordTok{spss.system.file}\NormalTok{(}\StringTok{"data.sav"}\NormalTok{))}
+\NormalTok{data =}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(data1)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5176ux4ed6}{%
+\chapter{其他}\label{ux5176ux4ed6}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{geosphere::distm}根据经纬度算距离。
+\item
+  \texttt{stats19}一个下载英国交通事故记录的数据库。
+\item
+  \texttt{pacman}包管理包，如\texttt{p\_load()}。
+\item
+  \texttt{vitae}: 提供多个模板和功能以简化简历的制作和维护.
+\item
+  \texttt{DiagrammeR}：R语言画流程图，网络图，太棒了。教程网址：\url{http://rich-iannone.github.io/DiagrammeR/}
+\item
+  \texttt{progress}包可以显示进度条。更具体的例子见收藏或者帮助。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(progress)}
+\NormalTok{pb <-}\StringTok{ }\NormalTok{progress_bar}\OperatorTok{$}\KeywordTok{new}\NormalTok{(}\DataTypeTok{total =} \DecValTok{500}\NormalTok{) }\CommentTok{# 循环中的次数}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{500}\NormalTok{)\{}
+\NormalTok{    pb}\OperatorTok{$}\KeywordTok{tick}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{swirl}可以编写交互式教程。
+\item
+  \texttt{RSelenium}包终于在201901月出来了。
+\end{itemize}
 
   \bibliography{mybib.bib}
 

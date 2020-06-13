@@ -167,7 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-3"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.2</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.2</b> 类和方法</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.2.1</b> S3类</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.3</b> 打印到文件</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
 <li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-4"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
@@ -212,11 +215,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="其他.html#cb31-1"></a><span class="kw">library</span>(progress)</span>
-<span id="cb31-2"><a href="其他.html#cb31-2"></a>pb &lt;-<span class="st"> </span>progress_bar<span class="op">$</span><span class="kw">new</span>(<span class="dt">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb31-3"><a href="其他.html#cb31-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){</span>
-<span id="cb31-4"><a href="其他.html#cb31-4"></a>    pb<span class="op">$</span><span class="kw">tick</span>()</span>
-<span id="cb31-5"><a href="其他.html#cb31-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="其他.html#cb39-1"></a><span class="kw">library</span>(progress)</span>
+<span id="cb39-2"><a href="其他.html#cb39-2"></a>pb &lt;-<span class="st"> </span>progress_bar<span class="op">$</span><span class="kw">new</span>(<span class="dt">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb39-3"><a href="其他.html#cb39-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){</span>
+<span id="cb39-4"><a href="其他.html#cb39-4"></a>    pb<span class="op">$</span><span class="kw">tick</span>()</span>
+<span id="cb39-5"><a href="其他.html#cb39-5"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>

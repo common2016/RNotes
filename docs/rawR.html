@@ -148,11 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a><ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
-<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a></li>
@@ -213,14 +212,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>只显示3位小数：</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="rawR.html#cb1-1"></a><span class="kw">round</span>(<span class="fl">0.123456</span>,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rawR.html#cb14-1"></a><span class="kw">round</span>(<span class="fl">0.123456</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.123</code></pre>
 <ul>
 <li>属性赋值：</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="rawR.html#cb3-1"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)</span>
-<span id="cb3-2"><a href="rawR.html#cb3-2"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>) &lt;-<span class="st"> &#39;This is a vector&#39;</span></span>
-<span id="cb3-3"><a href="rawR.html#cb3-3"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="rawR.html#cb16-1"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)</span>
+<span id="cb16-2"><a href="rawR.html#cb16-2"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>) &lt;-<span class="st"> &#39;This is a vector&#39;</span></span>
+<span id="cb16-3"><a href="rawR.html#cb16-3"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;This is a vector&quot;</code></pre>
 <ul>
 <li><code>remove.packages('dplyr')</code>，卸载已安装的包。</li>
@@ -237,9 +236,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>file.copy, file.create, file.remove, file.rename, dir.creat, file.exists, file.info</code></li>
 <li><code>file.rename</code>批量修改文件名</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="rawR.html#cb6-1"></a>fr =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb6-2"><a href="rawR.html#cb6-2"></a>to =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/hp&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb6-3"><a href="rawR.html#cb6-3"></a><span class="kw">file.rename</span>(<span class="dt">from =</span> fr,<span class="dt">to =</span> to)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="rawR.html#cb19-1"></a>fr =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb19-2"><a href="rawR.html#cb19-2"></a>to =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/hp&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb19-3"><a href="rawR.html#cb19-3"></a><span class="kw">file.rename</span>(<span class="dt">from =</span> fr,<span class="dt">to =</span> to)</span></code></pre></div>
 <ul>
 <li><code>down.file</code>只要给出第一个参数：网址（包括ftp的）和第二个参数，下载的文件要保存的文件名，就可以直接在网上下载文件。如果中国乱码，记得使用fileEncoding = ’UTF-8’来修正。</li>
 <li><code>getAnywhere(predict.Arima)</code>查看源代码</li>
@@ -251,11 +250,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>executing %dopar% sequentially: no parallel backend registered</p>
 </blockquote>
 <p>A: 如何注册呢？调用<code>doParallel</code>包，代码如下：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="rawR.html#cb7-1"></a><span class="kw">library</span>(doParallel)</span>
-<span id="cb7-2"><a href="rawR.html#cb7-2"></a>cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">2</span>)</span>
-<span id="cb7-3"><a href="rawR.html#cb7-3"></a><span class="kw">registerDoParallel</span>(cl)</span>
-<span id="cb7-4"><a href="rawR.html#cb7-4"></a><span class="kw">foreach</span>(<span class="dt">i=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">.pacakages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span><span class="kw">sqrt</span>(i)</span>
-<span id="cb7-5"><a href="rawR.html#cb7-5"></a><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="rawR.html#cb20-1"></a><span class="kw">library</span>(doParallel)</span>
+<span id="cb20-2"><a href="rawR.html#cb20-2"></a>cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">2</span>)</span>
+<span id="cb20-3"><a href="rawR.html#cb20-3"></a><span class="kw">registerDoParallel</span>(cl)</span>
+<span id="cb20-4"><a href="rawR.html#cb20-4"></a><span class="kw">foreach</span>(<span class="dt">i=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">.pacakages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span><span class="kw">sqrt</span>(i)</span>
+<span id="cb20-5"><a href="rawR.html#cb20-5"></a><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
 <ul>
 <li>如何安装已经过期的包？
 <ol style="list-style-type: decimal">
@@ -268,13 +267,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.2</span> 类和方法</h2>
 <div id="s3类" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> S3类</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="rawR.html#cb8-1"></a><span class="co"># 查看属于一个泛型函数的所有方法：</span></span>
-<span id="cb8-2"><a href="rawR.html#cb8-2"></a><span class="kw">methods</span>(<span class="st">&#39;mean&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="rawR.html#cb21-1"></a><span class="co"># 查看属于一个泛型函数的所有方法：</span></span>
+<span id="cb21-2"><a href="rawR.html#cb21-2"></a><span class="kw">methods</span>(<span class="st">&#39;mean&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
 ## [6] mean.quosure*
 ## see &#39;?methods&#39; for accessing help and source code</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="rawR.html#cb10-1"></a><span class="co"># 反过来，查看一个类，都有何关联的泛型函数</span></span>
-<span id="cb10-2"><a href="rawR.html#cb10-2"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&#39;ts&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="rawR.html#cb23-1"></a><span class="co"># 反过来，查看一个类，都有何关联的泛型函数</span></span>
+<span id="cb23-2"><a href="rawR.html#cb23-2"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&#39;ts&#39;</span>)</span></code></pre></div>
 <pre><code>##  [1] [             [&lt;-           aggregate     as.data.frame cbind        
 ##  [6] coerce        cycle         diff          diffinv       initialize   
 ## [11] kernapply     lines         Math          Math2         monthplot    
@@ -282,17 +281,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [21] slotsFromS3   t             time          window        window&lt;-     
 ## see &#39;?methods&#39; for accessing help and source code</code></pre>
 <p>创建一个类，很多时候只需在最后返回一个这样的，就可以了，</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rawR.html#cb12-1"></a><span class="kw">class</span>(foo) &lt;-<span class="st"> &#39;myclass&#39;</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="rawR.html#cb25-1"></a><span class="kw">class</span>(foo) &lt;-<span class="st"> &#39;myclass&#39;</span>   </span></code></pre></div>
 <p>然后为这个类创建一个泛型函数，只需要两步：</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="rawR.html#cb13-1"></a><span class="co"># 创建一个类</span></span>
-<span id="cb13-2"><a href="rawR.html#cb13-2"></a>a &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb13-3"><a href="rawR.html#cb13-3"></a><span class="kw">class</span>(a) &lt;-<span class="st"> &#39;a&#39;</span></span>
-<span id="cb13-4"><a href="rawR.html#cb13-4"></a><span class="co"># 第一步：增加一个新的泛型函数。记住，没有搭配该泛型函数的方法，泛型函数是没有用的。</span></span>
-<span id="cb13-5"><a href="rawR.html#cb13-5"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">UseMethod</span>(<span class="st">&#39;f&#39;</span>) </span>
-<span id="cb13-6"><a href="rawR.html#cb13-6"></a><span class="co"># 第二步，为此泛型函数添加方法。关键在于命名规则，属于该泛型函数的方法一定具有类似f.a格式的命名。</span></span>
-<span id="cb13-7"><a href="rawR.html#cb13-7"></a><span class="co"># f是泛型函数, a是类,它们用点连起来。</span></span>
-<span id="cb13-8"><a href="rawR.html#cb13-8"></a>f.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;class a&#39;</span></span>
-<span id="cb13-9"><a href="rawR.html#cb13-9"></a>mean.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;a&#39;</span> <span class="co"># 为已有的泛型函数增加方法</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="rawR.html#cb26-1"></a><span class="co"># 创建一个类</span></span>
+<span id="cb26-2"><a href="rawR.html#cb26-2"></a>a &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb26-3"><a href="rawR.html#cb26-3"></a><span class="kw">class</span>(a) &lt;-<span class="st"> &#39;a&#39;</span></span>
+<span id="cb26-4"><a href="rawR.html#cb26-4"></a><span class="co"># 第一步：增加一个新的泛型函数。记住，没有搭配该泛型函数的方法，泛型函数是没有用的。</span></span>
+<span id="cb26-5"><a href="rawR.html#cb26-5"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">UseMethod</span>(<span class="st">&#39;f&#39;</span>) </span>
+<span id="cb26-6"><a href="rawR.html#cb26-6"></a><span class="co"># 第二步，为此泛型函数添加方法。关键在于命名规则，属于该泛型函数的方法一定具有类似f.a格式的命名。</span></span>
+<span id="cb26-7"><a href="rawR.html#cb26-7"></a><span class="co"># f是泛型函数, a是类,它们用点连起来。</span></span>
+<span id="cb26-8"><a href="rawR.html#cb26-8"></a>f.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;class a&#39;</span></span>
+<span id="cb26-9"><a href="rawR.html#cb26-9"></a>mean.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;a&#39;</span> <span class="co"># 为已有的泛型函数增加方法</span></span></code></pre></div>
 </div>
 </div>
 <div id="打印到文件" class="section level2">
@@ -300,15 +299,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>sink</code>函数：在代码开始前加一行：<code>sink(“output.txt”)</code>，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用<code>sink()</code>切换回来。 示例：</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rawR.html#cb14-1"></a><span class="kw">sink</span>(<span class="st">&quot;a.txt&quot;</span>) </span>
-<span id="cb14-2"><a href="rawR.html#cb14-2"></a>x&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
-<span id="cb14-3"><a href="rawR.html#cb14-3"></a><span class="kw">mean</span>(x) </span>
-<span id="cb14-4"><a href="rawR.html#cb14-4"></a><span class="kw">sink</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="rawR.html#cb27-1"></a><span class="kw">sink</span>(<span class="st">&quot;a.txt&quot;</span>) </span>
+<span id="cb27-2"><a href="rawR.html#cb27-2"></a>x&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
+<span id="cb27-3"><a href="rawR.html#cb27-3"></a><span class="kw">mean</span>(x) </span>
+<span id="cb27-4"><a href="rawR.html#cb27-4"></a><span class="kw">sink</span>()</span></code></pre></div>
 <ul>
 <li><code>cat</code>函数：<code>cat('abc','OK!',file = 'a.txt',sep = '\n',append = T)</code></li>
 <li><code>stargazer</code>函数：</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rawR.html#cb15-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="rawR.html#cb28-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -368,6 +367,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
