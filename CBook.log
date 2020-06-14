@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.6.1)  11 JUN 2020 18:48
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.6.11)  14 JUN 2020 07:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **CBook.tex
 (./CBook.tex
 LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-05-15> (c:/texlive/2020/texmf-dist/tex/latex/base/bo
+L3 programming layer <2020-06-03> (c:/texlive/2020/texmf-dist/tex/latex/base/bo
 ok.cls
 Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
 (c:/texlive/2020/texmf-dist/tex/latex/base/bk10.clo
@@ -128,9 +128,9 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 ) (c:/texlive/2020/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/texli
 ve/2020/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-05-15 L3 programming layer (loader) 
+Package: expl3 2020-06-03 L3 programming layer (loader) 
 (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-xdvipdfmx.def
-File: l3backend-xdvipdfmx.def 2020-05-05 L3 backend support: xdvipdfmx
+File: l3backend-xdvipdfmx.def 2020-06-03 L3 backend support: xdvipdfmx
 \g__graphics_track_int=\count184
 \l__pdf_internal_box=\box47
 \g__pdf_backend_object_int=\count185
@@ -244,7 +244,7 @@ Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
 (c:/texlive/2020/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 (c:/texlive/2020/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2020-06-04 v0.32 Utility functions of pdfTeX for LuaTeX (HO
 )
 (c:/texlive/2020/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
@@ -413,11 +413,11 @@ y)
 Package grffile Info: This package is an empty stub for compatibility on input 
 line 40.
 ) (c:/texlive/2020/texmf-dist/tex/latex/ctex/ctex.sty
-Package: ctex 2020/05/16 v2.5.2 Chinese adapter in LaTeX (CTEX)
+Package: ctex 2020/06/06 v2.5.3 Chinese adapter in LaTeX (CTEX)
 (c:/texlive/2020/texmf-dist/tex/latex/ctex/ctexhook.sty
-Package: ctexhook 2020/05/16 v2.5.2 Document and package hooks (CTEX)
+Package: ctexhook 2020/06/06 v2.5.3 Document and package hooks (CTEX)
 ) (c:/texlive/2020/texmf-dist/tex/latex/ctex/ctexpatch.sty
-Package: ctexpatch 2020/05/16 v2.5.2 Patching commands (CTEX)
+Package: ctexpatch 2020/06/06 v2.5.3 Patching commands (CTEX)
 ) (c:/texlive/2020/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
@@ -427,11 +427,11 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 \g__ctex_section_depth_int=\count300
 \g__ctex_font_size_int=\count301
 (c:/texlive/2020/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
-File: ctexopts.cfg 2020/05/16 v2.5.2 Option configuration file (CTEX)
+File: ctexopts.cfg 2020/06/06 v2.5.3 Option configuration file (CTEX)
 ) (c:/texlive/2020/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
-File: ctex-engine-xetex.def 2020/05/16 v2.5.2 XeLaTeX adapter (CTEX)
+File: ctex-engine-xetex.def 2020/06/06 v2.5.3 XeLaTeX adapter (CTEX)
 (c:/texlive/2020/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
-Package: xeCJK 2020/05/01 v3.8.3 Typesetting CJK scripts with XeLaTeX
+Package: xeCJK 2020/06/06 v3.8.4 Typesetting CJK scripts with XeLaTeX
 (c:/texlive/2020/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
 Package: xtemplate 2020-05-15 L3 Experimental prototype document functions
 \l__xtemplate_tmp_dim=\dimen174
@@ -471,7 +471,7 @@ Package: xtemplate 2020-05-15 L3 Experimental prototype document functions
 \l__xeCJK_widow_penalty_int=\count309
 
 Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
-(xtemplate)             argument(s) on line 2302.
+(xtemplate)             argument(s) on line 2329.
 
 \l__xeCJK_fixed_punct_width_dim=\dimen184
 \l__xeCJK_mixed_punct_width_dim=\dimen185
@@ -500,15 +500,15 @@ Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
 ! Undefined control sequence.
 <argument> \__xeCJK_patch_microtype_get_slot: 
                                               
-l.4826   }
+l.4928   }
            
 Here is how much of TeX's memory you used:
- 19411 strings out of 479282
- 358105 string characters out of 5884017
- 722942 words of memory out of 5000000
- 36870 multiletter control sequences out of 15000+600000
+ 19438 strings out of 479284
+ 358905 string characters out of 5884020
+ 723241 words of memory out of 5000000
+ 36895 multiletter control sequences out of 15000+600000
  532714 words of font info for 27 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 53i,0n,53p,804b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,0n,57p,804b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 No pages of output.

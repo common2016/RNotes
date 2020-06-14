@@ -1,5 +1,6 @@
 
 # 数据处理 {#DataProcess}
+## 一句话Tips
 - 因子操作
 
 ```r
@@ -51,22 +52,6 @@ result <- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,colu
 print(result)
 ```
 
-```
-## , , Matrix1
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15
-## 
-## , , Matrix2
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15
-```
-
 -  `pdftools`包的函数可以读PDF文件：
 
 ```r
@@ -87,3 +72,24 @@ pdf_pagesize(pdf, opw = "", upw = "")
 
 
 同时，利用`qpdf`包的`pdf_subset,pdf_combine,pdf_split`可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
+
+## `RJSDMX`包下载世界各大数据库数据
+
+一般工作流：
+
+```r
+library(RJSDMX)
+# 查看有哪些库可以用
+getProviders()
+# 库中有哪些子库可以用
+getFlows('WITS')
+# 该子库调取数据需要哪几个字段
+getDimensions('WITS','WBG_WITS,DF_WITS_TradeStats_Tariff,1.0')
+# 查看这个指标有几个选项 
+getCodes('WITS','WBG_WITS,DF_WITS_TradeStats_Tariff,1.0','INDICATOR')
+# 查好了就可以下载
+ans <- getTimeSeries('WITS', 'DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.AHS-WGHTD-AVRG')
+# 你也可以调用图形窗口查阅命令
+sdmxHelp()
+```
+
