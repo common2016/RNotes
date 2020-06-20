@@ -50,9 +50,13 @@ data = as.data.frame(data1)
 - 第一步，首先配置好环境
 
 ```r
+library(reticulate)
 use_condaenv("D:/Anaconda3")
- 
-py_config()#安装的python版本环境查看，显示anaconda和numpy的详细信息。
+
+# 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在
+# use_condaenv()后，以使配置生效
+py_config()
+
 py_available()#[1] TRUE   #检查您的系统是否安装过Python
 py_module_available("pandas")#检查“pandas”是否安装
 ```
@@ -101,3 +105,51 @@ py_available()
 # 检查模块可不可用
 py_module_available('tushare')
 ```
+
+## 与julia的对接
+### `JuliaCall`包
+感觉此包没有类似`reticulate`包调用python那么无缝。
+
+- 在R中执行julia脚本
+
+```r
+library(JuliaCall)
+# 设置存放julia二进制文件的文件夹
+julia_setup(JULIA_HOME = 'D:/Program Files/Julia-1.4.2/bin')
+# 几种主要的调用方式，我把我喜欢的写出来的
+julia$command("a = sqrt(2);") # 在julia环境中产生了变量a
+ans <- julia$eval("a") # 把变量a的值传给R环境中的ans变量
+# 其他的调用方式
+julia_command("a = sqrt(2);")
+julia_eval("a")
+#> [1] 1.414214
+2 %>J% sqrt
+#> [1] 1.414214
+```
+- R与julia互传变量：前面提到的`julia_eval`可以把julia中的变量传出来，使用`julia_assign`可以把R中的变量传到julia中去。
+
+```r
+julia_assign('a',1:5)
+julia_command('a')
+```
+
+- julia控制台，而且只要你前期`julia_setup()`了，这个控制台里面就包含了前期运算时的变量
+
+```r
+julia_console()
+# 输入exit 可以退出
+# julia> exit
+```
+
+- 它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数
+
+```r
+julia_install_package_if_needed("Optim")
+  opt <- julia_pkg_import("Optim",
+                           func_list = c("optimize", "BFGS"))
+rosenbrock <- function(x) (1.0 - x[1])^2 + 100.0 * (x[2] - x[1]^2)^2
+result <- opt$optimize(rosenbrock, rep(0,2), opt$BFGS())
+result
+```
+
+

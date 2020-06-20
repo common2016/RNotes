@@ -194,6 +194,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.2</b> R与Python的无缝对接</a><ul>
 <li class="chapter" data-level="9.2.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.2.1</b> 其他：</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.3</b> 与julia的对接</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#juliacall包"><i class="fa fa-check"></i><b>9.3.1</b> <code>JuliaCall</code>包</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="其他-1.html"><a href="其他-1.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -263,11 +266,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>第一步，首先配置好环境</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="otherSF.html#cb5-1"></a><span class="kw">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
-<span id="cb5-2"><a href="otherSF.html#cb5-2"></a> </span>
-<span id="cb5-3"><a href="otherSF.html#cb5-3"></a><span class="kw">py_config</span>()<span class="co">#安装的python版本环境查看，显示anaconda和numpy的详细信息。</span></span>
-<span id="cb5-4"><a href="otherSF.html#cb5-4"></a><span class="kw">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
-<span id="cb5-5"><a href="otherSF.html#cb5-5"></a><span class="kw">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="otherSF.html#cb5-1"></a><span class="kw">library</span>(reticulate)</span>
+<span id="cb5-2"><a href="otherSF.html#cb5-2"></a><span class="kw">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
+<span id="cb5-3"><a href="otherSF.html#cb5-3"></a></span>
+<span id="cb5-4"><a href="otherSF.html#cb5-4"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
+<span id="cb5-5"><a href="otherSF.html#cb5-5"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
+<span id="cb5-6"><a href="otherSF.html#cb5-6"></a><span class="kw">py_config</span>()</span>
+<span id="cb5-7"><a href="otherSF.html#cb5-7"></a></span>
+<span id="cb5-8"><a href="otherSF.html#cb5-8"></a><span class="kw">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
+<span id="cb5-9"><a href="otherSF.html#cb5-9"></a><span class="kw">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
 <ul>
 <li>第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号$相当于python里面的“.”符号 ，如，</li>
 </ul>
@@ -309,6 +316,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-7"><a href="otherSF.html#cb8-7"></a><span class="kw">py_available</span>()</span>
 <span id="cb8-8"><a href="otherSF.html#cb8-8"></a><span class="co"># 检查模块可不可用</span></span>
 <span id="cb8-9"><a href="otherSF.html#cb8-9"></a><span class="kw">py_module_available</span>(<span class="st">&#39;tushare&#39;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="与julia的对接" class="section level2">
+<h2><span class="header-section-number">9.3</span> 与julia的对接</h2>
+<div id="juliacall包" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> <code>JuliaCall</code>包</h3>
+<p>感觉此包没有类似<code>reticulate</code>包调用python那么无缝。</p>
+<ul>
+<li>在R中执行julia脚本</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="otherSF.html#cb9-1"></a><span class="kw">library</span>(JuliaCall)</span>
+<span id="cb9-2"><a href="otherSF.html#cb9-2"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
+<span id="cb9-3"><a href="otherSF.html#cb9-3"></a><span class="kw">julia_setup</span>(<span class="dt">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
+<span id="cb9-4"><a href="otherSF.html#cb9-4"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
+<span id="cb9-5"><a href="otherSF.html#cb9-5"></a>julia<span class="op">$</span><span class="kw">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
+<span id="cb9-6"><a href="otherSF.html#cb9-6"></a>ans &lt;-<span class="st"> </span>julia<span class="op">$</span><span class="kw">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
+<span id="cb9-7"><a href="otherSF.html#cb9-7"></a><span class="co"># 其他的调用方式</span></span>
+<span id="cb9-8"><a href="otherSF.html#cb9-8"></a><span class="kw">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
+<span id="cb9-9"><a href="otherSF.html#cb9-9"></a><span class="kw">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb9-10"><a href="otherSF.html#cb9-10"></a><span class="co">#&gt; [1] 1.414214</span></span>
+<span id="cb9-11"><a href="otherSF.html#cb9-11"></a><span class="dv">2</span> <span class="op">%&gt;J%</span><span class="st"> </span>sqrt</span>
+<span id="cb9-12"><a href="otherSF.html#cb9-12"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
+<ul>
+<li>R与julia互传变量：前面提到的<code>julia_eval</code>可以把julia中的变量传出来，使用<code>julia_assign</code>可以把R中的变量传到julia中去。</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="otherSF.html#cb10-1"></a><span class="kw">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb10-2"><a href="otherSF.html#cb10-2"></a><span class="kw">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<ul>
+<li>julia控制台，而且只要你前期<code>julia_setup()</code>了，这个控制台里面就包含了前期运算时的变量</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="otherSF.html#cb11-1"></a><span class="kw">julia_console</span>()</span>
+<span id="cb11-2"><a href="otherSF.html#cb11-2"></a><span class="co"># 输入exit 可以退出</span></span>
+<span id="cb11-3"><a href="otherSF.html#cb11-3"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
+<ul>
+<li>它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="otherSF.html#cb12-1"></a><span class="kw">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
+<span id="cb12-2"><a href="otherSF.html#cb12-2"></a>  opt &lt;-<span class="st"> </span><span class="kw">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
+<span id="cb12-3"><a href="otherSF.html#cb12-3"></a>                           <span class="dt">func_list =</span> <span class="kw">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
+<span id="cb12-4"><a href="otherSF.html#cb12-4"></a>rosenbrock &lt;-<span class="st"> </span><span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="fl">100.0</span> <span class="op">*</span><span class="st"> </span>(x[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb12-5"><a href="otherSF.html#cb12-5"></a>result &lt;-<span class="st"> </span>opt<span class="op">$</span><span class="kw">optimize</span>(rosenbrock, <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="op">$</span><span class="kw">BFGS</span>())</span>
+<span id="cb12-6"><a href="otherSF.html#cb12-6"></a>result</span></code></pre></div>
 
 </div>
 </div>

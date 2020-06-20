@@ -189,8 +189,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="ML.html"><a href="ML.html#roc曲线绘制"><i class="fa fa-check"></i><b>8.2</b> ROC曲线绘制</a></li>
 <li class="chapter" data-level="8.3" data-path="ML.html"><a href="ML.html#randomforestsrc包使用报告"><i class="fa fa-check"></i><b>8.3</b> <code>randomForestSRC</code>包使用报告</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a></li>
-<li class="chapter" data-level="10" data-path="其他.html"><a href="其他.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
+<li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a><ul>
+<li class="chapter" data-level="9.1" data-path="otherSF.html"><a href="otherSF.html#一句话tips-8"><i class="fa fa-check"></i><b>9.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.2</b> R与Python的无缝对接</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.2.1</b> 其他：</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.3</b> 与julia的对接</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#juliacall包"><i class="fa fa-check"></i><b>9.3.1</b> <code>JuliaCall</code>包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="其他-1.html"><a href="其他-1.html"><i class="fa fa-check"></i><b>10</b> 其他</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -225,73 +233,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="DataProcess.html#cb1-7"></a>farcats<span class="op">::</span><span class="kw">fct_recode</span>(rawdata<span class="op">$</span>marrige,</span>
 <span id="cb1-8"><a href="DataProcess.html#cb1-8"></a>           <span class="st">&#39;unmarried&#39;</span>=<span class="st">&#39;1&#39;</span>,<span class="st">&#39;married&#39;</span>=<span class="st">&#39;2&#39;</span>,<span class="st">&#39;cohabitation&#39;</span>=<span class="st">&#39;3&#39;</span>,<span class="st">&#39;divore&#39;</span>=<span class="st">&#39;4&#39;</span>,<span class="st">&#39;wid&#39;</span>=<span class="st">&#39;5&#39;</span>)</span></code></pre></div>
 <ul>
-<li><p><code>dbplyr</code>可以连接到几乎任何数据库。</p></li>
-<li><p><code>wbstats</code>下载世界银行数据，很牛逼。Stata里面的<code>wbopendata</code>包更牛逼。</p></li>
-<li><p><code>stationaRy</code>:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。</p></li>
-<li><p><strong>当你发现你用<code>save</code>命令保存一个数据长达数分钟时</strong>，建议你迅速调用<code>qs</code>包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。</p></li>
-<li><p><code>tor</code>: 提供允许用户同时导入多个文件的功能.</p></li>
-<li><p>读入excel中的sheet名：<code>openxlsx::getSheetNames(file)</code></p></li>
-<li><p><code>XLConect</code>处理excel最强大的包。但需要JRE（java run enviornment）。</p></li>
+<li><code>dbplyr</code>可以连接到几乎任何数据库。</li>
+<li><code>wbstats</code>下载世界银行数据，很牛逼。Stata里面的<code>wbopendata</code>包更牛逼。</li>
+<li><code>stationaRy</code>:一个从NOAA上下载气象数据，如气温，风向等的包。该包就三个函数，一个用来得到站点id，一个用这个id下载数据，还有一个是如果你想得到其他额外的气象数据时可能有用。</li>
+<li><strong>当你发现你用<code>save</code>命令保存一个数据长达数分钟时</strong>，建议你迅速调用<code>qs</code>包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。</li>
+<li><code>tor</code>: 提供允许用户同时导入多个文件的功能.</li>
+<li>读入excel中的sheet名：<code>openxlsx::getSheetNames(file)</code></li>
+<li><code>XLConect</code>处理excel最强大的包。但需要JRE（java run enviornment）。</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="DataProcess.html#cb2-1"></a><span class="co"># 可以不改变原有数据，然后把一个数据框精准地写入某个地方</span></span>
+<span id="cb2-2"><a href="DataProcess.html#cb2-2"></a><span class="kw">writeWorksheetToFile</span>(<span class="st">&quot;XLConnectExample2.xlsx&quot;</span>, <span class="dt">data =</span> ChickWeight,</span>
+<span id="cb2-3"><a href="DataProcess.html#cb2-3"></a> <span class="dt">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="dt">startRow =</span> <span class="dv">3</span>, <span class="dt">startCol =</span> <span class="dv">4</span>,<span class="dt">header =</span> <span class="ot">FALSE</span>, <span class="dt">clearSheets =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<ul>
 <li><p>使用<code>as.Date</code>来生成日期，必须带有年月日三个要素，使用<code>format</code>来输出日期格式，此时可以只输出年和月。如<code>as.Date('2010/05/01') %&gt;% format(.,format = '%Y%m')</code></p></li>
 <li><p><code>seq.Date()</code>生成日期序列，包括日、星期、月、年。</p></li>
 <li><p><code>readstata13</code>包可以读入更高版本的stata数据格式。</p></li>
 <li><p><code>zoo::rollapply(x, 30, mean)</code>就是30天的移动平均求值。</p></li>
 <li><p><code>select</code>是一个很牛逼的函数</p></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="DataProcess.html#cb2-1"></a><span class="kw">select</span>(regdata,id, year) <span class="co"># 选择regdata数据框的id和year两列</span></span>
-<span id="cb2-2"><a href="DataProcess.html#cb2-2"></a><span class="kw">select</span>(regdata,<span class="kw">starts_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;开头的列</span></span>
-<span id="cb2-3"><a href="DataProcess.html#cb2-3"></a><span class="kw">select</span>(regdata,<span class="kw">ends_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;结尾的列</span></span>
-<span id="cb2-4"><a href="DataProcess.html#cb2-4"></a><span class="kw">select</span>(regdata,<span class="kw">contains</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配包含&#39;abc&#39;的列</span></span>
-<span id="cb2-5"><a href="DataProcess.html#cb2-5"></a><span class="kw">select</span>(regdata,<span class="kw">matches</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 正则表达匹配</span></span>
-<span id="cb2-6"><a href="DataProcess.html#cb2-6"></a><span class="kw">select</span>(regdata,<span class="kw">num_range</span>(<span class="st">&#39;x&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># 匹配x1, x2,x3的列</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="DataProcess.html#cb3-1"></a><span class="kw">select</span>(regdata,id, year) <span class="co"># 选择regdata数据框的id和year两列</span></span>
+<span id="cb3-2"><a href="DataProcess.html#cb3-2"></a><span class="kw">select</span>(regdata,<span class="kw">starts_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;开头的列</span></span>
+<span id="cb3-3"><a href="DataProcess.html#cb3-3"></a><span class="kw">select</span>(regdata,<span class="kw">ends_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;结尾的列</span></span>
+<span id="cb3-4"><a href="DataProcess.html#cb3-4"></a><span class="kw">select</span>(regdata,<span class="kw">contains</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配包含&#39;abc&#39;的列</span></span>
+<span id="cb3-5"><a href="DataProcess.html#cb3-5"></a><span class="kw">select</span>(regdata,<span class="kw">matches</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 正则表达匹配</span></span>
+<span id="cb3-6"><a href="DataProcess.html#cb3-6"></a><span class="kw">select</span>(regdata,<span class="kw">num_range</span>(<span class="st">&#39;x&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># 匹配x1, x2,x3的列</span></span></code></pre></div>
 <ul>
 <li>R语言给数组各维数命名</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="DataProcess.html#cb3-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
-<span id="cb3-2"><a href="DataProcess.html#cb3-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="DataProcess.html#cb3-3"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
-<span id="cb3-4"><a href="DataProcess.html#cb3-4"></a>column.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
-<span id="cb3-5"><a href="DataProcess.html#cb3-5"></a>row.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
-<span id="cb3-6"><a href="DataProcess.html#cb3-6"></a>matrix.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
-<span id="cb3-7"><a href="DataProcess.html#cb3-7"></a></span>
-<span id="cb3-8"><a href="DataProcess.html#cb3-8"></a><span class="co"># Take these vectors as input to the array.</span></span>
-<span id="cb3-9"><a href="DataProcess.html#cb3-9"></a>result &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(vector1,vector2),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="dt">dimnames =</span> <span class="kw">list</span>(row.names,column.names,</span>
-<span id="cb3-10"><a href="DataProcess.html#cb3-10"></a>                                                                  matrix.names))</span>
-<span id="cb3-11"><a href="DataProcess.html#cb3-11"></a><span class="kw">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="DataProcess.html#cb4-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb4-2"><a href="DataProcess.html#cb4-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb4-3"><a href="DataProcess.html#cb4-3"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb4-4"><a href="DataProcess.html#cb4-4"></a>column.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
+<span id="cb4-5"><a href="DataProcess.html#cb4-5"></a>row.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
+<span id="cb4-6"><a href="DataProcess.html#cb4-6"></a>matrix.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
+<span id="cb4-7"><a href="DataProcess.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="DataProcess.html#cb4-8"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb4-9"><a href="DataProcess.html#cb4-9"></a>result &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(vector1,vector2),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="dt">dimnames =</span> <span class="kw">list</span>(row.names,column.names,</span>
+<span id="cb4-10"><a href="DataProcess.html#cb4-10"></a>                                                                  matrix.names))</span>
+<span id="cb4-11"><a href="DataProcess.html#cb4-11"></a><span class="kw">print</span>(result)</span></code></pre></div>
 <ul>
 <li><code>pdftools</code>包的函数可以读PDF文件：</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="DataProcess.html#cb4-1"></a><span class="kw">pdf_info</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-2"><a href="DataProcess.html#cb4-2"></a></span>
-<span id="cb4-3"><a href="DataProcess.html#cb4-3"></a><span class="kw">pdf_text</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-4"><a href="DataProcess.html#cb4-4"></a></span>
-<span id="cb4-5"><a href="DataProcess.html#cb4-5"></a><span class="kw">pdf_data</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-6"><a href="DataProcess.html#cb4-6"></a></span>
-<span id="cb4-7"><a href="DataProcess.html#cb4-7"></a><span class="kw">pdf_fonts</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-8"><a href="DataProcess.html#cb4-8"></a></span>
-<span id="cb4-9"><a href="DataProcess.html#cb4-9"></a><span class="kw">pdf_attachments</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-10"><a href="DataProcess.html#cb4-10"></a></span>
-<span id="cb4-11"><a href="DataProcess.html#cb4-11"></a><span class="kw">pdf_toc</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-12"><a href="DataProcess.html#cb4-12"></a></span>
-<span id="cb4-13"><a href="DataProcess.html#cb4-13"></a><span class="kw">pdf_pagesize</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="DataProcess.html#cb5-1"></a><span class="kw">pdf_info</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-2"><a href="DataProcess.html#cb5-2"></a></span>
+<span id="cb5-3"><a href="DataProcess.html#cb5-3"></a><span class="kw">pdf_text</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-4"><a href="DataProcess.html#cb5-4"></a></span>
+<span id="cb5-5"><a href="DataProcess.html#cb5-5"></a><span class="kw">pdf_data</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-6"><a href="DataProcess.html#cb5-6"></a></span>
+<span id="cb5-7"><a href="DataProcess.html#cb5-7"></a><span class="kw">pdf_fonts</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-8"><a href="DataProcess.html#cb5-8"></a></span>
+<span id="cb5-9"><a href="DataProcess.html#cb5-9"></a><span class="kw">pdf_attachments</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-10"><a href="DataProcess.html#cb5-10"></a></span>
+<span id="cb5-11"><a href="DataProcess.html#cb5-11"></a><span class="kw">pdf_toc</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb5-12"><a href="DataProcess.html#cb5-12"></a></span>
+<span id="cb5-13"><a href="DataProcess.html#cb5-13"></a><span class="kw">pdf_pagesize</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>同时，利用<code>qpdf</code>包的<code>pdf_subset,pdf_combine,pdf_split</code>可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。</p>
 </div>
 <div id="rjsdmx包下载世界各大数据库数据" class="section level2">
 <h2><span class="header-section-number">3.2</span> <code>RJSDMX</code>包下载世界各大数据库数据</h2>
 <p>一般工作流：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="DataProcess.html#cb5-1"></a><span class="kw">library</span>(RJSDMX)</span>
-<span id="cb5-2"><a href="DataProcess.html#cb5-2"></a><span class="co"># 查看有哪些库可以用</span></span>
-<span id="cb5-3"><a href="DataProcess.html#cb5-3"></a><span class="kw">getProviders</span>()</span>
-<span id="cb5-4"><a href="DataProcess.html#cb5-4"></a><span class="co"># 库中有哪些子库可以用</span></span>
-<span id="cb5-5"><a href="DataProcess.html#cb5-5"></a><span class="kw">getFlows</span>(<span class="st">&#39;WITS&#39;</span>)</span>
-<span id="cb5-6"><a href="DataProcess.html#cb5-6"></a><span class="co"># 该子库调取数据需要哪几个字段</span></span>
-<span id="cb5-7"><a href="DataProcess.html#cb5-7"></a><span class="kw">getDimensions</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>)</span>
-<span id="cb5-8"><a href="DataProcess.html#cb5-8"></a><span class="co"># 查看这个指标有几个选项 </span></span>
-<span id="cb5-9"><a href="DataProcess.html#cb5-9"></a><span class="kw">getCodes</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>,<span class="st">&#39;INDICATOR&#39;</span>)</span>
-<span id="cb5-10"><a href="DataProcess.html#cb5-10"></a><span class="co"># 查好了就可以下载</span></span>
-<span id="cb5-11"><a href="DataProcess.html#cb5-11"></a>ans &lt;-<span class="st"> </span><span class="kw">getTimeSeries</span>(<span class="st">&#39;WITS&#39;</span>, <span class="st">&#39;DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.AHS-WGHTD-AVRG&#39;</span>)</span>
-<span id="cb5-12"><a href="DataProcess.html#cb5-12"></a><span class="co"># 你也可以调用图形窗口查阅命令</span></span>
-<span id="cb5-13"><a href="DataProcess.html#cb5-13"></a><span class="kw">sdmxHelp</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="DataProcess.html#cb6-1"></a><span class="kw">library</span>(RJSDMX)</span>
+<span id="cb6-2"><a href="DataProcess.html#cb6-2"></a><span class="co"># 查看有哪些库可以用</span></span>
+<span id="cb6-3"><a href="DataProcess.html#cb6-3"></a><span class="kw">getProviders</span>()</span>
+<span id="cb6-4"><a href="DataProcess.html#cb6-4"></a><span class="co"># 库中有哪些子库可以用</span></span>
+<span id="cb6-5"><a href="DataProcess.html#cb6-5"></a><span class="kw">getFlows</span>(<span class="st">&#39;WITS&#39;</span>)</span>
+<span id="cb6-6"><a href="DataProcess.html#cb6-6"></a><span class="co"># 该子库调取数据需要哪几个字段</span></span>
+<span id="cb6-7"><a href="DataProcess.html#cb6-7"></a><span class="kw">getDimensions</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>)</span>
+<span id="cb6-8"><a href="DataProcess.html#cb6-8"></a><span class="co"># 查看这个指标有几个选项 </span></span>
+<span id="cb6-9"><a href="DataProcess.html#cb6-9"></a><span class="kw">getCodes</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>,<span class="st">&#39;INDICATOR&#39;</span>)</span>
+<span id="cb6-10"><a href="DataProcess.html#cb6-10"></a><span class="co"># 查好了就可以下载</span></span>
+<span id="cb6-11"><a href="DataProcess.html#cb6-11"></a>ans &lt;-<span class="st"> </span><span class="kw">getTimeSeries</span>(<span class="st">&#39;WITS&#39;</span>, <span class="st">&#39;DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.MFN-WGHTD-AVRG&#39;</span>)</span>
+<span id="cb6-12"><a href="DataProcess.html#cb6-12"></a><span class="co"># 你也可以调用图形窗口查阅命令</span></span>
+<span id="cb6-13"><a href="DataProcess.html#cb6-13"></a><span class="kw">sdmxHelp</span>()</span></code></pre></div>
 
 </div>
 </div>

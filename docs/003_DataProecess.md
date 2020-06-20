@@ -21,6 +21,14 @@ farcats::fct_recode(rawdata$marrige,
 - `tor`: 提供允许用户同时导入多个文件的功能.
 - 读入excel中的sheet名：`openxlsx::getSheetNames(file)`
 - `XLConect`处理excel最强大的包。但需要JRE（java run enviornment）。
+
+```r
+# 可以不改变原有数据，然后把一个数据框精准地写入某个地方
+writeWorksheetToFile("XLConnectExample2.xlsx", data = ChickWeight,
+ sheet = "chickSheet", startRow = 3, startCol = 4,header = FALSE, clearSheets = FALSE)
+```
+
+
 - 使用`as.Date`来生成日期，必须带有年月日三个要素，使用`format`来输出日期格式，此时可以只输出年和月。如`as.Date('2010/05/01') %>% format(.,format = '%Y%m')`
 - `seq.Date()`生成日期序列，包括日、星期、月、年。
 - `readstata13`包可以读入更高版本的stata数据格式。
@@ -88,7 +96,7 @@ getDimensions('WITS','WBG_WITS,DF_WITS_TradeStats_Tariff,1.0')
 # 查看这个指标有几个选项 
 getCodes('WITS','WBG_WITS,DF_WITS_TradeStats_Tariff,1.0','INDICATOR')
 # 查好了就可以下载
-ans <- getTimeSeries('WITS', 'DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.AHS-WGHTD-AVRG')
+ans <- getTimeSeries('WITS', 'DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.MFN-WGHTD-AVRG')
 # 你也可以调用图形窗口查阅命令
 sdmxHelp()
 ```
