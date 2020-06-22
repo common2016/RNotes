@@ -1,6 +1,4 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+
 # 普通回归和时间序列序列 {#TS}
 ## 一句话Tips
 - `gdpc`计算广义动态主成分。
@@ -21,7 +19,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 - `svars`是一个数据驱动的结构VAR包。`vars`是一个VAR各种估计和诊断的标准包。`tsDyn`也有线性VAR和VECM的估计，其中它还允许包含外生变量。
 - `lmtest`有`grangertest()`做双变量格兰杰因果检验。`MTS::GrangerTest(regdata[,-c(1,2)],2,locInput = 1)`也可以，而且可以做多个变量是不是某个变量的格兰杰原因。`locInput`表示因变量是第几列。
 - `stats4`包提供了函数`mle`可以进行极大似然估计，还可以固定部分参数，优化其他参数，这其实是集中似然的思想。关键是它还返回方差协方差矩阵。语法如下，
-```{r eval=FALSE}
+
+```r
 mle(minuslogl, start = formals(minuslogl), method = "BFGS",
     fixed = list(), nobs, ...) # 注意它的初值是一个list
 ```
@@ -42,7 +41,8 @@ mle(minuslogl, start = formals(minuslogl), method = "BFGS",
 - `nls`非线性最小二乘法函数
 - `highfrequance`里面有不少意思的函数，包括`HAR`。
 ## 回归中关于公式的理解和构造
-```{r eval=FALSE}
+
+```r
 # 构造公式, 只要包含波浪线就意味着这是一个公式。
 F1 <- dist ~ speed - 1
 # 获得公式中所有的变量
@@ -78,7 +78,8 @@ E(i_{t-4}\varepsilon_t) = 0
 
 
 利用这些矩条件的GMM估计在`gmm`包中的写法为，
-```{r eval=FALSE}
+
+```r
 gmmrlt <- gmm(g = it ~ pi + gdp + hp + it1, x = ~ pi + gdp + hp + it2 + it3 + it4,data = dwg0)
 summary(gmmrlt)
 ```
@@ -91,7 +92,8 @@ summary(gmmrlt)
 - 要先下载美国统计局的x12程序包，并在调用函数时，记得写上所以存储的路径。
 - 仅可处理R中内置的时间序列对象`ts`。
 - 示例代码：
-```{r eval=FALSE}
+
+```r
 library(x12)
 data(AirPassengers)
 x12out <- x12work(AirPassengers,
@@ -101,7 +103,8 @@ x12out$d11 #此即为调整后的时间序列
 其中，`keep_x12out`参数表示是否要保留计算后的文件。
 
 ### `seasonal`包有x13处理，更加便捷
-```{r eval=FALSE}
+
+```r
 library(seasonal)
 m <- seas(AirPassengers) # x13 处理, AirPassengers是一个ts对象
 final(m) # 最终调整序列

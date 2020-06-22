@@ -16,12 +16,12 @@ stargazer(regression,type = 'text',out = "../PicTab/cmp.html",no.space = T,repor
 注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
 `options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")`
 
-- R语言调用Matlab
+## R语言调用Matlab
 
 Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
-    
     - 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
     - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
+    
 
 ```r
     library(matlabr)

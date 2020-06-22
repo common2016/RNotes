@@ -240,6 +240,10 @@
 \begin{itemize}
 \tightlist
 \item
+  \texttt{gdpc}计算广义动态主成分。
+\item
+  \texttt{POET::POETKhat}提供了计算Bai and NG (2002)因子数目的函数。
+\item
   \texttt{confint}函数返回系数的置信区间
 \item
   \texttt{bssm}拟合非线性卡尔曼滤波的包。\texttt{pomp}，\texttt{KFAS}也是。\texttt{pomp}好像接口更简单些，第四节有一个非线性的例子。
@@ -401,7 +405,7 @@ E(i_{t-4}\varepsilon_t) = 0
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(seasonal)}
-\NormalTok{m <-}\StringTok{ }\KeywordTok{seas}\NormalTok{(AirPassengers) }\CommentTok{# x13 处理}
+\NormalTok{m <-}\StringTok{ }\KeywordTok{seas}\NormalTok{(AirPassengers) }\CommentTok{# x13 处理, AirPassengers是一个ts对象}
 \KeywordTok{final}\NormalTok{(m) }\CommentTok{# 最终调整序列}
 \KeywordTok{plot}\NormalTok{(m) }\CommentTok{# 绘制调整和未调整序列}
 \end{Highlighting}
@@ -409,6 +413,9 @@ E(i_{t-4}\varepsilon_t) = 0
 
 \hypertarget{DataProcess}{%
 \chapter{数据处理}\label{DataProcess}}
+
+\hypertarget{ux4e00ux53e5ux8bddtips-2}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-2}}
 
 \begin{itemize}
 \tightlist
@@ -430,6 +437,7 @@ E(i_{t-4}\varepsilon_t) = 0
 \end{Shaded}
 
 \begin{itemize}
+\tightlist
 \item
   \texttt{dbplyr}可以连接到几乎任何数据库。
 \item
@@ -444,6 +452,17 @@ E(i_{t-4}\varepsilon_t) = 0
   读入excel中的sheet名：\texttt{openxlsx::getSheetNames(file)}
 \item
   \texttt{XLConect}处理excel最强大的包。但需要JRE（java run enviornment）。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 可以不改变原有数据，然后把一个数据框精准地写入某个地方}
+\KeywordTok{writeWorksheetToFile}\NormalTok{(}\StringTok{"XLConnectExample2.xlsx"}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ ChickWeight,}
+ \DataTypeTok{sheet =} \StringTok{"chickSheet"}\NormalTok{, }\DataTypeTok{startRow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{startCol =} \DecValTok{4}\NormalTok{,}\DataTypeTok{header =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{clearSheets =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
 \item
   使用\texttt{as.Date}来生成日期，必须带有年月日三个要素，使用\texttt{format}来输出日期格式，此时可以只输出年和月。如\texttt{as.Date(\textquotesingle{}2010/05/01\textquotesingle{})\ \%\textgreater{}\%\ format(.,format\ =\ \textquotesingle{}\%Y\%m\textquotesingle{})}
 \item
@@ -489,22 +508,6 @@ E(i_{t-4}\varepsilon_t) = 0
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## , , Matrix1
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15
-## 
-## , , Matrix2
-## 
-##      COL1 COL2 COL3
-## ROW1    5   10   13
-## ROW2    9   11   14
-## ROW3    3   12   15
-\end{verbatim}
-
 \begin{itemize}
 \tightlist
 \item
@@ -531,11 +534,36 @@ E(i_{t-4}\varepsilon_t) = 0
 
 同时，利用\texttt{qpdf}包的\texttt{pdf\_subset,pdf\_combine,pdf\_split}可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
 
+\hypertarget{rjsdmxux5305ux4e0bux8f7dux4e16ux754cux5404ux5927ux6570ux636eux5e93ux6570ux636e}{%
+\section{\texorpdfstring{\texttt{RJSDMX}包下载世界各大数据库数据}{RJSDMX包下载世界各大数据库数据}}\label{rjsdmxux5305ux4e0bux8f7dux4e16ux754cux5404ux5927ux6570ux636eux5e93ux6570ux636e}}
+
+一般工作流：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(RJSDMX)}
+\CommentTok{# 查看有哪些库可以用}
+\KeywordTok{getProviders}\NormalTok{()}
+\CommentTok{# 库中有哪些子库可以用}
+\KeywordTok{getFlows}\NormalTok{(}\StringTok{'WITS'}\NormalTok{)}
+\CommentTok{# 该子库调取数据需要哪几个字段}
+\KeywordTok{getDimensions}\NormalTok{(}\StringTok{'WITS'}\NormalTok{,}\StringTok{'WBG_WITS,DF_WITS_TradeStats_Tariff,1.0'}\NormalTok{)}
+\CommentTok{# 查看这个指标有几个选项 }
+\KeywordTok{getCodes}\NormalTok{(}\StringTok{'WITS'}\NormalTok{,}\StringTok{'WBG_WITS,DF_WITS_TradeStats_Tariff,1.0'}\NormalTok{,}\StringTok{'INDICATOR'}\NormalTok{)}
+\CommentTok{# 查好了就可以下载}
+\NormalTok{ans <-}\StringTok{ }\KeywordTok{getTimeSeries}\NormalTok{(}\StringTok{'WITS'}\NormalTok{, }\StringTok{'DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.MFN-WGHTD-AVRG'}\NormalTok{)}
+\CommentTok{# 你也可以调用图形窗口查阅命令}
+\KeywordTok{sdmxHelp}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{IMF2}里面的\texttt{IFS}数据库里面有很多季度的宏观数据，如GDP，固定资本形成等
+
 \hypertarget{ux7edfux8ba1}{%
 \chapter{统计}\label{ux7edfux8ba1}}
 
-\hypertarget{ux4e00ux53e5ux8bddtips-2}{%
-\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-2}}
+\hypertarget{ux4e00ux53e5ux8bddtips-3}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-3}}
 
 \begin{itemize}
 \tightlist
@@ -624,11 +652,15 @@ z_t&=\phi z_{t-1}+e_t
 \hypertarget{rawR}{%
 \chapter{原生的R}\label{rawR}}
 
-\hypertarget{ux4e00ux53e5ux8bddtips-3}{%
-\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-3}}
+\hypertarget{ux4e00ux53e5ux8bddtips-4}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-4}}
 
 \begin{itemize}
 \tightlist
+\item
+  `\texttt{+}(3,1)\texttt{与}3+1\texttt{的作用是一样的。这可以推广到其他中缀函数，如}\%*\%`等。
+\item
+  写函数时，可以使用\texttt{...}参数，为捕获这个(可能是多个)参数的值，可以用\texttt{list(...)}这个办法。
 \item
   只显示3位小数：
 \end{itemize}
@@ -760,8 +792,8 @@ A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
 \end{Shaded}
 
 \begin{verbatim}
-## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
-## [6] mean.quosure*
+## [1] mean.Date        mean.default     mean.difftime    mean.POSIXct    
+## [5] mean.POSIXlt     mean.quosure*    mean.vctrs_vctr*
 ## see '?methods' for accessing help and source code
 \end{verbatim}
 
@@ -773,11 +805,12 @@ A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] [             [<-           aggregate     as.data.frame cbind        
-##  [6] coerce        cycle         diff          diffinv       initialize   
-## [11] kernapply     lines         Math          Math2         monthplot    
-## [16] na.omit       Ops           plot          print         show         
-## [21] slotsFromS3   t             time          window        window<-     
+##  [1] [             [<-           aggregate     as.data.frame as_tibble    
+##  [6] cbind         coerce        cycle         diff          diffinv      
+## [11] filter        initialize    kernapply     lines         Math         
+## [16] Math2         monthplot     na.omit       Ops           plot         
+## [21] print         show          slotsFromS3   t             time         
+## [26] window        window<-     
 ## see '?methods' for accessing help and source code
 \end{verbatim}
 
@@ -840,8 +873,8 @@ A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
 \hypertarget{Eco}{%
 \chapter{经济学中的各种专业计算}\label{Eco}}
 
-\hypertarget{ux4e00ux53e5ux8bddtips-4}{%
-\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-4}}
+\hypertarget{ux4e00ux53e5ux8bddtips-5}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-5}}
 
 \begin{itemize}
 \tightlist
@@ -915,8 +948,8 @@ A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
 \hypertarget{math}{%
 \chapter{数学计算}\label{math}}
 
-\hypertarget{ux4e00ux53e5ux8bddtips-5}{%
-\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-5}}
+\hypertarget{ux4e00ux53e5ux8bddtips-6}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-6}}
 
 \begin{itemize}
 \tightlist
@@ -1004,8 +1037,8 @@ A: 如何注册呢？调用\texttt{doParallel}包，代码如下：
 \hypertarget{ML}{%
 \chapter{机器学习和微观计量}\label{ML}}
 
-\hypertarget{ux4e00ux53e5ux8bddtips-6}{%
-\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-6}}
+\hypertarget{ux4e00ux53e5ux8bddtips-7}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-7}}
 
 \begin{itemize}
 \tightlist
@@ -1083,6 +1116,9 @@ ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴�
 \hypertarget{otherSF}{%
 \chapter{与其他软件的交互}\label{otherSF}}
 
+\hypertarget{ux4e00ux53e5ux8bddtips-8}{%
+\section{一句话Tips}\label{ux4e00ux53e5ux8bddtips-8}}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1111,11 +1147,8 @@ ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴�
 注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
 \texttt{options(RStata.StataPath\ =\ "\textbackslash{}"D:\textbackslash{}\textbackslash{}Program\ Files\ (x86)\textbackslash{}\textbackslash{}Stata14\textbackslash{}\textbackslash{}StataMP-64\textbackslash{}"")}
 
-\begin{itemize}
-\tightlist
-\item
-  R语言调用Matlab
-\end{itemize}
+\hypertarget{rux8bedux8a00ux8c03ux7528matlab}{%
+\section{R语言调用Matlab}\label{rux8bedux8a00ux8c03ux7528matlab}}
 
 Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
 
@@ -1157,8 +1190,172 @@ Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{rux4e0epythonux7684ux65e0ux7f1dux5bf9ux63a5}{%
+\section{R与Python的无缝对接}\label{rux4e0epythonux7684ux65e0ux7f1dux5bf9ux63a5}}
+
+\begin{itemize}
+\tightlist
+\item
+  第一步，首先配置好环境
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reticulate)}
+\KeywordTok{use_condaenv}\NormalTok{(}\StringTok{"D:/Anaconda3"}\NormalTok{)}
+
+\CommentTok{# 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在}
+\CommentTok{# use_condaenv()后，以使配置生效}
+\KeywordTok{py_config}\NormalTok{()}
+
+\KeywordTok{py_available}\NormalTok{()}\CommentTok{#[1] TRUE   #检查您的系统是否安装过Python}
+\KeywordTok{py_module_available}\NormalTok{(}\StringTok{"pandas"}\NormalTok{)}\CommentTok{#检查“pandas”是否安装}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号\$相当于python里面的``.''符号 ，如，
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{os <-}\StringTok{ }\KeywordTok{import}\NormalTok{(}\StringTok{"os"}\NormalTok{)}
+\NormalTok{os}\OperatorTok{$}\KeywordTok{getcwd}\NormalTok{()}
+\NormalTok{os}\OperatorTok{$}\KeywordTok{listdir}\NormalTok{()}\CommentTok{#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件}
+ 
+\NormalTok{numpy <-}\StringTok{ }\KeywordTok{import}\NormalTok{(}\StringTok{"numpy"}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{y}
+\NormalTok{x <-}\StringTok{ }\NormalTok{numpy}\OperatorTok{$}\KeywordTok{array}\NormalTok{(y)}
+\NormalTok{x}
+\NormalTok{numpy}\OperatorTok{$}\KeywordTok{transpose}\NormalTok{(x)}\CommentTok{#将数组进行转置}
+\NormalTok{numpy}\OperatorTok{$}\NormalTok{linalg}\OperatorTok{$}\KeywordTok{eig}\NormalTok{(x)}\CommentTok{#求特征根和特征向量}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux5176ux4ed6}{%
-\chapter{其他}\label{ux5176ux4ed6}}
+\subsection{其他：}\label{ux5176ux4ed6}}
+
+\begin{itemize}
+\tightlist
+\item
+  当你发现有些包没有，需要安装的时候，可以如下，
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reticulate)}
+
+\CommentTok{# create a new environment }
+\KeywordTok{conda_create}\NormalTok{(}\StringTok{"r-reticulate"}\NormalTok{)}
+
+\CommentTok{# install SciPy}
+\KeywordTok{conda_install}\NormalTok{(}\StringTok{"r-reticulate"}\NormalTok{, }\StringTok{"scipy"}\NormalTok{)}
+
+\CommentTok{# import SciPy (it will be automatically discovered in "r-reticulate")}
+\NormalTok{scipy <-}\StringTok{ }\KeywordTok{import}\NormalTok{(}\StringTok{"scipy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  这是调用时通常需要的代码：
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reticulate)}
+\CommentTok{# 可以查你有几个版本的python}
+\KeywordTok{py_config}\NormalTok{()}
+\CommentTok{# 想使用哪个版本的python}
+\KeywordTok{use_python}\NormalTok{(}\StringTok{'C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe'}\NormalTok{)}
+\CommentTok{# 检查python可不可用}
+\KeywordTok{py_available}\NormalTok{()}
+\CommentTok{# 检查模块可不可用}
+\KeywordTok{py_module_available}\NormalTok{(}\StringTok{'tushare'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4e0ejuliaux7684ux5bf9ux63a5}{%
+\section{与julia的对接}\label{ux4e0ejuliaux7684ux5bf9ux63a5}}
+
+\hypertarget{juliacallux5305}{%
+\subsection{\texorpdfstring{\texttt{JuliaCall}包}{JuliaCall包}}\label{juliacallux5305}}
+
+感觉此包没有类似\texttt{reticulate}包调用python那么无缝。
+
+\begin{itemize}
+\tightlist
+\item
+  在R中执行julia脚本
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(JuliaCall)}
+\CommentTok{# 设置存放julia二进制文件的文件夹}
+\KeywordTok{julia_setup}\NormalTok{(}\DataTypeTok{JULIA_HOME =} \StringTok{'D:/Program Files/Julia-1.4.2/bin'}\NormalTok{)}
+\CommentTok{# 几种主要的调用方式，我把我喜欢的写出来的}
+\NormalTok{julia}\OperatorTok{$}\KeywordTok{command}\NormalTok{(}\StringTok{"a = sqrt(2);"}\NormalTok{) }\CommentTok{# 在julia环境中产生了变量a}
+\NormalTok{ans <-}\StringTok{ }\NormalTok{julia}\OperatorTok{$}\KeywordTok{eval}\NormalTok{(}\StringTok{"a"}\NormalTok{) }\CommentTok{# 把变量a的值传给R环境中的ans变量}
+\CommentTok{# 其他的调用方式}
+\KeywordTok{julia_command}\NormalTok{(}\StringTok{"a = sqrt(2);"}\NormalTok{)}
+\KeywordTok{julia_eval}\NormalTok{(}\StringTok{"a"}\NormalTok{)}
+\CommentTok{#> [1] 1.414214}
+\DecValTok{2} \OperatorTok{%>J%}\StringTok{ }\NormalTok{sqrt}
+\CommentTok{#> [1] 1.414214}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  R与julia互传变量：前面提到的\texttt{julia\_eval}可以把julia中的变量传出来，使用\texttt{julia\_assign}可以把R中的变量传到julia中去。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{julia_assign}\NormalTok{(}\StringTok{'a'}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\KeywordTok{julia_command}\NormalTok{(}\StringTok{'a'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  julia控制台，而且只要你前期\texttt{julia\_setup()}了，这个控制台里面就包含了前期运算时的变量
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{julia_console}\NormalTok{()}
+\CommentTok{# 输入exit 可以退出}
+\CommentTok{# julia> exit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{julia_install_package_if_needed}\NormalTok{(}\StringTok{"Optim"}\NormalTok{)}
+\NormalTok{  opt <-}\StringTok{ }\KeywordTok{julia_pkg_import}\NormalTok{(}\StringTok{"Optim"}\NormalTok{,}
+                           \DataTypeTok{func_list =} \KeywordTok{c}\NormalTok{(}\StringTok{"optimize"}\NormalTok{, }\StringTok{"BFGS"}\NormalTok{))}
+\NormalTok{rosenbrock <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (}\FloatTok{1.0} \OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\FloatTok{100.0} \OperatorTok{*}\StringTok{ }\NormalTok{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{result <-}\StringTok{ }\NormalTok{opt}\OperatorTok{$}\KeywordTok{optimize}\NormalTok{(rosenbrock, }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{), opt}\OperatorTok{$}\KeywordTok{BFGS}\NormalTok{())}
+\NormalTok{result}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5176ux4ed6-1}{%
+\chapter{其他}\label{ux5176ux4ed6-1}}
 
 \begin{itemize}
 \tightlist

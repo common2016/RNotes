@@ -1,20 +1,28 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE)
-```
+
 
 # 原生的R {#rawR}
 ## 一句话Tips
 - ``+`(3,1)`与`3+1`的作用是一样的。这可以推广到其他中缀函数，如`%*%`等。
 - 写函数时，可以使用`...`参数，为捕获这个(可能是多个)参数的值，可以用`list(...)`这个办法。
 - 只显示3位小数：
-```{r eval=TRUE}
+
+```r
 round(0.123456,3)
 ```
+
+```
+## [1] 0.123
+```
 - 属性赋值：
-```{r eval=TRUE}
+
+```r
 y <- c(1,2,5,8)
 attr(y,'my_attribute') <- 'This is a vector'
 attr(y,'my_attribute')
+```
+
+```
+## [1] "This is a vector"
 ```
 - `remove.packages('dplyr')`，卸载已安装的包。
 - `system`或`shell`运行Shell命令。
@@ -30,7 +38,8 @@ conda install -c r r-essentials
 - 工作目录下所有文件名`dir()`
 - `file.copy, file.create, file.remove, file.rename, dir.creat, file.exists, file.info`
 - `file.rename`批量修改文件名
-```{r eval=FALSE}
+
+```r
 fr = paste('./加工贸易HS/2016/',dir('./加工贸易HS/2016'),sep = '')
 to = paste('./加工贸易HS/2016/hp',dir('./加工贸易HS/2016'),sep = '')
 file.rename(from = fr,to = to)
@@ -45,7 +54,8 @@ file.rename(from = fr,to = to)
 > executing %dopar% sequentially: no parallel backend registered 
 
 A: 如何注册呢？调用`doParallel`包，代码如下：
-```{r eval=FALSE}
+
+```r
 library(doParallel)
 cl <- makeCluster(2)
 registerDoParallel(cl)
@@ -59,19 +69,41 @@ stopCluster(cl)
 
 ## 类和方法
 ### S3类
-```{r eval=TRUE}
+
+```r
 # 查看属于一个泛型函数的所有方法：
 methods('mean')
+```
+
+```
+## [1] mean.Date        mean.default     mean.difftime    mean.POSIXct    
+## [5] mean.POSIXlt     mean.quosure*    mean.vctrs_vctr*
+## see '?methods' for accessing help and source code
+```
+
+```r
 # 反过来，查看一个类，都有何关联的泛型函数
 methods(class = 'ts')
 ```
 
+```
+##  [1] [             [<-           aggregate     as.data.frame as_tibble    
+##  [6] cbind         coerce        cycle         diff          diffinv      
+## [11] filter        initialize    kernapply     lines         Math         
+## [16] Math2         monthplot     na.omit       Ops           plot         
+## [21] print         show          slotsFromS3   t             time         
+## [26] window        window<-     
+## see '?methods' for accessing help and source code
+```
+
 创建一个类，很多时候只需在最后返回一个这样的，就可以了，
-```{r}
+
+```r
 class(foo) <- 'myclass'   
 ```
 然后为这个类创建一个泛型函数，只需要两步：
-```{r}
+
+```r
 # 创建一个类
 a <- list()
 class(a) <- 'a'
@@ -86,7 +118,8 @@ mean.a <- function(x) 'a' # 为已有的泛型函数增加方法
 
 ## 打印到文件
 - `sink`函数：在代码开始前加一行：`sink(“output.txt”)`，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用`sink()`切换回来。 示例：
-```{r eval=FALSE}
+
+```r
 sink("a.txt") 
 x<-rnorm(100,0,1) 
 mean(x) 
@@ -95,6 +128,7 @@ sink()
 
 - `cat`函数：`cat('abc','OK!',file = 'a.txt',sep = '\n',append = T)`
 - `stargazer`函数：
-```{r eval=FALSE}
+
+```r
 stargazer(fit1, fit2, title = "results", align = F, type = "text", no.space = TRUE, out = "fit.html")
 ```

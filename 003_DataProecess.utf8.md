@@ -1,10 +1,9 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,eval = FALSE)
-```
+
 # 数据处理 {#DataProcess}
 ## 一句话Tips
 - 因子操作
-```{r eval=FALSE}
+
+```r
 # 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA
 # 第二，仅按字母排序。
 # 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，
@@ -22,7 +21,8 @@ farcats::fct_recode(rawdata$marrige,
 - `tor`: 提供允许用户同时导入多个文件的功能.
 - 读入excel中的sheet名：`openxlsx::getSheetNames(file)`
 - `XLConect`处理excel最强大的包。但需要JRE（java run enviornment）。
-```{r}
+
+```r
 # 可以不改变原有数据，然后把一个数据框精准地写入某个地方
 writeWorksheetToFile("XLConnectExample2.xlsx", data = ChickWeight,
  sheet = "chickSheet", startRow = 3, startCol = 4,header = FALSE, clearSheets = FALSE)
@@ -35,7 +35,8 @@ writeWorksheetToFile("XLConnectExample2.xlsx", data = ChickWeight,
 - `zoo::rollapply(x, 30, mean)`就是30天的移动平均求值。
 
 - `select`是一个很牛逼的函数
-```{r eval=FALSE}
+
+```r
 select(regdata,id, year) # 选择regdata数据框的id和year两列
 select(regdata,starts_with('abc')) # 匹配以'abc'开头的列
 select(regdata,ends_with('abc')) # 匹配以'abc'结尾的列
@@ -44,7 +45,8 @@ select(regdata,matches('abc')) # 正则表达匹配
 select(regdata,num_range('x',1:3)) # 匹配x1, x2,x3的列
 ```
 - R语言给数组各维数命名
-```{r}
+
+```r
 # Create two vectors of different lengths.
 vector1 <- c(5,9,3)
 vector2 <- c(10,11,12,13,14,15)
@@ -59,7 +61,8 @@ print(result)
 ```
 
 -  `pdftools`包的函数可以读PDF文件：
-```{r eval=FALSE}
+
+```r
 pdf_info(pdf, opw = "", upw = "")
 
 pdf_text(pdf, opw = "", upw = "")
@@ -81,7 +84,8 @@ pdf_pagesize(pdf, opw = "", upw = "")
 ## `RJSDMX`包下载世界各大数据库数据
 
 一般工作流：
-```{r}
+
+```r
 library(RJSDMX)
 # 查看有哪些库可以用
 getProviders()

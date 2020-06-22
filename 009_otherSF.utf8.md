@@ -1,10 +1,9 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE)
-```
+
 # 与其他软件的交互 {#otherSF}
 ## 一句话Tips
 - `stargazer`的一个模版调用：
-```{r}
+
+```r
 stargazer(regression,type = 'text',out = "../PicTab/cmp.html",no.space = T,report = c('vcp'))
 ```
 `report`意味着报告变量、系数与p值。
@@ -24,7 +23,8 @@ Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调
     - 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
     - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
     
-```{r}
+
+```r
     library(matlabr)
     MatlabCode <- '
     a = 3;
@@ -33,7 +33,8 @@ Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调
     run_matlab_code(MatlabCode)
 ```
 - R语言读取SPSS（中文字符）
-```{r}
+
+```r
 # 读英文字符
 library(foreign)  
 mydata=read.spss("data.sav")  
@@ -48,7 +49,8 @@ data = as.data.frame(data1)
 ```
 ## R与Python的无缝对接
 - 第一步，首先配置好环境
-```{r}
+
+```r
 library(reticulate)
 use_condaenv("D:/Anaconda3")
 
@@ -62,7 +64,8 @@ py_module_available("pandas")#检查“pandas”是否安装
 
 - 第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号$相当于python里面的“.”符号 ，如，
 
-```{r}
+
+```r
 os <- import("os")
 os$getcwd()
 os$listdir()#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件
@@ -77,7 +80,8 @@ numpy$linalg$eig(x)#求特征根和特征向量
 ```
 ### 其他：
 - 当你发现有些包没有，需要安装的时候，可以如下，
-```{r}
+
+```r
 library(reticulate)
 
 # create a new environment 
@@ -90,7 +94,8 @@ conda_install("r-reticulate", "scipy")
 scipy <- import("scipy")
 ```
 - 这是调用时通常需要的代码：
-```{r}
+
+```r
 library(reticulate)
 # 可以查你有几个版本的python
 py_config()
@@ -107,7 +112,8 @@ py_module_available('tushare')
 感觉此包没有类似`reticulate`包调用python那么无缝。
 
 - 在R中执行julia脚本
-```{r}
+
+```r
 library(JuliaCall)
 # 设置存放julia二进制文件的文件夹
 julia_setup(JULIA_HOME = 'D:/Program Files/Julia-1.4.2/bin')
@@ -122,20 +128,23 @@ julia_eval("a")
 #> [1] 1.414214
 ```
 - R与julia互传变量：前面提到的`julia_eval`可以把julia中的变量传出来，使用`julia_assign`可以把R中的变量传到julia中去。
-```{r}
+
+```r
 julia_assign('a',1:5)
 julia_command('a')
 ```
 
 - julia控制台，而且只要你前期`julia_setup()`了，这个控制台里面就包含了前期运算时的变量
-```{r}
+
+```r
 julia_console()
 # 输入exit 可以退出
 # julia> exit
 ```
 
 - 它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数
-```{r}
+
+```r
 julia_install_package_if_needed("Optim")
   opt <- julia_pkg_import("Optim",
                            func_list = c("optimize", "BFGS"))
