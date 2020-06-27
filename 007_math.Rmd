@@ -3,6 +3,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 ```
 # 数学计算 {#math}
 ## 一句话Tips
+- `matlab::meshgrid`可能有助于你画3D图。
 - `crossprod(x,y)`的意思是$x'y$，`tcrossprod(x,y)`的意思是$xy'$。在OLS估计时还蛮省事。
 - `matlab`包模拟了matlab软件中的许多矩阵函数。
 - 克罗内克积使用`%x%`或者`kronecker`。

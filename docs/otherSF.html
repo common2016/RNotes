@@ -191,7 +191,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a><ul>
 <li class="chapter" data-level="9.1" data-path="otherSF.html"><a href="otherSF.html#一句话tips-8"><i class="fa fa-check"></i><b>9.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r语言调用matlab"><i class="fa fa-check"></i><b>9.2</b> R语言调用Matlab</a></li>
+<li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r语言调用matlab"><i class="fa fa-check"></i><b>9.2</b> R语言调用Matlab</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="otherSF.html"><a href="otherSF.html#强大的r.matlab包"><i class="fa fa-check"></i><b>9.2.1</b> 强大的<code>R.matlab</code>包</a></li>
+<li class="chapter" data-level="9.2.2" data-path="otherSF.html"><a href="otherSF.html#其他的一些小办法"><i class="fa fa-check"></i><b>9.2.2</b> 其他的一些小办法</a></li>
+</ul></li>
 <li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a><ul>
 <li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.3.1</b> 其他：</a></li>
 </ul></li>
@@ -235,88 +238,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>用RStata包可以从R里面调用stata，不过要先用<code>chooseBinStata()</code>先设置stata的安装路径。 也可以在R的启动环境中进行配置。
 注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
 <code>options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")</code></p>
-</div>
-<div id="r语言调用matlab" class="section level2">
-<h2><span class="header-section-number">9.2</span> R语言调用Matlab</h2>
-<p>Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
-- 安装R.matlab包。使用<code>writemat(filename,A=A,B=B)</code>把R里面的数据写进Matlab并保存成<code>.mat</code>格式。
-- 安装matlabr包。使用<code>run_matlab_script</code>命令来执行一个<code>.m</code>脚本。或者使用<code>R.matlab</code>包里面的<code>evaluate</code>来一个一个地执行matlab命令。或者类似于调用stata：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="otherSF.html#cb2-1"></a>    <span class="kw">library</span>(matlabr)</span>
-<span id="cb2-2"><a href="otherSF.html#cb2-2"></a>    MatlabCode &lt;-<span class="st"> &#39;</span></span>
-<span id="cb2-3"><a href="otherSF.html#cb2-3"></a><span class="st">    a = 3;</span></span>
-<span id="cb2-4"><a href="otherSF.html#cb2-4"></a><span class="st">    b = a+1;</span></span>
-<span id="cb2-5"><a href="otherSF.html#cb2-5"></a><span class="st">    &#39;</span></span>
-<span id="cb2-6"><a href="otherSF.html#cb2-6"></a>    <span class="kw">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
 <ul>
 <li>R语言读取SPSS（中文字符）</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="otherSF.html#cb3-1"></a><span class="co"># 读英文字符</span></span>
-<span id="cb3-2"><a href="otherSF.html#cb3-2"></a><span class="kw">library</span>(foreign)  </span>
-<span id="cb3-3"><a href="otherSF.html#cb3-3"></a>mydata=<span class="kw">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
-<span id="cb3-4"><a href="otherSF.html#cb3-4"></a><span class="co"># 或者如下</span></span>
-<span id="cb3-5"><a href="otherSF.html#cb3-5"></a><span class="kw">library</span>(Hmisc)  </span>
-<span id="cb3-6"><a href="otherSF.html#cb3-6"></a>data=<span class="kw">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
-<span id="cb3-7"><a href="otherSF.html#cb3-7"></a></span>
-<span id="cb3-8"><a href="otherSF.html#cb3-8"></a><span class="co"># 读中文字符</span></span>
-<span id="cb3-9"><a href="otherSF.html#cb3-9"></a><span class="kw">library</span>(memisc)</span>
-<span id="cb3-10"><a href="otherSF.html#cb3-10"></a>data1 =<span class="st"> </span><span class="kw">as.data.set</span>(<span class="kw">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
-<span id="cb3-11"><a href="otherSF.html#cb3-11"></a>data =<span class="st"> </span><span class="kw">as.data.frame</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="otherSF.html#cb2-1"></a><span class="co"># 读英文字符</span></span>
+<span id="cb2-2"><a href="otherSF.html#cb2-2"></a><span class="kw">library</span>(foreign)  </span>
+<span id="cb2-3"><a href="otherSF.html#cb2-3"></a>mydata=<span class="kw">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
+<span id="cb2-4"><a href="otherSF.html#cb2-4"></a><span class="co"># 或者如下</span></span>
+<span id="cb2-5"><a href="otherSF.html#cb2-5"></a><span class="kw">library</span>(Hmisc)  </span>
+<span id="cb2-6"><a href="otherSF.html#cb2-6"></a>data=<span class="kw">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
+<span id="cb2-7"><a href="otherSF.html#cb2-7"></a></span>
+<span id="cb2-8"><a href="otherSF.html#cb2-8"></a><span class="co"># 读中文字符</span></span>
+<span id="cb2-9"><a href="otherSF.html#cb2-9"></a><span class="kw">library</span>(memisc)</span>
+<span id="cb2-10"><a href="otherSF.html#cb2-10"></a>data1 =<span class="st"> </span><span class="kw">as.data.set</span>(<span class="kw">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
+<span id="cb2-11"><a href="otherSF.html#cb2-11"></a>data =<span class="st"> </span><span class="kw">as.data.frame</span>(data1)</span></code></pre></div>
+</div>
+<div id="r语言调用matlab" class="section level2">
+<h2><span class="header-section-number">9.2</span> R语言调用Matlab</h2>
+<div id="强大的r.matlab包" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> 强大的<code>R.matlab</code>包</h3>
+<p>一般工作流如下：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="otherSF.html#cb3-1"></a><span class="kw">library</span>(R.matlab)</span>
+<span id="cb3-2"><a href="otherSF.html#cb3-2"></a>Matlab<span class="op">$</span><span class="kw">startServer</span>() <span class="co"># 启动matlab服务器，可能会较慢</span></span>
+<span id="cb3-3"><a href="otherSF.html#cb3-3"></a><span class="co"># 创造与matlab交互的客户端对象，并看它的运行状态</span></span>
+<span id="cb3-4"><a href="otherSF.html#cb3-4"></a>matlab &lt;-<span class="st"> </span><span class="kw">Matlab</span>()</span>
+<span id="cb3-5"><a href="otherSF.html#cb3-5"></a><span class="kw">print</span>(matlab)</span>
+<span id="cb3-6"><a href="otherSF.html#cb3-6"></a><span class="co"># 打开运行</span></span>
+<span id="cb3-7"><a href="otherSF.html#cb3-7"></a>isOpen &lt;-<span class="st"> </span><span class="kw">open</span>(matlab)</span>
+<span id="cb3-8"><a href="otherSF.html#cb3-8"></a><span class="kw">print</span>(matlab)</span>
+<span id="cb3-9"><a href="otherSF.html#cb3-9"></a><span class="co"># matlab中运行脚本</span></span>
+<span id="cb3-10"><a href="otherSF.html#cb3-10"></a><span class="kw">evaluate</span>(matlab, <span class="st">&quot;A = 1+2;&quot;</span>, <span class="st">&quot;B = ones(2, 20);&quot;</span>)</span>
+<span id="cb3-11"><a href="otherSF.html#cb3-11"></a><span class="co"># 打印A的值</span></span>
+<span id="cb3-12"><a href="otherSF.html#cb3-12"></a><span class="kw">evaluate</span>(matlab, <span class="st">&quot;A&quot;</span>)</span>
+<span id="cb3-13"><a href="otherSF.html#cb3-13"></a><span class="co"># 将matlab中的值传到R中</span></span>
+<span id="cb3-14"><a href="otherSF.html#cb3-14"></a>data &lt;-<span class="st"> </span><span class="kw">getVariable</span>(matlab, <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb3-15"><a href="otherSF.html#cb3-15"></a><span class="co"># 将R中的值传到matlab中</span></span>
+<span id="cb3-16"><a href="otherSF.html#cb3-16"></a>ABCD &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">10000</span>), <span class="dt">ncol =</span> <span class="dv">100</span>)</span>
+<span id="cb3-17"><a href="otherSF.html#cb3-17"></a><span class="kw">setVariable</span>(matlab, <span class="dt">ABCD =</span> ABCD)</span>
+<span id="cb3-18"><a href="otherSF.html#cb3-18"></a><span class="co"># 关闭与matlab间的连接</span></span>
+<span id="cb3-19"><a href="otherSF.html#cb3-19"></a><span class="kw">close</span>(matlab)</span></code></pre></div>
+</div>
+<div id="其他的一些小办法" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> 其他的一些小办法</h3>
+<p>Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。</p>
+<pre><code>- 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
+- 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="otherSF.html#cb5-1"></a>    <span class="kw">library</span>(matlabr)</span>
+<span id="cb5-2"><a href="otherSF.html#cb5-2"></a>    MatlabCode &lt;-<span class="st"> &#39;</span></span>
+<span id="cb5-3"><a href="otherSF.html#cb5-3"></a><span class="st">    a = 3;</span></span>
+<span id="cb5-4"><a href="otherSF.html#cb5-4"></a><span class="st">    b = a+1;</span></span>
+<span id="cb5-5"><a href="otherSF.html#cb5-5"></a><span class="st">    &#39;</span></span>
+<span id="cb5-6"><a href="otherSF.html#cb5-6"></a>    <span class="kw">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
+</div>
 </div>
 <div id="r与python的无缝对接" class="section level2">
 <h2><span class="header-section-number">9.3</span> R与Python的无缝对接</h2>
 <ul>
 <li>第一步，首先配置好环境</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="otherSF.html#cb4-1"></a><span class="kw">library</span>(reticulate)</span>
-<span id="cb4-2"><a href="otherSF.html#cb4-2"></a><span class="kw">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
-<span id="cb4-3"><a href="otherSF.html#cb4-3"></a></span>
-<span id="cb4-4"><a href="otherSF.html#cb4-4"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
-<span id="cb4-5"><a href="otherSF.html#cb4-5"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
-<span id="cb4-6"><a href="otherSF.html#cb4-6"></a><span class="kw">py_config</span>()</span>
-<span id="cb4-7"><a href="otherSF.html#cb4-7"></a></span>
-<span id="cb4-8"><a href="otherSF.html#cb4-8"></a><span class="kw">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
-<span id="cb4-9"><a href="otherSF.html#cb4-9"></a><span class="kw">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="otherSF.html#cb6-1"></a><span class="kw">library</span>(reticulate)</span>
+<span id="cb6-2"><a href="otherSF.html#cb6-2"></a><span class="kw">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
+<span id="cb6-3"><a href="otherSF.html#cb6-3"></a></span>
+<span id="cb6-4"><a href="otherSF.html#cb6-4"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
+<span id="cb6-5"><a href="otherSF.html#cb6-5"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
+<span id="cb6-6"><a href="otherSF.html#cb6-6"></a><span class="kw">py_config</span>()</span>
+<span id="cb6-7"><a href="otherSF.html#cb6-7"></a></span>
+<span id="cb6-8"><a href="otherSF.html#cb6-8"></a><span class="kw">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
+<span id="cb6-9"><a href="otherSF.html#cb6-9"></a><span class="kw">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
 <ul>
 <li>第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号$相当于python里面的“.”符号 ，如，</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="otherSF.html#cb5-1"></a>os &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;os&quot;</span>)</span>
-<span id="cb5-2"><a href="otherSF.html#cb5-2"></a>os<span class="op">$</span><span class="kw">getcwd</span>()</span>
-<span id="cb5-3"><a href="otherSF.html#cb5-3"></a>os<span class="op">$</span><span class="kw">listdir</span>()<span class="co">#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件</span></span>
-<span id="cb5-4"><a href="otherSF.html#cb5-4"></a> </span>
-<span id="cb5-5"><a href="otherSF.html#cb5-5"></a>numpy &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;numpy&quot;</span>)</span>
-<span id="cb5-6"><a href="otherSF.html#cb5-6"></a>y &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-7"><a href="otherSF.html#cb5-7"></a>y</span>
-<span id="cb5-8"><a href="otherSF.html#cb5-8"></a>x &lt;-<span class="st"> </span>numpy<span class="op">$</span><span class="kw">array</span>(y)</span>
-<span id="cb5-9"><a href="otherSF.html#cb5-9"></a>x</span>
-<span id="cb5-10"><a href="otherSF.html#cb5-10"></a>numpy<span class="op">$</span><span class="kw">transpose</span>(x)<span class="co">#将数组进行转置</span></span>
-<span id="cb5-11"><a href="otherSF.html#cb5-11"></a>numpy<span class="op">$</span>linalg<span class="op">$</span><span class="kw">eig</span>(x)<span class="co">#求特征根和特征向量</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="otherSF.html#cb7-1"></a>os &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;os&quot;</span>)</span>
+<span id="cb7-2"><a href="otherSF.html#cb7-2"></a>os<span class="op">$</span><span class="kw">getcwd</span>()</span>
+<span id="cb7-3"><a href="otherSF.html#cb7-3"></a>os<span class="op">$</span><span class="kw">listdir</span>()<span class="co">#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件</span></span>
+<span id="cb7-4"><a href="otherSF.html#cb7-4"></a> </span>
+<span id="cb7-5"><a href="otherSF.html#cb7-5"></a>numpy &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;numpy&quot;</span>)</span>
+<span id="cb7-6"><a href="otherSF.html#cb7-6"></a>y &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb7-7"><a href="otherSF.html#cb7-7"></a>y</span>
+<span id="cb7-8"><a href="otherSF.html#cb7-8"></a>x &lt;-<span class="st"> </span>numpy<span class="op">$</span><span class="kw">array</span>(y)</span>
+<span id="cb7-9"><a href="otherSF.html#cb7-9"></a>x</span>
+<span id="cb7-10"><a href="otherSF.html#cb7-10"></a>numpy<span class="op">$</span><span class="kw">transpose</span>(x)<span class="co">#将数组进行转置</span></span>
+<span id="cb7-11"><a href="otherSF.html#cb7-11"></a>numpy<span class="op">$</span>linalg<span class="op">$</span><span class="kw">eig</span>(x)<span class="co">#求特征根和特征向量</span></span></code></pre></div>
 <div id="其他" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> 其他：</h3>
 <ul>
 <li>当你发现有些包没有，需要安装的时候，可以如下，</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="otherSF.html#cb6-1"></a><span class="kw">library</span>(reticulate)</span>
-<span id="cb6-2"><a href="otherSF.html#cb6-2"></a></span>
-<span id="cb6-3"><a href="otherSF.html#cb6-3"></a><span class="co"># create a new environment </span></span>
-<span id="cb6-4"><a href="otherSF.html#cb6-4"></a><span class="kw">conda_create</span>(<span class="st">&quot;r-reticulate&quot;</span>)</span>
-<span id="cb6-5"><a href="otherSF.html#cb6-5"></a></span>
-<span id="cb6-6"><a href="otherSF.html#cb6-6"></a><span class="co"># install SciPy</span></span>
-<span id="cb6-7"><a href="otherSF.html#cb6-7"></a><span class="kw">conda_install</span>(<span class="st">&quot;r-reticulate&quot;</span>, <span class="st">&quot;scipy&quot;</span>)</span>
-<span id="cb6-8"><a href="otherSF.html#cb6-8"></a></span>
-<span id="cb6-9"><a href="otherSF.html#cb6-9"></a><span class="co"># import SciPy (it will be automatically discovered in &quot;r-reticulate&quot;)</span></span>
-<span id="cb6-10"><a href="otherSF.html#cb6-10"></a>scipy &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;scipy&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="otherSF.html#cb8-1"></a><span class="kw">library</span>(reticulate)</span>
+<span id="cb8-2"><a href="otherSF.html#cb8-2"></a></span>
+<span id="cb8-3"><a href="otherSF.html#cb8-3"></a><span class="co"># create a new environment </span></span>
+<span id="cb8-4"><a href="otherSF.html#cb8-4"></a><span class="kw">conda_create</span>(<span class="st">&quot;r-reticulate&quot;</span>)</span>
+<span id="cb8-5"><a href="otherSF.html#cb8-5"></a></span>
+<span id="cb8-6"><a href="otherSF.html#cb8-6"></a><span class="co"># install SciPy</span></span>
+<span id="cb8-7"><a href="otherSF.html#cb8-7"></a><span class="kw">conda_install</span>(<span class="st">&quot;r-reticulate&quot;</span>, <span class="st">&quot;scipy&quot;</span>)</span>
+<span id="cb8-8"><a href="otherSF.html#cb8-8"></a></span>
+<span id="cb8-9"><a href="otherSF.html#cb8-9"></a><span class="co"># import SciPy (it will be automatically discovered in &quot;r-reticulate&quot;)</span></span>
+<span id="cb8-10"><a href="otherSF.html#cb8-10"></a>scipy &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;scipy&quot;</span>)</span></code></pre></div>
 <ul>
 <li>这是调用时通常需要的代码：</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="otherSF.html#cb7-1"></a><span class="kw">library</span>(reticulate)</span>
-<span id="cb7-2"><a href="otherSF.html#cb7-2"></a><span class="co"># 可以查你有几个版本的python</span></span>
-<span id="cb7-3"><a href="otherSF.html#cb7-3"></a><span class="kw">py_config</span>()</span>
-<span id="cb7-4"><a href="otherSF.html#cb7-4"></a><span class="co"># 想使用哪个版本的python</span></span>
-<span id="cb7-5"><a href="otherSF.html#cb7-5"></a><span class="kw">use_python</span>(<span class="st">&#39;C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe&#39;</span>)</span>
-<span id="cb7-6"><a href="otherSF.html#cb7-6"></a><span class="co"># 检查python可不可用</span></span>
-<span id="cb7-7"><a href="otherSF.html#cb7-7"></a><span class="kw">py_available</span>()</span>
-<span id="cb7-8"><a href="otherSF.html#cb7-8"></a><span class="co"># 检查模块可不可用</span></span>
-<span id="cb7-9"><a href="otherSF.html#cb7-9"></a><span class="kw">py_module_available</span>(<span class="st">&#39;tushare&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="otherSF.html#cb9-1"></a><span class="kw">library</span>(reticulate)</span>
+<span id="cb9-2"><a href="otherSF.html#cb9-2"></a><span class="co"># 可以查你有几个版本的python</span></span>
+<span id="cb9-3"><a href="otherSF.html#cb9-3"></a><span class="kw">py_config</span>()</span>
+<span id="cb9-4"><a href="otherSF.html#cb9-4"></a><span class="co"># 想使用哪个版本的python</span></span>
+<span id="cb9-5"><a href="otherSF.html#cb9-5"></a><span class="kw">use_python</span>(<span class="st">&#39;C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe&#39;</span>)</span>
+<span id="cb9-6"><a href="otherSF.html#cb9-6"></a><span class="co"># 检查python可不可用</span></span>
+<span id="cb9-7"><a href="otherSF.html#cb9-7"></a><span class="kw">py_available</span>()</span>
+<span id="cb9-8"><a href="otherSF.html#cb9-8"></a><span class="co"># 检查模块可不可用</span></span>
+<span id="cb9-9"><a href="otherSF.html#cb9-9"></a><span class="kw">py_module_available</span>(<span class="st">&#39;tushare&#39;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="与julia的对接" class="section level2">
@@ -327,38 +356,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>在R中执行julia脚本</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="otherSF.html#cb8-1"></a><span class="kw">library</span>(JuliaCall)</span>
-<span id="cb8-2"><a href="otherSF.html#cb8-2"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
-<span id="cb8-3"><a href="otherSF.html#cb8-3"></a><span class="kw">julia_setup</span>(<span class="dt">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
-<span id="cb8-4"><a href="otherSF.html#cb8-4"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
-<span id="cb8-5"><a href="otherSF.html#cb8-5"></a>julia<span class="op">$</span><span class="kw">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
-<span id="cb8-6"><a href="otherSF.html#cb8-6"></a>ans &lt;-<span class="st"> </span>julia<span class="op">$</span><span class="kw">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
-<span id="cb8-7"><a href="otherSF.html#cb8-7"></a><span class="co"># 其他的调用方式</span></span>
-<span id="cb8-8"><a href="otherSF.html#cb8-8"></a><span class="kw">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
-<span id="cb8-9"><a href="otherSF.html#cb8-9"></a><span class="kw">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
-<span id="cb8-10"><a href="otherSF.html#cb8-10"></a><span class="co">#&gt; [1] 1.414214</span></span>
-<span id="cb8-11"><a href="otherSF.html#cb8-11"></a><span class="dv">2</span> <span class="op">%&gt;J%</span><span class="st"> </span>sqrt</span>
-<span id="cb8-12"><a href="otherSF.html#cb8-12"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="otherSF.html#cb10-1"></a><span class="kw">library</span>(JuliaCall)</span>
+<span id="cb10-2"><a href="otherSF.html#cb10-2"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
+<span id="cb10-3"><a href="otherSF.html#cb10-3"></a><span class="kw">julia_setup</span>(<span class="dt">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
+<span id="cb10-4"><a href="otherSF.html#cb10-4"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
+<span id="cb10-5"><a href="otherSF.html#cb10-5"></a>julia<span class="op">$</span><span class="kw">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
+<span id="cb10-6"><a href="otherSF.html#cb10-6"></a>ans &lt;-<span class="st"> </span>julia<span class="op">$</span><span class="kw">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
+<span id="cb10-7"><a href="otherSF.html#cb10-7"></a><span class="co"># 其他的调用方式</span></span>
+<span id="cb10-8"><a href="otherSF.html#cb10-8"></a><span class="kw">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
+<span id="cb10-9"><a href="otherSF.html#cb10-9"></a><span class="kw">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb10-10"><a href="otherSF.html#cb10-10"></a><span class="co">#&gt; [1] 1.414214</span></span>
+<span id="cb10-11"><a href="otherSF.html#cb10-11"></a><span class="dv">2</span> <span class="op">%&gt;J%</span><span class="st"> </span>sqrt</span>
+<span id="cb10-12"><a href="otherSF.html#cb10-12"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
 <ul>
 <li>R与julia互传变量：前面提到的<code>julia_eval</code>可以把julia中的变量传出来，使用<code>julia_assign</code>可以把R中的变量传到julia中去。</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="otherSF.html#cb9-1"></a><span class="kw">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb9-2"><a href="otherSF.html#cb9-2"></a><span class="kw">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="otherSF.html#cb11-1"></a><span class="kw">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb11-2"><a href="otherSF.html#cb11-2"></a><span class="kw">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
 <ul>
 <li>julia控制台，而且只要你前期<code>julia_setup()</code>了，这个控制台里面就包含了前期运算时的变量</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="otherSF.html#cb10-1"></a><span class="kw">julia_console</span>()</span>
-<span id="cb10-2"><a href="otherSF.html#cb10-2"></a><span class="co"># 输入exit 可以退出</span></span>
-<span id="cb10-3"><a href="otherSF.html#cb10-3"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="otherSF.html#cb12-1"></a><span class="kw">julia_console</span>()</span>
+<span id="cb12-2"><a href="otherSF.html#cb12-2"></a><span class="co"># 输入exit 可以退出</span></span>
+<span id="cb12-3"><a href="otherSF.html#cb12-3"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
 <ul>
 <li>它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="otherSF.html#cb11-1"></a><span class="kw">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
-<span id="cb11-2"><a href="otherSF.html#cb11-2"></a>  opt &lt;-<span class="st"> </span><span class="kw">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
-<span id="cb11-3"><a href="otherSF.html#cb11-3"></a>                           <span class="dt">func_list =</span> <span class="kw">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
-<span id="cb11-4"><a href="otherSF.html#cb11-4"></a>rosenbrock &lt;-<span class="st"> </span><span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="fl">100.0</span> <span class="op">*</span><span class="st"> </span>(x[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb11-5"><a href="otherSF.html#cb11-5"></a>result &lt;-<span class="st"> </span>opt<span class="op">$</span><span class="kw">optimize</span>(rosenbrock, <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="op">$</span><span class="kw">BFGS</span>())</span>
-<span id="cb11-6"><a href="otherSF.html#cb11-6"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="otherSF.html#cb13-1"></a><span class="kw">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
+<span id="cb13-2"><a href="otherSF.html#cb13-2"></a>  opt &lt;-<span class="st"> </span><span class="kw">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
+<span id="cb13-3"><a href="otherSF.html#cb13-3"></a>                           <span class="dt">func_list =</span> <span class="kw">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
+<span id="cb13-4"><a href="otherSF.html#cb13-4"></a>rosenbrock &lt;-<span class="st"> </span><span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="fl">100.0</span> <span class="op">*</span><span class="st"> </span>(x[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb13-5"><a href="otherSF.html#cb13-5"></a>result &lt;-<span class="st"> </span>opt<span class="op">$</span><span class="kw">optimize</span>(rosenbrock, <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="op">$</span><span class="kw">BFGS</span>())</span>
+<span id="cb13-6"><a href="otherSF.html#cb13-6"></a>result</span></code></pre></div>
 
 </div>
 </div>

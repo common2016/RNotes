@@ -16,21 +16,6 @@ stargazer(regression,type = 'text',out = "../PicTab/cmp.html",no.space = T,repor
 注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
 `options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")`
 
-## R语言调用Matlab
-
-Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
-    - 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
-    - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
-    
-
-```r
-    library(matlabr)
-    MatlabCode <- '
-    a = 3;
-    b = a+1;
-    '
-    run_matlab_code(MatlabCode)
-```
 - R语言读取SPSS（中文字符）
 
 ```r
@@ -46,6 +31,49 @@ library(memisc)
 data1 = as.data.set(spss.system.file("data.sav"))
 data = as.data.frame(data1)
 ```
+
+## R语言调用Matlab
+### 强大的`R.matlab`包
+一般工作流如下：
+
+```r
+library(R.matlab)
+Matlab$startServer() # 启动matlab服务器，可能会较慢
+# 创造与matlab交互的客户端对象，并看它的运行状态
+matlab <- Matlab()
+print(matlab)
+# 打开运行
+isOpen <- open(matlab)
+print(matlab)
+# matlab中运行脚本
+evaluate(matlab, "A = 1+2;", "B = ones(2, 20);")
+# 打印A的值
+evaluate(matlab, "A")
+# 将matlab中的值传到R中
+data <- getVariable(matlab, c("A", "B"))
+# 将R中的值传到matlab中
+ABCD <- matrix(rnorm(10000), ncol = 100)
+setVariable(matlab, ABCD = ABCD)
+# 关闭与matlab间的连接
+close(matlab)
+```
+
+### 其他的一些小办法
+Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。
+
+    - 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
+    - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：
+    
+
+```r
+    library(matlabr)
+    MatlabCode <- '
+    a = 3;
+    b = a+1;
+    '
+    run_matlab_code(MatlabCode)
+```
+
 ## R与Python的无缝对接
 - 第一步，首先配置好环境
 
