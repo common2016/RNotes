@@ -1,6 +1,8 @@
 
 # 普通回归和时间序列序列 {#TS}
 ## 一句话Tips
+- `gdpc`计算广义动态主成分。
+- `POET::POETKhat`提供了计算Bai and NG (2002)因子数目的函数。
 - `confint`函数返回系数的置信区间
 - `bssm`拟合非线性卡尔曼滤波的包。`pomp`，`KFAS`也是。`pomp`好像接口更简单些，第四节有一个非线性的例子。
 - `NlinTS`一个利用神经网络的格兰杰因果非线性检验。
@@ -104,7 +106,7 @@ x12out$d11 #此即为调整后的时间序列
 
 ```r
 library(seasonal)
-m <- seas(AirPassengers) # x13 处理
+m <- seas(AirPassengers) # x13 处理, AirPassengers是一个ts对象
 final(m) # 最终调整序列
 plot(m) # 绘制调整和未调整序列
 ```

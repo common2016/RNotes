@@ -101,3 +101,4 @@ ans <- getTimeSeries('WITS', 'DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.M
 sdmxHelp()
 ```
 
+`IMF2`里面的`IFS`数据库里面有很多季度的宏观数据，如GDP，固定资本形成等
