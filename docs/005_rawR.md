@@ -2,7 +2,7 @@
 
 # 原生的R {#rawR}
 ## 一句话Tips
-- ``+`(3,1)`与`3+1`的作用是一样的。这可以推广到其他中缀函数，如`%*%`等。
+- `+(3,1)`与`3+1`的作用是一样的。这可以推广到其他中缀函数，如`%*%`等。
 - 写函数时，可以使用`...`参数，为捕获这个(可能是多个)参数的值，可以用`list(...)`这个办法。
 - 只显示3位小数：
 
@@ -47,25 +47,41 @@ file.rename(from = fr,to = to)
 - `down.file`只要给出第一个参数：网址（包括ftp的）和第二个参数，下载的文件要保存的文件名，就可以直接在网上下载文件。如果中国乱码，记得使用fileEncoding = 'UTF-8'来修正。
 - `getAnywhere(predict.Arima)`查看源代码
 - `.rs.restartR()`重启一个新的R会话
-- 平行计算。光使用`foreach`包是不够的，还需要注册一个平行背景注册，否则`foreach`包在运算完以后会返回警告：
-
-> Warning message:
->
-> executing %dopar% sequentially: no parallel backend registered 
-
-A: 如何注册呢？调用`doParallel`包，代码如下：
-
-```r
-library(doParallel)
-cl <- makeCluster(2)
-registerDoParallel(cl)
-foreach(i=1:3, .pacakages = 'tidyverse') %dopar% sqrt(i)
-stopCluster(cl)
-```
-
 - 如何安装已经过期的包？
    1. 点[这里](https://cran.r-project.org/src/contrib/Archive/)找到过期的包，然后下载下来。
    2. 用这个命令安装本地的包：`install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')`
+
+## 平行计算
+平行计算中，光使用`foreach`包是不够的，还需要注册一个平行背景注册，否则`foreach`包在运算完以后会返回警告：
+
+```r
+# Warning message:
+#
+# executing %dopar% sequentially: no parallel backend registered 
+```
+
+平行计算一般的工作流如下：
+
+```r
+library(doParallel)
+cl <- parallel::makeCluster(2)
+doParallel::registerDoParallel(cl)
+foreach(i=1:3, .pacakages = 'tidyverse') %dopar% sqrt(i)
+doParallel::stopCluster(cl)
+```
+
+要注意，平行计算中，在`foreach`后的语句中，相当于在每个进程中，重启了一个新环境。因此，如果你要用到`foreach`外面的变量，则需要把变量、包等都传进去。同时，这些变量如果是向量或者`list`则不需要特别地指定迭代变量是哪个，程序会自动将它们处理成迭代变量。如果这些变量的长度不一，则迭代时以最少长度的变量为准。一个简单的例子(`VARrf::IRFrf_gen`)如下：
+
+```r
+# 传进去了5个变量,nhist, itevar,pmax,s, shockvar，这些变量的长度都是一样的。
+picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
+                              pmax = pmax_para,s = s, shockvar = shockvar,
+                              .packages = 'tidyverse') %dopar% {
+    devtools::load_all()
+    IRFrf(data = itevar, pmax = pmax, s = s, shockvar = shockvar,histime = i)
+  }
+```
+
 
 ## 类和方法
 ### S3类
