@@ -176,6 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.3.1</b> S3类</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.4</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.5</b> <code>apply</code>函数族</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
 <li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-5"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
@@ -335,6 +336,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>stargazer</code>函数：</li>
 </ul>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="rawR.html#cb17-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
+</div>
+<div id="apply函数族" class="section level2">
+<h2><span class="header-section-number">5.5</span> <code>apply</code>函数族</h2>
+<ul>
+<li><code>lapply(vector,fun)</code>，可以将函数作用于向量<code>vector</code>的每一个元素上，然后返回一个<code>list</code>。</li>
+<li><code>sapply(vector,fun)</code>的好处在于不是返回一个list，而是返回一个向量或者矩阵。如果<code>fun</code>返回的是一个元素，那么<code>sapply</code>就返回一个向量，如果<code>fun</code>返回的是一个向量，则<code>sapply</code>按列将结果拼接成一个矩阵。</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="rawR.html#cb18-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) i<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="rawR.html#cb20-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) <span class="kw">c</span>(i<span class="op">^</span><span class="dv">2</span>,i))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    1    4    9   16   25   36   49   64   81   100
+## [2,]    1    2    3    4    5    6    7    8    9    10</code></pre>
+<ul>
+<li><code>apply</code>是我用得最熟的，它是将函数应用到矩阵或数组的行或列上。</li>
+<li><code>mapply</code>是<code>lapply</code>或<code>sapply</code>的多元版本，它可以同时输入多个向量，如</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="rawR.html#cb22-1"></a><span class="kw">mapply</span>(<span class="cf">function</span>(x,y,z) x<span class="op">*</span>y <span class="op">+</span><span class="st"> </span>y<span class="op">*</span>z <span class="op">+</span><span class="st"> </span>x<span class="op">*</span>z, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] -1 -4 -9</code></pre>
 
 </div>
 </div>

@@ -147,3 +147,36 @@ sink()
 ```r
 stargazer(fit1, fit2, title = "results", align = F, type = "text", no.space = TRUE, out = "fit.html")
 ```
+
+## `apply`函数族
+- `lapply(vector,fun)`，可以将函数作用于向量`vector`的每一个元素上，然后返回一个`list`。
+- `sapply(vector,fun)`的好处在于不是返回一个list，而是返回一个向量或者矩阵。如果`fun`返回的是一个元素，那么`sapply`就返回一个向量，如果`fun`返回的是一个向量，则`sapply`按列将结果拼接成一个矩阵。
+
+```r
+sapply(1:10, function(i) i^2)
+```
+
+```
+##  [1]   1   4   9  16  25  36  49  64  81 100
+```
+
+```r
+sapply(1:10, function(i) c(i^2,i))
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    1    4    9   16   25   36   49   64   81   100
+## [2,]    1    2    3    4    5    6    7    8    9    10
+```
+- `apply`是我用得最熟的，它是将函数应用到矩阵或数组的行或列上。
+- `mapply`是`lapply`或`sapply`的多元版本，它可以同时输入多个向量，如
+
+```r
+mapply(function(x,y,z) x*y + y*z + x*z, x = c(1,2,3),y = c(1,2,3), z = c(-1,-2,-3))
+```
+
+```
+## [1] -1 -4 -9
+```
+
