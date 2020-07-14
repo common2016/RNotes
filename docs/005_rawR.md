@@ -170,7 +170,7 @@ sapply(1:10, function(i) c(i^2,i))
 ## [2,]    1    2    3    4    5    6    7    8    9    10
 ```
 - `apply`是我用得最熟的，它是将函数应用到矩阵或数组的行或列上。
-- `mapply`是`lapply`或`sapply`的多元版本，它可以同时输入多个向量，如
+- `mapply`是`lapply`或`sapply`的多元版本，即它可以同时输入多个向量，如
 
 ```r
 mapply(function(x,y,z) x*y + y*z + x*z, x = c(1,2,3),y = c(1,2,3), z = c(-1,-2,-3))
