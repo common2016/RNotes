@@ -102,3 +102,35 @@ sdmxHelp()
 ```
 
 `IMF2`里面的`IFS`数据库里面有很多季度的宏观数据，如GDP，固定资本形成等
+
+## 前向、后向、线性和样条插值
+- `zoo`包
+  - `zoo::na.locf`缺省设置可以前向插，即缺失值等于前面的值。当将该函数的`fromLast`参数设为真时，即为后向插。
+  - `zoo:na.approx`可以线性插值但不能外推；`na.spline`可以样条插值；
+
+- `imputeTS`包,`imputeTS::na.locf`也可以，不过它只能对数值。它也有后向插值选项。
+
+### `signal`包
+它有一个插值函数`interp1`函数，比较好用：
+
+```r
+interp1(x, y, xi, method = c("linear", "nearest", "pchip", "cubic", "spline"), 
+        extrap = NA, ...)
+```
+它的参数说明如下
+
+- x,y：vectors giving the coordinates of the points to be interpolated. x is assumed to be strictly monotonic.
+- xi：points at which to interpolate.
+
+method	：
+one of "linear", "nearest", "pchip", "cubic", "spline".
+
+- 'nearest': return nearest neighbour
+- 'linear': linear interpolation from nearest neighbours
+- 'pchip': piecewise cubic hermite interpolating polynomial
+- 'cubic': cubic interpolation from four nearest neighbours
+- 'spline': cubic spline interpolation–smooth first and second derivatives throughout the curve. for method='spline', additional arguments passed to splinefun.
+Details
+
+- extrap：
+if TRUE or 'extrap', then extrapolate values beyond the endpoints. If extrap is a number, replace values beyond the endpoints with that number (defaults to NA).
