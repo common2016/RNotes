@@ -148,16 +148,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a><ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
-<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a><ul>
 <li class="chapter" data-level="3.1" data-path="DataProcess.html"><a href="DataProcess.html#一句话tips-2"><i class="fa fa-check"></i><b>3.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="3.2" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.2</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
+<li class="chapter" data-level="3.3" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.3</b> 前向、后向、线性和样条插值</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="DataProcess.html"><a href="DataProcess.html#signal包"><i class="fa fa-check"></i><b>3.3.1</b> <code>signal</code>包</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a><ul>
 <li class="chapter" data-level="4.1" data-path="统计.html"><a href="统计.html#一句话tips-3"><i class="fa fa-check"></i><b>4.1</b> 一句话Tips</a></li>
@@ -177,6 +179,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.4</b> 打印到文件</a></li>
 <li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.5</b> <code>apply</code>函数族</a></li>
+<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.6</b> Linux中的R</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.6.1</b> 如何修改<code>.Rprofile</code>？</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
 <li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-5"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
@@ -228,18 +233,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="一句话tips-4" class="section level2">
 <h2><span class="header-section-number">5.1</span> 一句话Tips</h2>
 <ul>
+<li><code>suppressMessages()</code>可以抑制代码抛出的信息等。</li>
 <li><code>+(3,1)</code>与<code>3+1</code>的作用是一样的。这可以推广到其他中缀函数，如<code>%*%</code>等。</li>
 <li>写函数时，可以使用<code>...</code>参数，为捕获这个(可能是多个)参数的值，可以用<code>list(...)</code>这个办法。</li>
 <li>只显示3位小数：</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="rawR.html#cb1-1"></a><span class="kw">round</span>(<span class="fl">0.123456</span>,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="rawR.html#cb16-1"></a><span class="kw">round</span>(<span class="fl">0.123456</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.123</code></pre>
 <ul>
 <li>属性赋值：</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="rawR.html#cb3-1"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)</span>
-<span id="cb3-2"><a href="rawR.html#cb3-2"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>) &lt;-<span class="st"> &#39;This is a vector&#39;</span></span>
-<span id="cb3-3"><a href="rawR.html#cb3-3"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="rawR.html#cb18-1"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>)</span>
+<span id="cb18-2"><a href="rawR.html#cb18-2"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>) &lt;-<span class="st"> &#39;This is a vector&#39;</span></span>
+<span id="cb18-3"><a href="rawR.html#cb18-3"></a><span class="kw">attr</span>(y,<span class="st">&#39;my_attribute&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;This is a vector&quot;</code></pre>
 <ul>
 <li><code>remove.packages('dplyr')</code>，卸载已安装的包。</li>
@@ -256,9 +262,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>file.copy, file.create, file.remove, file.rename, dir.creat, file.exists, file.info</code></li>
 <li><code>file.rename</code>批量修改文件名</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="rawR.html#cb6-1"></a>fr =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb6-2"><a href="rawR.html#cb6-2"></a>to =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/hp&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb6-3"><a href="rawR.html#cb6-3"></a><span class="kw">file.rename</span>(<span class="dt">from =</span> fr,<span class="dt">to =</span> to)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="rawR.html#cb21-1"></a>fr =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb21-2"><a href="rawR.html#cb21-2"></a>to =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;./加工贸易HS/2016/hp&#39;</span>,<span class="kw">dir</span>(<span class="st">&#39;./加工贸易HS/2016&#39;</span>),<span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb21-3"><a href="rawR.html#cb21-3"></a><span class="kw">file.rename</span>(<span class="dt">from =</span> fr,<span class="dt">to =</span> to)</span></code></pre></div>
 <ul>
 <li><code>down.file</code>只要给出第一个参数：网址（包括ftp的）和第二个参数，下载的文件要保存的文件名，就可以直接在网上下载文件。如果中国乱码，记得使用fileEncoding = ’UTF-8’来修正。</li>
 <li><code>getAnywhere(predict.Arima)</code>查看源代码</li>
@@ -273,35 +279,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="平行计算" class="section level2">
 <h2><span class="header-section-number">5.2</span> 平行计算</h2>
 <p>平行计算中，光使用<code>foreach</code>包是不够的，还需要注册一个平行背景注册，否则<code>foreach</code>包在运算完以后会返回警告：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="rawR.html#cb7-1"></a><span class="co"># Warning message:</span></span>
-<span id="cb7-2"><a href="rawR.html#cb7-2"></a><span class="co">#</span></span>
-<span id="cb7-3"><a href="rawR.html#cb7-3"></a><span class="co"># executing %dopar% sequentially: no parallel backend registered </span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="rawR.html#cb22-1"></a><span class="co"># Warning message:</span></span>
+<span id="cb22-2"><a href="rawR.html#cb22-2"></a><span class="co">#</span></span>
+<span id="cb22-3"><a href="rawR.html#cb22-3"></a><span class="co"># executing %dopar% sequentially: no parallel backend registered </span></span></code></pre></div>
 <p>平行计算一般的工作流如下：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="rawR.html#cb8-1"></a><span class="kw">library</span>(doParallel)</span>
-<span id="cb8-2"><a href="rawR.html#cb8-2"></a>cl &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">makeCluster</span>(<span class="dv">2</span>)</span>
-<span id="cb8-3"><a href="rawR.html#cb8-3"></a>doParallel<span class="op">::</span><span class="kw">registerDoParallel</span>(cl)</span>
-<span id="cb8-4"><a href="rawR.html#cb8-4"></a><span class="kw">foreach</span>(<span class="dt">i=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">.pacakages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span><span class="kw">sqrt</span>(i)</span>
-<span id="cb8-5"><a href="rawR.html#cb8-5"></a>doParallel<span class="op">::</span><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="rawR.html#cb23-1"></a><span class="kw">library</span>(doParallel)</span>
+<span id="cb23-2"><a href="rawR.html#cb23-2"></a>cl &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">makeCluster</span>(<span class="dv">2</span>)</span>
+<span id="cb23-3"><a href="rawR.html#cb23-3"></a>doParallel<span class="op">::</span><span class="kw">registerDoParallel</span>(cl)</span>
+<span id="cb23-4"><a href="rawR.html#cb23-4"></a><span class="kw">foreach</span>(<span class="dt">i=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">.pacakages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span><span class="kw">sqrt</span>(i)</span>
+<span id="cb23-5"><a href="rawR.html#cb23-5"></a>doParallel<span class="op">::</span><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
 <p>要注意，平行计算中，在<code>foreach</code>后的语句中，相当于在每个进程中，重启了一个新环境。因此，如果你要用到<code>foreach</code>外面的变量，则需要把变量、包等都传进去。同时，这些变量如果是向量或者<code>list</code>则不需要特别地指定迭代变量是哪个，程序会自动将它们处理成迭代变量。如果这些变量的长度不一，则迭代时以最少长度的变量为准。一个简单的例子(<code>VARrf::IRFrf_gen</code>)如下：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="rawR.html#cb9-1"></a><span class="co"># 传进去了5个变量,nhist, itevar,pmax,s, shockvar，这些变量的长度都是一样的。</span></span>
-<span id="cb9-2"><a href="rawR.html#cb9-2"></a>picdata &lt;-<span class="st"> </span>foreach<span class="op">::</span><span class="kw">foreach</span>(<span class="dt">i =</span> <span class="dv">1</span><span class="op">:</span>nhist,<span class="dt">itevar =</span> itevar,</span>
-<span id="cb9-3"><a href="rawR.html#cb9-3"></a>                              <span class="dt">pmax =</span> pmax_para,<span class="dt">s =</span> s, <span class="dt">shockvar =</span> shockvar,</span>
-<span id="cb9-4"><a href="rawR.html#cb9-4"></a>                              <span class="dt">.packages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span>{</span>
-<span id="cb9-5"><a href="rawR.html#cb9-5"></a>    devtools<span class="op">::</span><span class="kw">load_all</span>()</span>
-<span id="cb9-6"><a href="rawR.html#cb9-6"></a>    <span class="kw">IRFrf</span>(<span class="dt">data =</span> itevar, <span class="dt">pmax =</span> pmax, <span class="dt">s =</span> s, <span class="dt">shockvar =</span> shockvar,<span class="dt">histime =</span> i)</span>
-<span id="cb9-7"><a href="rawR.html#cb9-7"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="rawR.html#cb24-1"></a><span class="co"># 传进去了5个变量,nhist, itevar,pmax,s, shockvar，这些变量的长度都是一样的。</span></span>
+<span id="cb24-2"><a href="rawR.html#cb24-2"></a>picdata &lt;-<span class="st"> </span>foreach<span class="op">::</span><span class="kw">foreach</span>(<span class="dt">i =</span> <span class="dv">1</span><span class="op">:</span>nhist,<span class="dt">itevar =</span> itevar,</span>
+<span id="cb24-3"><a href="rawR.html#cb24-3"></a>                              <span class="dt">pmax =</span> pmax_para,<span class="dt">s =</span> s, <span class="dt">shockvar =</span> shockvar,</span>
+<span id="cb24-4"><a href="rawR.html#cb24-4"></a>                              <span class="dt">.packages =</span> <span class="st">&#39;tidyverse&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span>{</span>
+<span id="cb24-5"><a href="rawR.html#cb24-5"></a>    devtools<span class="op">::</span><span class="kw">load_all</span>()</span>
+<span id="cb24-6"><a href="rawR.html#cb24-6"></a>    <span class="kw">IRFrf</span>(<span class="dt">data =</span> itevar, <span class="dt">pmax =</span> pmax, <span class="dt">s =</span> s, <span class="dt">shockvar =</span> shockvar,<span class="dt">histime =</span> i)</span>
+<span id="cb24-7"><a href="rawR.html#cb24-7"></a>  }</span></code></pre></div>
 </div>
 <div id="类和方法" class="section level2">
 <h2><span class="header-section-number">5.3</span> 类和方法</h2>
 <div id="s3类" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> S3类</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="rawR.html#cb10-1"></a><span class="co"># 查看属于一个泛型函数的所有方法：</span></span>
-<span id="cb10-2"><a href="rawR.html#cb10-2"></a><span class="kw">methods</span>(<span class="st">&#39;mean&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="rawR.html#cb25-1"></a><span class="co"># 查看属于一个泛型函数的所有方法：</span></span>
+<span id="cb25-2"><a href="rawR.html#cb25-2"></a><span class="kw">methods</span>(<span class="st">&#39;mean&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
 ## [6] mean.quosure*
 ## see &#39;?methods&#39; for accessing help and source code</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rawR.html#cb12-1"></a><span class="co"># 反过来，查看一个类，都有何关联的泛型函数</span></span>
-<span id="cb12-2"><a href="rawR.html#cb12-2"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&#39;ts&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="rawR.html#cb27-1"></a><span class="co"># 反过来，查看一个类，都有何关联的泛型函数</span></span>
+<span id="cb27-2"><a href="rawR.html#cb27-2"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&#39;ts&#39;</span>)</span></code></pre></div>
 <pre><code>##  [1] [             [&lt;-           aggregate     as.data.frame cbind        
 ##  [6] coerce        cycle         diff          diffinv       initialize   
 ## [11] kernapply     lines         Math          Math2         monthplot    
@@ -309,17 +315,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [21] slotsFromS3   t             time          window        window&lt;-     
 ## see &#39;?methods&#39; for accessing help and source code</code></pre>
 <p>创建一个类，很多时候只需在最后返回一个这样的，就可以了，</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rawR.html#cb14-1"></a><span class="kw">class</span>(foo) &lt;-<span class="st"> &#39;myclass&#39;</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="rawR.html#cb29-1"></a><span class="kw">class</span>(foo) &lt;-<span class="st"> &#39;myclass&#39;</span>   </span></code></pre></div>
 <p>然后为这个类创建一个泛型函数，只需要两步：</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rawR.html#cb15-1"></a><span class="co"># 创建一个类</span></span>
-<span id="cb15-2"><a href="rawR.html#cb15-2"></a>a &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb15-3"><a href="rawR.html#cb15-3"></a><span class="kw">class</span>(a) &lt;-<span class="st"> &#39;a&#39;</span></span>
-<span id="cb15-4"><a href="rawR.html#cb15-4"></a><span class="co"># 第一步：增加一个新的泛型函数。记住，没有搭配该泛型函数的方法，泛型函数是没有用的。</span></span>
-<span id="cb15-5"><a href="rawR.html#cb15-5"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">UseMethod</span>(<span class="st">&#39;f&#39;</span>) </span>
-<span id="cb15-6"><a href="rawR.html#cb15-6"></a><span class="co"># 第二步，为此泛型函数添加方法。关键在于命名规则，属于该泛型函数的方法一定具有类似f.a格式的命名。</span></span>
-<span id="cb15-7"><a href="rawR.html#cb15-7"></a><span class="co"># f是泛型函数, a是类,它们用点连起来。</span></span>
-<span id="cb15-8"><a href="rawR.html#cb15-8"></a>f.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;class a&#39;</span></span>
-<span id="cb15-9"><a href="rawR.html#cb15-9"></a>mean.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;a&#39;</span> <span class="co"># 为已有的泛型函数增加方法</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="rawR.html#cb30-1"></a><span class="co"># 创建一个类</span></span>
+<span id="cb30-2"><a href="rawR.html#cb30-2"></a>a &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb30-3"><a href="rawR.html#cb30-3"></a><span class="kw">class</span>(a) &lt;-<span class="st"> &#39;a&#39;</span></span>
+<span id="cb30-4"><a href="rawR.html#cb30-4"></a><span class="co"># 第一步：增加一个新的泛型函数。记住，没有搭配该泛型函数的方法，泛型函数是没有用的。</span></span>
+<span id="cb30-5"><a href="rawR.html#cb30-5"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">UseMethod</span>(<span class="st">&#39;f&#39;</span>) </span>
+<span id="cb30-6"><a href="rawR.html#cb30-6"></a><span class="co"># 第二步，为此泛型函数添加方法。关键在于命名规则，属于该泛型函数的方法一定具有类似f.a格式的命名。</span></span>
+<span id="cb30-7"><a href="rawR.html#cb30-7"></a><span class="co"># f是泛型函数, a是类,它们用点连起来。</span></span>
+<span id="cb30-8"><a href="rawR.html#cb30-8"></a>f.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;class a&#39;</span></span>
+<span id="cb30-9"><a href="rawR.html#cb30-9"></a>mean.a &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="st">&#39;a&#39;</span> <span class="co"># 为已有的泛型函数增加方法</span></span></code></pre></div>
 </div>
 </div>
 <div id="打印到文件" class="section level2">
@@ -327,15 +333,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>sink</code>函数：在代码开始前加一行：<code>sink(“output.txt”)</code>，就会自动把结果全部输出到工作文件夹下的output.txt文本文档。这时在R控制台的输出窗口中是看不到输出结果的。代码结束时用<code>sink()</code>切换回来。 示例：</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="rawR.html#cb16-1"></a><span class="kw">sink</span>(<span class="st">&quot;a.txt&quot;</span>) </span>
-<span id="cb16-2"><a href="rawR.html#cb16-2"></a>x&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
-<span id="cb16-3"><a href="rawR.html#cb16-3"></a><span class="kw">mean</span>(x) </span>
-<span id="cb16-4"><a href="rawR.html#cb16-4"></a><span class="kw">sink</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="rawR.html#cb31-1"></a><span class="kw">sink</span>(<span class="st">&quot;a.txt&quot;</span>) </span>
+<span id="cb31-2"><a href="rawR.html#cb31-2"></a>x&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
+<span id="cb31-3"><a href="rawR.html#cb31-3"></a><span class="kw">mean</span>(x) </span>
+<span id="cb31-4"><a href="rawR.html#cb31-4"></a><span class="kw">sink</span>()</span></code></pre></div>
 <ul>
 <li><code>cat</code>函数：<code>cat('abc','OK!',file = 'a.txt',sep = '\n',append = T)</code></li>
 <li><code>stargazer</code>函数：</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="rawR.html#cb17-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="rawR.html#cb32-1"></a><span class="kw">stargazer</span>(fit1, fit2, <span class="dt">title =</span> <span class="st">&quot;results&quot;</span>, <span class="dt">align =</span> F, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">no.space =</span> <span class="ot">TRUE</span>, <span class="dt">out =</span> <span class="st">&quot;fit.html&quot;</span>)</span></code></pre></div>
 </div>
 <div id="apply函数族" class="section level2">
 <h2><span class="header-section-number">5.5</span> <code>apply</code>函数族</h2>
@@ -343,19 +349,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>lapply(vector,fun)</code>，可以将函数作用于向量<code>vector</code>的每一个元素上，然后返回一个<code>list</code>。</li>
 <li><code>sapply(vector,fun)</code>的好处在于不是返回一个list，而是返回一个向量或者矩阵。如果<code>fun</code>返回的是一个元素，那么<code>sapply</code>就返回一个向量，如果<code>fun</code>返回的是一个向量，则<code>sapply</code>按列将结果拼接成一个矩阵。</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="rawR.html#cb18-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) i<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="rawR.html#cb33-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) i<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="rawR.html#cb20-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) <span class="kw">c</span>(i<span class="op">^</span><span class="dv">2</span>,i))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="rawR.html#cb35-1"></a><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) <span class="kw">c</span>(i<span class="op">^</span><span class="dv">2</span>,i))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 ## [1,]    1    4    9   16   25   36   49   64   81   100
 ## [2,]    1    2    3    4    5    6    7    8    9    10</code></pre>
 <ul>
 <li><code>apply</code>是我用得最熟的，它是将函数应用到矩阵或数组的行或列上。</li>
-<li><code>mapply</code>是<code>lapply</code>或<code>sapply</code>的多元版本，它可以同时输入多个向量，如</li>
+<li><code>mapply</code>是<code>lapply</code>或<code>sapply</code>的多元版本，即它可以同时输入多个向量，如</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="rawR.html#cb22-1"></a><span class="kw">mapply</span>(<span class="cf">function</span>(x,y,z) x<span class="op">*</span>y <span class="op">+</span><span class="st"> </span>y<span class="op">*</span>z <span class="op">+</span><span class="st"> </span>x<span class="op">*</span>z, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="rawR.html#cb37-1"></a><span class="kw">mapply</span>(<span class="cf">function</span>(x,y,z) x<span class="op">*</span>y <span class="op">+</span><span class="st"> </span>y<span class="op">*</span>z <span class="op">+</span><span class="st"> </span>x<span class="op">*</span>z, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] -1 -4 -9</code></pre>
+</div>
+<div id="linux中的r" class="section level2">
+<h2><span class="header-section-number">5.6</span> Linux中的R</h2>
+<p>很多时候，对服务器我们没有权限，因此我们只能下载包的源码，然后安装。工作流如下：
+- 在自己有权限的目录下新建一个目录，比如<code>/data/stage/chenpu/RLib</code>作为包的安装目录，命令为</p>
+<pre><code>mkdir /data/stage/chenpu/RLib</code></pre>
+<ul>
+<li>将包的源码下载下来，然后命令行安装</li>
+</ul>
+<pre><code>R CMD INSTALL /.../mypackage.tar.gz --library=/data/stage/chenpu/RLib</code></pre>
+<ul>
+<li>在R跑程序，加载的时候，要注意<code>lib.loc</code>参数，</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="rawR.html#cb41-1"></a><span class="kw">library</span>(zoo, <span class="dt">lib.loc =</span> <span class="st">&#39;/data/stage/chenpu/RLib&#39;</span>)</span></code></pre></div>
+<p>或者修改启动文件<code>.Rprofile</code>，这就不会每次启动R都要重新设置了。</p>
+<div id="如何修改.rprofile" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> 如何修改<code>.Rprofile</code>？</h3>
+<p>进入R以后，</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="rawR.html#cb42-1"></a><span class="kw">R.home</span>() <span class="co"># 确定R安装在了哪里</span></span>
+<span id="cb42-2"><a href="rawR.html#cb42-2"></a><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="st">&#39;~&#39;</span>,<span class="st">&#39;.Rprofile&#39;</span>)) <span class="co"># 编辑Rprofile</span></span>
+<span id="cb42-3"><a href="rawR.html#cb42-3"></a><span class="co"># 此时进入vi界面， 在插入模式下，键入</span></span>
+<span id="cb42-4"><a href="rawR.html#cb42-4"></a><span class="kw">.libPaths</span>(<span class="st">&#39;/data/stage/chenpu/RLib&#39;</span>)</span>
+<span id="cb42-5"><a href="rawR.html#cb42-5"></a><span class="co"># 再按Esc退出插入模式进入命令行模式，输入`:wq`保存退出。</span></span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
@@ -414,6 +444,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

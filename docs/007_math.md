@@ -5,7 +5,7 @@
 - `crossprod(x,y)`的意思是$x'y$，`tcrossprod(x,y)`的意思是$xy'$。在OLS估计时还蛮省事。
 - `matlab`包模拟了matlab软件中的许多矩阵函数。
 - 克罗内克积使用`%x%`或者`kronecker`。
-- `numDeriv`里面的`hession`计算海塞矩阵，它的逆的负数，就是极大似然估计的标准差。 
+- `numDeriv`里面的`hession`计算海塞矩阵，它的逆的负数，就是极大似然估计的标准差。里面的`grad(fun, par)` 计算梯度，也就是一阶导。
 - `Matrix::bdiag(A,A)`生成以两个A为对角元素的分块对角矩阵。
 - `Mod`计算复数的模，不同于`mod`用来整除。
 -  `caracas`: 通过提供对Python SymPy库的访问来实现计算机代数，从而使以符号方式解方程、寻找符号积分、符号和和其他重要量成为可能。

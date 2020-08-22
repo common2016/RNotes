@@ -2,6 +2,7 @@
 
 # 原生的R {#rawR}
 ## 一句话Tips
+- `suppressMessages()`可以抑制代码抛出的信息等。
 - `+(3,1)`与`3+1`的作用是一样的。这可以推广到其他中缀函数，如`%*%`等。
 - 写函数时，可以使用`...`参数，为捕获这个(可能是多个)参数的值，可以用`list(...)`这个办法。
 - 只显示3位小数：
@@ -180,3 +181,30 @@ mapply(function(x,y,z) x*y + y*z + x*z, x = c(1,2,3),y = c(1,2,3), z = c(-1,-2,-
 ## [1] -1 -4 -9
 ```
 
+## Linux中的R
+很多时候，对服务器我们没有权限，因此我们只能下载包的源码，然后安装。工作流如下：
+- 在自己有权限的目录下新建一个目录，比如`/data/stage/chenpu/RLib`作为包的安装目录，命令为
+```
+mkdir /data/stage/chenpu/RLib
+```
+- 将包的源码下载下来，然后命令行安装
+```
+R CMD INSTALL /.../mypackage.tar.gz --library=/data/stage/chenpu/RLib
+```
+- 在R跑程序，加载的时候，要注意`lib.loc`参数，
+
+```r
+library(zoo, lib.loc = '/data/stage/chenpu/RLib')
+```
+或者修改启动文件`.Rprofile`，这就不会每次启动R都要重新设置了。
+
+### 如何修改`.Rprofile`？
+进入R以后，
+
+```r
+R.home() # 确定R安装在了哪里
+file.edit(file.path('~','.Rprofile')) # 编辑Rprofile
+# 此时进入vi界面， 在插入模式下，键入
+.libPaths('/data/stage/chenpu/RLib')
+# 再按Esc退出插入模式进入命令行模式，输入`:wq`保存退出。
+```
