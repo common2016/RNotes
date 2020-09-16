@@ -1,7 +1,7 @@
 ---
 title: "R语言笔记"
 author: "云腾足下"
-date: "2020年5月"
+date: "2020年9月"
 site: bookdown::bookdown_site
 description: ""
 documentclass: book

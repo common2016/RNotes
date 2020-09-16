@@ -68,7 +68,7 @@ library(doParallel)
 cl <- parallel::makeCluster(2)
 doParallel::registerDoParallel(cl)
 foreach(i=1:3, .pacakages = 'tidyverse') %dopar% sqrt(i)
-doParallel::stopCluster(cl)
+parallel::stopCluster(cl)
 ```
 
 要注意，平行计算中，在`foreach`后的语句中，相当于在每个进程中，重启了一个新环境。因此，如果你要用到`foreach`外面的变量，则需要把变量、包等都传进去。同时，这些变量如果是向量或者`list`则不需要特别地指定迭代变量是哪个，程序会自动将它们处理成迭代变量。如果这些变量的长度不一，则迭代时以最少长度的变量为准。一个简单的例子(`VARrf::IRFrf_gen`)如下：

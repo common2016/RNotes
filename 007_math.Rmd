@@ -22,6 +22,11 @@ uni <- uniroot(fun, c(0, 8))$root # 此时求解
 方程组的根求解用`multiroot`。
 
 ## 数值优化
+- 在Linux系统下，安装`nloptr`包，需要先在linux系统中安装`nlopt`包。
+```
+yum install nlopt nlopt-devel
+```
+
 - **无约束优化**。`optimx`一个优化包，经常用它的`optimx`函数。但是它是无约束优化，尽管可以包含上下界的约束(盒子约束)。
 ```{r}
 para <- list(R1 = 0.1, phi1 = 0.8, H1 = 0.3, A1 = 0.8, intcp = 1) %>% as.numeric()
