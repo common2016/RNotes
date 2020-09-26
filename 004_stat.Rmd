@@ -6,7 +6,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 ## 一句话Tips
 - `cmna::mcint `可以进行蒙特卡洛积分。
 - 数值积分：`pracma::integral` 
-- 多元正态分布随机抽样：`SimDesign::rmvnorm`，还有`mvnfast`
+- 多元正态分布随机抽样：`SimDesign::rmvnorm`，还有`mvnfast`。`mvtnorm`包是多变量正态分布的包，很全。
 - `KSgeneral`包执行KS检验，比较一个分布是否来自某个理论分布。`stats`包的`ks.test`和`dgof`包的`ks.test`也可以,并且可以比较双样本是否来自同一个分布。
 - `choose(n,k)`：组合公式，n个里面选k个，有多少种组合方式。`utils::combn(n,k)`也可以。 `e1071::permutations`实现排列。
 - `qrandom`: 利用量子波动产生真随机数.

@@ -55,12 +55,12 @@ model.matrix(F1, data = cars)
 公式的高级应用还有一个包`Formula`，其说明文件很到位。主要阐述了`|`的使用方式。
 
 ## GMM估计
+
 $$
 i _t =\beta_0 + \beta_1pi_t + \beta_2GDP_t + \beta_3hp_t + \beta_4i_{t-1} + \varepsilon_t
 $$
 
 因包含因变量的滞后项从而有内生性，欲使用$i_{t-2},i_{t-3},i_{t-4}$作为工具变量，从而做一个GMM估计，亦即整个方程的矩条件为，
-
 
 \begin{align}
 E(pi_t\varepsilon_t) = 0\\

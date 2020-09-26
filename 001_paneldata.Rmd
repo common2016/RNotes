@@ -17,7 +17,7 @@ summary(plm, vcov = vcovG(plm, cluster = 'group', inner = 'cluster'))
 ```
 
 - 包中的`fixef`函数可以返回个体截距项(`type = level`)。
-- `updata(object, formula)`函数可以更新公式重新估计。
+- `update(object, formula)`函数可以更新公式重新估计。
 
 ## 动态面板阈值估计：R语言中有一个包`dtp`，其估计函数为：
 ```{r eval=FALSE}
