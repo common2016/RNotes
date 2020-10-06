@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 其他 | R语言笔记</title>
-  <meta name="description" content="15 其他 | R语言笔记" />
+  <title>13 测试 | R语言笔记</title>
+  <meta name="description" content="13 测试 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 其他 | R语言笔记" />
+  <meta property="og:title" content="13 测试 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 其他 | R语言笔记" />
+  <meta name="twitter:title" content="13 测试 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="泛型函数.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="prev" href="使用自己的数据集.html"/>
+<link rel="next" href="泛型函数.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,23 +243,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-1" class="section level1">
-<h1><span class="header-section-number">15</span> 其他</h1>
-<ul>
-<li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
-<li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
-</ul>
-
+<div id="测试" class="section level1">
+<h1><span class="header-section-number">13</span> 测试</h1>
+<p>要提交包到CRAN必须有测试。执行<code>devtools::testhat()</code>做了三件事：
+- 创建<code>tests/testthat</code>目录；
+- 在Description的Suggests域增加testthat;
+- 创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="测试.html#cb66-1"></a><span class="kw">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb66-2"><a href="测试.html#cb66-2"></a><span class="kw">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb66-3"><a href="测试.html#cb66-3"></a>    <span class="kw">expect_equal</span>(.,.)</span>
+<span id="cb66-4"><a href="测试.html#cb66-4"></a>    <span class="kw">expect_equal</span>(.,.)</span>
+<span id="cb66-5"><a href="测试.html#cb66-5"></a>})</span></code></pre></div>
+<p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="泛型函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="使用自己的数据集.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="泛型函数.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

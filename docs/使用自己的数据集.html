@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 其他 | R语言笔记</title>
-  <meta name="description" content="15 其他 | R语言笔记" />
+  <title>12 使用自己的数据集 | R语言笔记</title>
+  <meta name="description" content="12 使用自己的数据集 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 其他 | R语言笔记" />
+  <meta property="og:title" content="12 使用自己的数据集 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 其他 | R语言笔记" />
+  <meta name="twitter:title" content="12 使用自己的数据集 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="泛型函数.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="prev" href="一句话tips-9.html"/>
+<link rel="next" href="测试.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,23 +243,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-1" class="section level1">
-<h1><span class="header-section-number">15</span> 其他</h1>
+<div id="使用自己的数据集" class="section level1">
+<h1><span class="header-section-number">12</span> 使用自己的数据集</h1>
 <ul>
-<li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
-<li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
+<li>如果你想使用一个脚本来创造一个数据集，然后这个数据集在你发布的包中使用。那么首先执行命令<code>usethis::use_data_raw('MySet')</code>，它有三个功能：
+<ol style="list-style-type: decimal">
+<li>生成<code>data-raw</code>子目录。</li>
+<li>在<code>data-raw</code>目录下生成脚本<code>MySet.R</code>，该脚本最后一行是<code>usethis::use_data(MySet)</code>,该语句是将<code>MySet.R</code>脚本中创造的数据，以<code>rda</code>的格式保存到<code>data</code>目录中。</li>
+<li>在<code>.Rbuildignore</code>中添加语句使得在建立包时，<code>data-raw</code>里面的东西不会被包含进将来要发布的包中。</li>
+</ol></li>
+<li>建立数据文档和建立函数文档一样，你也只需要在<code>R/</code>下面建立一个R文件，该文件只包含一个写着数据名字的字符串，然后前面是描述。一般数据集文档包含两个标签<code>@format</code>和<code>@source</code>。</li>
+<li>非R语言格式的数据文件放到<code>inst/</code>下面。</li>
 </ul>
-
+<p>如果你有一个数据集，只是在你的函数内部调用，你可以用<code>use_data(myvar,overwrite = T,internal = T)</code>命令，它在<code>R/</code>下生成数据文件<code>sysdata.rdata</code>，它包含了变量<code>myvar</code>。然后你在函数中直接调用该变量。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="泛型函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="一句话tips-9.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="测试.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

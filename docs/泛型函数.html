@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 其他 | R语言笔记</title>
-  <meta name="description" content="15 其他 | R语言笔记" />
+  <title>14 泛型函数 | R语言笔记</title>
+  <meta name="description" content="14 泛型函数 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 其他 | R语言笔记" />
+  <meta property="og:title" content="14 泛型函数 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 其他 | R语言笔记" />
+  <meta name="twitter:title" content="14 泛型函数 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="泛型函数.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="prev" href="测试.html"/>
+<link rel="next" href="其他-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,23 +243,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-1" class="section level1">
-<h1><span class="header-section-number">15</span> 其他</h1>
-<ul>
-<li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
-<li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
-</ul>
-
+<div id="泛型函数" class="section level1">
+<h1><span class="header-section-number">14</span> 泛型函数</h1>
+<p>当你拓展一个泛型函数的时候，需要注意：
+1. 函数末端返回<code>NextMethod()</code>。</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="泛型函数.html#cb67-1"></a>t.data.frame &lt;-<span class="st"> </span><span class="cf">function</span>(x)</span>
+<span id="cb67-2"><a href="泛型函数.html#cb67-2"></a>{</span>
+<span id="cb67-3"><a href="泛型函数.html#cb67-3"></a>    x &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(x)</span>
+<span id="cb67-4"><a href="泛型函数.html#cb67-4"></a>    <span class="kw">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb67-5"><a href="泛型函数.html#cb67-5"></a>}</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>方法要包含原始泛型的所有参数，顺序也要一致。</li>
+<li>缺省设置也要和原始泛型一致。</li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="泛型函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="测试.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="其他-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

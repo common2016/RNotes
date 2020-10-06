@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 其他 | R语言笔记</title>
-  <meta name="description" content="15 其他 | R语言笔记" />
+  <title>12 其他 | R语言笔记</title>
+  <meta name="description" content="12 其他 | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 其他 | R语言笔记" />
+  <meta property="og:title" content="12 其他 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 其他 | R语言笔记" />
+  <meta name="twitter:title" content="12 其他 | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="泛型函数.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="prev" href="创建包的一些建议.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -219,12 +219,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a><ul>
 <li class="chapter" data-level="10.1" data-path="DrawTips.html"><a href="DrawTips.html#d绘图"><i class="fa fa-check"></i><b>10.1</b> 3D绘图</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="一句话tips-9.html"><a href="一句话tips-9.html"><i class="fa fa-check"></i><b>11</b> 一句话Tips</a></li>
-<li class="chapter" data-level="12" data-path="使用自己的数据集.html"><a href="使用自己的数据集.html"><i class="fa fa-check"></i><b>12</b> 使用自己的数据集</a></li>
-<li class="chapter" data-level="13" data-path="测试.html"><a href="测试.html"><i class="fa fa-check"></i><b>13</b> 测试</a></li>
-<li class="chapter" data-level="14" data-path="泛型函数.html"><a href="泛型函数.html"><i class="fa fa-check"></i><b>14</b> 泛型函数</a></li>
-<li class="chapter" data-level="15" data-path="其他-1.html"><a href="其他-1.html"><i class="fa fa-check"></i><b>15</b> 其他</a></li>
-<li class="chapter" data-level="16" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>16</b> 其他</a></li>
+<li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a><ul>
+<li class="chapter" data-level="11.1" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#一句话tips-9"><i class="fa fa-check"></i><b>11.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="11.2" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#使用自己的数据集"><i class="fa fa-check"></i><b>11.2</b> 使用自己的数据集</a></li>
+<li class="chapter" data-level="11.3" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#测试"><i class="fa fa-check"></i><b>11.3</b> 测试</a></li>
+<li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
+<li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -243,13 +245,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-1" class="section level1">
-<h1><span class="header-section-number">15</span> 其他</h1>
+<div id="其他-2" class="section level1">
+<h1><span class="header-section-number">12</span> 其他</h1>
 <ul>
-<li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
-<li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
+<li><code>geosphere::distm</code>根据经纬度算距离。</li>
+<li><code>stats19</code>一个下载英国交通事故记录的数据库。</li>
+<li><code>pacman</code>包管理包，如<code>p_load()</code>。</li>
+<li><code>vitae</code>: 提供多个模板和功能以简化简历的制作和维护.</li>
+<li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
+<li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="其他-2.html#cb68-1"></a><span class="kw">library</span>(progress)</span>
+<span id="cb68-2"><a href="其他-2.html#cb68-2"></a>pb &lt;-<span class="st"> </span>progress_bar<span class="op">$</span><span class="kw">new</span>(<span class="dt">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb68-3"><a href="其他-2.html#cb68-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){</span>
+<span id="cb68-4"><a href="其他-2.html#cb68-4"></a>    pb<span class="op">$</span><span class="kw">tick</span>()</span>
+<span id="cb68-5"><a href="其他-2.html#cb68-5"></a>}</span></code></pre></div>
+<ul>
+<li><code>swirl</code>可以编写交互式教程。</li>
+<li><code>RSelenium</code>包终于在201901月出来了。</li>
 </ul>
 
 </div>
@@ -258,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="泛型函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="创建包的一些建议.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 其他 | R语言笔记</title>
-  <meta name="description" content="15 其他 | R语言笔记" />
+  <title>11 一句话Tips | R语言笔记</title>
+  <meta name="description" content="11 一句话Tips | R语言笔记" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 其他 | R语言笔记" />
+  <meta property="og:title" content="11 一句话Tips | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 其他 | R语言笔记" />
+  <meta name="twitter:title" content="11 一句话Tips | R语言笔记" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="泛型函数.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="prev" href="DrawTips.html"/>
+<link rel="next" href="使用自己的数据集.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,23 +243,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-1" class="section level1">
-<h1><span class="header-section-number">15</span> 其他</h1>
+<div id="一句话tips-9" class="section level1">
+<h1><span class="header-section-number">11</span> 一句话Tips</h1>
 <ul>
-<li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
-<li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
+<li>要输出函数，记得在注释中书写<code>@export</code></li>
+<li>从RStudio中创建一个包项目</li>
+<li>不再使用<code>library()</code>或者<code>require()</code>，因为这会改变搜索路径。而是在控制台输入<code>usethis::use_package('magrittr',type = 'Imports',min_version = NULL)</code>执行一下。该命令在DESCRIPTION中添加如下语句：</li>
 </ul>
-
+<pre><code>Imports:
+    ggplot2,
+    tidyverse</code></pre>
+<p><strong>这个语句的作用只是保证了在安装包时，这些包必须被安装</strong>。因此，你在写函数时，要调用这个包，需要使用<code>pdg::fun()</code>。或者在函数文档中添加注释如<code>@import magrittr</code>（不建议该操作，可能会改变全局环境，该操作实际上修改了NAMESPACE文件）。我经常使用这个函数<code>#' @importFrom magrittr '%&gt;%'</code>。
+- 执行<code>devtools::document()</code>以产生函数的说明文档。
+- 执行<code>devtools::load_all()</code>将source<code>R/</code>目录下所有文件
+- <code>check()</code>在本地整个地检验包是否可行，而<code>devtools::check_win_*()</code>族函数将其提交至CRAN服务器进行检查，并在10-20分钟后通过邮件返回你一个结果。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="泛型函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DrawTips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="使用自己的数据集.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
