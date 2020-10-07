@@ -4,6 +4,10 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 # 原生的R {#rawR}
 ## 一句话Tips
+- 从本地安装一个源码包：
+```{r}
+install.packages('E:\\17_HuaDong\\NEDatabase\\MyRef.Attachments\\RForEconometrics/phtt_3.1.2.tar.gz',type = 'source',repos = NULL)
+```
 - `suppressMessages()`可以抑制代码抛出的信息等。
 - `+(3,1)`与`3+1`的作用是一样的。这可以推广到其他中缀函数，如`%*%`等。
 - 写函数时，可以使用`...`参数，为捕获这个(可能是多个)参数的值，可以用`list(...)`这个办法。
@@ -153,3 +157,12 @@ file.edit(file.path('~','.Rprofile')) # 编辑Rprofile
 .libPaths('/data/stage/chenpu/RLib')
 # 再按Esc退出插入模式进入命令行模式，输入`:wq`保存退出。
 ```
+
+## 如何完美复制项目的结果
+在写一个项目时，往往对应着当时你调用的各种R包的版本。一年以后，许多包已经更新，可能你当时的代码结果已经无法复制。我们需要管理不同版本的R包。
+
+`renv`包就是干这个的。工作流如下：
+
+1. `renv::init()`初始化这个项目，会生产对应该项目的包库文件目录。此时安装包，都是在这个私有库下进行，不影响全局的包库。
+2. `renv::snapshot()`记下此时包的各个版本。
+3. `renv::restore()`恢复上一个快照时包库的状态。
