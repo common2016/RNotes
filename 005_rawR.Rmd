@@ -157,6 +157,21 @@ file.edit(file.path('~','.Rprofile')) # 编辑Rprofile
 .libPaths('/data/stage/chenpu/RLib')
 # 再按Esc退出插入模式进入命令行模式，输入`:wq`保存退出。
 ```
+### Ubuntu下安装最新的R
+1. 在` /etc/apt/sources.list`文件中增加软件的镜像源，`deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/`，也就是增加这样一行。注意后面这个`bionic-cran40`，它对应着Ubuntu系统下R4.0版本。
+2. 更新源：
+```
+sudo apt-get update
+```
+更新的时候往往会报错，说是没有公钥。此时用这个命令增加公钥：
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6AF0E1940624A220 
+```
+注意，此处`6AF0E1940624A220`是你更新源时报错提示的key。
+3. 安装：
+```
+sudo apt-get install r-base
+```
 
 ## 如何完美复制项目的结果
 在写一个项目时，往往对应着当时你调用的各种R包的版本。一年以后，许多包已经更新，可能你当时的代码结果已经无法复制。我们需要管理不同版本的R包。
