@@ -180,4 +180,32 @@ result <- opt$optimize(rosenbrock, rep(0,2), opt$BFGS())
 result
 ```
 
+## 与C++的对接：`Rcpp`包
+### `Rcpp`引入的C++中的标量、向量和矩阵类
 
+- 在写C++时任何变量通常需要首先声明类型，标量类型包括`double, int, String, bool`。
+- 向量类型包括`NumericVector, IntegerVector, CharacterVector, LogicalVector`。这些类型按我的理解，应该是类，对于类就有对应的方法，比如`.size()`方法就可以计算这个向量的长度。选取向量元素用`[]`。
+- 此外也有对应矩阵类型(`NumericMatrix, IntegerMatrix, CharacterMatrix, LogicalMatrix`)。
+  - 选取矩阵元素用`()`而不是`[]`
+  - `.nrow(), .ncol()`计算矩阵维度
+
+### 使用`sourceCpp`函数
+- 单独的C++文件头应包含：
+```c++
+#include <Rcpp.h>
+using namespace Rcpp;
+// [[Rcpp::export]]
+/*** R
+# 这里可以跑R代码，从而可以简单测试上述C++语言
+*/
+```
+- 如何从R语言的`list`类中提取数据？如果`mod`是从`lm`返回的`list`，提取它的残差同时转化为C++的向量，可用`as<NumericVector>(mod["residuals"])`。
+- C++代码中也可以调用R函数，这给我们提供了极大的方便。调用方式如下：
+```c++
+RObject callWithOne(Function f){
+  return f(1);
+}
+```
+  - 用`Function`声明R函数；
+  - 用`RObject`表示R函数返回的类型；
+  - 现在R中的函数`f`就可以在C++中用了；
