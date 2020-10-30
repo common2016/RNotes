@@ -4,6 +4,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 # 原生的R {#rawR}
 ## 一句话Tips
+- `do.call(str_fun, args, quote, envir)`函数感觉很好用, 第一个参数是字符串函数名，第二个参数是一个list, 它里面元素的名字就是你调用的函数的参数的名字。在某种程度上，它可以替代`eval(parse(text = str))`的作用。
 - 从本地安装一个源码包：
 ```{r}
 install.packages('E:\\17_HuaDong\\NEDatabase\\MyRef.Attachments\\RForEconometrics/phtt_3.1.2.tar.gz',type = 'source',repos = NULL)
@@ -47,7 +48,23 @@ file.rename(from = fr,to = to)
    1. 点[这里](https://cran.r-project.org/src/contrib/Archive/)找到过期的包，然后下载下来。
    2. 用这个命令安装本地的包：`install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')`
 
+## 大数据的存取
+对于大的数据，载入内存运算往往给内存造成很大复旦，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
+```{r}
+library(SOAR)
+Store("some_data")
+```
+
+这会有如下动作：
+
+- 在工作目录下创建一个子目录`.R_Cache`；
+- 对象`some_data`以.Rdata的形式存储在该子目录中；
+- 对象`some_data`在全局环境中被删掉；
+
+此时，在该工作目录下，可以像调用全局环境中的变量一样调用`some_data`。
+
 ## 平行计算
+### 循环中的平行运算
 平行计算中，光使用`foreach`包是不够的，还需要注册一个平行背景注册，否则`foreach`包在运算完以后会返回警告：
 ```{r}
 # Warning message:
@@ -74,7 +91,14 @@ picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
     IRFrf(data = itevar, pmax = pmax, s = s, shockvar = shockvar,histime = i)
   }
 ```
+### `apply`族的平行版本
 
+```{r}
+library(parallel)
+cl <- makeCluster(<size of pool>)
+# one or more parLapply calls
+stopCluster(cl)
+```
 
 ## 类和方法
 ### S3类

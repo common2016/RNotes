@@ -200,7 +200,8 @@ using namespace Rcpp;
 */
 ```
 - 如何从R语言的`list`类中提取数据？如果`mod`是从`lm`返回的`list`，提取它的残差同时转化为C++的向量，可用`as<NumericVector>(mod["residuals"])`。
-- C++代码中也可以调用R函数，这给我们提供了极大的方便。调用方式如下：
+### C++代码中调用R函数
+这给我们提供了极大的方便。调用方式如下：
 ```c++
 RObject callWithOne(Function f){
   return f(1);
