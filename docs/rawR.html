@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="大数据的存取" class="section level2">
 <h2><span class="header-section-number">5.2</span> 大数据的存取</h2>
-<p>对于大的数据，载入内存运算往往给内存造成很大复旦，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用<code>SOAR</code>包进行调用。通常可如下调用</p>
+<p>对于大的数据，载入内存运算往往给内存造成很大负担，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用<code>SOAR</code>包进行调用。通常可如下调用</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="rawR.html#cb8-1"></a><span class="kw">library</span>(SOAR)</span>
 <span id="cb8-2"><a href="rawR.html#cb8-2"></a><span class="kw">Store</span>(<span class="st">&quot;some_data&quot;</span>)</span></code></pre></div>
 <p>这会有如下动作：</p>
@@ -349,9 +349,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="apply族的平行版本" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> <code>apply</code>族的平行版本</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rawR.html#cb12-1"></a><span class="kw">library</span>(parallel)</span>
-<span id="cb12-2"><a href="rawR.html#cb12-2"></a>cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="op">&lt;</span>size of pool<span class="op">&gt;</span>)</span>
-<span id="cb12-3"><a href="rawR.html#cb12-3"></a><span class="co"># one or more parLapply calls</span></span>
-<span id="cb12-4"><a href="rawR.html#cb12-4"></a><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
+<span id="cb12-2"><a href="rawR.html#cb12-2"></a>cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">6</span>)</span>
+<span id="cb12-3"><a href="rawR.html#cb12-3"></a><span class="co"># Windows并行时，每个进程中是没有变量的，所以要把变量导入到每个进程中去</span></span>
+<span id="cb12-4"><a href="rawR.html#cb12-4"></a><span class="co"># clusterExport(cl, varlist)</span></span>
+<span id="cb12-5"><a href="rawR.html#cb12-5"></a><span class="co"># 并行运算</span></span>
+<span id="cb12-6"><a href="rawR.html#cb12-6"></a><span class="co"># parLapply(cl, c(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;), FUN)</span></span>
+<span id="cb12-7"><a href="rawR.html#cb12-7"></a><span class="kw">stopCluster</span>(cl)</span></code></pre></div>
 </div>
 </div>
 <div id="类和方法" class="section level2">

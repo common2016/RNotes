@@ -59,7 +59,7 @@ file.rename(from = fr,to = to)
    2. 用这个命令安装本地的包：`install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')`
 
 ## 大数据的存取
-对于大的数据，载入内存运算往往给内存造成很大复旦，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
+对于大的数据，载入内存运算往往给内存造成很大负担，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
 
 ```r
 library(SOAR)
@@ -110,8 +110,11 @@ picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
 
 ```r
 library(parallel)
-cl <- makeCluster(<size of pool>)
-# one or more parLapply calls
+cl <- makeCluster(6)
+# Windows并行时，每个进程中是没有变量的，所以要把变量导入到每个进程中去
+# clusterExport(cl, varlist)
+# 并行运算
+# parLapply(cl, c('a','b','c'), FUN)
 stopCluster(cl)
 ```
 
