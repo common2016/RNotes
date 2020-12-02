@@ -111,11 +111,17 @@ picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
 
 ```r
 library(parallel)
-cl <- makeCluster(6)
-# Windows并行时，每个进程中是没有变量的，所以要把变量导入到每个进程中去
-# clusterExport(cl, varlist)
+# 检查系统有几个核，然后全部利用
+cl <- makeCluster(detectCores())
+# Windows并行时，每个进程中是没有变量的，所以要把函数或变量导入到每个进程中去
+clusterExport(cl,c('fun1','var1'))
+# 或者要把某个包导入到进程中去
+clusterEvalQ(cl,{
+    library(randomForestSRC)
+    library(tidyverse)
+  }) %>% invisible()
 # 并行运算
-# parLapply(cl, c('a','b','c'), FUN)
+parLapply(cl, c('a','b','c'), FUN)
 stopCluster(cl)
 ```
 
