@@ -317,11 +317,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-2"><a href="rawR.html#cb8-2"></a><span class="kw">Store</span>(<span class="st">&quot;some_data&quot;</span>)</span></code></pre></div>
 <p>这会有如下动作：</p>
 <ul>
-<li>在工作目录下创建一个子目录<code>.R_Cache</code>；</li>
+<li>在工作目录下创建一个子目录<code>.R_Cache</code>。这个目录是隐藏的，可以通过在RStudio右下角Plane中的Files标签中通过勾选显示隐藏而看到。</li>
 <li>对象<code>some_data</code>以.Rdata的形式存储在该子目录中；</li>
 <li>对象<code>some_data</code>在全局环境中被删掉；</li>
 </ul>
-<p>此时，在该工作目录下，可以像调用全局环境中的变量一样调用<code>some_data</code>。</p>
+<p>此时，在该工作目录下，可以像调用全局环境中的变量一样调用<code>some_data</code>。同时还可以用<code>Remove</code>来去掉该变量，用<code>Ls()</code>来查看路径中有哪些变量。</p>
 </div>
 <div id="平行计算" class="section level2">
 <h2><span class="header-section-number">5.3</span> 平行计算</h2>

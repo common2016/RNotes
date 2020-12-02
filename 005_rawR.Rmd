@@ -57,11 +57,12 @@ Store("some_data")
 
 这会有如下动作：
 
-- 在工作目录下创建一个子目录`.R_Cache`；
+- 在工作目录下创建一个子目录`.R_Cache`。这个目录是隐藏的，可以通过在RStudio右下角Plane中的Files标签中通过勾选显示隐藏而看到。
 - 对象`some_data`以.Rdata的形式存储在该子目录中；
 - 对象`some_data`在全局环境中被删掉；
 
-此时，在该工作目录下，可以像调用全局环境中的变量一样调用`some_data`。
+此时，在该工作目录下，可以像调用全局环境中的变量一样调用`some_data`。同时还可以用`Remove`来去掉该变量，用`Ls()`来查看路径中有哪些变量。
+
 
 ## 平行计算
 ### 循环中的平行运算
@@ -95,11 +96,17 @@ picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
 
 ```{r}
 library(parallel)
-cl <- makeCluster(6)
-# Windows并行时，每个进程中是没有变量的，所以要把变量导入到每个进程中去
-# clusterExport(cl, varlist)
+# 检查系统有几个核，然后全部利用
+cl <- makeCluster(detectCores())
+# Windows并行时，每个进程中是没有变量的，所以要把函数或变量导入到每个进程中去
+clusterExport(cl,c('fun1','var1'))
+# 或者要把某个包导入到进程中去
+clusterEvalQ(cl,{
+    library(randomForestSRC)
+    library(tidyverse)
+  }) %>% invisible()
 # 并行运算
-# parLapply(cl, c('a','b','c'), FUN)
+parLapply(cl, c('a','b','c'), FUN)
 stopCluster(cl)
 ```
 
