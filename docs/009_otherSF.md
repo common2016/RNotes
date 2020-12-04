@@ -124,10 +124,13 @@ scipy <- import("scipy")
 
 ```r
 library(reticulate)
-# 可以查你有几个版本的python
-py_config()
+py_config() # 可以查你有几个版本的python
+
 # 想使用哪个版本的python
 use_python('C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe')
+# 或者直接在.Rprofile文件中添加一行如：Sys.setenv(RETICULATE_PYTHON = "D:/usr/Anaconda3")
+# 以配置路径
+
 # 检查python可不可用
 py_available()
 # 检查模块可不可用

@@ -2,6 +2,7 @@
 
 # 原生的R {#rawR}
 ## 一句话Tips
+- `object.size()`可以查看某个对象占了多少内存。
 - `do.call(str_fun, args, quote, envir)`函数感觉很好用, 第一个参数是字符串函数名，第二个参数是一个list, 它里面元素的名字就是你调用的函数的参数的名字。在某种程度上，它可以替代`eval(parse(text = str))`的作用。
 - 从本地安装一个源码包：
 
@@ -74,6 +75,26 @@ Store("some_data")
 
 此时，在该工作目录下，可以像调用全局环境中的变量一样调用`some_data`。同时还可以用`Remove`来去掉该变量，用`Ls()`来查看路径中有哪些变量。
 
+## RStudio-server管理
+```
+rstudio-server start #启动
+rstudio-server stop #停止
+rstudio-server restart #重启
+
+查看运行中R进程
+rstudio-server active-sessions
+指定PID，停止运行中的R进程
+rstudio-server suspend-session <pid>
+停止所有运行中的R进程
+rstudio-server  suspend-all
+强制停止运行中的R进程，优先级最高，立刻执行
+rstudio-server force-suspend-session <pid>
+rstudio-server force-suspend-all
+RStudio Server临时下线，不允许web访问，并给用户友好提示
+rstudio-server offline
+RStudio Server临时上线
+rstudio-server online
+```
 
 ## 平行计算
 ### 循环中的平行运算

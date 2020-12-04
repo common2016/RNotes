@@ -24,6 +24,7 @@ metropolis-和-m-h算法
 rawR
 一句话tips-4
 大数据的存取
+rstudio-server管理
 平行计算
 循环中的平行运算
 apply族的平行版本
