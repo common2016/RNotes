@@ -20,7 +20,7 @@ farcats::fct_recode(rawdata$marrige,
 - **当你发现你用`save`命令保存一个数据长达数分钟时**，建议你迅速调用`qs`包，可能一分钟不到就帮你快速读入和保存了。但这个包一次只能保存一个变量。
 - `tor`: 提供允许用户同时导入多个文件的功能.
 - 读入excel中的sheet名：`openxlsx::getSheetNames(file)`
-- `XLConect`处理excel最强大的包。但需要JRE（java run enviornment）。
+- `XLConnect`处理excel最强大的包。但需要JRE（java run enviornment）。
 
 ```r
 # 可以不改变原有数据，然后把一个数据框精准地写入某个地方

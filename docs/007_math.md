@@ -26,6 +26,18 @@ uni <- uniroot(fun, c(0, 8))$root # 此时求解
 yum install nlopt nlopt-devel
 ```
 
+### 单变量数值优化
+
+如果是单变量数值优化，建议使用基础的`optimize`函数，速度比下一小节介绍的`optimx::optimx`快多了。这个函数基础语法如下，
+
+
+```r
+optimize(f,interval= c(0,1),...,tol, maximum = FALSE....) 
+```
+其中,`f`是要优化的函数,`interval`是寻找最优值时自变量的区间，`maximum`是最大化还是最小化。
+
+### 多变量优化
+
 - **无约束优化**。`optimx`一个优化包，经常用它的`optimx`函数。但是它是无约束优化，尽管可以包含上下界的约束(盒子约束)。
 
 ```r
