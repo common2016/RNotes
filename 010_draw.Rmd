@@ -12,3 +12,11 @@ y <- seq_len(ncol(volcano)) + 500
 plot_ly() %>% add_surface(x = ~x, y = ~y, z = ~volcano)
 ```
 
+## 函数绘制
+```{r}
+# To plot functions without data, specify range of x-axis
+base <- ggplot() + xlim(-5, 5)
+base + geom_function(fun = dnorm)
+base + geom_function(fun = dnorm, args = list(mean = 2, sd = .5))
+```
+
