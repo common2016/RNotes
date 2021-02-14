@@ -127,6 +127,9 @@ picdata <- foreach::foreach(i = 1:nhist,itevar = itevar,
     IRFrf(data = itevar, pmax = pmax, s = s, shockvar = shockvar,histime = i)
   }
 ```
+
+还要注意`foreach`中有一个参数`.export`,这个参数的含义很重要。因为在平行环境中是没有任何变量的，要把你当前环境中的变量或函数导入到平行运行的环境中，就要利用`.export`变量，它以字符串的形式把当前环境变量导入到平行环境中，如`.export = c('myvar','myfun')`。
+
 ### `apply`族的平行版本
 
 

@@ -8,7 +8,7 @@
 # 第二，仅按字母排序。
 # 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，
 # 只是相当于设定了范围和排序。
-	factor(c('Dec','Apr','Jam','Mar'), levels = ('Jan','Feb','Mar','Apr','May'))
+	factor(c('Dec','Apr','Jam','Mar'), levels = c('Jan','Feb','Mar','Apr','May'))
 # 因子重编码, 把1改成unmarried等
 farcats::fct_recode(rawdata$marrige,
            'unmarried'='1','married'='2','cohabitation'='3','divore'='4','wid'='5')
@@ -80,6 +80,27 @@ pdf_pagesize(pdf, opw = "", upw = "")
 
 
 同时，利用`qpdf`包的`pdf_subset,pdf_combine,pdf_split`可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
+
+## 与SQL数据库交互
+
+SQL数据库可以百度SQLStudio软件作为图形化界面打开，查阅等。在R语言中，有`RSQLite`包。工作流如下
+
+```r
+library(RSQLite)
+# 创建连接
+con <- dbConnect(SQLite(), dbname = 'data-raw/mydatabase.sqlite')
+# 写入数据库，name 是数据库的表名，value 是R中的数据框
+dbWriteTable(con, name = 'GQ2008', value = GQ2008, overwrite = T)
+# 查数据库有啥表
+dbListTables(con)
+# 读数据库
+dbReadTable(con, 'GQ2008')
+# 读部分数据库
+dbGetQuery(con, 'select * from GQ2008')
+# 断开链接
+dbDisconnect(con)
+```
+
 
 ## `RJSDMX`包下载世界各大数据库数据
 

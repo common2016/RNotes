@@ -137,6 +137,25 @@ py_available()
 py_module_available('tushare')
 ```
 
+### r与python的交互控制
+
+```r
+library(reticulate)
+mydata = head(cars, n=15)
+
+# 去往python控制台
+repl_python()
+import pandas as pd
+# 载入数据集
+travel = pd.read_excel(“AIR.xlsx”)
+r.mydata.describe() # 利用r对象调用前面R中生成的变量
+# 回到R控制台
+exit
+
+# 利用py对象调用python中生成的变量
+py$travel
+```
+
 ## 与julia的对接
 ### `JuliaCall`包
 感觉此包没有类似`reticulate`包调用python那么无缝。

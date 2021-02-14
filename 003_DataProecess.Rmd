@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,eval = FALSE
 # 第二，仅按字母排序。
 # 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，
 # 只是相当于设定了范围和排序。
-	factor(c('Dec','Apr','Jam','Mar'), levels = ('Jan','Feb','Mar','Apr','May'))
+	factor(c('Dec','Apr','Jam','Mar'), levels = c('Jan','Feb','Mar','Apr','May'))
 # 因子重编码, 把1改成unmarried等
 farcats::fct_recode(rawdata$marrige,
            'unmarried'='1','married'='2','cohabitation'='3','divore'='4','wid'='5')

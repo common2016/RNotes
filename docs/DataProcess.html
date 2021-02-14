@@ -32,6 +32,7 @@
   
 <link rel="prev" href="TS.html"/>
 <link rel="next" href="统计.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
@@ -74,18 +74,18 @@ MathJax.Hub.Config({
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -105,7 +105,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -151,30 +151,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
-<li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a><ul>
+<li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
 <li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.3</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a><ul>
+<li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
-<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a><ul>
+<li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="DataProcess.html"><a href="DataProcess.html#一句话tips-2"><i class="fa fa-check"></i><b>3.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="3.2" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.2</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
-<li class="chapter" data-level="3.3" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.3</b> 前向、后向、线性和样条插值</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="DataProcess.html"><a href="DataProcess.html#signal包"><i class="fa fa-check"></i><b>3.3.1</b> <code>signal</code>包</a></li>
+<li class="chapter" data-level="3.2" data-path="DataProcess.html"><a href="DataProcess.html#与sql数据库交互"><i class="fa fa-check"></i><b>3.2</b> 与SQL数据库交互</a></li>
+<li class="chapter" data-level="3.3" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.3</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
+<li class="chapter" data-level="3.4" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.4</b> 前向、后向、线性和样条插值</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="DataProcess.html"><a href="DataProcess.html#signal包"><i class="fa fa-check"></i><b>3.4.1</b> <code>signal</code>包</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a><ul>
+<li class="chapter" data-level="4" data-path="统计.html"><a href="统计.html"><i class="fa fa-check"></i><b>4</b> 统计</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="统计.html"><a href="统计.html#一句话tips-3"><i class="fa fa-check"></i><b>4.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="4.2" data-path="统计.html"><a href="统计.html#mcmc算法"><i class="fa fa-check"></i><b>4.2</b> MCMC算法</a><ul>
+<li class="chapter" data-level="4.2" data-path="统计.html"><a href="统计.html#mcmc算法"><i class="fa fa-check"></i><b>4.2</b> MCMC算法</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="统计.html"><a href="统计.html#吉布斯抽样原理"><i class="fa fa-check"></i><b>4.2.1</b> 吉布斯抽样原理</a></li>
 <li class="chapter" data-level="4.2.2" data-path="统计.html"><a href="统计.html#一些共轭先验分布的结论"><i class="fa fa-check"></i><b>4.2.2</b> 一些共轭先验分布的结论</a></li>
 <li class="chapter" data-level="4.2.3" data-path="统计.html"><a href="统计.html#一个吉布斯抽样的典型案例"><i class="fa fa-check"></i><b>4.2.3</b> 一个吉布斯抽样的典型案例</a></li>
@@ -182,60 +189,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="统计.html"><a href="统计.html#一些带贝叶斯估计的r包使用报告"><i class="fa fa-check"></i><b>4.2.5</b> 一些带贝叶斯估计的R包使用报告</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a><ul>
+<li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-4"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.2</b> 大数据的存取</a></li>
 <li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.3</b> RStudio-server管理</a></li>
-<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.4</b> 平行计算</a><ul>
+<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.4</b> 平行计算</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.4.1</b> 循环中的平行运算</a></li>
 <li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.4.2</b> <code>apply</code>族的平行版本</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.5</b> 类和方法</a><ul>
+<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.5</b> 类和方法</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.5.1</b> S3类</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.6</b> 打印到文件</a></li>
 <li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.7</b> <code>apply</code>函数族</a></li>
-<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.8</b> Linux中的R</a><ul>
+<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.8</b> Linux中的R</a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
 <li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.9</b> 如何完美复制项目的结果</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a><ul>
+<li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="Eco.html"><a href="Eco.html#一句话tips-5"><i class="fa fa-check"></i><b>6.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="6.2" data-path="Eco.html"><a href="Eco.html#wwz的贸易增加值分解"><i class="fa fa-check"></i><b>6.2</b> wwz的贸易增加值分解</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a><ul>
+<li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-6"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a></li>
+<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="math.html"><a href="math.html#单变量数值优化"><i class="fa fa-check"></i><b>7.2.1</b> 单变量数值优化</a></li>
+<li class="chapter" data-level="7.2.2" data-path="math.html"><a href="math.html#多变量优化"><i class="fa fa-check"></i><b>7.2.2</b> 多变量优化</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a><ul>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="ML.html"><a href="ML.html#一句话tips-7"><i class="fa fa-check"></i><b>8.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="8.2" data-path="ML.html"><a href="ML.html#roc曲线绘制"><i class="fa fa-check"></i><b>8.2</b> ROC曲线绘制</a></li>
 <li class="chapter" data-level="8.3" data-path="ML.html"><a href="ML.html#randomforestsrc包使用报告"><i class="fa fa-check"></i><b>8.3</b> <code>randomForestSRC</code>包使用报告</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a><ul>
+<li class="chapter" data-level="9" data-path="otherSF.html"><a href="otherSF.html"><i class="fa fa-check"></i><b>9</b> 与其他软件的交互</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="otherSF.html"><a href="otherSF.html#一句话tips-8"><i class="fa fa-check"></i><b>9.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r语言调用matlab"><i class="fa fa-check"></i><b>9.2</b> R语言调用Matlab</a><ul>
+<li class="chapter" data-level="9.2" data-path="otherSF.html"><a href="otherSF.html#r语言调用matlab"><i class="fa fa-check"></i><b>9.2</b> R语言调用Matlab</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="otherSF.html"><a href="otherSF.html#强大的r.matlab包"><i class="fa fa-check"></i><b>9.2.1</b> 强大的<code>R.matlab</code>包</a></li>
 <li class="chapter" data-level="9.2.2" data-path="otherSF.html"><a href="otherSF.html#其他的一些小办法"><i class="fa fa-check"></i><b>9.2.2</b> 其他的一些小办法</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a><ul>
+<li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a>
+<ul>
 <li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.3.1</b> 其他：</a></li>
+<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.2</b> r与python的交互控制</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.4</b> 与julia的对接</a><ul>
+<li class="chapter" data-level="9.4" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.4</b> 与julia的对接</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="otherSF.html"><a href="otherSF.html#juliacall包"><i class="fa fa-check"></i><b>9.4.1</b> <code>JuliaCall</code>包</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="otherSF.html"><a href="otherSF.html#与c的对接rcpp包"><i class="fa fa-check"></i><b>9.5</b> 与C++的对接：<code>Rcpp</code>包</a><ul>
+<li class="chapter" data-level="9.5" data-path="otherSF.html"><a href="otherSF.html#与c的对接rcpp包"><i class="fa fa-check"></i><b>9.5</b> 与C++的对接：<code>Rcpp</code>包</a>
+<ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
-<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a><ul>
+<li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="DrawTips.html"><a href="DrawTips.html#d绘图"><i class="fa fa-check"></i><b>10.1</b> 3D绘图</a></li>
+<li class="chapter" data-level="10.2" data-path="DrawTips.html"><a href="DrawTips.html#函数绘制"><i class="fa fa-check"></i><b>10.2</b> 函数绘制</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a><ul>
+<li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#一句话tips-9"><i class="fa fa-check"></i><b>11.1</b> 一句话Tips</a></li>
 <li class="chapter" data-level="11.2" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#使用自己的数据集"><i class="fa fa-check"></i><b>11.2</b> 使用自己的数据集</a></li>
 <li class="chapter" data-level="11.3" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#测试"><i class="fa fa-check"></i><b>11.3</b> 测试</a></li>
@@ -261,21 +287,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="DataProcess" class="section level1">
+<div id="DataProcess" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> 数据处理</h1>
-<div id="一句话tips-2" class="section level2">
+<div id="一句话tips-2" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 一句话Tips</h2>
 <ul>
 <li>因子操作</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="DataProcess.html#cb1-1"></a><span class="co"># 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA</span></span>
-<span id="cb1-2"><a href="DataProcess.html#cb1-2"></a><span class="co"># 第二，仅按字母排序。</span></span>
-<span id="cb1-3"><a href="DataProcess.html#cb1-3"></a><span class="co"># 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，</span></span>
-<span id="cb1-4"><a href="DataProcess.html#cb1-4"></a><span class="co"># 只是相当于设定了范围和排序。</span></span>
-<span id="cb1-5"><a href="DataProcess.html#cb1-5"></a>    <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&#39;Dec&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;Jam&#39;</span>,<span class="st">&#39;Mar&#39;</span>), <span class="dt">levels =</span> (<span class="st">&#39;Jan&#39;</span>,<span class="st">&#39;Feb&#39;</span>,<span class="st">&#39;Mar&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;May&#39;</span>))</span>
-<span id="cb1-6"><a href="DataProcess.html#cb1-6"></a><span class="co"># 因子重编码, 把1改成unmarried等</span></span>
-<span id="cb1-7"><a href="DataProcess.html#cb1-7"></a>farcats<span class="op">::</span><span class="kw">fct_recode</span>(rawdata<span class="op">$</span>marrige,</span>
-<span id="cb1-8"><a href="DataProcess.html#cb1-8"></a>           <span class="st">&#39;unmarried&#39;</span>=<span class="st">&#39;1&#39;</span>,<span class="st">&#39;married&#39;</span>=<span class="st">&#39;2&#39;</span>,<span class="st">&#39;cohabitation&#39;</span>=<span class="st">&#39;3&#39;</span>,<span class="st">&#39;divore&#39;</span>=<span class="st">&#39;4&#39;</span>,<span class="st">&#39;wid&#39;</span>=<span class="st">&#39;5&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="DataProcess.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用字符串有两个缺陷：第一，不在因子水平范围内的不会转化成NA</span></span>
+<span id="cb8-2"><a href="DataProcess.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 第二，仅按字母排序。</span></span>
+<span id="cb8-3"><a href="DataProcess.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 因此，通过设定因子水平，可以解决上述两个问题。注意水平和字符串是一样的，</span></span>
+<span id="cb8-4"><a href="DataProcess.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 只是相当于设定了范围和排序。</span></span>
+<span id="cb8-5"><a href="DataProcess.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&#39;Dec&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;Jam&#39;</span>,<span class="st">&#39;Mar&#39;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;Jan&#39;</span>,<span class="st">&#39;Feb&#39;</span>,<span class="st">&#39;Mar&#39;</span>,<span class="st">&#39;Apr&#39;</span>,<span class="st">&#39;May&#39;</span>))</span>
+<span id="cb8-6"><a href="DataProcess.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 因子重编码, 把1改成unmarried等</span></span>
+<span id="cb8-7"><a href="DataProcess.html#cb8-7" aria-hidden="true" tabindex="-1"></a>farcats<span class="sc">::</span><span class="fu">fct_recode</span>(rawdata<span class="sc">$</span>marrige,</span>
+<span id="cb8-8"><a href="DataProcess.html#cb8-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">&#39;unmarried&#39;</span><span class="ot">=</span><span class="st">&#39;1&#39;</span>,<span class="st">&#39;married&#39;</span><span class="ot">=</span><span class="st">&#39;2&#39;</span>,<span class="st">&#39;cohabitation&#39;</span><span class="ot">=</span><span class="st">&#39;3&#39;</span>,<span class="st">&#39;divore&#39;</span><span class="ot">=</span><span class="st">&#39;4&#39;</span>,<span class="st">&#39;wid&#39;</span><span class="ot">=</span><span class="st">&#39;5&#39;</span>)</span></code></pre></div>
 <ul>
 <li><code>dbplyr</code>可以连接到几乎任何数据库。</li>
 <li><code>wbstats</code>下载世界银行数据，很牛逼。Stata里面的<code>wbopendata</code>包更牛逼。</li>
@@ -285,9 +311,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>读入excel中的sheet名：<code>openxlsx::getSheetNames(file)</code></li>
 <li><code>XLConnect</code>处理excel最强大的包。但需要JRE（java run enviornment）。</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="DataProcess.html#cb2-1"></a><span class="co"># 可以不改变原有数据，然后把一个数据框精准地写入某个地方</span></span>
-<span id="cb2-2"><a href="DataProcess.html#cb2-2"></a><span class="kw">writeWorksheetToFile</span>(<span class="st">&quot;XLConnectExample2.xlsx&quot;</span>, <span class="dt">data =</span> ChickWeight,</span>
-<span id="cb2-3"><a href="DataProcess.html#cb2-3"></a> <span class="dt">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="dt">startRow =</span> <span class="dv">3</span>, <span class="dt">startCol =</span> <span class="dv">4</span>,<span class="dt">header =</span> <span class="ot">FALSE</span>, <span class="dt">clearSheets =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="DataProcess.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 可以不改变原有数据，然后把一个数据框精准地写入某个地方</span></span>
+<span id="cb9-2"><a href="DataProcess.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeWorksheetToFile</span>(<span class="st">&quot;XLConnectExample2.xlsx&quot;</span>, <span class="at">data =</span> ChickWeight,</span>
+<span id="cb9-3"><a href="DataProcess.html#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="at">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="at">startRow =</span> <span class="dv">3</span>, <span class="at">startCol =</span> <span class="dv">4</span>,<span class="at">header =</span> <span class="cn">FALSE</span>, <span class="at">clearSheets =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <ul>
 <li><p>使用<code>as.Date</code>来生成日期，必须带有年月日三个要素，使用<code>format</code>来输出日期格式，此时可以只输出年和月。如<code>as.Date('2010/05/01') %&gt;% format(.,format = '%Y%m')</code></p></li>
 <li><p><code>seq.Date()</code>生成日期序列，包括日、星期、月、年。</p></li>
@@ -295,64 +321,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>zoo::rollapply(x, 30, mean)</code>就是30天的移动平均求值。</p></li>
 <li><p><code>select</code>是一个很牛逼的函数</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="DataProcess.html#cb3-1"></a><span class="kw">select</span>(regdata,id, year) <span class="co"># 选择regdata数据框的id和year两列</span></span>
-<span id="cb3-2"><a href="DataProcess.html#cb3-2"></a><span class="kw">select</span>(regdata,<span class="kw">starts_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;开头的列</span></span>
-<span id="cb3-3"><a href="DataProcess.html#cb3-3"></a><span class="kw">select</span>(regdata,<span class="kw">ends_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;结尾的列</span></span>
-<span id="cb3-4"><a href="DataProcess.html#cb3-4"></a><span class="kw">select</span>(regdata,<span class="kw">contains</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配包含&#39;abc&#39;的列</span></span>
-<span id="cb3-5"><a href="DataProcess.html#cb3-5"></a><span class="kw">select</span>(regdata,<span class="kw">matches</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 正则表达匹配</span></span>
-<span id="cb3-6"><a href="DataProcess.html#cb3-6"></a><span class="kw">select</span>(regdata,<span class="kw">num_range</span>(<span class="st">&#39;x&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># 匹配x1, x2,x3的列</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="DataProcess.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,id, year) <span class="co"># 选择regdata数据框的id和year两列</span></span>
+<span id="cb10-2"><a href="DataProcess.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,<span class="fu">starts_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;开头的列</span></span>
+<span id="cb10-3"><a href="DataProcess.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,<span class="fu">ends_with</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配以&#39;abc&#39;结尾的列</span></span>
+<span id="cb10-4"><a href="DataProcess.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,<span class="fu">contains</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 匹配包含&#39;abc&#39;的列</span></span>
+<span id="cb10-5"><a href="DataProcess.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,<span class="fu">matches</span>(<span class="st">&#39;abc&#39;</span>)) <span class="co"># 正则表达匹配</span></span>
+<span id="cb10-6"><a href="DataProcess.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(regdata,<span class="fu">num_range</span>(<span class="st">&#39;x&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)) <span class="co"># 匹配x1, x2,x3的列</span></span></code></pre></div>
 <ul>
 <li>R语言给数组各维数命名</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="DataProcess.html#cb4-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
-<span id="cb4-2"><a href="DataProcess.html#cb4-2"></a>vector1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb4-3"><a href="DataProcess.html#cb4-3"></a>vector2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
-<span id="cb4-4"><a href="DataProcess.html#cb4-4"></a>column.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
-<span id="cb4-5"><a href="DataProcess.html#cb4-5"></a>row.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
-<span id="cb4-6"><a href="DataProcess.html#cb4-6"></a>matrix.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
-<span id="cb4-7"><a href="DataProcess.html#cb4-7"></a></span>
-<span id="cb4-8"><a href="DataProcess.html#cb4-8"></a><span class="co"># Take these vectors as input to the array.</span></span>
-<span id="cb4-9"><a href="DataProcess.html#cb4-9"></a>result &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(vector1,vector2),<span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="dt">dimnames =</span> <span class="kw">list</span>(row.names,column.names,</span>
-<span id="cb4-10"><a href="DataProcess.html#cb4-10"></a>                                                                  matrix.names))</span>
-<span id="cb4-11"><a href="DataProcess.html#cb4-11"></a><span class="kw">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="DataProcess.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb11-2"><a href="DataProcess.html#cb11-2" aria-hidden="true" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb11-3"><a href="DataProcess.html#cb11-3" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb11-4"><a href="DataProcess.html#cb11-4" aria-hidden="true" tabindex="-1"></a>column.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
+<span id="cb11-5"><a href="DataProcess.html#cb11-5" aria-hidden="true" tabindex="-1"></a>row.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
+<span id="cb11-6"><a href="DataProcess.html#cb11-6" aria-hidden="true" tabindex="-1"></a>matrix.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
+<span id="cb11-7"><a href="DataProcess.html#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="DataProcess.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb11-9"><a href="DataProcess.html#cb11-9" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="at">dimnames =</span> <span class="fu">list</span>(row.names,column.names,</span>
+<span id="cb11-10"><a href="DataProcess.html#cb11-10" aria-hidden="true" tabindex="-1"></a>                                                                  matrix.names))</span>
+<span id="cb11-11"><a href="DataProcess.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <ul>
 <li><code>pdftools</code>包的函数可以读PDF文件：</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="DataProcess.html#cb5-1"></a><span class="kw">pdf_info</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-2"><a href="DataProcess.html#cb5-2"></a></span>
-<span id="cb5-3"><a href="DataProcess.html#cb5-3"></a><span class="kw">pdf_text</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-4"><a href="DataProcess.html#cb5-4"></a></span>
-<span id="cb5-5"><a href="DataProcess.html#cb5-5"></a><span class="kw">pdf_data</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-6"><a href="DataProcess.html#cb5-6"></a></span>
-<span id="cb5-7"><a href="DataProcess.html#cb5-7"></a><span class="kw">pdf_fonts</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-8"><a href="DataProcess.html#cb5-8"></a></span>
-<span id="cb5-9"><a href="DataProcess.html#cb5-9"></a><span class="kw">pdf_attachments</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-10"><a href="DataProcess.html#cb5-10"></a></span>
-<span id="cb5-11"><a href="DataProcess.html#cb5-11"></a><span class="kw">pdf_toc</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-12"><a href="DataProcess.html#cb5-12"></a></span>
-<span id="cb5-13"><a href="DataProcess.html#cb5-13"></a><span class="kw">pdf_pagesize</span>(pdf, <span class="dt">opw =</span> <span class="st">&quot;&quot;</span>, <span class="dt">upw =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="DataProcess.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_info</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-2"><a href="DataProcess.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="DataProcess.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_text</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-4"><a href="DataProcess.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="DataProcess.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_data</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-6"><a href="DataProcess.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="DataProcess.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_fonts</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-8"><a href="DataProcess.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="DataProcess.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_attachments</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-10"><a href="DataProcess.html#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="DataProcess.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_toc</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb12-12"><a href="DataProcess.html#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="DataProcess.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf_pagesize</span>(pdf, <span class="at">opw =</span> <span class="st">&quot;&quot;</span>, <span class="at">upw =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>同时，利用<code>qpdf</code>包的<code>pdf_subset,pdf_combine,pdf_split</code>可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。</p>
 </div>
-<div id="rjsdmx包下载世界各大数据库数据" class="section level2">
-<h2><span class="header-section-number">3.2</span> <code>RJSDMX</code>包下载世界各大数据库数据</h2>
+<div id="与sql数据库交互" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 与SQL数据库交互</h2>
+<p>SQL数据库可以百度SQLStudio软件作为图形化界面打开，查阅等。在R语言中，有<code>RSQLite</code>包。工作流如下</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="DataProcess.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb13-2"><a href="DataProcess.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建连接</span></span>
+<span id="cb13-3"><a href="DataProcess.html#cb13-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="at">dbname =</span> <span class="st">&#39;data-raw/mydatabase.sqlite&#39;</span>)</span>
+<span id="cb13-4"><a href="DataProcess.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 写入数据库，name 是数据库的表名，value 是R中的数据框</span></span>
+<span id="cb13-5"><a href="DataProcess.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="at">name =</span> <span class="st">&#39;GQ2008&#39;</span>, <span class="at">value =</span> GQ2008, <span class="at">overwrite =</span> T)</span>
+<span id="cb13-6"><a href="DataProcess.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 查数据库有啥表</span></span>
+<span id="cb13-7"><a href="DataProcess.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb13-8"><a href="DataProcess.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 读数据库</span></span>
+<span id="cb13-9"><a href="DataProcess.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">&#39;GQ2008&#39;</span>)</span>
+<span id="cb13-10"><a href="DataProcess.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 读部分数据库</span></span>
+<span id="cb13-11"><a href="DataProcess.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">&#39;select * from GQ2008&#39;</span>)</span>
+<span id="cb13-12"><a href="DataProcess.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 断开链接</span></span>
+<span id="cb13-13"><a href="DataProcess.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+</div>
+<div id="rjsdmx包下载世界各大数据库数据" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> <code>RJSDMX</code>包下载世界各大数据库数据</h2>
 <p>一般工作流：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="DataProcess.html#cb6-1"></a><span class="kw">library</span>(RJSDMX)</span>
-<span id="cb6-2"><a href="DataProcess.html#cb6-2"></a><span class="co"># 查看有哪些库可以用</span></span>
-<span id="cb6-3"><a href="DataProcess.html#cb6-3"></a><span class="kw">getProviders</span>()</span>
-<span id="cb6-4"><a href="DataProcess.html#cb6-4"></a><span class="co"># 库中有哪些子库可以用</span></span>
-<span id="cb6-5"><a href="DataProcess.html#cb6-5"></a><span class="kw">getFlows</span>(<span class="st">&#39;WITS&#39;</span>)</span>
-<span id="cb6-6"><a href="DataProcess.html#cb6-6"></a><span class="co"># 该子库调取数据需要哪几个字段</span></span>
-<span id="cb6-7"><a href="DataProcess.html#cb6-7"></a><span class="kw">getDimensions</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>)</span>
-<span id="cb6-8"><a href="DataProcess.html#cb6-8"></a><span class="co"># 查看这个指标有几个选项 </span></span>
-<span id="cb6-9"><a href="DataProcess.html#cb6-9"></a><span class="kw">getCodes</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>,<span class="st">&#39;INDICATOR&#39;</span>)</span>
-<span id="cb6-10"><a href="DataProcess.html#cb6-10"></a><span class="co"># 查好了就可以下载</span></span>
-<span id="cb6-11"><a href="DataProcess.html#cb6-11"></a>ans &lt;-<span class="st"> </span><span class="kw">getTimeSeries</span>(<span class="st">&#39;WITS&#39;</span>, <span class="st">&#39;DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.MFN-WGHTD-AVRG&#39;</span>)</span>
-<span id="cb6-12"><a href="DataProcess.html#cb6-12"></a><span class="co"># 你也可以调用图形窗口查阅命令</span></span>
-<span id="cb6-13"><a href="DataProcess.html#cb6-13"></a><span class="kw">sdmxHelp</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="DataProcess.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RJSDMX)</span>
+<span id="cb14-2"><a href="DataProcess.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看有哪些库可以用</span></span>
+<span id="cb14-3"><a href="DataProcess.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getProviders</span>()</span>
+<span id="cb14-4"><a href="DataProcess.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 库中有哪些子库可以用</span></span>
+<span id="cb14-5"><a href="DataProcess.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getFlows</span>(<span class="st">&#39;WITS&#39;</span>)</span>
+<span id="cb14-6"><a href="DataProcess.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 该子库调取数据需要哪几个字段</span></span>
+<span id="cb14-7"><a href="DataProcess.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">getDimensions</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>)</span>
+<span id="cb14-8"><a href="DataProcess.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看这个指标有几个选项 </span></span>
+<span id="cb14-9"><a href="DataProcess.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">getCodes</span>(<span class="st">&#39;WITS&#39;</span>,<span class="st">&#39;WBG_WITS,DF_WITS_TradeStats_Tariff,1.0&#39;</span>,<span class="st">&#39;INDICATOR&#39;</span>)</span>
+<span id="cb14-10"><a href="DataProcess.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 查好了就可以下载</span></span>
+<span id="cb14-11"><a href="DataProcess.html#cb14-11" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">getTimeSeries</span>(<span class="st">&#39;WITS&#39;</span>, <span class="st">&#39;DF_WITS_TradeStats_Tariff/A.CHN.WLD.01-05_Animal.MFN-WGHTD-AVRG&#39;</span>)</span>
+<span id="cb14-12"><a href="DataProcess.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 你也可以调用图形窗口查阅命令</span></span>
+<span id="cb14-13"><a href="DataProcess.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sdmxHelp</span>()</span></code></pre></div>
 <p><code>IMF2</code>里面的<code>IFS</code>数据库里面有很多季度的宏观数据，如GDP，固定资本形成等</p>
 </div>
-<div id="前向后向线性和样条插值" class="section level2">
-<h2><span class="header-section-number">3.3</span> 前向、后向、线性和样条插值</h2>
+<div id="前向后向线性和样条插值" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 前向、后向、线性和样条插值</h2>
 <ul>
 <li><code>zoo</code>包
 <ul>
@@ -361,27 +404,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li><code>imputeTS</code>包,<code>imputeTS::na.locf</code>也可以，不过它只能对数值。它也有后向插值选项。</li>
 </ul>
-<div id="signal包" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> <code>signal</code>包</h3>
+<div id="signal包" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> <code>signal</code>包</h3>
 <p>它有一个插值函数<code>interp1</code>函数，比较好用：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="DataProcess.html#cb7-1"></a><span class="kw">interp1</span>(x, y, xi, <span class="dt">method =</span> <span class="kw">c</span>(<span class="st">&quot;linear&quot;</span>, <span class="st">&quot;nearest&quot;</span>, <span class="st">&quot;pchip&quot;</span>, <span class="st">&quot;cubic&quot;</span>, <span class="st">&quot;spline&quot;</span>), </span>
-<span id="cb7-2"><a href="DataProcess.html#cb7-2"></a>        <span class="dt">extrap =</span> <span class="ot">NA</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="DataProcess.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interp1</span>(x, y, xi, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;linear&quot;</span>, <span class="st">&quot;nearest&quot;</span>, <span class="st">&quot;pchip&quot;</span>, <span class="st">&quot;cubic&quot;</span>, <span class="st">&quot;spline&quot;</span>), </span>
+<span id="cb15-2"><a href="DataProcess.html#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">extrap =</span> <span class="cn">NA</span>, ...)</span></code></pre></div>
 <p>它的参数说明如下</p>
 <ul>
 <li>x,y：vectors giving the coordinates of the points to be interpolated. x is assumed to be strictly monotonic.</li>
 <li>xi：points at which to interpolate.</li>
 </ul>
 <p>method ：
-one of “linear”, “nearest”, “pchip”, “cubic”, “spline”.</p>
+one of “linear,” “nearest,” “pchip,” “cubic,” “spline.”</p>
 <ul>
 <li><p>‘nearest’: return nearest neighbour</p></li>
 <li><p>‘linear’: linear interpolation from nearest neighbours</p></li>
 <li><p>‘pchip’: piecewise cubic hermite interpolating polynomial</p></li>
 <li><p>‘cubic’: cubic interpolation from four nearest neighbours</p></li>
-<li><p>‘spline’: cubic spline interpolation–smooth first and second derivatives throughout the curve. for method=‘spline’, additional arguments passed to splinefun.
+<li><p>‘spline’: cubic spline interpolation–smooth first and second derivatives throughout the curve. for method=‘spline,’ additional arguments passed to splinefun.
 Details</p></li>
 <li><p>extrap：
-if TRUE or ‘extrap’, then extrapolate values beyond the endpoints. If extrap is a number, replace values beyond the endpoints with that number (defaults to NA).</p></li>
+if TRUE or ‘extrap,’ then extrapolate values beyond the endpoints. If extrap is a number, replace values beyond the endpoints with that number (defaults to NA).</p></li>
 </ul>
 
 </div>
@@ -443,6 +486,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
