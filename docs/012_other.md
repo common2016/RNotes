@@ -1,5 +1,6 @@
 
 # 其他
+- `officer`是一个强大的R与Word，PPT等交互的包。
 - `geosphere::distm`根据经纬度算距离。
 - `stats19`一个下载英国交通事故记录的数据库。
 - `pacman`包管理包，如`p_load()`。

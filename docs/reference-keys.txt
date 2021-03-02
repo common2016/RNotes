@@ -10,6 +10,9 @@ r中有x12包可以做季节处理
 seasonal包有x13处理更加便捷
 DataProcess
 一句话tips-2
+data.table包
+基本操作
+分组操作
 与sql数据库交互
 rjsdmx包下载世界各大数据库数据
 前向后向线性和样条插值
