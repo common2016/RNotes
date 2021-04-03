@@ -11,6 +11,7 @@ Imports:
 ```
 
 **这个语句的作用只是保证了在安装包时，这些包必须被安装**。因此，你在写函数时，要调用这个包，需要使用`pdg::fun()`。或者在函数文档中添加注释如`@import magrittr`（不建议该操作，可能会改变全局环境，该操作实际上修改了NAMESPACE文件）。我经常使用这个函数`#' @importFrom magrittr '%>%' `。
+
 - 执行`devtools::document()`以产生函数的说明文档。
 - 执行`devtools::load_all()`将source`R/`目录下所有文件
 - `check()`在本地整个地检验包是否可行，而`devtools::check_win_*()`族函数将其提交至CRAN服务器进行检查，并在10-20分钟后通过邮件返回你一个结果。
@@ -28,6 +29,7 @@ Imports:
 
 ## 测试
 要提交包到CRAN必须有测试。执行`devtools::testhat()`做了三件事：
+
 - 创建`tests/testthat`目录；
 - 在Description的Suggests域增加testthat;
 - 创建一个文件`tests/testthat.R`。这个文件不要动。通常是在`tests/testthat/`目录下面建立类似这样的测试文件(文件名总以`test`开始)，

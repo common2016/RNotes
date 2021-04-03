@@ -17,7 +17,7 @@ It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 pr
 - `hhi`包可以算赫芬达尔指数。
 
 ## wwz的贸易增加值分解
-分解的主要函数是`decomp`。但是有一个`load_table_vectors`函数可以生成一个decompr class，这个类有很多我们想要的东西，如投入产出系数A，里昂惕夫矩阵B以及其他的一些数据。
+分解的主要函数是`decompr`。但是有一个`load_table_vectors`函数可以生成一个decompr class，这个类有很多我们想要的东西，如投入产出系数A，里昂惕夫矩阵B以及其他的一些数据。
 
 ```r
 # load example data

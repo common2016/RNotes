@@ -160,11 +160,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
+<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a>
@@ -258,6 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
+<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -304,10 +306,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>Imports:
     ggplot2,
     tidyverse</code></pre>
-<p><strong>这个语句的作用只是保证了在安装包时，这些包必须被安装</strong>。因此，你在写函数时，要调用这个包，需要使用<code>pdg::fun()</code>。或者在函数文档中添加注释如<code>@import magrittr</code>（不建议该操作，可能会改变全局环境，该操作实际上修改了NAMESPACE文件）。我经常使用这个函数<code>#' @importFrom magrittr '%&gt;%'</code>。
-- 执行<code>devtools::document()</code>以产生函数的说明文档。
-- 执行<code>devtools::load_all()</code>将source<code>R/</code>目录下所有文件
-- <code>check()</code>在本地整个地检验包是否可行，而<code>devtools::check_win_*()</code>族函数将其提交至CRAN服务器进行检查，并在10-20分钟后通过邮件返回你一个结果。</p>
+<p><strong>这个语句的作用只是保证了在安装包时，这些包必须被安装</strong>。因此，你在写函数时，要调用这个包，需要使用<code>pdg::fun()</code>。或者在函数文档中添加注释如<code>@import magrittr</code>（不建议该操作，可能会改变全局环境，该操作实际上修改了NAMESPACE文件）。我经常使用这个函数<code>#' @importFrom magrittr '%&gt;%'</code>。</p>
+<ul>
+<li>执行<code>devtools::document()</code>以产生函数的说明文档。</li>
+<li>执行<code>devtools::load_all()</code>将source<code>R/</code>目录下所有文件</li>
+<li><code>check()</code>在本地整个地检验包是否可行，而<code>devtools::check_win_*()</code>族函数将其提交至CRAN服务器进行检查，并在10-20分钟后通过邮件返回你一个结果。</li>
+</ul>
 </div>
 <div id="使用自己的数据集" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> 使用自己的数据集</h2>
@@ -325,15 +329,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="测试" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> 测试</h2>
-<p>要提交包到CRAN必须有测试。执行<code>devtools::testhat()</code>做了三件事：
-- 创建<code>tests/testthat</code>目录；
-- 在Description的Suggests域增加testthat;
-- 创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="创建包的一些建议.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb79-2"><a href="创建包的一些建议.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb79-3"><a href="创建包的一些建议.html#cb79-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb79-4"><a href="创建包的一些建议.html#cb79-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb79-5"><a href="创建包的一些建议.html#cb79-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>要提交包到CRAN必须有测试。执行<code>devtools::testhat()</code>做了三件事：</p>
+<ul>
+<li>创建<code>tests/testthat</code>目录；</li>
+<li>在Description的Suggests域增加testthat;</li>
+<li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="创建包的一些建议.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb4-2"><a href="创建包的一些建议.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb4-3"><a href="创建包的一些建议.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb4-4"><a href="创建包的一些建议.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb4-5"><a href="创建包的一些建议.html#cb4-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2" number="11.4">
@@ -342,11 +348,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>函数末端返回<code>NextMethod()</code>。</li>
 </ol>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="创建包的一些建议.html#cb80-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb80-2"><a href="创建包的一些建议.html#cb80-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb80-3"><a href="创建包的一些建议.html#cb80-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
-<span id="cb80-4"><a href="创建包的一些建议.html#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
-<span id="cb80-5"><a href="创建包的一些建议.html#cb80-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="创建包的一些建议.html#cb5-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb5-2"><a href="创建包的一些建议.html#cb5-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-3"><a href="创建包的一些建议.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
+<span id="cb5-4"><a href="创建包的一些建议.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb5-5"><a href="创建包的一些建议.html#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>方法要包含原始泛型的所有参数，顺序也要一致。</li>
 <li>缺省设置也要和原始泛型一致。</li>
@@ -419,20 +425,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
