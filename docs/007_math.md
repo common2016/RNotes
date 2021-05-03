@@ -26,6 +26,8 @@ uni <- uniroot(fun, c(0, 8))$root # 此时求解
 yum install nlopt nlopt-devel
 ```
 
+- 数值积分，用`mvQuad`包，里面有很多数值积分的方法，包括Gauss-Hermite Quadrature方法。它的说明文档非常清晰。
+
 ### 单变量数值优化
 
 如果是单变量数值优化，建议使用基础的`optimize`函数，速度比下一小节介绍的`optimx::optimx`快多了。这个函数基础语法如下，

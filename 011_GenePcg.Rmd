@@ -3,6 +3,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 ```
 # 创建包的一些建议
 ## 一句话Tips
+
+- 在R包结构下做分析，要注意，在函数中调用其他包的函数时，要记得先用`use_package()`函数来添`Import`域，否则会有一些意想不到的问题。比如在使用`data.table`时就会出现类似`Error in `[.data.frame`(x, i, j) : undefined columns selected`这样的问题。
 - 要输出函数，记得在注释中书写`@export`
 - 从RStudio中创建一个包项目
 - 不再使用`library()`或者`require()`，因为这会改变搜索路径。而是在控制台输入`usethis::use_package('magrittr',type = 'Imports',min_version = NULL)`执行一下。该命令在DESCRIPTION文件中添加如下语句：
