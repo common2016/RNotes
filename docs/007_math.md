@@ -20,13 +20,39 @@ uni <- uniroot(fun, c(0, 8))$root # 此时求解
 ```
 方程组的根求解用`multiroot`。
 
+## 数值积分
+
+用`mvQuad`包，里面有很多数值积分的方法，包括Gauss-Hermite Quadrature方法。它的说明文档非常清晰。在经济学应用中，通常要计算期望，可以使用数值积分，比如要计算$E[f(x)]=\int f(x)xdx$，代码书写如下(计算的是$E(x)$和$E(x+2)$)：
+
+```r
+library(mvQuad)
+nw <-  nw <- createNIGrid(dim=1, type="GHe", level=6)
+myfun <- function(x) x*dnorm(x) # 计算x的期望
+quadrature(myfun, grid = nw)
+```
+
+```
+## [1] -1.209102e-15
+```
+
+```r
+myfun <- function(x) (x+2)*dnorm(x) # 计算x+2的期望
+quadrature(myfun, grid = nw)
+```
+
+```
+## [1] 2
+```
+
+
 ## 数值优化
+
 - 在Linux系统下，安装`nloptr`包，需要先在linux系统中安装`nlopt`包。
 ```
 yum install nlopt nlopt-devel
 ```
 
-- 数值积分，用`mvQuad`包，里面有很多数值积分的方法，包括Gauss-Hermite Quadrature方法。它的说明文档非常清晰。
+
 
 ### 单变量数值优化
 

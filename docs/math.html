@@ -226,10 +226,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-6"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a>
+<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值积分"><i class="fa fa-check"></i><b>7.2</b> 数值积分</a></li>
+<li class="chapter" data-level="7.3" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.3</b> 数值优化</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="math.html"><a href="math.html#单变量数值优化"><i class="fa fa-check"></i><b>7.2.1</b> 单变量数值优化</a></li>
-<li class="chapter" data-level="7.2.2" data-path="math.html"><a href="math.html#多变量优化"><i class="fa fa-check"></i><b>7.2.2</b> 多变量优化</a></li>
+<li class="chapter" data-level="7.3.1" data-path="math.html"><a href="math.html#单变量数值优化"><i class="fa fa-check"></i><b>7.3.1</b> 单变量数值优化</a></li>
+<li class="chapter" data-level="7.3.2" data-path="math.html"><a href="math.html#多变量优化"><i class="fa fa-check"></i><b>7.3.2</b> 多变量优化</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a>
@@ -316,52 +317,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-4"><a href="math.html#cb1-4" aria-hidden="true" tabindex="-1"></a>uni <span class="ot">&lt;-</span> <span class="fu">uniroot</span>(fun, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))<span class="sc">$</span>root <span class="co"># 此时求解</span></span></code></pre></div>
 <p>方程组的根求解用<code>multiroot</code>。</p>
 </div>
-<div id="数值优化" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> 数值优化</h2>
+<div id="数值积分" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> 数值积分</h2>
+<p>用<code>mvQuad</code>包，里面有很多数值积分的方法，包括Gauss-Hermite Quadrature方法。它的说明文档非常清晰。在经济学应用中，通常要计算期望，可以使用数值积分，比如要计算<span class="math inline">\(E[f(x)]=\int f(x)xdx\)</span>，代码书写如下(计算的是<span class="math inline">\(E(x)\)</span>和<span class="math inline">\(E(x+2)\)</span>)：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="math.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvQuad)</span>
+<span id="cb2-2"><a href="math.html#cb2-2" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span>  nw <span class="ot">&lt;-</span> <span class="fu">createNIGrid</span>(<span class="at">dim=</span><span class="dv">1</span>, <span class="at">type=</span><span class="st">&quot;GHe&quot;</span>, <span class="at">level=</span><span class="dv">6</span>)</span>
+<span id="cb2-3"><a href="math.html#cb2-3" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">*</span><span class="fu">dnorm</span>(x) <span class="co"># 计算x的期望</span></span>
+<span id="cb2-4"><a href="math.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quadrature</span>(myfun, <span class="at">grid =</span> nw)</span></code></pre></div>
+<pre><code>## [1] -1.209102e-15</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="math.html#cb4-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (x<span class="sc">+</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">dnorm</span>(x) <span class="co"># 计算x+2的期望</span></span>
+<span id="cb4-2"><a href="math.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadrature</span>(myfun, <span class="at">grid =</span> nw)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="数值优化" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> 数值优化</h2>
 <ul>
 <li>在Linux系统下，安装<code>nloptr</code>包，需要先在linux系统中安装<code>nlopt</code>包。</li>
 </ul>
 <pre><code>yum install nlopt nlopt-devel</code></pre>
-<ul>
-<li>数值积分，用<code>mvQuad</code>包，里面有很多数值积分的方法，包括Gauss-Hermite Quadrature方法。它的说明文档非常清晰。</li>
-</ul>
-<div id="单变量数值优化" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> 单变量数值优化</h3>
+<div id="单变量数值优化" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> 单变量数值优化</h3>
 <p>如果是单变量数值优化，建议使用基础的<code>optimize</code>函数，速度比下一小节介绍的<code>optimx::optimx</code>快多了。这个函数基础语法如下，</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="math.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>(f,<span class="at">interval=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),...,tol, <span class="at">maximum =</span> FALSE....) </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="math.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>(f,<span class="at">interval=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),...,tol, <span class="at">maximum =</span> FALSE....) </span></code></pre></div>
 <p>其中,<code>f</code>是要优化的函数,<code>interval</code>是寻找最优值时自变量的区间，<code>maximum</code>是最大化还是最小化。</p>
 </div>
-<div id="多变量优化" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> 多变量优化</h3>
+<div id="多变量优化" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> 多变量优化</h3>
 <ul>
 <li><strong>无约束优化</strong>。<code>optimx</code>一个优化包，经常用它的<code>optimx</code>函数。但是它是无约束优化，尽管可以包含上下界的约束(盒子约束)。</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="math.html#cb4-1" aria-hidden="true" tabindex="-1"></a>para <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">R1 =</span> <span class="fl">0.1</span>, <span class="at">phi1 =</span> <span class="fl">0.8</span>, <span class="at">H1 =</span> <span class="fl">0.3</span>, <span class="at">A1 =</span> <span class="fl">0.8</span>, <span class="at">intcp =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb4-2"><a href="math.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par就是要优化的参数的初值</span></span>
-<span id="cb4-3"><a href="math.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fn就是要优化的函数，譬如似然函数，这个函数可以包含多个参数，</span></span>
-<span id="cb4-4"><a href="math.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    如这里的Y,X,r等。然后那个没写进来的参数就是要优化的参数。</span></span>
-<span id="cb4-5"><a href="math.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    lnlik &lt;- function(Y = Y, X = X,para = para, r = 1){...}</span></span>
-<span id="cb4-6"><a href="math.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># gr和hess如果必要，可以包含进来。</span></span>
-<span id="cb4-7"><a href="math.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lower,upper就是搜寻的上下界。</span></span>
-<span id="cb4-8"><a href="math.html#cb4-8" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">optimx</span>(<span class="at">par =</span> para, <span class="at">fn =</span> lnlik, <span class="at">Y =</span> Y, <span class="at">X =</span> X, <span class="at">r =</span> <span class="dv">1</span>, </span>
-<span id="cb4-9"><a href="math.html#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="sc">-</span><span class="cn">Inf</span>), </span>
-<span id="cb4-10"><a href="math.html#cb4-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> <span class="fu">c</span>(<span class="cn">Inf</span>, <span class="fl">0.99</span>,<span class="cn">Inf</span>,<span class="cn">Inf</span>,<span class="cn">Inf</span>),<span class="at">control =</span> <span class="fu">list</span>(<span class="at">all.methods =</span> T))</span>
-<span id="cb4-11"><a href="math.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gHgen</span>(par, fn) <span class="co"># 创造得分矩阵，海塞矩阵。</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="math.html#cb8-1" aria-hidden="true" tabindex="-1"></a>para <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">R1 =</span> <span class="fl">0.1</span>, <span class="at">phi1 =</span> <span class="fl">0.8</span>, <span class="at">H1 =</span> <span class="fl">0.3</span>, <span class="at">A1 =</span> <span class="fl">0.8</span>, <span class="at">intcp =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb8-2"><a href="math.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># par就是要优化的参数的初值</span></span>
+<span id="cb8-3"><a href="math.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fn就是要优化的函数，譬如似然函数，这个函数可以包含多个参数，</span></span>
+<span id="cb8-4"><a href="math.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    如这里的Y,X,r等。然后那个没写进来的参数就是要优化的参数。</span></span>
+<span id="cb8-5"><a href="math.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    lnlik &lt;- function(Y = Y, X = X,para = para, r = 1){...}</span></span>
+<span id="cb8-6"><a href="math.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># gr和hess如果必要，可以包含进来。</span></span>
+<span id="cb8-7"><a href="math.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lower,upper就是搜寻的上下界。</span></span>
+<span id="cb8-8"><a href="math.html#cb8-8" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">optimx</span>(<span class="at">par =</span> para, <span class="at">fn =</span> lnlik, <span class="at">Y =</span> Y, <span class="at">X =</span> X, <span class="at">r =</span> <span class="dv">1</span>, </span>
+<span id="cb8-9"><a href="math.html#cb8-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="fl">0.01</span>,<span class="sc">-</span><span class="cn">Inf</span>), </span>
+<span id="cb8-10"><a href="math.html#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> <span class="fu">c</span>(<span class="cn">Inf</span>, <span class="fl">0.99</span>,<span class="cn">Inf</span>,<span class="cn">Inf</span>,<span class="cn">Inf</span>),<span class="at">control =</span> <span class="fu">list</span>(<span class="at">all.methods =</span> T))</span>
+<span id="cb8-11"><a href="math.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gHgen</span>(par, fn) <span class="co"># 创造得分矩阵，海塞矩阵。</span></span></code></pre></div>
 <ul>
 <li><strong>有约束优化</strong>。<code>stats::constrOptim</code>和<code>alabama::constrOptim.nl</code>都可进行有约束的优化，后者是对前者的一个强化，不仅在算法上更牛逼，也可以放入非线性约束。后者是用函数如<code>hin(x)&lt;=0</code>的形式来表达约束，需要理解的是，约束函数中的参数一定要与目标函数的参数一致，即便约束函数没有用到目标函数的参数。</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="math.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 比如我的目标函数如下</span></span>
-<span id="cb5-2"><a href="math.html#cb5-2" aria-hidden="true" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="cf">function</span> (x,a,b){</span>
-<span id="cb5-3"><a href="math.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb5-4"><a href="math.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-5"><a href="math.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 约束函数如下。一定要把a和b写进去，即便函数中未用到它</span></span>
-<span id="cb5-6"><a href="math.html#cb5-6" aria-hidden="true" tabindex="-1"></a>hin <span class="ot">&lt;-</span> <span class="cf">function</span>(x, a, b){</span>
-<span id="cb5-7"><a href="math.html#cb5-7" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb5-8"><a href="math.html#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-9"><a href="math.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 优化函数如下</span></span>
-<span id="cb5-10"><a href="math.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">constrOptim.nl</span>(par, fn, <span class="at">gr =</span> <span class="cn">NULL</span>, </span>
-<span id="cb5-11"><a href="math.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">hin =</span> <span class="cn">NULL</span>, <span class="at">hin.jac =</span> <span class="cn">NULL</span>, <span class="at">heq =</span> <span class="cn">NULL</span>, <span class="at">heq.jac =</span> <span class="cn">NULL</span>, </span>
-<span id="cb5-12"><a href="math.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">control.outer=</span><span class="fu">list</span>(), <span class="at">control.optim =</span> <span class="fu">list</span>(), ...)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="math.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 比如我的目标函数如下</span></span>
+<span id="cb9-2"><a href="math.html#cb9-2" aria-hidden="true" tabindex="-1"></a>fn <span class="ot">&lt;-</span> <span class="cf">function</span> (x,a,b){</span>
+<span id="cb9-3"><a href="math.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb9-4"><a href="math.html#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="math.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 约束函数如下。一定要把a和b写进去，即便函数中未用到它</span></span>
+<span id="cb9-6"><a href="math.html#cb9-6" aria-hidden="true" tabindex="-1"></a>hin <span class="ot">&lt;-</span> <span class="cf">function</span>(x, a, b){</span>
+<span id="cb9-7"><a href="math.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb9-8"><a href="math.html#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-9"><a href="math.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 优化函数如下</span></span>
+<span id="cb9-10"><a href="math.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">constrOptim.nl</span>(par, fn, <span class="at">gr =</span> <span class="cn">NULL</span>, </span>
+<span id="cb9-11"><a href="math.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="at">hin =</span> <span class="cn">NULL</span>, <span class="at">hin.jac =</span> <span class="cn">NULL</span>, <span class="at">heq =</span> <span class="cn">NULL</span>, <span class="at">heq.jac =</span> <span class="cn">NULL</span>, </span>
+<span id="cb9-12"><a href="math.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="at">control.outer=</span><span class="fu">list</span>(), <span class="at">control.optim =</span> <span class="fu">list</span>(), ...)</span></code></pre></div>
 <p>一旦得到优化函数，就可以调用<code>numDeriv::hessian(fn, par)</code>来计算海塞矩阵，从而得到标准误之类的。</p>
 
 </div>
