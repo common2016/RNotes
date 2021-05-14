@@ -120,7 +120,8 @@ dbDisconnect(con)
 ```
 
 
-## `RJSDMX`包下载世界各大数据库数据
+## 连接各种数据库的R包
+### `RJSDMX`包下载世界各大数据库数据
 
 一般工作流：
 
@@ -141,6 +142,17 @@ sdmxHelp()
 ```
 
 `IMF2`里面的`IFS`数据库里面有很多季度的宏观数据，如GDP，固定资本形成等
+
+### `imfr`包下载IMF数据
+
+
+```r
+# Download Real Effective Exchange Rate (CPI base) for the UK and China
+# at an annual frequency
+real_ex <- imf_data(database_id = 'IFS', indicator = 'EREER_IX',
+               country = c('CN', 'GB'), freq = 'A')
+```
+
 
 ## 前向、后向、线性和样条插值
 - `zoo`包
