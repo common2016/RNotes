@@ -1,6 +1,14 @@
 
 # 数据处理 {#DataProcess}
 ## 一句话Tips
+
+- `ISOcodes`包提供了各种ISO标准，包括国家的2位码，3位码等。
+
+```r
+# ISO_3166_1 is a character frame with variables Alpha_2, Alpha_3, and Numeric (giving the two-letter, three-letter and three-digit numeric country codes) and Name, Official_name, and Common_name (giving the respective names).
+ISO_3166_1
+```
+
 - 因子操作
 
 ```r

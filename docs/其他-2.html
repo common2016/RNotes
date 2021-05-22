@@ -176,7 +176,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="DataProcess.html"><a href="DataProcess.html#分组操作"><i class="fa fa-check"></i><b>3.2.2</b> 分组操作</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="DataProcess.html"><a href="DataProcess.html#与sql数据库交互"><i class="fa fa-check"></i><b>3.3</b> 与SQL数据库交互</a></li>
-<li class="chapter" data-level="3.4" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.4</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
+<li class="chapter" data-level="3.4" data-path="DataProcess.html"><a href="DataProcess.html#连接各种数据库的r包"><i class="fa fa-check"></i><b>3.4</b> 连接各种数据库的R包</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.4.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
+<li class="chapter" data-level="3.4.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.4.2</b> <code>imfr</code>包下载IMF数据</a></li>
+</ul></li>
 <li class="chapter" data-level="3.5" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.5</b> 前向、后向、线性和样条插值</a>
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#signal包"><i class="fa fa-check"></i><b>3.5.1</b> <code>signal</code>包</a></li>
@@ -225,10 +229,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-6"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.2</b> 数值优化</a>
+<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#数值积分"><i class="fa fa-check"></i><b>7.2</b> 数值积分</a></li>
+<li class="chapter" data-level="7.3" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.3</b> 数值优化</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="math.html"><a href="math.html#单变量数值优化"><i class="fa fa-check"></i><b>7.2.1</b> 单变量数值优化</a></li>
-<li class="chapter" data-level="7.2.2" data-path="math.html"><a href="math.html#多变量优化"><i class="fa fa-check"></i><b>7.2.2</b> 多变量优化</a></li>
+<li class="chapter" data-level="7.3.1" data-path="math.html"><a href="math.html#单变量数值优化"><i class="fa fa-check"></i><b>7.3.1</b> 单变量数值优化</a></li>
+<li class="chapter" data-level="7.3.2" data-path="math.html"><a href="math.html#多变量优化"><i class="fa fa-check"></i><b>7.3.2</b> 多变量优化</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>8</b> 机器学习和微观计量</a>
@@ -303,11 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="其他-2.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
-<span id="cb81-2"><a href="其他-2.html#cb81-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb81-3"><a href="其他-2.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
-<span id="cb81-4"><a href="其他-2.html#cb81-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
-<span id="cb81-5"><a href="其他-2.html#cb81-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="其他-2.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
+<span id="cb87-2"><a href="其他-2.html#cb87-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb87-3"><a href="其他-2.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
+<span id="cb87-4"><a href="其他-2.html#cb87-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb87-5"><a href="其他-2.html#cb87-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>

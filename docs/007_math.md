@@ -18,7 +18,7 @@ curve(fun, 0, 8) # 先画个图看看解大约在哪里
 abline(h = 0, lty = 3) # 把0轴搞出来
 uni <- uniroot(fun, c(0, 8))$root # 此时求解
 ```
-方程组的根求解用`multiroot`。
+方程组的根求解用`multiroot`。单方程求根用该包的`uniroot.all`函数，它会把区间细分，寻找全部的根，更有用。
 
 ## 数值积分
 
