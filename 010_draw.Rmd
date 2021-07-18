@@ -20,3 +20,18 @@ base + geom_function(fun = dnorm)
 base + geom_function(fun = dnorm, args = list(mean = 2, sd = .5))
 ```
 
+## 绘制向量场
+比如绘制如下系统的相图,
+$$\begin{align}
+&\dot{x} = 2*x-y\\
+&\dot{y} = y +x 
+\end{align}$$
+
+```{r eval=TRUE}
+library(ggquiver)
+library(ggplot2) 
+expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5)) %>% # 生成格点
+  ggplot(aes(x,y,u = 2*x-y, v = y+x)) + # u,v就是dot_x和dot_y
+  geom_quiver()
+```
+
