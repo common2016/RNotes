@@ -82,7 +82,7 @@ E(i_{t-4}\varepsilon_t) = 0
 gmmrlt <- gmm(g = it ~ pi + gdp + hp + it1, x = ~ pi + gdp + hp + it2 + it3 + it4,data = dwg0)
 summary(gmmrlt)
 ```
-其中`g`可直接写成公式，`x`即为工具变量集。
+其中，如果模型是线性的，$g$可直接写成公式，$x$即为工具变量集。模型是非线性的，`gmm`包也是非常方便的。
 
 ## 季节调整
 ### R中有`x12`包可以做季节处理

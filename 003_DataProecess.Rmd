@@ -4,6 +4,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,eval = FALSE
 # 数据处理 {#DataProcess}
 ## 一句话Tips
 
+- `feather`包可以读写`feather`格式的软件，优点在于该格式不仅速度快，压缩打，而且与Jialia, python可以交互。
 - `expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5))`会生成关于x和y的格点，这些格点可以用来画向量场，三维图之类的很有用。
 - `ISOcodes`包提供了各种ISO标准，包括国家的2位码，3位码等。
 ```{r}
@@ -92,13 +93,13 @@ pdf_pagesize(pdf, opw = "", upw = "")
 
 ### 基本操作
 
-- 该包基本语法为`dt[i,j,by]`，即行，列和分组。
+- 该包基本语法为`dt[i,j,by]`，即行，列操作(包括选列，函数运算等)和分组。
 - 提供单个参数，如`dt[1:3]`，即为选择行。
 - `.N`是非常有用的符号，分组时，它表示计数，单独用`dt[.N]`则选择了最后一行。`.I`则表示`1:.N`。
 - 筛选行时，可以直接使用列名，如`dt[province == '北京市']`
 - 选择列时，也是直接用列名如`city`，而不是加引号的`'city'`。比如`dt[,city]`，如果你一定喜欢用引号，可以使用`dt[,'city',with = FALSE]`。
 - 选择多个列，既可以用`dt[,c('id','year'),with = FALSE]`也可以用`dt[,list(id,year)]`，而且还可以这样创造新的列`dt[,list(id,year, density = size/weight)]`。而且`list()`还有个缩写`.()`。
-- 原地赋值`:=`。如`dt[,density:=size/weight]`，原来的数据框就已经改变了。
+- 原地赋值`:=`。如`dt[,density:=size/weight]`，原来的数据框就已经改变了。注意这实际上是“引用语义”，有个时候在把数据传递进函数时，你并不想使用引用语义，你可以在函数前面增加一行代码`DT <- copy(DT)`，以便实现深复制。
 - 该包的`set`系列函数因为避免了不必要的复制，展现出惊人的性能。`setDF(dt)`把data.table变成data.frame，`setDT(dt)`是反向操作。`setnames(dt,'name_pre','name_now')`修改列名。`setcolorder(dt,c('id','year'))`给列重新排序。
 
 ### 分组操作

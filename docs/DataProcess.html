@@ -306,6 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="一句话tips-2" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 一句话Tips</h2>
 <ul>
+<li><code>feather</code>包可以读写<code>feather</code>格式的软件，优点在于该格式不仅速度快，压缩打，而且与Jialia, python可以交互。</li>
 <li><code>expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5))</code>会生成关于x和y的格点，这些格点可以用来画向量场，三维图之类的很有用。</li>
 <li><code>ISOcodes</code>包提供了各种ISO标准，包括国家的2位码，3位码等。</li>
 </ul>
@@ -385,13 +386,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="基本操作" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> 基本操作</h3>
 <ul>
-<li>该包基本语法为<code>dt[i,j,by]</code>，即行，列和分组。</li>
+<li>该包基本语法为<code>dt[i,j,by]</code>，即行，列操作(包括选列，函数运算等)和分组。</li>
 <li>提供单个参数，如<code>dt[1:3]</code>，即为选择行。</li>
 <li><code>.N</code>是非常有用的符号，分组时，它表示计数，单独用<code>dt[.N]</code>则选择了最后一行。<code>.I</code>则表示<code>1:.N</code>。</li>
 <li>筛选行时，可以直接使用列名，如<code>dt[province == '北京市']</code></li>
 <li>选择列时，也是直接用列名如<code>city</code>，而不是加引号的<code>'city'</code>。比如<code>dt[,city]</code>，如果你一定喜欢用引号，可以使用<code>dt[,'city',with = FALSE]</code>。</li>
 <li>选择多个列，既可以用<code>dt[,c('id','year'),with = FALSE]</code>也可以用<code>dt[,list(id,year)]</code>，而且还可以这样创造新的列<code>dt[,list(id,year, density = size/weight)]</code>。而且<code>list()</code>还有个缩写<code>.()</code>。</li>
-<li>原地赋值<code>:=</code>。如<code>dt[,density:=size/weight]</code>，原来的数据框就已经改变了。</li>
+<li>原地赋值<code>:=</code>。如<code>dt[,density:=size/weight]</code>，原来的数据框就已经改变了。注意这实际上是“引用语义”，有个时候在把数据传递进函数时，你并不想使用引用语义，你可以在函数前面增加一行代码<code>DT &lt;- copy(DT)</code>，以便实现深复制。</li>
 <li>该包的<code>set</code>系列函数因为避免了不必要的复制，展现出惊人的性能。<code>setDF(dt)</code>把data.table变成data.frame，<code>setDT(dt)</code>是反向操作。<code>setnames(dt,'name_pre','name_now')</code>修改列名。<code>setcolorder(dt,c('id','year'))</code>给列重新排序。</li>
 </ul>
 </div>
