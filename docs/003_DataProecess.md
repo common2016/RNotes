@@ -91,6 +91,19 @@ pdf_pagesize(pdf, opw = "", upw = "")
 
 同时，利用`qpdf`包的`pdf_subset,pdf_combine,pdf_split`可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
 
+## R与网络交互
+
+- 很多网站提供了API以供调用，可以利用`RCurl::getForm()`函数调用API。比如百度翻译的API调用如下：
+
+```r
+feed_url <- "http://api.fanyi.baidu.com/api/trans/vip/translate"
+    rlt <- RCurl::getForm(feed_url, .params = list(q = 'apple', 
+        from = 'en', to = 'zh', appid = appid, salt = rmdnum, sign = sn))
+```
+第一个参数书调用的网址，第二个参数是GET请求的各项参数。
+- `RJSONIO::fromJSON()`可以对网站返回的JSON格式的数据变成列表以便调用。
+
+
 ## `data.table`包
 
 这个包操作几十万的数据，简直就是“卧槽”，几乎感觉不到延迟，数据量大，强烈推荐该包。
