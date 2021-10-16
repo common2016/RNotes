@@ -46,7 +46,7 @@ render_sweave() # 基准设置是sweave的设置
 opts_chunk$set(message = FALSE, warning = FALSE) # 全局抑制警告和信息输出
 knitr::knit_hooks$set(source = function(x, options) {
   x <- paste('> ',x,sep = '') # 代码输入部分添加 > 符号
-    paste("\\begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=\\color{gray},basicstyle = {\\ttfamily},keywordstyle = \\color{RoyalBlue},stepnumber=2]\n", x,
+    paste("\\begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=\\color{gray},basicstyle = {\\ttfamily\\color{RoyalBlue}},keywordstyle = \\color{RoyalBlue},stepnumber=2]\n", x,
         "\\end{lstlisting}\n", sep = "") # lstlisting格式的更改
 })
 @
