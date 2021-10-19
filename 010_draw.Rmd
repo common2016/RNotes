@@ -40,3 +40,14 @@ expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5)) %>% # 生成格点
   geom_quiver()
 ```
 
+## 在`ggplot`中添加jpe对象
+
+```{r}
+library(cowplot)
+gg <- ggplot(data.frame(x = 1:5, y = 1:5), aes(x, y)) + 
+  labs(x = '站桩时间（单位：年）',y = '') + 
+  theme_half_open(12) + theme(axis.text.y = element_blank(), axis.ticks = element_blank())
+ggdraw() + draw_image('E:/202110.jpg', width = 0.9, height = 0.5,x=0.06,y=0.1) +
+  draw_plot(gg)
+```
+
