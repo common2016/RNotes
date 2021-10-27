@@ -34,6 +34,14 @@ attr(y,'my_attribute')
 ```
 ## [1] "This is a vector"
 ```
+但通常给数据框的列赋予一个`label`的属性，在RStudio中显示数据时，会同时把这个标签显示出来，非常方便。
+
+```r
+dt <- data.frame(x = 1:3, y = 6:8)
+attr(dt$x, 'label') <- 'time'
+```
+
+
 - `remove.packages('dplyr')`，卸载已安装的包。
 - `system`或`shell`运行Shell命令。
 - 更新所有的包`update.packages(checkBuilt=TRUE, ask=FALSE)`
