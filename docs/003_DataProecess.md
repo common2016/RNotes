@@ -2,6 +2,49 @@
 # 数据处理 {#DataProcess}
 ## 一句话Tips
 
+- 整体上概览一个数据框，有一个很好的函数，
+
+```r
+skimr::skim(iris)
+```
+
+
+Table: (\#tab:unnamed-chunk-1)Data summary
+
+|                         |     |
+|:------------------------|:----|
+|Name                     |iris |
+|Number of rows           |150  |
+|Number of columns        |5    |
+|_______________________  |     |
+|Column type frequency:   |     |
+|factor                   |1    |
+|numeric                  |4    |
+|________________________ |     |
+|Group variables          |None |
+
+
+**Variable type: factor**
+
+|skim_variable | n_missing| complete_rate|ordered | n_unique|top_counts                |
+|:-------------|---------:|-------------:|:-------|--------:|:-------------------------|
+|Species       |         0|             1|FALSE   |        3|set: 50, ver: 50, vir: 50 |
+
+
+**Variable type: numeric**
+
+|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist  |
+|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:-----|
+|Sepal.Length  |         0|             1| 5.84| 0.83| 4.3| 5.1| 5.80| 6.4|  7.9|▆▇▇▅▂ |
+|Sepal.Width   |         0|             1| 3.06| 0.44| 2.0| 2.8| 3.00| 3.3|  4.4|▁▆▇▂▁ |
+|Petal.Length  |         0|             1| 3.76| 1.77| 1.0| 1.6| 4.35| 5.1|  6.9|▇▁▆▇▂ |
+|Petal.Width   |         0|             1| 1.20| 0.76| 0.1| 0.3| 1.30| 1.8|  2.5|▇▁▇▅▃ |
+- 也可以形成一个数据摘要
+
+```r
+modelsummary::datasummary_skim(mtcars)
+```
+
 - `feather`包可以读写`feather`格式的软件，优点在于该格式不仅速度快，压缩打，而且与Jialia, python可以交互。
 - `expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5))`会生成关于x和y的格点，这些格点可以用来画向量场，三维图之类的很有用。
 - `ISOcodes`包提供了各种ISO标准，包括国家的2位码，3位码等。

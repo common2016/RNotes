@@ -6,6 +6,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 # 面板数据 {#PanelData}
 ## 一句话Tips
 - `sandwich`提供了聚类标准误计算(`vcovCL`)，包括面板数据的聚类(`vcovPL`)。
+- `fixest::feols`包提供了面板高维固定效应估计，与stata中的`reghdfe`类似。而且这个函数还有稳健、聚类标准误选项，与stata很类似。
 - `PSTR`:面板平滑转移模型。
 - `MSCMT`:多个结果变量的合成控制方法的包。
 - 检查面板数据是否平衡：使用`table(PanelData[,1:2])`或者`is.banance`。

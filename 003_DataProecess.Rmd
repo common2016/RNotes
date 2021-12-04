@@ -4,6 +4,16 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,eval = FALSE
 # 数据处理 {#DataProcess}
 ## 一句话Tips
 
+- 整体上概览一个数据框，有一个很好的函数，
+```{r eval=TRUE}
+skimr::skim(iris)
+```
+- 也可以形成一个数据摘要
+```{r}
+modelsummary::datasummary_skim(mtcars)
+```
+关键是这个数据摘要可以各种形式输出，包括html,tex,md,txt,png等。
+
 - `feather`包可以读写`feather`格式的软件，优点在于该格式不仅速度快，压缩打，而且与Jialia, python可以交互。
 - `expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5))`会生成关于x和y的格点，这些格点可以用来画向量场，三维图之类的很有用。
 - `ISOcodes`包提供了各种ISO标准，包括国家的2位码，3位码等。
