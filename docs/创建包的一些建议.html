@@ -181,6 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.5.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
 <li class="chapter" data-level="3.5.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.5.2</b> <code>imfr</code>包下载IMF数据</a></li>
+<li class="chapter" data-level="3.5.3" data-path="DataProcess.html"><a href="DataProcess.html#oecd包下载oecd的数据"><i class="fa fa-check"></i><b>3.5.3</b> <code>OECD</code>包下载OECD的数据</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.6</b> 前向、后向、线性和样条插值</a>
 <ul>
@@ -273,6 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="DrawTips.html"><a href="DrawTips.html#d绘图"><i class="fa fa-check"></i><b>10.2</b> 3D绘图</a></li>
 <li class="chapter" data-level="10.3" data-path="DrawTips.html"><a href="DrawTips.html#函数绘制"><i class="fa fa-check"></i><b>10.3</b> 函数绘制</a></li>
 <li class="chapter" data-level="10.4" data-path="DrawTips.html"><a href="DrawTips.html#绘制向量场"><i class="fa fa-check"></i><b>10.4</b> 绘制向量场</a></li>
+<li class="chapter" data-level="10.5" data-path="DrawTips.html"><a href="DrawTips.html#在ggplot中添加jpe对象"><i class="fa fa-check"></i><b>10.5</b> 在<code>ggplot</code>中添加jpe对象</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a>
 <ul>
@@ -282,7 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
 <li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a></li>
+<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>12.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="12.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>12.2</b> R语言动态报告</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -343,11 +349,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>在Description的Suggests域增加testthat;</li>
 <li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="创建包的一些建议.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb87-2"><a href="创建包的一些建议.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb87-3"><a href="创建包的一些建议.html#cb87-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb87-4"><a href="创建包的一些建议.html#cb87-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb87-5"><a href="创建包的一些建议.html#cb87-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="创建包的一些建议.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb91-2"><a href="创建包的一些建议.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb91-3"><a href="创建包的一些建议.html#cb91-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb91-4"><a href="创建包的一些建议.html#cb91-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb91-5"><a href="创建包的一些建议.html#cb91-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2" number="11.4">
@@ -356,11 +362,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>函数末端返回<code>NextMethod()</code>。</li>
 </ol>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="创建包的一些建议.html#cb88-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb88-2"><a href="创建包的一些建议.html#cb88-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb88-3"><a href="创建包的一些建议.html#cb88-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
-<span id="cb88-4"><a href="创建包的一些建议.html#cb88-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
-<span id="cb88-5"><a href="创建包的一些建议.html#cb88-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="创建包的一些建议.html#cb92-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb92-2"><a href="创建包的一些建议.html#cb92-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb92-3"><a href="创建包的一些建议.html#cb92-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
+<span id="cb92-4"><a href="创建包的一些建议.html#cb92-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb92-5"><a href="创建包的一些建议.html#cb92-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>方法要包含原始泛型的所有参数，顺序也要一致。</li>
 <li>缺省设置也要和原始泛型一致。</li>

@@ -181,6 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.5.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
 <li class="chapter" data-level="3.5.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.5.2</b> <code>imfr</code>包下载IMF数据</a></li>
+<li class="chapter" data-level="3.5.3" data-path="DataProcess.html"><a href="DataProcess.html#oecd包下载oecd的数据"><i class="fa fa-check"></i><b>3.5.3</b> <code>OECD</code>包下载OECD的数据</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.6</b> 前向、后向、线性和样条插值</a>
 <ul>
@@ -273,6 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="DrawTips.html"><a href="DrawTips.html#d绘图"><i class="fa fa-check"></i><b>10.2</b> 3D绘图</a></li>
 <li class="chapter" data-level="10.3" data-path="DrawTips.html"><a href="DrawTips.html#函数绘制"><i class="fa fa-check"></i><b>10.3</b> 函数绘制</a></li>
 <li class="chapter" data-level="10.4" data-path="DrawTips.html"><a href="DrawTips.html#绘制向量场"><i class="fa fa-check"></i><b>10.4</b> 绘制向量场</a></li>
+<li class="chapter" data-level="10.5" data-path="DrawTips.html"><a href="DrawTips.html#在ggplot中添加jpe对象"><i class="fa fa-check"></i><b>10.5</b> 在<code>ggplot</code>中添加jpe对象</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a>
 <ul>
@@ -282,7 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
 <li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a></li>
+<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>12.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="12.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>12.2</b> R语言动态报告</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -310,8 +316,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>lpirfs</code>包局部线性投影脉冲响应函数。</li>
 <li><code>library(productivity)</code>计算满奎斯特效率指数，注意日期参数<code>time.var</code>以及个体<code>id.var</code>参数都要是整数。</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Eco.html#cb54-1" aria-hidden="true" tabindex="-1"></a>tfp <span class="ot">&lt;-</span> <span class="fu">malm</span>(regdata, <span class="at">id.var =</span> <span class="st">&#39;alphabets&#39;</span>,<span class="at">time.var =</span> <span class="st">&#39;yr&#39;</span>, <span class="at">x.vars =</span> <span class="fu">c</span>(<span class="st">&#39;wage&#39;</span>,<span class="st">&#39;K&#39;</span>), <span class="at">y.vars =</span> <span class="st">&#39;gdp&#39;</span>)</span>
-<span id="cb54-2"><a href="Eco.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Changes</span>(tfp) <span class="co"># 获得malmquist指数及其成份</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Eco.html#cb57-1" aria-hidden="true" tabindex="-1"></a>tfp <span class="ot">&lt;-</span> <span class="fu">malm</span>(regdata, <span class="at">id.var =</span> <span class="st">&#39;alphabets&#39;</span>,<span class="at">time.var =</span> <span class="st">&#39;yr&#39;</span>, <span class="at">x.vars =</span> <span class="fu">c</span>(<span class="st">&#39;wage&#39;</span>,<span class="st">&#39;K&#39;</span>), <span class="at">y.vars =</span> <span class="st">&#39;gdp&#39;</span>)</span>
+<span id="cb57-2"><a href="Eco.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Changes</span>(tfp) <span class="co"># 获得malmquist指数及其成份</span></span></code></pre></div>
 <ul>
 <li>产品编码之间的转换包：<code>concordance::concord</code>：
 It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 product classification codes, as well as BEC, NAICS, and SIC classifications. It also provides code nomenclature / descriptions look-up, Rauch classification look-up (via concordance to SITC2) and trade elasticity look-up (via concordance to SITC2/3 or HS3.ss).</li>
@@ -323,15 +329,15 @@ It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 p
 <div id="wwz的贸易增加值分解" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> wwz的贸易增加值分解</h2>
 <p>分解的主要函数是<code>decompr</code>。但是有一个<code>load_table_vectors</code>函数可以生成一个decompr class，这个类有很多我们想要的东西，如投入产出系数A，里昂惕夫矩阵B以及其他的一些数据。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Eco.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load example data</span></span>
-<span id="cb55-2"><a href="Eco.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(leather)</span>
-<span id="cb55-3"><a href="Eco.html#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="Eco.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create intermediate object (class decompr)</span></span>
-<span id="cb55-5"><a href="Eco.html#cb55-5" aria-hidden="true" tabindex="-1"></a>decompr_object <span class="ot">&lt;-</span> <span class="fu">load_tables_vectors</span>(inter,</span>
-<span id="cb55-6"><a href="Eco.html#cb55-6" aria-hidden="true" tabindex="-1"></a>                                      final,</span>
-<span id="cb55-7"><a href="Eco.html#cb55-7" aria-hidden="true" tabindex="-1"></a>                                      countries,</span>
-<span id="cb55-8"><a href="Eco.html#cb55-8" aria-hidden="true" tabindex="-1"></a>                                      industries,</span>
-<span id="cb55-9"><a href="Eco.html#cb55-9" aria-hidden="true" tabindex="-1"></a>                                      out        )</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Eco.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load example data</span></span>
+<span id="cb58-2"><a href="Eco.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(leather)</span>
+<span id="cb58-3"><a href="Eco.html#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="Eco.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create intermediate object (class decompr)</span></span>
+<span id="cb58-5"><a href="Eco.html#cb58-5" aria-hidden="true" tabindex="-1"></a>decompr_object <span class="ot">&lt;-</span> <span class="fu">load_tables_vectors</span>(inter,</span>
+<span id="cb58-6"><a href="Eco.html#cb58-6" aria-hidden="true" tabindex="-1"></a>                                      final,</span>
+<span id="cb58-7"><a href="Eco.html#cb58-7" aria-hidden="true" tabindex="-1"></a>                                      countries,</span>
+<span id="cb58-8"><a href="Eco.html#cb58-8" aria-hidden="true" tabindex="-1"></a>                                      industries,</span>
+<span id="cb58-9"><a href="Eco.html#cb58-9" aria-hidden="true" tabindex="-1"></a>                                      out        )</span></code></pre></div>
 <p>这个类包含了如下内容，我挑一些我确切知道是啥的:</p>
 <ul>
 <li>B: 里昂惕夫矩阵，即<span class="math inline">\((I-A)^{-1}\)</span></li>

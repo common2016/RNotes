@@ -181,6 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.5.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
 <li class="chapter" data-level="3.5.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.5.2</b> <code>imfr</code>包下载IMF数据</a></li>
+<li class="chapter" data-level="3.5.3" data-path="DataProcess.html"><a href="DataProcess.html#oecd包下载oecd的数据"><i class="fa fa-check"></i><b>3.5.3</b> <code>OECD</code>包下载OECD的数据</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.6</b> 前向、后向、线性和样条插值</a>
 <ul>
@@ -273,6 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="DrawTips.html"><a href="DrawTips.html#d绘图"><i class="fa fa-check"></i><b>10.2</b> 3D绘图</a></li>
 <li class="chapter" data-level="10.3" data-path="DrawTips.html"><a href="DrawTips.html#函数绘制"><i class="fa fa-check"></i><b>10.3</b> 函数绘制</a></li>
 <li class="chapter" data-level="10.4" data-path="DrawTips.html"><a href="DrawTips.html#绘制向量场"><i class="fa fa-check"></i><b>10.4</b> 绘制向量场</a></li>
+<li class="chapter" data-level="10.5" data-path="DrawTips.html"><a href="DrawTips.html#在ggplot中添加jpe对象"><i class="fa fa-check"></i><b>10.5</b> 在<code>ggplot</code>中添加jpe对象</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html"><i class="fa fa-check"></i><b>11</b> 创建包的一些建议</a>
 <ul>
@@ -282,7 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
 <li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a></li>
+<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>12.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="12.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>12.2</b> R语言动态报告</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -324,12 +330,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> ROC曲线绘制</h2>
 <p>ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴为1-特异度(1-specificity)，纵轴为灵敏度（sensitivity）.</p>
 <p>调用<code>pROC</code>包即可计算。该包的参数如下：</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="ML.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roc</span>(response, predictor, controls, cases,</span>
-<span id="cb65-2"><a href="ML.html#cb65-2" aria-hidden="true" tabindex="-1"></a>density.controls, density.cases,</span>
-<span id="cb65-3"><a href="ML.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="at">levels=</span>base<span class="sc">::</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(response)), <span class="at">percent=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
-<span id="cb65-4"><a href="ML.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="at">direction=</span><span class="fu">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&gt;&quot;</span>), <span class="at">algorithm =</span> <span class="dv">5</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb65-5"><a href="ML.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">auc=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">FALSE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>, <span class="at">smooth.method=</span><span class="st">&quot;binormal&quot;</span>,</span>
-<span id="cb65-6"><a href="ML.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="at">ci.method=</span><span class="cn">NULL</span>, <span class="at">density=</span><span class="cn">NULL</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="ML.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roc</span>(response, predictor, controls, cases,</span>
+<span id="cb68-2"><a href="ML.html#cb68-2" aria-hidden="true" tabindex="-1"></a>density.controls, density.cases,</span>
+<span id="cb68-3"><a href="ML.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="at">levels=</span>base<span class="sc">::</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(response)), <span class="at">percent=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
+<span id="cb68-4"><a href="ML.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="at">direction=</span><span class="fu">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&gt;&quot;</span>), <span class="at">algorithm =</span> <span class="dv">5</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb68-5"><a href="ML.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">auc=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">FALSE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>, <span class="at">smooth.method=</span><span class="st">&quot;binormal&quot;</span>,</span>
+<span id="cb68-6"><a href="ML.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="at">ci.method=</span><span class="cn">NULL</span>, <span class="at">density=</span><span class="cn">NULL</span>, ...)</span></code></pre></div>
 <ul>
 <li><code>response</code>: 原始的<span class="math inline">\(y\)</span>;</li>
 <li><code>pridictor</code>: 估计的<span class="math inline">\(\hat y\)</span>;</li>
@@ -343,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>可以因变量多变量建模</li>
 </ul>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="ML.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rfsrc</span>(<span class="fu">cbind</span>(y1, y2, ..., yd) <span class="sc">~</span> . , my.data, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="ML.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rfsrc</span>(<span class="fu">cbind</span>(y1, y2, ..., yd) <span class="sc">~</span> . , my.data, ...)</span></code></pre></div>
 <ul>
 <li>重要性抽样有置信区间</li>
 <li>偏效应计算接口更友好</li>

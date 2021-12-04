@@ -44,6 +44,7 @@ Table: (\#tab:unnamed-chunk-1)Data summary
 ```r
 modelsummary::datasummary_skim(mtcars)
 ```
+关键是这个数据摘要可以各种形式输出，包括html,tex,md,txt,png等。
 
 - `feather`包可以读写`feather`格式的软件，优点在于该格式不仅速度快，压缩打，而且与Jialia, python可以交互。
 - `expand.grid(x = seq(-3,3.1,0.5), y = seq(-3,3.1,0.5))`会生成关于x和y的格点，这些格点可以用来画向量场，三维图之类的很有用。
