@@ -5,6 +5,14 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 # 原生的R {#rawR}
 ## 一句话Tips
 
+- 比如你自己写了个包，你可能想查看它被安装下载了多少次，代码如下：
+```{r}
+dlstats::cran_stats('CHNCapitalStock') # 给出每个月的下载量
+# 或者使用另一个包给出每天的下载量
+# devtools::install_github("metacran/cranlogs")
+cran_downloads('CHNCapitalStock',from = '2020-06-01', to = '2021-01-14')
+```
+
 - `.libPaths()`查看R的安装目录
 - `object.size()`可以查看某个对象占了多少内存，但一般不准，返回结果偏大。可以使用`lobstr::obj_size()`来看变量的大小。
 - `do.call(str_fun, args, quote, envir)`函数感觉很好用, 第一个参数是字符串函数名，第二个参数是一个list, 它里面元素的名字就是你调用的函数的参数的名字。在某种程度上，它可以替代`eval(parse(text = str))`的作用。
