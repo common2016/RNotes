@@ -160,11 +160,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.2</b> 回归中关于公式的理解和构造</a></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.3</b> GMM估计</a></li>
+<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.4</b> 季节调整</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.4.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.4.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.4.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.4.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a>
@@ -266,6 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
+<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -349,26 +351,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>在Description的Suggests域增加testthat;</li>
 <li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="创建包的一些建议.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb91-2"><a href="创建包的一些建议.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb91-3"><a href="创建包的一些建议.html#cb91-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb91-4"><a href="创建包的一些建议.html#cb91-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb91-5"><a href="创建包的一些建议.html#cb91-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="创建包的一些建议.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb2-2"><a href="创建包的一些建议.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb2-3"><a href="创建包的一些建议.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb2-4"><a href="创建包的一些建议.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb2-5"><a href="创建包的一些建议.html#cb2-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> 泛型函数</h2>
 <p>当你拓展一个泛型函数的时候，需要注意：</p>
 <ol style="list-style-type: decimal">
-<li>函数末端返回<code>NextMethod()</code>。</li>
+<li>如果当前函数处理不了这个对象，可在函数末端返回<code>NextMethod('your_method')</code>。<code>your_method</code>方法输入参数与当前方法相同，该对象最终由<code>your_method</code>来处理。</li>
 </ol>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="创建包的一些建议.html#cb92-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb92-2"><a href="创建包的一些建议.html#cb92-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb92-3"><a href="创建包的一些建议.html#cb92-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
-<span id="cb92-4"><a href="创建包的一些建议.html#cb92-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
-<span id="cb92-5"><a href="创建包的一些建议.html#cb92-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="创建包的一些建议.html#cb3-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb3-2"><a href="创建包的一些建议.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-3"><a href="创建包的一些建议.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
+<span id="cb3-4"><a href="创建包的一些建议.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb3-5"><a href="创建包的一些建议.html#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>方法要包含原始泛型的所有参数，顺序也要一致。</li>
+<li>方法要包含原始泛型的所有参数，顺序也要一致。比如<code>summary</code>这个内置的泛型函数的参数为<code>object</code>和<code>...</code>，那么当你拓展该函数的时候，这两个参数的名称是不能改的。</li>
 <li>缺省设置也要和原始泛型一致。</li>
 </ol>
 </div>
@@ -439,20 +441,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
