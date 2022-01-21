@@ -38,9 +38,13 @@ Imports:
 
 ```r
 context("string length")
+#
+# 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来
+#
 text_that('',{
+    expect_equal(.,.) # 比较前后两个数值是否一致
     expect_equal(.,.)
-    expect_equal(.,.)
+    expect_ture(object) # 这个函数有着更加广泛的用途，比如可以检验a < b
 })
 ```
 当你完成这些工作以后，你可以简单的输入`devtools::test()`来一次性检查测试是否成功。
@@ -48,7 +52,7 @@ text_that('',{
 ## 泛型函数
 当你拓展一个泛型函数的时候，需要注意：
 
-1. 如果当前函数处理不了这个对象，可在函数末端返回`NextMethod('your_method')`。`your_method`方法输入参数与当前方法相同，该对象最终由`your_method`来处理。
+1. 如果当前函数处理不了这个对象，可在函数末端返回`NextMethod('your_method')`。`your_method`方法的输入参数与当前方法相同，该对象最终由`your_method`来处理。
 
 ```r
 t.data.frame <- function(x)
@@ -64,7 +68,15 @@ t.data.frame <- function(x)
 - 可以使用`devtools::use_readme_rmd()`来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。
 
 - 使用`devtools::use_travis()`建立一个基本的`.travis.yml`配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。
-- 包中调用`ggplot2::aes()`时，通常会报错没有显式绑定全局变量，因此最好使用`ggplot2::aes_string()`。
+- 包中调用`ggplot2::aes()`时，通常会报错没有显式绑定全局变量，因此最好使用`ggplot2::aes_string()`。但作者明确表示`ggplot2::aes_string()`将来会折旧。因此新的解决办法是，
+
+```r
+#' @importFrom rlang .data
+my_func <- function(data) {
+    ggplot(data, aes(x = .data$x, y = .data$y))
+}
+```
+
 - `@example /data/stage/chenpu/a.R`是把单独文件中的例子添加到函数文档中，而`@examples`则是直接添加。
 
 

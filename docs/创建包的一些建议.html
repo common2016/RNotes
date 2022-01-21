@@ -352,17 +352,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="创建包的一些建议.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb2-2"><a href="创建包的一些建议.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb2-3"><a href="创建包的一些建议.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb2-4"><a href="创建包的一些建议.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb2-5"><a href="创建包的一些建议.html#cb2-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<span id="cb2-2"><a href="创建包的一些建议.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-3"><a href="创建包的一些建议.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来</span></span>
+<span id="cb2-4"><a href="创建包的一些建议.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-5"><a href="创建包的一些建议.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb2-6"><a href="创建包的一些建议.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.) <span class="co"># 比较前后两个数值是否一致</span></span>
+<span id="cb2-7"><a href="创建包的一些建议.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb2-8"><a href="创建包的一些建议.html#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_ture</span>(object) <span class="co"># 这个函数有着更加广泛的用途，比如可以检验a &lt; b</span></span>
+<span id="cb2-9"><a href="创建包的一些建议.html#cb2-9" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> 泛型函数</h2>
 <p>当你拓展一个泛型函数的时候，需要注意：</p>
 <ol style="list-style-type: decimal">
-<li>如果当前函数处理不了这个对象，可在函数末端返回<code>NextMethod('your_method')</code>。<code>your_method</code>方法输入参数与当前方法相同，该对象最终由<code>your_method</code>来处理。</li>
+<li>如果当前函数处理不了这个对象，可在函数末端返回<code>NextMethod('your_method')</code>。<code>your_method</code>方法的输入参数与当前方法相同，该对象最终由<code>your_method</code>来处理。</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="创建包的一些建议.html#cb3-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
 <span id="cb3-2"><a href="创建包的一些建议.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{</span>
@@ -379,8 +383,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
 <li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
-<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。</p></li>
-<li><p><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</p></li>
+<li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。但作者明确表示<code>ggplot2::aes_string()</code>将来会折旧。因此新的解决办法是，</p></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="创建包的一些建议.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
+<span id="cb4-2"><a href="创建包的一些建议.html#cb4-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb4-3"><a href="创建包的一些建议.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
+<span id="cb4-4"><a href="创建包的一些建议.html#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</li>
 </ul>
 
 </div>
