@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="一句话tips-10" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> 一句话Tips</h2>
 <ul>
-<li>在R包结构下做分析，要注意，在函数中调用其他包的函数时，要记得先用<code>use_package()</code>函数来添<code>Import</code>域，否则会有一些意想不到的问题。比如在使用<code>data.table</code>时就会出现类似<code>Error in</code>[.data.frame<code>(x, i, j) : undefined columns selected</code>这样的问题。</li>
+<li>在R包结构下做分析，要注意，在函数中调用其他包的函数时，要记得先用<code>use_package()</code>函数来添<code>Imports</code>域，否则会有一些意想不到的问题。比如在使用<code>data.table</code>时就会出现类似<code>Error in</code>[.data.frame<code>(x, i, j) : undefined columns selected</code>这样的问题。</li>
 <li>要输出函数，记得在注释中书写<code>@export</code></li>
 <li>从RStudio中创建一个包项目</li>
 <li>不再使用<code>library()</code>或者<code>require()</code>，因为这会改变搜索路径。而是在控制台输入<code>usethis::use_package('magrittr',type = 'Imports',min_version = NULL)</code>执行一下。该命令在DESCRIPTION文件中添加如下语句：</li>
@@ -381,14 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="其他-1" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> 其他</h2>
 <ul>
+<li>如果在例子或vignette中使用了某个包，但在函数中并未使用它，那就在<code>Description</code>文件的<code>Suggests</code>域添加该包。不添加该包,<code>check()</code>会报警告，在<code>Imports</code>域添加，<code>rhub::check_on_linux()</code>会报Note。可用如下函数添加，也可以直接修改<code>Description</code>文件。</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="创建包的一些建议.html#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(your_pac, <span class="at">type =</span> <span class="st">&#39;Suggests&#39;</span>)</span></code></pre></div>
+<ul>
 <li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
 <li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
 <li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量，因此最好使用<code>ggplot2::aes_string()</code>。但作者明确表示<code>ggplot2::aes_string()</code>将来会折旧。因此新的解决办法是，</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="创建包的一些建议.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
-<span id="cb4-2"><a href="创建包的一些建议.html#cb4-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb4-3"><a href="创建包的一些建议.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
-<span id="cb4-4"><a href="创建包的一些建议.html#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="创建包的一些建议.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
+<span id="cb5-2"><a href="创建包的一些建议.html#cb5-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb5-3"><a href="创建包的一些建议.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
+<span id="cb5-4"><a href="创建包的一些建议.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</li>
 </ul>
