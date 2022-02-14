@@ -308,6 +308,15 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6AF0E1940624A220
 sudo apt-get install r-base
 ```
 
+## macOS 安装R
+
+- 在官网下载对应的R，按说明装即可。然后RStudio下载下来只要拖到Applications里面即可，比较简单。
+
+- 如果要从源码编译R代码，还需要两个工具`Xcode`和`gfortran`。前者在App Store里面免费安装，后者参照R官网指导命令行安装即可(`https://mac.r-project.org/tools/`),要注意的是：
+  - 解压命令`tar fxz gfortran-f51f1da0-darwin20.0-arm64.tar.gz -C /`意味着把压缩包解压到根目录下，而不是用户目录下。因此，前面加上`sudo`前缀，否则会解压到用户目录下。
+
+
+
 ## 如何完美复制项目的结果
 在写一个项目时，往往对应着当时你调用的各种R包的版本。一年以后，许多包已经更新，可能你当时的代码结果已经无法复制。我们需要管理不同版本的R包。
 

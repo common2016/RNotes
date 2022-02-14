@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 经济学中的各种专业计算 | R语言笔记</title>
   <meta name="description" content="6 经济学中的各种专业计算 | R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 经济学中的各种专业计算 | R语言笔记" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="rawR.html"/>
 <link rel="next" href="math.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,16 +50,15 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
@@ -137,6 +137,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 </head>
 
@@ -221,7 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
 <li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.9</b> 如何完美复制项目的结果</a></li>
+<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos-安装r"><i class="fa fa-check"></i><b>5.9</b> macOS 安装R</a></li>
+<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.10</b> 如何完美复制项目的结果</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
 <ul>
@@ -316,8 +318,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>lpirfs</code>包局部线性投影脉冲响应函数。</li>
 <li><code>library(productivity)</code>计算满奎斯特效率指数，注意日期参数<code>time.var</code>以及个体<code>id.var</code>参数都要是整数。</li>
 </ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Eco.html#cb57-1" aria-hidden="true" tabindex="-1"></a>tfp <span class="ot">&lt;-</span> <span class="fu">malm</span>(regdata, <span class="at">id.var =</span> <span class="st">&#39;alphabets&#39;</span>,<span class="at">time.var =</span> <span class="st">&#39;yr&#39;</span>, <span class="at">x.vars =</span> <span class="fu">c</span>(<span class="st">&#39;wage&#39;</span>,<span class="st">&#39;K&#39;</span>), <span class="at">y.vars =</span> <span class="st">&#39;gdp&#39;</span>)</span>
-<span id="cb57-2"><a href="Eco.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Changes</span>(tfp) <span class="co"># 获得malmquist指数及其成份</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Eco.html#cb58-1" aria-hidden="true" tabindex="-1"></a>tfp <span class="ot">&lt;-</span> <span class="fu">malm</span>(regdata, <span class="at">id.var =</span> <span class="st">&#39;alphabets&#39;</span>,<span class="at">time.var =</span> <span class="st">&#39;yr&#39;</span>, <span class="at">x.vars =</span> <span class="fu">c</span>(<span class="st">&#39;wage&#39;</span>,<span class="st">&#39;K&#39;</span>), <span class="at">y.vars =</span> <span class="st">&#39;gdp&#39;</span>)</span>
+<span id="cb58-2"><a href="Eco.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Changes</span>(tfp) <span class="co"># 获得malmquist指数及其成份</span></span></code></pre></div>
 <ul>
 <li>产品编码之间的转换包：<code>concordance::concord</code>：
 It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 product classification codes, as well as BEC, NAICS, and SIC classifications. It also provides code nomenclature / descriptions look-up, Rauch classification look-up (via concordance to SITC2) and trade elasticity look-up (via concordance to SITC2/3 or HS3.ss).</li>
@@ -329,15 +331,15 @@ It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 p
 <div id="wwz的贸易增加值分解" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> wwz的贸易增加值分解</h2>
 <p>分解的主要函数是<code>decompr</code>。但是有一个<code>load_table_vectors</code>函数可以生成一个decompr class，这个类有很多我们想要的东西，如投入产出系数A，里昂惕夫矩阵B以及其他的一些数据。</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Eco.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load example data</span></span>
-<span id="cb58-2"><a href="Eco.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(leather)</span>
-<span id="cb58-3"><a href="Eco.html#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="Eco.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create intermediate object (class decompr)</span></span>
-<span id="cb58-5"><a href="Eco.html#cb58-5" aria-hidden="true" tabindex="-1"></a>decompr_object <span class="ot">&lt;-</span> <span class="fu">load_tables_vectors</span>(inter,</span>
-<span id="cb58-6"><a href="Eco.html#cb58-6" aria-hidden="true" tabindex="-1"></a>                                      final,</span>
-<span id="cb58-7"><a href="Eco.html#cb58-7" aria-hidden="true" tabindex="-1"></a>                                      countries,</span>
-<span id="cb58-8"><a href="Eco.html#cb58-8" aria-hidden="true" tabindex="-1"></a>                                      industries,</span>
-<span id="cb58-9"><a href="Eco.html#cb58-9" aria-hidden="true" tabindex="-1"></a>                                      out        )</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="Eco.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load example data</span></span>
+<span id="cb59-2"><a href="Eco.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(leather)</span>
+<span id="cb59-3"><a href="Eco.html#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="Eco.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create intermediate object (class decompr)</span></span>
+<span id="cb59-5"><a href="Eco.html#cb59-5" aria-hidden="true" tabindex="-1"></a>decompr_object <span class="ot">&lt;-</span> <span class="fu">load_tables_vectors</span>(inter,</span>
+<span id="cb59-6"><a href="Eco.html#cb59-6" aria-hidden="true" tabindex="-1"></a>                                      final,</span>
+<span id="cb59-7"><a href="Eco.html#cb59-7" aria-hidden="true" tabindex="-1"></a>                                      countries,</span>
+<span id="cb59-8"><a href="Eco.html#cb59-8" aria-hidden="true" tabindex="-1"></a>                                      industries,</span>
+<span id="cb59-9"><a href="Eco.html#cb59-9" aria-hidden="true" tabindex="-1"></a>                                      out        )</span></code></pre></div>
 <p>这个类包含了如下内容，我挑一些我确切知道是啥的:</p>
 <ul>
 <li>B: 里昂惕夫矩阵，即<span class="math inline">\((I-A)^{-1}\)</span></li>
@@ -362,7 +364,6 @@ It supports concordance between HS (Combined), ISIC Rev. 2,3, and SITC1,2,3,4 p
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -381,6 +382,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -401,6 +403,10 @@ gitbook.start({
 "text": null
 },
 "download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -72,7 +72,7 @@ t.data.frame <- function(x)
 usethis::use_package(your_pac, type = 'Suggests')
 ```
 
-
+- `spell_check()`检查拼写错误。
 - 可以使用`devtools::use_readme_rmd()`来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。
 
 - 使用`devtools::use_travis()`建立一个基本的`.travis.yml`配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。

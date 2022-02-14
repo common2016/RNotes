@@ -33,8 +33,8 @@ Table: (\#tab:unnamed-chunk-1)Data summary
 
 **Variable type: numeric**
 
-|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist  |
-|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:-----|
+|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist       |
+|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:----------|
 |Sepal.Length  |         0|             1| 5.84| 0.83| 4.3| 5.1| 5.80| 6.4|  7.9|▆▇▇▅▂ |
 |Sepal.Width   |         0|             1| 3.06| 0.44| 2.0| 2.8| 3.00| 3.3|  4.4|▁▆▇▂▁ |
 |Petal.Length  |         0|             1| 3.76| 1.77| 1.0| 1.6| 4.35| 5.1|  6.9|▇▁▆▇▂ |

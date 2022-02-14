@@ -44,6 +44,7 @@ apply函数族
 linux中的r
 如何修改.rprofile
 ubuntu下安装最新的r
+macos-安装r
 如何完美复制项目的结果
 Eco
 一句话tips-5
