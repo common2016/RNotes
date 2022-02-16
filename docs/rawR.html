@@ -223,7 +223,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
 <li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos-安装r"><i class="fa fa-check"></i><b>5.9</b> macOS 安装R</a></li>
+<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.9</b> macOS与R</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.9.1</b> 安装R</a></li>
+<li class="chapter" data-level="5.9.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.9.2</b> 配置R</a></li>
+</ul></li>
 <li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.10</b> 如何完美复制项目的结果</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
@@ -552,8 +556,10 @@ rstudio-server online</code></pre>
 <pre><code>sudo apt-get install r-base</code></pre>
 </div>
 </div>
-<div id="macos-安装r" class="section level2" number="5.9">
-<h2><span class="header-section-number">5.9</span> macOS 安装R</h2>
+<div id="macos与r" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> macOS与R</h2>
+<div id="安装r" class="section level3" number="5.9.1">
+<h3><span class="header-section-number">5.9.1</span> 安装R</h3>
 <ul>
 <li><p>在官网下载对应的R，按说明装即可。然后RStudio下载下来只要拖到Applications里面即可，比较简单。</p></li>
 <li><p>如果要从源码编译R代码，还需要两个工具<code>Xcode</code>和<code>gfortran</code>。前者在App Store里面免费安装，后者参照R官网指导命令行安装即可(<code>https://mac.r-project.org/tools/</code>),要注意的是：</p>
@@ -561,6 +567,13 @@ rstudio-server online</code></pre>
 <li>解压命令<code>tar fxz gfortran-f51f1da0-darwin20.0-arm64.tar.gz -C /</code>意味着把压缩包解压到根目录下，而不是用户目录下。因此，前面加上<code>sudo</code>前缀，否则会解压到用户目录下。</li>
 </ul></li>
 </ul>
+</div>
+<div id="配置r" class="section level3" number="5.9.2">
+<h3><span class="header-section-number">5.9.2</span> 配置R</h3>
+<p>在R启动前可以执行一些命令，这些命令可以写在<code>.Rprofile</code>文件中，该文件在主目录下。你可以使用<code>file.edit('~/.Rprofile')</code>命令打开，该文件若不存在，会自动创建一个。然后在该文件中写入如下代码以设置默认的R包的存储位置，</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="rawR.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>(<span class="fu">c</span>(<span class="st">&#39;~/elements/RLibrary&#39;</span>,<span class="fu">.libPaths</span>()))</span></code></pre></div>
+<p>后面加了个<code>.libPaths()</code>是因为以前默认的R包位置已经安装了一些包，这些包也要在搜寻的路径上。</p>
+</div>
 </div>
 <div id="如何完美复制项目的结果" class="section level2" number="5.10">
 <h2><span class="header-section-number">5.10</span> 如何完美复制项目的结果</h2>
