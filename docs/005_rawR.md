@@ -311,7 +311,7 @@ sudo apt-get install r-base
 ## macOS与R
 ### 安装R
 
-- 在官网下载对应的R，按说明装即可。然后RStudio下载下来只要拖到Applications里面即可，比较简单。
+- 在官网下载对应的R，按说明装即可。要注意的是如果是macOS 11即Big Sur以后的版本，要下载对应的R包，否则可能在后期会出问题。比如我在Julia中安装RCall包以便在Julia中调用R，但该包怎么都安装不了，后来发现是R的版本安装错了。然后RStudio下载下来只要拖到Applications里面即可，比较简单。
 
 - 如果要从源码编译R代码，还需要两个工具`Xcode`和`gfortran`。前者在App Store里面免费安装，后者参照R官网指导命令行安装即可(`https://mac.r-project.org/tools/`),要注意的是：
   - 解压命令`tar fxz gfortran-f51f1da0-darwin20.0-arm64.tar.gz -C /`意味着把压缩包解压到根目录下，而不是用户目录下。因此，前面加上`sudo`前缀，否则会解压到用户目录下。
