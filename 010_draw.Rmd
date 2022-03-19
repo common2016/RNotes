@@ -6,6 +6,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 ## 一句话Tips
 
 - `vistime`包基于ggplot的逻辑绘制甘特图。注意他时间线的格式是`as.POSIXct()`。
+- `Cairo`包在苹果系统中安装的话，要先安装X11,网址https://www.xquartz.org/
 
 ## 3D绘图
 `x`和`y`是数值向量，`z`是矩阵，且`z`的列数与`x`的长度一致，行数与`y`的长度一致。

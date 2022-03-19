@@ -13,7 +13,9 @@
 
 ## 解非线性方程（组）
 
--  `rootSolve`提供了非线性方程(组)的解，以及微分方程的稳态解的形式。
+### 单变量解非线性方程
+
+- R语言自带的单变量求根。
 
 ```r
 fun <- function (x) cos(2*x)^3
@@ -21,9 +23,13 @@ curve(fun, 0, 8) # 先画个图看看解大约在哪里
 abline(h = 0, lty = 3) # 把0轴搞出来
 uni <- uniroot(fun, c(0, 8))$root # 此时求解
 ```
-方程组的根求解用`multiroot`。单方程求根用该包的`uniroot.all`函数，它会把区间细分，寻找全部的根，更有用。
 
-- `rootSolve::multiroot`的求根时使用的是牛顿方法，`nleqslv::nleqslv`包提供了`Broyden`方法。
+-  `rootSolve`包单变量求解`uniroot.all`函数更强大，它会把区间细分，寻找全部的根，更有用。此外，它还提供微分方程的稳态解的形式。
+
+### 多变量解非线性方程
+
+- `rootSolve`包多变量求解，用`multiroot`，用的方法是牛顿方法。
+- `nleqslv::nleqslv`包不仅包括了牛顿方法，还提供了`Broyden`方法。很多时候，求解非线性方程组会碰到雅克比矩阵病态或者说不可逆，该包有一个选项`control=list(allowSingular = TRUE)`可以允许病态存在，如果在此设置下还不行，可以适当提高控制选项中`cndtol`的值。
 
 ## 数值积分
 
