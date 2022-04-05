@@ -168,7 +168,7 @@ feed_url <- "http://api.fanyi.baidu.com/api/trans/vip/translate"
 
 ## 与SQL数据库交互
 
-SQL数据库可以百度SQLStudio软件作为图形化界面打开，查阅等。在R语言中，有`RSQLite`包。工作流如下
+SQL数据库可以百度SQLStudio软件作为图形化界面打开，查阅等。在R语言中，有`RSQLite`包。不过该数据框最多容纳2000列。工作流如下
 
 ```r
 library(RSQLite)

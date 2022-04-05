@@ -37,8 +37,8 @@ data = as.data.frame(data1)
 一般工作流如下：
 ```{r}
 library(R.matlab)
-Matlab$startServer() # 启动matlab服务器，可能会较慢
-# 创造与matlab交互的客户端对象，并看它的运行状态
+Matlab$startServer(matlab = "/Applications/MATLAB_R2021b.app/bin/matlab") # 启动matlab服务器，可能会较慢
+# 创造与matlab交互的客户端对象，并看它的运行状态,此时是关闭的
 matlab <- Matlab()
 print(matlab)
 # 打开运行
