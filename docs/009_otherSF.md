@@ -14,7 +14,11 @@ stargazer(regression,type = 'text',out = "../PicTab/cmp.html",no.space = T,repor
 
 用RStata包可以从R里面调用stata，不过要先用`chooseBinStata()`先设置stata的安装路径。 也可以在R的启动环境中进行配置。
 注意在启动环境中（即Rprofile.site文件中）配置时，应增加如下一行，
-`options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")`
+
+- 在windows下，`options(RStata.StataPath = "\"D:\\Program Files (x86)\\Stata14\\StataMP-64\"")`
+- 在Mac下，`options(RStata.StataPath = "\"/Applications/Stata/StataMP.app/Contents/MacOS/stata-mp\"")`
+
+或许你还想增加stata的版本设置`options("RStata.StataVersion" = 17)`。
 
 - R语言读取SPSS（中文字符）
 
