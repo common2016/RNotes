@@ -40,6 +40,30 @@ mle(minuslogl, start = formals(minuslogl), method = "BFGS",
 - `bvarsv`时变参数var建模
 - `nls`非线性最小二乘法函数
 - `highfrequance`里面有不少意思的函数，包括`HAR`。
+
+## `lm`函数
+### `formula`参数中一些符号的含义
+
+符号|含义
+---|---
+`:`|如$y$对$x\cdot z$回归，就可以写成`y~x:z`
+`*`|所有变量的可能交互。`y~x*z*w`等价于`y~x+z+w+x:z+x:w+z:w+x:z:w`
+`^`|交互项达到的次数。`y~(x+z+w)^2`等价于`y~x+z+w+x:z+x:w+z:w`
+`I()`|从数学的角度解释括号中的元素。`y~x+I((z+w)^2)`表示`y~x+h`,`h`是`z,w`的平方和创建的变量。
+
+### 针对拟合对象（object）的一些方法(method)
+
+方法（函数）|用途
+---|---
+`summary()`|
+`coefficients()`|抽取拟合的参数
+`confint()`|获得参数的置信区间，缺省95%
+`fitted()`|获得$\hat{y}$
+`residuals()`|获得残差
+`vcov`|获得参数的方差协方差矩阵
+`AIC`|获得赤池统计量
+`predict()`|用拟合的模型对新的数据集进行预测
+
 ## 回归中关于公式的理解和构造
 
 ```r
