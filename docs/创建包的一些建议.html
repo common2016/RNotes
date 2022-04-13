@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="DrawTips.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="next" href="rmarkdown.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -161,11 +161,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#lm函数"><i class="fa fa-check"></i><b>2.2</b> <code>lm</code>函数</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2.1" data-path="TS.html"><a href="TS.html#formula参数中一些符号的含义"><i class="fa fa-check"></i><b>2.2.1</b> <code>formula</code>参数中一些符号的含义</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TS.html"><a href="TS.html#针对拟合对象object的一些方法method"><i class="fa fa-check"></i><b>2.2.2</b> 针对拟合对象（object）的一些方法(method)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.3</b> 回归中关于公式的理解和构造</a></li>
+<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.4</b> GMM估计</a></li>
+<li class="chapter" data-level="2.5" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.5</b> 季节调整</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.5.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.5.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.5.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a>
@@ -183,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.5.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
 <li class="chapter" data-level="3.5.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.5.2</b> <code>imfr</code>包下载IMF数据</a></li>
 <li class="chapter" data-level="3.5.3" data-path="DataProcess.html"><a href="DataProcess.html#oecd包下载oecd的数据"><i class="fa fa-check"></i><b>3.5.3</b> <code>OECD</code>包下载OECD的数据</a></li>
+<li class="chapter" data-level="3.5.4" data-path="DataProcess.html"><a href="DataProcess.html#wdi包"><i class="fa fa-check"></i><b>3.5.4</b> <code>WDI</code>包</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.6</b> 前向、后向、线性和样条插值</a>
 <ul>
@@ -237,7 +244,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-6"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#解非线性方程组"><i class="fa fa-check"></i><b>7.2</b> 解非线性方程（组）</a></li>
+<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#解非线性方程组"><i class="fa fa-check"></i><b>7.2</b> 解非线性方程（组）</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="math.html"><a href="math.html#单变量解非线性方程"><i class="fa fa-check"></i><b>7.2.1</b> 单变量解非线性方程</a></li>
+<li class="chapter" data-level="7.2.2" data-path="math.html"><a href="math.html#多变量解非线性方程"><i class="fa fa-check"></i><b>7.2.2</b> 多变量解非线性方程</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="math.html"><a href="math.html#数值积分"><i class="fa fa-check"></i><b>7.3</b> 数值积分</a></li>
 <li class="chapter" data-level="7.4" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.4</b> 数值优化</a>
 <ul>
@@ -290,10 +301,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
 <li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a>
+<li class="chapter" data-level="12" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>12</b> RMarkdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>12.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="12.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>12.2</b> R语言动态报告</a></li>
+<li class="chapter" data-level="12.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown的语法格式"><i class="fa fa-check"></i><b>12.1</b> Rmarkdown的语法格式</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rjtools包提供的rmd文件编写"><i class="fa fa-check"></i><b>12.1.1</b> <code>rjtools</code>包提供的Rmd文件编写</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.2</b> R语言写latex</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="13.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>13.2</b> R语言动态报告</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -410,7 +429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="DrawTips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

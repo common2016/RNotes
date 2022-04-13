@@ -5,6 +5,10 @@ plm包
 动态面板阈值估计r语言中有一个包dtp其估计函数为
 TS
 一句话tips-1
+lm函数
+formula参数中一些符号的含义
+针对拟合对象object的一些方法method
+回归中关于公式的理解和构造
 gmm估计
 季节调整
 r中有x12包可以做季节处理
@@ -20,6 +24,7 @@ data.table包
 rjsdmx包下载世界各大数据库数据
 imfr包下载imf数据
 oecd包下载oecd的数据
+wdi包
 前向后向线性和样条插值
 signal包
 统计
@@ -54,6 +59,8 @@ wwz的贸易增加值分解
 math
 一句话tips-6
 解非线性方程组
+单变量解非线性方程
+多变量解非线性方程
 数值积分
 数值优化
 单变量数值优化
@@ -87,15 +94,11 @@ d绘图
 测试
 泛型函数
 其他-1
+rmarkdown
+rmarkdown的语法格式
+rjtools包提供的rmd文件编写
+r语言写latex
 其他-2
 一句话tips-11
 r语言动态报告
-回归中关于公式的理解和构造
 c代码中调用r函数
-单变量解非线性方程
-多变量解非线性方程
-wdi包
-lm中一些符号的含义
-lm函数
-formula参数中一些符号的含义
-针对拟合对象object的一些方法method

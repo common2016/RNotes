@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 其他 | R语言笔记</title>
-  <meta name="description" content="12 其他 | R语言笔记" />
+  <title>13 其他 | R语言笔记</title>
+  <meta name="description" content="13 其他 | R语言笔记" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 其他 | R语言笔记" />
+  <meta property="og:title" content="13 其他 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 其他 | R语言笔记" />
+  <meta name="twitter:title" content="13 其他 | R语言笔记" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="创建包的一些建议.html"/>
+<link rel="prev" href="rmarkdown.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -161,11 +161,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="TS.html"><a href="TS.html#一句话tips-1"><i class="fa fa-check"></i><b>2.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.2</b> GMM估计</a></li>
-<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.3</b> 季节调整</a>
+<li class="chapter" data-level="2.2" data-path="TS.html"><a href="TS.html#lm函数"><i class="fa fa-check"></i><b>2.2</b> <code>lm</code>函数</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.3.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
-<li class="chapter" data-level="2.3.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.3.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
+<li class="chapter" data-level="2.2.1" data-path="TS.html"><a href="TS.html#formula参数中一些符号的含义"><i class="fa fa-check"></i><b>2.2.1</b> <code>formula</code>参数中一些符号的含义</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TS.html"><a href="TS.html#针对拟合对象object的一些方法method"><i class="fa fa-check"></i><b>2.2.2</b> 针对拟合对象（object）的一些方法(method)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TS.html"><a href="TS.html#回归中关于公式的理解和构造"><i class="fa fa-check"></i><b>2.3</b> 回归中关于公式的理解和构造</a></li>
+<li class="chapter" data-level="2.4" data-path="TS.html"><a href="TS.html#gmm估计"><i class="fa fa-check"></i><b>2.4</b> GMM估计</a></li>
+<li class="chapter" data-level="2.5" data-path="TS.html"><a href="TS.html#季节调整"><i class="fa fa-check"></i><b>2.5</b> 季节调整</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="TS.html"><a href="TS.html#r中有x12包可以做季节处理"><i class="fa fa-check"></i><b>2.5.1</b> R中有<code>x12</code>包可以做季节处理</a></li>
+<li class="chapter" data-level="2.5.2" data-path="TS.html"><a href="TS.html#seasonal包有x13处理更加便捷"><i class="fa fa-check"></i><b>2.5.2</b> <code>seasonal</code>包有x13处理，更加便捷</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="DataProcess.html"><a href="DataProcess.html"><i class="fa fa-check"></i><b>3</b> 数据处理</a>
@@ -183,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5.1" data-path="DataProcess.html"><a href="DataProcess.html#rjsdmx包下载世界各大数据库数据"><i class="fa fa-check"></i><b>3.5.1</b> <code>RJSDMX</code>包下载世界各大数据库数据</a></li>
 <li class="chapter" data-level="3.5.2" data-path="DataProcess.html"><a href="DataProcess.html#imfr包下载imf数据"><i class="fa fa-check"></i><b>3.5.2</b> <code>imfr</code>包下载IMF数据</a></li>
 <li class="chapter" data-level="3.5.3" data-path="DataProcess.html"><a href="DataProcess.html#oecd包下载oecd的数据"><i class="fa fa-check"></i><b>3.5.3</b> <code>OECD</code>包下载OECD的数据</a></li>
+<li class="chapter" data-level="3.5.4" data-path="DataProcess.html"><a href="DataProcess.html#wdi包"><i class="fa fa-check"></i><b>3.5.4</b> <code>WDI</code>包</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="DataProcess.html"><a href="DataProcess.html#前向后向线性和样条插值"><i class="fa fa-check"></i><b>3.6</b> 前向、后向、线性和样条插值</a>
 <ul>
@@ -237,7 +244,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="math.html"><a href="math.html"><i class="fa fa-check"></i><b>7</b> 数学计算</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="math.html"><a href="math.html#一句话tips-6"><i class="fa fa-check"></i><b>7.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#解非线性方程组"><i class="fa fa-check"></i><b>7.2</b> 解非线性方程（组）</a></li>
+<li class="chapter" data-level="7.2" data-path="math.html"><a href="math.html#解非线性方程组"><i class="fa fa-check"></i><b>7.2</b> 解非线性方程（组）</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="math.html"><a href="math.html#单变量解非线性方程"><i class="fa fa-check"></i><b>7.2.1</b> 单变量解非线性方程</a></li>
+<li class="chapter" data-level="7.2.2" data-path="math.html"><a href="math.html#多变量解非线性方程"><i class="fa fa-check"></i><b>7.2.2</b> 多变量解非线性方程</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="math.html"><a href="math.html#数值积分"><i class="fa fa-check"></i><b>7.3</b> 数值积分</a></li>
 <li class="chapter" data-level="7.4" data-path="math.html"><a href="math.html#数值优化"><i class="fa fa-check"></i><b>7.4</b> 数值优化</a>
 <ul>
@@ -272,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
+<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -290,10 +302,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#泛型函数"><i class="fa fa-check"></i><b>11.4</b> 泛型函数</a></li>
 <li class="chapter" data-level="11.5" data-path="创建包的一些建议.html"><a href="创建包的一些建议.html#其他-1"><i class="fa fa-check"></i><b>11.5</b> 其他</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>12</b> 其他</a>
+<li class="chapter" data-level="12" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>12</b> RMarkdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>12.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="12.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>12.2</b> R语言动态报告</a></li>
+<li class="chapter" data-level="12.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown的语法格式"><i class="fa fa-check"></i><b>12.1</b> Rmarkdown的语法格式</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rjtools包提供的rmd文件编写"><i class="fa fa-check"></i><b>12.1.1</b> <code>rjtools</code>包提供的Rmd文件编写</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.2</b> R语言写latex</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -313,10 +332,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-2" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> 其他</h1>
-<div id="一句话tips-11" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> 一句话Tips</h2>
+<div id="其他-2" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> 其他</h1>
+<div id="一句话tips-11" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> 一句话Tips</h2>
 <ul>
 <li><code>officer</code>是一个强大的R与Word，PPT等交互的包。</li>
 <li><code>geosphere::distm</code>根据经纬度算距离。</li>
@@ -326,50 +345,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="其他-2.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
-<span id="cb97-2"><a href="其他-2.html#cb97-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb97-3"><a href="其他-2.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
-<span id="cb97-4"><a href="其他-2.html#cb97-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
-<span id="cb97-5"><a href="其他-2.html#cb97-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="其他-2.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
+<span id="cb1-2"><a href="其他-2.html#cb1-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb1-3"><a href="其他-2.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
+<span id="cb1-4"><a href="其他-2.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb1-5"><a href="其他-2.html#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>
 </ul>
-</div>
-<div id="r语言动态报告" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> R语言动态报告</h2>
-<p>用R语言写一个latex，简单步骤如下：</p>
-<ol style="list-style-type: decimal">
-<li>新建一个RSweave文档，后缀名是<code>.Rnw</code></li>
-<li>把以前的tex文档格式直接往里面copy就行了。</li>
-<li>只是涉及到R语言时，使用如下格式：</li>
-</ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="其他-2.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>echo <span class="ot">=</span> <span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb98-2"><a href="其他-2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb98-3"><a href="其他-2.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span> (x)</span>
-<span id="cb98-4"><a href="其他-2.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>一些快捷键：</li>
-</ol>
-<ul>
-<li>ctrl + alt + I : 插入代码块；</li>
-<li>ctrl + shift + enter: 运行当前代码块；</li>
-<li>ctrl + shift + K: 预览当前文档；</li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
-<li>中文状态下，要更改渲染引擎为<code>Tools-Global Options-Sweave-XeLaTex</code></li>
-<li>如果你感兴趣于修改R代码的输出格式，你可以使用<code>knitr</code>包的修改方法，但此时，你要更改RStudio全局设定中<code>Sweave</code>标签中的渲染引擎为<code>knitr</code>，而不是<code>sweave</code>，同时，你要把代码<code>\SweaveOpts{concordance=TRUE}</code>注释掉，然后你要在文本的第一个代码块中进行设置，比如我的一个经常性的设置为，</li>
-</ol>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="其他-2.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>setup, echo <span class="ot">=</span> <span class="cn">FALSE</span>, include<span class="ot">=</span><span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb99-2"><a href="其他-2.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb99-3"><a href="其他-2.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">render_sweave</span>() <span class="co"># 基准设置是sweave的设置</span></span>
-<span id="cb99-4"><a href="其他-2.html#cb99-4" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>) <span class="co"># 全局抑制警告和信息输出</span></span>
-<span id="cb99-5"><a href="其他-2.html#cb99-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">source =</span> <span class="cf">function</span>(x, options) {</span>
-<span id="cb99-6"><a href="其他-2.html#cb99-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;&gt; &#39;</span>,x,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>) <span class="co"># 代码输入部分添加 &gt; 符号</span></span>
-<span id="cb99-7"><a href="其他-2.html#cb99-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=</span><span class="sc">\\</span><span class="st">color{gray},basicstyle = {</span><span class="sc">\\</span><span class="st">ttfamily</span><span class="sc">\\</span><span class="st">color{RoyalBlue}},keywordstyle = </span><span class="sc">\\</span><span class="st">color{RoyalBlue},stepnumber=2]</span><span class="sc">\n</span><span class="st">&quot;</span>, x,</span>
-<span id="cb99-8"><a href="其他-2.html#cb99-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;</span><span class="sc">\\</span><span class="st">end{lstlisting}</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># lstlisting格式的更改</span></span>
-<span id="cb99-9"><a href="其他-2.html#cb99-9" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb99-10"><a href="其他-2.html#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
 
 </div>
 </div>
@@ -378,7 +362,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="创建包的一些建议.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -433,20 +417,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
