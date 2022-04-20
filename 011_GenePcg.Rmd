@@ -75,13 +75,14 @@ usethis::use_package(your_pac, type = 'Suggests')
 - 可以使用`devtools::use_readme_rmd()`来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。
 
 - 使用`devtools::use_travis()`建立一个基本的`.travis.yml`配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。
-- 包中调用`ggplot2::aes()`时，通常会报错没有显式绑定全局变量，因此最好使用`ggplot2::aes_string()`。但作者明确表示`ggplot2::aes_string()`将来会折旧。因此新的解决办法是，
+- 包中调用`ggplot2::aes()`时，通常会报错没有显式绑定全局变量（`no visible binding for global variable ‘.’`），因此最好使用`ggplot2::aes_string()`。但作者明确表示`ggplot2::aes_string()`将来会折旧。因此新的解决办法是，
 ```{r}
 #' @importFrom rlang .data
 my_func <- function(data) {
     ggplot(data, aes(x = .data$x, y = .data$y))
 }
 ```
+实际上这种问题还会出现在`tidyverse`中管道传输时的报错，那么通过在前面引入`#' @importFrom rlang .data`语句，同时把后面的占位符改成`.data`是解决这个全局绑定的好办法。
 
 - `@example /data/stage/chenpu/a.R`是把单独文件中的例子添加到函数文档中，而`@examples`则是直接添加。
 
