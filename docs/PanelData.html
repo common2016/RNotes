@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
-<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.3</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
+<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#fixest包"><i class="fa fa-check"></i><b>1.2</b> <code>fixest</code>包</a></li>
+<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.3</b> <code>plm</code>包</a></li>
+<li class="chapter" data-level="1.4" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.4</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
@@ -283,6 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
+<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -312,7 +314,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="13.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>13.2</b> R语言动态报告</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -338,29 +339,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> 一句话Tips</h2>
 <ul>
 <li><code>sandwich</code>提供了聚类标准误计算(<code>vcovCL</code>)，包括面板数据的聚类(<code>vcovPL</code>)。</li>
-<li><code>fixest::feols</code>包提供了面板高维固定效应估计，与stata中的<code>reghdfe</code>类似。而且这个函数还有稳健、聚类标准误选项，与stata很类似。</li>
 <li><code>PSTR</code>:面板平滑转移模型。</li>
 <li><code>MSCMT</code>:多个结果变量的合成控制方法的包。</li>
 <li>检查面板数据是否平衡：使用<code>table(PanelData[,1:2])</code>或者<code>is.banance</code>。</li>
 <li><code>phtt</code>包，交互效应的面板模型，用的Bai (2009)的估计方法。It offers the possibility of analyzing panel data with large dimensions n and T and can be considered when the unobserved heterogeneity effects are time-varying.</li>
 </ul>
 </div>
-<div id="plm包" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> <code>plm</code>包</h2>
+<div id="fixest包" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> <code>fixest</code>包</h2>
+<p><code>fixest</code>包的优点如下：</p>
+<ul>
+<li>提供了面板高维固定效应估计。</li>
+<li>提供了稳健、聚类标准误选项。</li>
+<li>计算速度快。速度比stata的<code>reghdfe</code>、Julia的<code>FixedEffectModels</code>都要快。</li>
+<li>提供了Sun and Abraham（2020）的交错面板估计。</li>
+</ul>
+<p>综上，以后固定效应估计，应该使用该包。</p>
+<p><strong>四个固定效应的泊松面板回归</strong>，<code>|</code>后就是固定效应变量。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="PanelData.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb1-2"><a href="PanelData.html#cb1-2" aria-hidden="true" tabindex="-1"></a>gravity_pois <span class="ot">&lt;-</span> <span class="fu">fepois</span>(Euros <span class="sc">~</span> <span class="fu">log</span>(dist_km) <span class="sc">|</span> Origin <span class="sc">+</span> Destination <span class="sc">+</span> Product <span class="sc">+</span> Year, trade) </span></code></pre></div>
+<p>而且你可以通过<code>Origin^Destination</code>的写法来表示两个变量间的交互固定效应。比如<code>Origin</code>如有3个水平，<code>Destination</code>有4个水平，这种写法会产生12个固定效应。</p>
+<p><strong>可变斜率项</strong>，固定效应可以改变斜率，这在控制个体的异质性时间趋势中非常有用。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="PanelData.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our base data for this section</span></span>
+<span id="cb2-2"><a href="PanelData.html#cb2-2" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> iris</span>
+<span id="cb2-3"><a href="PanelData.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;y&quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="st">&quot;fe1&quot;</span>)</span>
+<span id="cb2-4"><a href="PanelData.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create another &quot;fixed-effect&quot;</span></span>
+<span id="cb2-5"><a href="PanelData.html#cb2-5" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>fe2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">30</span>)</span>
+<span id="cb2-6"><a href="PanelData.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code></pre></div>
+<pre><code>##     y  x1  x2  x3    fe1 fe2
+## 1 5.1 3.5 1.4 0.2 setosa   a
+## 2 4.9 3.0 1.4 0.2 setosa   b
+## 3 4.7 3.2 1.3 0.2 setosa   c
+## 4 4.6 3.1 1.5 0.2 setosa   d
+## 5 5.0 3.6 1.4 0.2 setosa   e
+## 6 5.4 3.9 1.7 0.4 setosa   a</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="PanelData.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x2的斜率系数随着固定效应变化。通常在控制个体的异质性时间趋势中应用。</span></span>
+<span id="cb4-2"><a href="PanelData.html#cb4-2" aria-hidden="true" tabindex="-1"></a>est_vs <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">|</span> fe1[x2], base)</span>
+<span id="cb4-3"><a href="PanelData.html#cb4-3" aria-hidden="true" tabindex="-1"></a>est_vs</span></code></pre></div>
+<pre><code>## OLS estimation, Dep. Var.: y
+## Observations: 150 
+## Fixed-effects: fe1: 3
+## Varying slopes: x2 (fe1: 3)
+## Standard-errors: Clustered (fe1) 
+##    Estimate Std. Error t value Pr(&gt;|t|) 
+## x1 0.450006   0.156731  2.8712  0.10292 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## RMSE: 0.298706     Adj. R2: 0.863506
+##                  Within R2: 0.178944</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="PanelData.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">fixef</span>(est_vs))</span></code></pre></div>
+<pre><code>## Fixed-effects/Slope coefficients
+##                                 fe1 x2 (slopes: fe1)
+## Number of fixed-effects/slopes    3                3
+## Number of references              0                0
+## Mean                            1.7            0.639
+## Standard-deviation             1.32            0.262
+## 
+## COEFFICIENTS:
+##   fe1: setosa versicolor virginica
+##         2.926      1.879    0.3068
+## -----
+##   x2 (slopes: fe1): setosa versicolor virginica
+##                     0.3677     0.6598    0.8903</code></pre>
+<p><strong>未涉及固定效应的交互</strong>，通过在公式中引入<code>i()</code>语法，该函数又<code>ref</code>参数用来设基准组，或者<code>keep</code>参数用来保留哪些组。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="PanelData.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(airquality)</span>
+<span id="cb8-2"><a href="PanelData.html#cb8-2" aria-hidden="true" tabindex="-1"></a>res_i1 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month), airquality)</span>
+<span id="cb8-3"><a href="PanelData.html#cb8-3" aria-hidden="true" tabindex="-1"></a>res_i2 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">ref =</span> <span class="dv">8</span>), airquality)</span>
+<span id="cb8-4"><a href="PanelData.html#cb8-4" aria-hidden="true" tabindex="-1"></a>res_i3 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">keep =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>), airquality)</span>
+<span id="cb8-5"><a href="PanelData.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 展示结果</span></span>
+<span id="cb8-6"><a href="PanelData.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">etable</span>(res_i1, res_i2, res_i3, <span class="at">dict =</span> <span class="fu">c</span>(<span class="st">&quot;6&quot;</span> <span class="ot">=</span> <span class="st">&quot;June&quot;</span>, <span class="st">&quot;Month::5&quot;</span> <span class="ot">=</span> <span class="st">&quot;May&quot;</span>), </span>
+<span id="cb8-7"><a href="PanelData.html#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">order =</span> <span class="fu">c</span>(<span class="st">&quot;Int|May&quot;</span>, <span class="st">&quot;Mon&quot;</span>))</span></code></pre></div>
+<pre><code>##                             res_i1             res_i2             res_i3
+## Dependent Var.:              Ozone              Ozone              Ozone
+##                                                                         
+## (Intercept)          3.219 (7.919)   40.12*** (7.828)   25.82*** (6.681)
+## May                                 -36.90*** (8.201)  -24.50*** (6.936)
+## Month = June         5.069 (10.98)   -31.83** (11.05)    -19.46. (10.46)
+## Month = 7         31.04*** (8.018)     -5.861 (8.146)                   
+## Month = 8         36.90*** (8.201)                                      
+## Month = 9            8.912 (7.763)  -27.99*** (7.845)                   
+## Solar.R         0.1148*** (0.0300) 0.1148*** (0.0300) 0.1253*** (0.0311)
+## _______________ __________________ __________________ __________________
+## S.E. type                      IID                IID                IID
+## Observations                   111                111                111
+## R2                         0.31974            0.31974            0.22452
+## Adj. R2                    0.28735            0.28735            0.20278
+## ---
+## Signif. codes: 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><strong>TWFE估计</strong>，DID的双因素固定效应估计。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="PanelData.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(base_did)</span>
+<span id="cb10-2"><a href="PanelData.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base_did)</span></code></pre></div>
+<pre><code>##             y         x1 id period post treat
+## 1  2.87530627  0.5365377  1      1    0     1
+## 2  1.86065272 -3.0431894  1      2    0     1
+## 3  0.09416524  5.5768439  1      3    0     1
+## 4  3.78147485 -2.8300587  1      4    0     1
+## 5 -2.55819959 -5.0443544  1      5    0     1
+## 6  1.72873240 -0.6363849  1      6    1     1</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="PanelData.html#cb12-1" aria-hidden="true" tabindex="-1"></a>est_did <span class="ot">=</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> <span class="fu">i</span>(period, treat, <span class="dv">5</span>) <span class="sc">|</span> id <span class="sc">+</span> period, base_did)</span>
+<span id="cb12-2"><a href="PanelData.html#cb12-2" aria-hidden="true" tabindex="-1"></a>est_did</span></code></pre></div>
+<pre><code>## OLS estimation, Dep. Var.: y
+## Observations: 1,080 
+## Fixed-effects: id: 108,  period: 10
+## Standard-errors: Clustered (id) 
+##                   Estimate Std. Error   t value   Pr(&gt;|t|)    
+## x1                0.973490   0.045678 21.311868  &lt; 2.2e-16 ***
+## period::1:treat  -1.403045   1.110267 -1.263701 2.0908e-01    
+## period::2:treat  -1.247511   1.093145 -1.141213 2.5633e-01    
+## period::3:treat  -0.273206   1.106935 -0.246813 8.0553e-01    
+## period::4:treat  -1.795721   1.087974 -1.650518 1.0177e-01    
+## period::6:treat   0.784452   1.028388  0.762798 4.4726e-01    
+## period::7:treat   3.598897   1.101563  3.267081 1.4609e-03 ** 
+## period::8:treat   3.811766   1.247502  3.055519 2.8366e-03 ** 
+## period::9:treat   4.731426   1.097113  4.312617 3.6041e-05 ***
+## period::10:treat  6.606229   1.120494  5.895817 4.4031e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## RMSE: 3.83653     Adj. R2: 0.48783 
+##                 Within R2: 0.389628</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="PanelData.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iplot</span>(est_did)</span></code></pre></div>
+<p><img src="001_paneldata_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><strong>聚类标准误</strong>,在两个固定效应上计算聚类标准误。即便你没有使用固定效应，你也可以用这样的语法聚类标准误。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="PanelData.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gravity_pois, <span class="at">cluster =</span> <span class="sc">~</span>Origin<span class="sc">+</span>Destination)</span></code></pre></div>
+<pre><code>## Poisson estimation, Dep. Var.: Euros
+## Observations: 38,325 
+## Fixed-effects: Origin: 15,  Destination: 15,  Product: 20,  Year: 10
+## Standard-errors: Clustered (Origin &amp; Destination) 
+##              Estimate Std. Error  t value  Pr(&gt;|t|)    
+## log(dist_km) -1.52787   0.130734 -11.6869 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Log-Likelihood: -7.025e+11   Adj. Pseudo R2: 0.764032
+##            BIC:  1.405e+12     Squared Cor.: 0.612021</code></pre>
+<p>该包关于标准误的计算非常丰富，可以看它的小短文。</p>
+</div>
+<div id="plm包" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> <code>plm</code>包</h2>
 <ul>
 <li>包中的<code>vcovG</code>函数可以计算聚类标准误。一般这么用:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="PanelData.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plm, <span class="at">vcov =</span> <span class="fu">vcovG</span>(plm, <span class="at">cluster =</span> <span class="st">&#39;group&#39;</span>, <span class="at">inner =</span> <span class="st">&#39;cluster&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="PanelData.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plm, <span class="at">vcov =</span> <span class="fu">vcovG</span>(plm, <span class="at">cluster =</span> <span class="st">&#39;group&#39;</span>, <span class="at">inner =</span> <span class="st">&#39;cluster&#39;</span>))</span></code></pre></div>
 <ul>
 <li>包中的<code>fixef</code>函数可以返回个体截距项(<code>type = level</code>)。</li>
 <li><code>update(object, formula)</code>函数可以更新公式重新估计。</li>
 </ul>
 </div>
-<div id="动态面板阈值估计r语言中有一个包dtp其估计函数为" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="PanelData.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Mena)</span>
-<span id="cb2-2"><a href="PanelData.html#cb2-2" aria-hidden="true" tabindex="-1"></a>reg<span class="ot">&lt;-</span><span class="fu">dtp</span>(GDPPC <span class="sc">~</span> FDI<span class="sc">+</span>OPEN<span class="sc">|</span>INF<span class="sc">|</span>INF,Mena,<span class="at">index=</span><span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>,<span class="st">&quot;ann&quot;</span>),<span class="dv">4</span>,<span class="dv">2</span>,<span class="fl">0.95</span>,<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a href="PanelData.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<div id="动态面板阈值估计r语言中有一个包dtp其估计函数为" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="PanelData.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Mena)</span>
+<span id="cb18-2"><a href="PanelData.html#cb18-2" aria-hidden="true" tabindex="-1"></a>reg<span class="ot">&lt;-</span><span class="fu">dtp</span>(GDPPC <span class="sc">~</span> FDI<span class="sc">+</span>OPEN<span class="sc">|</span>INF<span class="sc">|</span>INF,Mena,<span class="at">index=</span><span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>,<span class="st">&quot;ann&quot;</span>),<span class="dv">4</span>,<span class="dv">2</span>,<span class="fl">0.95</span>,<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="PanelData.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
 <p>注意：</p>
 <ul>
 <li>第一根<code>|</code>前的变量是不依赖区制的变量，中间由<code>|</code>夹住的变量是阈值变量，最后一个<code>|</code>后面的变量是依赖区制的变量（好遗憾，貌似只允许一个这样的变量）。</li>
@@ -431,20 +559,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

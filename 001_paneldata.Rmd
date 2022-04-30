@@ -6,11 +6,73 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 # 面板数据 {#PanelData}
 ## 一句话Tips
 - `sandwich`提供了聚类标准误计算(`vcovCL`)，包括面板数据的聚类(`vcovPL`)。
-- `fixest::feols`包提供了面板高维固定效应估计，与stata中的`reghdfe`类似。而且这个函数还有稳健、聚类标准误选项，与stata很类似。
 - `PSTR`:面板平滑转移模型。
 - `MSCMT`:多个结果变量的合成控制方法的包。
 - 检查面板数据是否平衡：使用`table(PanelData[,1:2])`或者`is.banance`。
 - ` phtt`包，交互效应的面板模型，用的Bai (2009)的估计方法。It offers the possibility of analyzing panel data with large dimensions n and T and can be considered when the unobserved heterogeneity effects are time-varying.
+
+## `fixest`包
+
+`fixest`包的优点如下：
+
+- 提供了面板高维固定效应估计。
+- 提供了稳健、聚类标准误选项。
+- 计算速度快。速度比stata的`reghdfe`、Julia的`FixedEffectModels`都要快。
+- 提供了Sun and Abraham（2020）的交错面板估计。
+
+综上，以后固定效应估计，应该使用该包。
+
+**四个固定效应的泊松面板回归**，`|`后就是固定效应变量。
+```{r}
+library(fixest)
+gravity_pois <- fepois(Euros ~ log(dist_km) | Origin + Destination + Product + Year, trade) 
+```
+而且你可以通过`Origin^Destination`的写法来表示两个变量间的交互固定效应。比如`Origin`如有3个水平，`Destination`有4个水平，这种写法会产生12个固定效应。
+
+**可变斜率项**，固定效应可以改变斜率，这在控制个体的异质性时间趋势中非常有用。
+```{r}
+# Our base data for this section
+base <- iris
+names(base) <- c("y", paste0("x", 1:3), "fe1")
+# Create another "fixed-effect"
+base$fe2 <- rep(letters[1:5], 30)
+head(base)
+# x2的斜率系数随着固定效应变化。通常在控制个体的异质性时间趋势中应用。
+est_vs <- feols(y ~ x1 | fe1[x2], base)
+est_vs
+summary(fixef(est_vs))
+```
+
+**未涉及固定效应的交互**，通过在公式中引入`i()`语法，该函数又`ref`参数用来设基准组，或者`keep`参数用来保留哪些组。
+```{r}
+data(airquality)
+res_i1 = feols(Ozone ~ Solar.R + i(Month), airquality)
+res_i2 = feols(Ozone ~ Solar.R + i(Month, ref = 8), airquality)
+res_i3 = feols(Ozone ~ Solar.R + i(Month, keep = 5:6), airquality)
+# 展示结果
+etable(res_i1, res_i2, res_i3, dict = c("6" = "June", "Month::5" = "May"), 
+       order = c("Int|May", "Mon"))
+```
+
+**TWFE估计**，DID的双因素固定效应估计。
+
+```{r}
+data(base_did)
+head(base_did)
+est_did = feols(y ~ x1 + i(period, treat, 5) | id + period, base_did)
+est_did
+iplot(est_did)
+```
+
+
+**聚类标准误**,在两个固定效应上计算聚类标准误。即便你没有使用固定效应，你也可以用这样的语法聚类标准误。
+```{r}
+summary(gravity_pois, cluster = ~Origin+Destination)
+```
+该包关于标准误的计算非常丰富，可以看它的小短文。
+
+
+
 
 ## `plm`包
 - 包中的`vcovG`函数可以计算聚类标准误。一般这么用:
