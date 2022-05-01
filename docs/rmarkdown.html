@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
-<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.3</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
+<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#fixest包"><i class="fa fa-check"></i><b>1.2</b> <code>fixest</code>包</a></li>
+<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.3</b> <code>plm</code>包</a></li>
+<li class="chapter" data-level="1.4" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.4</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
@@ -283,7 +284,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
-<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -373,10 +373,10 @@ x=1+2\tag{1}\label{eq1}
 <li>把以前的tex文档格式直接往里面copy就行了。</li>
 <li>只是涉及到R语言时，使用如下格式：</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="rmarkdown.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>echo <span class="ot">=</span> <span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb3-2"><a href="rmarkdown.html#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb3-3"><a href="rmarkdown.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span> (x)</span>
-<span id="cb3-4"><a href="rmarkdown.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="rmarkdown.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>echo <span class="ot">=</span> <span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
+<span id="cb116-2"><a href="rmarkdown.html#cb116-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb116-3"><a href="rmarkdown.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span> (x)</span>
+<span id="cb116-4"><a href="rmarkdown.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>一些快捷键：</li>
 </ol>
@@ -389,16 +389,16 @@ x=1+2\tag{1}\label{eq1}
 <li>中文状态下，要更改渲染引擎为<code>Tools-Global Options-Sweave-XeLaTex</code></li>
 <li>如果你感兴趣于修改R代码的输出格式，你可以使用<code>knitr</code>包的修改方法，但此时，你要更改RStudio全局设定中<code>Sweave</code>标签中的渲染引擎为<code>knitr</code>，而不是<code>sweave</code>，同时，你要把代码<code>\SweaveOpts{concordance=TRUE}</code>注释掉，然后你要在文本的第一个代码块中进行设置，比如我的一个经常性的设置为，</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="rmarkdown.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>setup, echo <span class="ot">=</span> <span class="cn">FALSE</span>, include<span class="ot">=</span><span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb4-2"><a href="rmarkdown.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb4-3"><a href="rmarkdown.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">render_sweave</span>() <span class="co"># 基准设置是sweave的设置</span></span>
-<span id="cb4-4"><a href="rmarkdown.html#cb4-4" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>) <span class="co"># 全局抑制警告和信息输出</span></span>
-<span id="cb4-5"><a href="rmarkdown.html#cb4-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">source =</span> <span class="cf">function</span>(x, options) {</span>
-<span id="cb4-6"><a href="rmarkdown.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;&gt; &#39;</span>,x,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>) <span class="co"># 代码输入部分添加 &gt; 符号</span></span>
-<span id="cb4-7"><a href="rmarkdown.html#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=</span><span class="sc">\\</span><span class="st">color{gray},basicstyle = {</span><span class="sc">\\</span><span class="st">ttfamily</span><span class="sc">\\</span><span class="st">color{RoyalBlue}},keywordstyle = </span><span class="sc">\\</span><span class="st">color{RoyalBlue},stepnumber=2]</span><span class="sc">\n</span><span class="st">&quot;</span>, x,</span>
-<span id="cb4-8"><a href="rmarkdown.html#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;</span><span class="sc">\\</span><span class="st">end{lstlisting}</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># lstlisting格式的更改</span></span>
-<span id="cb4-9"><a href="rmarkdown.html#cb4-9" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-10"><a href="rmarkdown.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="rmarkdown.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>setup, echo <span class="ot">=</span> <span class="cn">FALSE</span>, include<span class="ot">=</span><span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
+<span id="cb117-2"><a href="rmarkdown.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb117-3"><a href="rmarkdown.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">render_sweave</span>() <span class="co"># 基准设置是sweave的设置</span></span>
+<span id="cb117-4"><a href="rmarkdown.html#cb117-4" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>) <span class="co"># 全局抑制警告和信息输出</span></span>
+<span id="cb117-5"><a href="rmarkdown.html#cb117-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">source =</span> <span class="cf">function</span>(x, options) {</span>
+<span id="cb117-6"><a href="rmarkdown.html#cb117-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;&gt; &#39;</span>,x,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>) <span class="co"># 代码输入部分添加 &gt; 符号</span></span>
+<span id="cb117-7"><a href="rmarkdown.html#cb117-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=</span><span class="sc">\\</span><span class="st">color{gray},basicstyle = {</span><span class="sc">\\</span><span class="st">ttfamily</span><span class="sc">\\</span><span class="st">color{RoyalBlue}},keywordstyle = </span><span class="sc">\\</span><span class="st">color{RoyalBlue},stepnumber=2]</span><span class="sc">\n</span><span class="st">&quot;</span>, x,</span>
+<span id="cb117-8"><a href="rmarkdown.html#cb117-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;</span><span class="sc">\\</span><span class="st">end{lstlisting}</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># lstlisting格式的更改</span></span>
+<span id="cb117-9"><a href="rmarkdown.html#cb117-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb117-10"><a href="rmarkdown.html#cb117-10" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
 
 </div>
 </div>

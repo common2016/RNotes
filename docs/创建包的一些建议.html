@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
-<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.3</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
+<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#fixest包"><i class="fa fa-check"></i><b>1.2</b> <code>fixest</code>包</a></li>
+<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.3</b> <code>plm</code>包</a></li>
+<li class="chapter" data-level="1.4" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.4</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
@@ -283,7 +284,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="otherSF.html"><a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类"><i class="fa fa-check"></i><b>9.5.1</b> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</a></li>
 <li class="chapter" data-level="9.5.2" data-path="otherSF.html"><a href="otherSF.html#使用sourcecpp函数"><i class="fa fa-check"></i><b>9.5.2</b> 使用<code>sourceCpp</code>函数</a></li>
-<li class="chapter" data-level="9.5.3" data-path="otherSF.html"><a href="otherSF.html#c代码中调用r函数"><i class="fa fa-check"></i><b>9.5.3</b> C++代码中调用R函数</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="DrawTips.html"><a href="DrawTips.html"><i class="fa fa-check"></i><b>10</b> 绘图技巧</a>
@@ -374,15 +374,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>在Description的Suggests域增加testthat;</li>
 <li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="创建包的一些建议.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb2-2"><a href="创建包的一些建议.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-3"><a href="创建包的一些建议.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来</span></span>
-<span id="cb2-4"><a href="创建包的一些建议.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-5"><a href="创建包的一些建议.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb2-6"><a href="创建包的一些建议.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.) <span class="co"># 比较前后两个数值是否一致</span></span>
-<span id="cb2-7"><a href="创建包的一些建议.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb2-8"><a href="创建包的一些建议.html#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_ture</span>(object) <span class="co"># 这个函数有着更加广泛的用途，比如可以检验a &lt; b</span></span>
-<span id="cb2-9"><a href="创建包的一些建议.html#cb2-9" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="创建包的一些建议.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb110-2"><a href="创建包的一些建议.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb110-3"><a href="创建包的一些建议.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来</span></span>
+<span id="cb110-4"><a href="创建包的一些建议.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb110-5"><a href="创建包的一些建议.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb110-6"><a href="创建包的一些建议.html#cb110-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.) <span class="co"># 比较前后两个数值是否一致</span></span>
+<span id="cb110-7"><a href="创建包的一些建议.html#cb110-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb110-8"><a href="创建包的一些建议.html#cb110-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_ture</span>(object) <span class="co"># 这个函数有着更加广泛的用途，比如可以检验a &lt; b</span></span>
+<span id="cb110-9"><a href="创建包的一些建议.html#cb110-9" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2" number="11.4">
@@ -391,11 +391,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>如果当前函数处理不了这个对象，可在函数末端返回<code>NextMethod('your_method')</code>。<code>your_method</code>方法的输入参数与当前方法相同，该对象最终由<code>your_method</code>来处理。</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="创建包的一些建议.html#cb3-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb3-2"><a href="创建包的一些建议.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-3"><a href="创建包的一些建议.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
-<span id="cb3-4"><a href="创建包的一些建议.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
-<span id="cb3-5"><a href="创建包的一些建议.html#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="创建包的一些建议.html#cb111-1" aria-hidden="true" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb111-2"><a href="创建包的一些建议.html#cb111-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb111-3"><a href="创建包的一些建议.html#cb111-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
+<span id="cb111-4"><a href="创建包的一些建议.html#cb111-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb111-5"><a href="创建包的一些建议.html#cb111-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>方法要包含原始泛型的所有参数，顺序也要一致。比如<code>summary</code>这个内置的泛型函数的参数为<code>object</code>和<code>...</code>，那么当你拓展该函数的时候，这两个参数的名称是不能改的。</li>
 <li>缺省设置也要和原始泛型一致。</li>
@@ -406,17 +406,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>如果在例子或vignette中使用了某个包，但在函数中并未使用它，那就在<code>Description</code>文件的<code>Suggests</code>域添加该包。不添加该包,<code>check()</code>会报警告，在<code>Imports</code>域添加，<code>rhub::check_on_linux()</code>会报Note。可用如下函数添加，也可以直接修改<code>Description</code>文件。</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="创建包的一些建议.html#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(your_pac, <span class="at">type =</span> <span class="st">&#39;Suggests&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="创建包的一些建议.html#cb112-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(your_pac, <span class="at">type =</span> <span class="st">&#39;Suggests&#39;</span>)</span></code></pre></div>
 <ul>
 <li><p><code>spell_check()</code>检查拼写错误。</p></li>
 <li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
 <li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
 <li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量（<code>no visible binding for global variable ‘.’</code>），因此最好使用<code>ggplot2::aes_string()</code>。但作者明确表示<code>ggplot2::aes_string()</code>将来会折旧。因此新的解决办法是，</p></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="创建包的一些建议.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
-<span id="cb5-2"><a href="创建包的一些建议.html#cb5-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb5-3"><a href="创建包的一些建议.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
-<span id="cb5-4"><a href="创建包的一些建议.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="创建包的一些建议.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
+<span id="cb113-2"><a href="创建包的一些建议.html#cb113-2" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb113-3"><a href="创建包的一些建议.html#cb113-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
+<span id="cb113-4"><a href="创建包的一些建议.html#cb113-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>实际上这种问题还会出现在<code>tidyverse</code>中管道传输时的报错，那么通过在前面引入<code>#' @importFrom rlang .data</code>语句，同时把后面的占位符改成<code>.data</code>是解决这个全局绑定的好办法。</p>
 <ul>
 <li><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</li>
@@ -484,6 +484,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

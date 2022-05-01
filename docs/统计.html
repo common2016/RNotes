@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="PanelData.html"><a href="PanelData.html"><i class="fa fa-check"></i><b>1</b> 面板数据</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="PanelData.html"><a href="PanelData.html#一句话tips"><i class="fa fa-check"></i><b>1.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.2</b> <code>plm</code>包</a></li>
-<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.3</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
+<li class="chapter" data-level="1.2" data-path="PanelData.html"><a href="PanelData.html#fixest包"><i class="fa fa-check"></i><b>1.2</b> <code>fixest</code>包</a></li>
+<li class="chapter" data-level="1.3" data-path="PanelData.html"><a href="PanelData.html#plm包"><i class="fa fa-check"></i><b>1.3</b> <code>plm</code>包</a></li>
+<li class="chapter" data-level="1.4" data-path="PanelData.html"><a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为"><i class="fa fa-check"></i><b>1.4</b> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="TS.html"><a href="TS.html"><i class="fa fa-check"></i><b>2</b> 普通回归和时间序列序列</a>
 <ul>
@@ -312,7 +313,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="13.2" data-path="其他-2.html"><a href="其他-2.html#r语言动态报告"><i class="fa fa-check"></i><b>13.2</b> R语言动态报告</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -345,12 +345,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>qrandom</code>: 利用量子波动产生真随机数.</li>
 <li>主成分分析可以调用<code>psych</code>包两个步骤实现：</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="统计.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 画个图选特征值数目：</span></span>
-<span id="cb21-2"><a href="统计.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 特征值在1以上的才行； 2. 特征值大于模拟的平均特征才可行； 3. 碎石图</span></span>
-<span id="cb21-3"><a href="统计.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb21-4"><a href="统计.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(regdata, <span class="at">fa =</span> <span class="st">&#39;pc&#39;</span>)</span>
-<span id="cb21-5"><a href="统计.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数</span></span>
-<span id="cb21-6"><a href="统计.html#cb21-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">principal</span>(regdata,<span class="at">nfactors =</span> <span class="dv">2</span>,<span class="at">rotate =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="统计.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 画个图选特征值数目：</span></span>
+<span id="cb37-2"><a href="统计.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 特征值在1以上的才行； 2. 特征值大于模拟的平均特征才可行； 3. 碎石图</span></span>
+<span id="cb37-3"><a href="统计.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb37-4"><a href="统计.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(regdata, <span class="at">fa =</span> <span class="st">&#39;pc&#39;</span>)</span>
+<span id="cb37-5"><a href="统计.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算2个主成分。如果想要主成分载荷更有经济意义，注意设置旋转参数</span></span>
+<span id="cb37-6"><a href="统计.html#cb37-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">principal</span>(regdata,<span class="at">nfactors =</span> <span class="dv">2</span>,<span class="at">rotate =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
 </div>
 <div id="mcmc算法" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> MCMC算法</h2>
