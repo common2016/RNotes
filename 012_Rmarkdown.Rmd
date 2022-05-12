@@ -36,6 +36,11 @@ $$
 
 第四，书写完成，使用`rjtools::initial_check_article()`检查递交文件是否合乎规范。
 
+其他注意点：
+
+- 在重现论文结果时，不要使用`rm(list=ls())`和`setwd()`这两种语句，会被编辑退回。
+
+
 ### `rjtools`包提供的Rmd文件编写
 
 - 参考文献都放在bib文件中，正文引用时如果要显示小括号，则写为`[@bernake2005;@stock2005]`，无小括号则写为`@bernake2005`。注意，bib,Rmd,tex三个文件必须具有同样的名字。比如`chen-chen-ouyang.bib,chen-chen-ouyang.Rmd,chen-chen-ouyang.tex`.

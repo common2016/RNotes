@@ -97,9 +97,8 @@ d绘图
 其他-1
 rmarkdown
 rmarkdown的语法格式
+递交r-journal的笔记
 rjtools包提供的rmd文件编写
 r语言写latex
 其他-2
 一句话tips-11
-c代码中调用r函数
-递交r-journal的笔记

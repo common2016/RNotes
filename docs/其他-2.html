@@ -304,11 +304,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>12</b> RMarkdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown的语法格式"><i class="fa fa-check"></i><b>12.1</b> Rmarkdown的语法格式</a>
+<li class="chapter" data-level="12.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown的语法格式"><i class="fa fa-check"></i><b>12.1</b> Rmarkdown的语法格式</a></li>
+<li class="chapter" data-level="12.2" data-path="rmarkdown.html"><a href="rmarkdown.html#递交r-journal的笔记"><i class="fa fa-check"></i><b>12.2</b> 递交R Journal的笔记</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rjtools包提供的rmd文件编写"><i class="fa fa-check"></i><b>12.1.1</b> <code>rjtools</code>包提供的Rmd文件编写</a></li>
+<li class="chapter" data-level="12.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rjtools包提供的rmd文件编写"><i class="fa fa-check"></i><b>12.2.1</b> <code>rjtools</code>包提供的Rmd文件编写</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.2</b> R语言写latex</a></li>
+<li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
 <ul>
@@ -345,11 +346,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="其他-2.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
-<span id="cb118-2"><a href="其他-2.html#cb118-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb118-3"><a href="其他-2.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
-<span id="cb118-4"><a href="其他-2.html#cb118-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
-<span id="cb118-5"><a href="其他-2.html#cb118-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="其他-2.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
+<span id="cb119-2"><a href="其他-2.html#cb119-2" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb119-3"><a href="其他-2.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
+<span id="cb119-4"><a href="其他-2.html#cb119-4" aria-hidden="true" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb119-5"><a href="其他-2.html#cb119-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>
