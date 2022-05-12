@@ -22,14 +22,32 @@ x=1+2\tag{1}\label{eq1}
 $$
 根据公式$\eqref{eq1}$式……
 
+
+## 递交R Journal的笔记
+
+
+第一，这个网址https://journal.r-project.org/dev/submissions.html 给出了整体递交的流程，新的递交都推荐这种方式，因为它包含了PDF和html两种格式。
+
+第二，这个网址 https://rjournal.github.io/rjtools/articles/format-details.html 给出了利用RMarkdwon制作图、表、公式在R Journal中操作的很多细节。
+
+第三，author-guide.pdf文件给出了R Journal特有的latex命令，如`\pkg,\CRARpkg,\code,\samp`等。
+
+第四，书写完成，使用`rjtools::initial_check_article()`检查递交文件是否合乎规范。
+
 ### `rjtools`包提供的Rmd文件编写
 
-- 参考文献都放在bib文件中，正文引用时如果要显示小括号，则写为`[@bernake2005;@stock2005]`，无小括号则写为`@bernake2005`。
+- 参考文献都放在bib文件中，正文引用时如果要显示小括号，则写为`[@bernake2005;@stock2005]`，无小括号则写为`@bernake2005`。注意，bib,Rmd,tex三个文件必须具有同样的名字。比如`chen-chen-ouyang.bib,chen-chen-ouyang.Rmd,chen-chen-ouyang.tex`.
 - 增加简单的markdown表格要在YAML中添加`preamble: \usepackage{longtable}`。
 - 在正文对表或图的引用`\@ref(fig:plot-1)`或`\@ref(tab:t-1)`，注意表或图标签用`-`而不是下划线。
 - 该包对图和表的嵌入是分latex和html两个部分来实现，你如果想在网页和PDF中都体现表格或者图，意味着你要写两个语句块。语句块的写法以及引用方式可以参加该包的模板。
+- `knitr::kable()`函数生成表格是非常灵活的。这里我们给一个例子。可以看到矩阵的宽度安排是灵活的。另外，如果你的表格包含`$`等符号，可以设置`escape = FALSE`进行逃逸。
 
-另外，我的一个递交R Journal的经验是，可以利用`rjtools`包撰写论文，然后利用它生成的tex等文件重新构造需要递交的zip文档。因为`rjtools`包在处理tex时仍然存在一些缺陷，比如太宽的表格不好处理等等。
+```r
+# ```{r, eval = knitr::is_latex_output()}
+# knitr::kable(tb1lt, format = "latex", caption = "FAVAR Function Description", align = c('l','p{34em}'), escape = FALSE)
+# ```
+```
+
 
 ## R语言写latex
 
