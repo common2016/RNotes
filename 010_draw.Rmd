@@ -17,6 +17,28 @@ ggsave(filename = pname.pdf,width = 8.6, height = 5.72,device = cairo_pdf, famil
 ggsave(filename = pname.wmf,width = 8.6, height = 5.72) #该格式只用于word，且无法实现半透明。
 ```
 
+- 如果想要刻度线往里面，可以设置tick的长度值为负，
+```{r}
+theme(axis.ticks.length.x = unit(-0.1,"cm"))
+```
+- 如果标题太长，要换行，可以使用，
+```{r}
+labs(title = stringr::str_wrap('巴拉巴拉', width = 3))
+```
+
+- 保存svg格式图片
+```{r}
+library(svglite)
+ggsave('myplot.svg')
+```
+
+- 坐标轴体现数学表达，主要使用了`TeX`命令：
+```r
+library(latex2exp)
+ggplot(data = data.frame(x = 0, y = 0)) + 
+  geom_point(aes(x = x, y = y)) + 
+  ylab(TeX('$Abundance \\; 1 \\times 10^5$'))
+```
 
 ## 3D绘图
 `x`和`y`是数值向量，`z`是矩阵，且`z`的列数与`x`的长度一致，行数与`y`的长度一致。

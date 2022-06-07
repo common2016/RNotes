@@ -45,7 +45,7 @@ $$
 - 增加简单的markdown表格要在YAML中添加`preamble: \usepackage{longtable}`。
 - 在正文对表或图的引用`\@ref(fig:plot-1)`或`\@ref(tab:t-1)`，注意表或图标签用`-`而不是下划线。
 - 该包对图和表的嵌入是分latex和html两个部分来实现，你如果想在网页和PDF中都体现表格或者图，意味着你要写两个语句块。语句块的写法以及引用方式可以参加该包的模板。
-- `knitr::kable()`函数生成表格是非常灵活的。这里我们给一个例子。可以看到矩阵的宽度安排是灵活的。另外，如果你的表格包含`$`等符号，可以设置`escape = FALSE`进行逃逸。
+- `knitr::kable()`函数生成表格是非常灵活的。这里我们给一个例子。可以看到矩阵的宽度安排是灵活的。另外，如果你的表格包含`$`等符号，可以设置`escape = FALSE`进行逃逸。网址  https://bookdown.org/yihui/rmarkdown-cookbook/kable.html 给出了很多例子。
 
 ```r
 # ```{r, eval = knitr::is_latex_output()}
