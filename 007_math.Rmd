@@ -31,6 +31,7 @@ uni <- uniroot(fun, c(0, 8))$root # 此时求解
 
 - `rootSolve`包多变量求解，用`multiroot`，用的方法是牛顿方法。
 - `nleqslv::nleqslv`包不仅包括了牛顿方法，还提供了`Broyden`方法。很多时候，求解非线性方程组会碰到雅克比矩阵病态或者说不可逆，该包有一个选项`control=list(allowSingular = TRUE)`可以允许病态存在，如果在此设置下还不行，可以适当提高控制选项中`cndtol`的值。
+- `BB`包无导数求解大规模非线性方程组，这个包值得一看，那个75代OLG模型求解多亏了这个包。
 
 ## 数值积分
 
