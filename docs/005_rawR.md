@@ -54,7 +54,7 @@ attr(dt$x, 'label') <- 'time'
 
 - `remove.packages('dplyr')`，卸载已安装的包。
 - `system`或`shell`运行Shell命令。
-- 更新所有的包`update.packages(checkBuilt=TRUE, ask=FALSE)`
+
 - `pkgsearch`包的`ps`函数提供CRAN的关键词搜寻。
 - `detach(package:dplyr)`可以去掉加载的包。
 - `foreach`包提供循环的平行计算
@@ -79,7 +79,18 @@ file.rename(from = fr,to = to)
    1. 点[这里](https://cran.r-project.org/src/contrib/Archive/)找到过期的包，然后下载下来。
    2. 用这个命令安装本地的包：`install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')`
 
+## 更新R
+
+1. 在Mac中更新R，你要去R的官网下载最新的R版本然后装上，它会自动覆盖原有的旧R。你可以进一步打开`/Library/Frameworks/R.frameworks/versions/`在里面删除旧R的残余文件夹。
+
+2. 有个时候升级R以后，载入某些包时报错，你可以用如下命令更新所有的R包，基本都能解决。
+```r
+update.packages(checkBuilt=TRUE, ask=FALSE)
+```
+
+
 ## 大数据的存取
+
 对于大的数据，载入内存运算往往给内存造成很大负担，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
 
 ```r
