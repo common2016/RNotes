@@ -1,6 +1,18 @@
 
 # 与其他软件的交互 {#otherSF}
 ## 一句话Tips
+
+- Mac中Jupyter配置R核
+
+
+```r
+# R控制台运行
+install.packages('IRkernel')
+# 终端运行
+IRkernel::installspec()
+# 再次打开Jupyter就有R内核了
+```
+
 - `stargazer`的一个模版调用：
 
 ```r

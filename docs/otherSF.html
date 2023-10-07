@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 与其他软件的交互 | R语言笔记</title>
   <meta name="description" content="9 与其他软件的交互 | R语言笔记" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 与其他软件的交互 | R语言笔记" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="ML.html"/>
 <link rel="next" href="DrawTips.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -111,7 +110,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -124,7 +123,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -138,6 +137,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -212,30 +215,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-4"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.2</b> 大数据的存取</a></li>
-<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.3</b> RStudio-server管理</a></li>
-<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.4</b> 平行计算</a>
+<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#更新r"><i class="fa fa-check"></i><b>5.2</b> 更新R</a></li>
+<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.3</b> 大数据的存取</a></li>
+<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.4</b> RStudio-server管理</a></li>
+<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.5</b> 平行计算</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.4.1</b> 循环中的平行运算</a></li>
-<li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.4.2</b> <code>apply</code>族的平行版本</a></li>
+<li class="chapter" data-level="5.5.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.5.1</b> 循环中的平行运算</a></li>
+<li class="chapter" data-level="5.5.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.5.2</b> <code>apply</code>族的平行版本</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.5</b> 类和方法</a>
+<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.6</b> 类和方法</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.5.1</b> S3类</a></li>
+<li class="chapter" data-level="5.6.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.6.1</b> S3类</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.6</b> 打印到文件</a></li>
-<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.7</b> <code>apply</code>函数族</a></li>
-<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.8</b> Linux中的R</a>
+<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.7</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.8</b> <code>apply</code>函数族</a></li>
+<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.9</b> Linux中的R</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
-<li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
+<li class="chapter" data-level="5.9.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.9.1</b> 如何修改<code>.Rprofile</code>？</a></li>
+<li class="chapter" data-level="5.9.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.9.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.9</b> macOS与R</a>
+<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.10</b> macOS与R</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.9.1</b> 安装R</a></li>
-<li class="chapter" data-level="5.9.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.9.2</b> 配置R</a></li>
+<li class="chapter" data-level="5.10.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.10.1</b> 安装R</a></li>
+<li class="chapter" data-level="5.10.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.10.2</b> 配置R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.10</b> 如何完美复制项目的结果</a></li>
+<li class="chapter" data-level="5.11" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.11</b> 如何完美复制项目的结果</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
 <ul>
@@ -333,14 +337,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="otherSF" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> 与其他软件的交互</h1>
-<div id="一句话tips-8" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> 一句话Tips</h2>
+<div id="otherSF" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> 与其他软件的交互<a href="otherSF.html#otherSF" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="一句话tips-8" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 一句话Tips<a href="otherSF.html#一句话tips-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Mac中Jupyter配置R核</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="otherSF.html#cb1-1" tabindex="-1"></a><span class="co"># R控制台运行</span></span>
+<span id="cb1-2"><a href="otherSF.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;IRkernel&#39;</span>)</span>
+<span id="cb1-3"><a href="otherSF.html#cb1-3" tabindex="-1"></a><span class="co"># 终端运行</span></span>
+<span id="cb1-4"><a href="otherSF.html#cb1-4" tabindex="-1"></a>IRkernel<span class="sc">::</span><span class="fu">installspec</span>()</span>
+<span id="cb1-5"><a href="otherSF.html#cb1-5" tabindex="-1"></a><span class="co"># 再次打开Jupyter就有R内核了</span></span></code></pre></div>
 <ul>
 <li><code>stargazer</code>的一个模版调用：</li>
 </ul>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="otherSF.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regression,<span class="at">type =</span> <span class="st">&#39;text&#39;</span>,<span class="at">out =</span> <span class="st">&quot;../PicTab/cmp.html&quot;</span>,<span class="at">no.space =</span> T,<span class="at">report =</span> <span class="fu">c</span>(<span class="st">&#39;vcp&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="otherSF.html#cb2-1" tabindex="-1"></a><span class="fu">stargazer</span>(regression,<span class="at">type =</span> <span class="st">&#39;text&#39;</span>,<span class="at">out =</span> <span class="st">&quot;../PicTab/cmp.html&quot;</span>,<span class="at">no.space =</span> T,<span class="at">report =</span> <span class="fu">c</span>(<span class="st">&#39;vcp&#39;</span>))</span></code></pre></div>
 <p><code>report</code>意味着报告变量、系数与p值。</p>
 <ul>
 <li><code>officer</code>: 与微软软件互动的一个包</li>
@@ -357,179 +369,179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>R语言读取SPSS（中文字符）</li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="otherSF.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读英文字符</span></span>
-<span id="cb89-2"><a href="otherSF.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)  </span>
-<span id="cb89-3"><a href="otherSF.html#cb89-3" aria-hidden="true" tabindex="-1"></a>mydata<span class="ot">=</span><span class="fu">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
-<span id="cb89-4"><a href="otherSF.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 或者如下</span></span>
-<span id="cb89-5"><a href="otherSF.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)  </span>
-<span id="cb89-6"><a href="otherSF.html#cb89-6" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
-<span id="cb89-7"><a href="otherSF.html#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-8"><a href="otherSF.html#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 读中文字符</span></span>
-<span id="cb89-9"><a href="otherSF.html#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(memisc)</span>
-<span id="cb89-10"><a href="otherSF.html#cb89-10" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">=</span> <span class="fu">as.data.set</span>(<span class="fu">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
-<span id="cb89-11"><a href="otherSF.html#cb89-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">as.data.frame</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="otherSF.html#cb3-1" tabindex="-1"></a><span class="co"># 读英文字符</span></span>
+<span id="cb3-2"><a href="otherSF.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(foreign)  </span>
+<span id="cb3-3"><a href="otherSF.html#cb3-3" tabindex="-1"></a>mydata<span class="ot">=</span><span class="fu">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)  </span>
+<span id="cb3-4"><a href="otherSF.html#cb3-4" tabindex="-1"></a><span class="co"># 或者如下</span></span>
+<span id="cb3-5"><a href="otherSF.html#cb3-5" tabindex="-1"></a><span class="fu">library</span>(Hmisc)  </span>
+<span id="cb3-6"><a href="otherSF.html#cb3-6" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">spss.get</span>(<span class="st">&quot;data.sav&quot;</span>) </span>
+<span id="cb3-7"><a href="otherSF.html#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="otherSF.html#cb3-8" tabindex="-1"></a><span class="co"># 读中文字符</span></span>
+<span id="cb3-9"><a href="otherSF.html#cb3-9" tabindex="-1"></a><span class="fu">library</span>(memisc)</span>
+<span id="cb3-10"><a href="otherSF.html#cb3-10" tabindex="-1"></a>data1 <span class="ot">=</span> <span class="fu">as.data.set</span>(<span class="fu">spss.system.file</span>(<span class="st">&quot;data.sav&quot;</span>))</span>
+<span id="cb3-11"><a href="otherSF.html#cb3-11" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">as.data.frame</span>(data1)</span></code></pre></div>
 </div>
-<div id="r语言调用matlab" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> R语言调用Matlab</h2>
-<div id="强大的r.matlab包" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> 强大的<code>R.matlab</code>包</h3>
+<div id="r语言调用matlab" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> R语言调用Matlab<a href="otherSF.html#r语言调用matlab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="强大的r.matlab包" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> 强大的<code>R.matlab</code>包<a href="otherSF.html#强大的r.matlab包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>一般工作流如下：</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="otherSF.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(R.matlab)</span>
-<span id="cb90-2"><a href="otherSF.html#cb90-2" aria-hidden="true" tabindex="-1"></a>Matlab<span class="sc">$</span><span class="fu">startServer</span>(<span class="at">matlab =</span> <span class="st">&quot;/Applications/MATLAB_R2021b.app/bin/matlab&quot;</span>) <span class="co"># 启动matlab服务器，可能会较慢</span></span>
-<span id="cb90-3"><a href="otherSF.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创造与matlab交互的客户端对象，并看它的运行状态,此时是关闭的</span></span>
-<span id="cb90-4"><a href="otherSF.html#cb90-4" aria-hidden="true" tabindex="-1"></a>matlab <span class="ot">&lt;-</span> <span class="fu">Matlab</span>()</span>
-<span id="cb90-5"><a href="otherSF.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matlab)</span>
-<span id="cb90-6"><a href="otherSF.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 打开运行</span></span>
-<span id="cb90-7"><a href="otherSF.html#cb90-7" aria-hidden="true" tabindex="-1"></a>isOpen <span class="ot">&lt;-</span> <span class="fu">open</span>(matlab)</span>
-<span id="cb90-8"><a href="otherSF.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matlab)</span>
-<span id="cb90-9"><a href="otherSF.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="co"># matlab中运行脚本</span></span>
-<span id="cb90-10"><a href="otherSF.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="fu">evaluate</span>(matlab, <span class="st">&quot;A = 1+2;&quot;</span>, <span class="st">&quot;B = ones(2, 20);&quot;</span>)</span>
-<span id="cb90-11"><a href="otherSF.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印A的值</span></span>
-<span id="cb90-12"><a href="otherSF.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="fu">evaluate</span>(matlab, <span class="st">&quot;A&quot;</span>)</span>
-<span id="cb90-13"><a href="otherSF.html#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 将matlab中的值传到R中</span></span>
-<span id="cb90-14"><a href="otherSF.html#cb90-14" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">getVariable</span>(matlab, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb90-15"><a href="otherSF.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 将R中的值传到matlab中</span></span>
-<span id="cb90-16"><a href="otherSF.html#cb90-16" aria-hidden="true" tabindex="-1"></a>ABCD <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">10000</span>), <span class="at">ncol =</span> <span class="dv">100</span>)</span>
-<span id="cb90-17"><a href="otherSF.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="fu">setVariable</span>(matlab, <span class="at">ABCD =</span> ABCD)</span>
-<span id="cb90-18"><a href="otherSF.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭与matlab间的连接</span></span>
-<span id="cb90-19"><a href="otherSF.html#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="fu">close</span>(matlab)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="otherSF.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(R.matlab)</span>
+<span id="cb4-2"><a href="otherSF.html#cb4-2" tabindex="-1"></a>Matlab<span class="sc">$</span><span class="fu">startServer</span>(<span class="at">matlab =</span> <span class="st">&quot;/Applications/MATLAB_R2021b.app/bin/matlab&quot;</span>) <span class="co"># 启动matlab服务器，可能会较慢</span></span>
+<span id="cb4-3"><a href="otherSF.html#cb4-3" tabindex="-1"></a><span class="co"># 创造与matlab交互的客户端对象，并看它的运行状态,此时是关闭的</span></span>
+<span id="cb4-4"><a href="otherSF.html#cb4-4" tabindex="-1"></a>matlab <span class="ot">&lt;-</span> <span class="fu">Matlab</span>()</span>
+<span id="cb4-5"><a href="otherSF.html#cb4-5" tabindex="-1"></a><span class="fu">print</span>(matlab)</span>
+<span id="cb4-6"><a href="otherSF.html#cb4-6" tabindex="-1"></a><span class="co"># 打开运行</span></span>
+<span id="cb4-7"><a href="otherSF.html#cb4-7" tabindex="-1"></a>isOpen <span class="ot">&lt;-</span> <span class="fu">open</span>(matlab)</span>
+<span id="cb4-8"><a href="otherSF.html#cb4-8" tabindex="-1"></a><span class="fu">print</span>(matlab)</span>
+<span id="cb4-9"><a href="otherSF.html#cb4-9" tabindex="-1"></a><span class="co"># matlab中运行脚本</span></span>
+<span id="cb4-10"><a href="otherSF.html#cb4-10" tabindex="-1"></a><span class="fu">evaluate</span>(matlab, <span class="st">&quot;A = 1+2;&quot;</span>, <span class="st">&quot;B = ones(2, 20);&quot;</span>)</span>
+<span id="cb4-11"><a href="otherSF.html#cb4-11" tabindex="-1"></a><span class="co"># 打印A的值</span></span>
+<span id="cb4-12"><a href="otherSF.html#cb4-12" tabindex="-1"></a><span class="fu">evaluate</span>(matlab, <span class="st">&quot;A&quot;</span>)</span>
+<span id="cb4-13"><a href="otherSF.html#cb4-13" tabindex="-1"></a><span class="co"># 将matlab中的值传到R中</span></span>
+<span id="cb4-14"><a href="otherSF.html#cb4-14" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">getVariable</span>(matlab, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb4-15"><a href="otherSF.html#cb4-15" tabindex="-1"></a><span class="co"># 将R中的值传到matlab中</span></span>
+<span id="cb4-16"><a href="otherSF.html#cb4-16" tabindex="-1"></a>ABCD <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">10000</span>), <span class="at">ncol =</span> <span class="dv">100</span>)</span>
+<span id="cb4-17"><a href="otherSF.html#cb4-17" tabindex="-1"></a><span class="fu">setVariable</span>(matlab, <span class="at">ABCD =</span> ABCD)</span>
+<span id="cb4-18"><a href="otherSF.html#cb4-18" tabindex="-1"></a><span class="co"># 关闭与matlab间的连接</span></span>
+<span id="cb4-19"><a href="otherSF.html#cb4-19" tabindex="-1"></a><span class="fu">close</span>(matlab)</span></code></pre></div>
 </div>
-<div id="其他的一些小办法" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> 其他的一些小办法</h3>
+<div id="其他的一些小办法" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> 其他的一些小办法<a href="otherSF.html#其他的一些小办法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调用Matlab的一般步骤。</p>
 <pre><code>- 安装R.matlab包。使用`writemat(filename,A=A,B=B)`把R里面的数据写进Matlab并保存成`.mat`格式。
 - 安装matlabr包。使用`run_matlab_script`命令来执行一个`.m`脚本。或者使用`R.matlab`包里面的`evaluate`来一个一个地执行matlab命令。或者类似于调用stata：</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="otherSF.html#cb92-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(matlabr)</span>
-<span id="cb92-2"><a href="otherSF.html#cb92-2" aria-hidden="true" tabindex="-1"></a>    MatlabCode <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
-<span id="cb92-3"><a href="otherSF.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="st">    a = 3;</span></span>
-<span id="cb92-4"><a href="otherSF.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="st">    b = a+1;</span></span>
-<span id="cb92-5"><a href="otherSF.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;</span></span>
-<span id="cb92-6"><a href="otherSF.html#cb92-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="otherSF.html#cb6-1" tabindex="-1"></a>    <span class="fu">library</span>(matlabr)</span>
+<span id="cb6-2"><a href="otherSF.html#cb6-2" tabindex="-1"></a>    MatlabCode <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb6-3"><a href="otherSF.html#cb6-3" tabindex="-1"></a><span class="st">    a = 3;</span></span>
+<span id="cb6-4"><a href="otherSF.html#cb6-4" tabindex="-1"></a><span class="st">    b = a+1;</span></span>
+<span id="cb6-5"><a href="otherSF.html#cb6-5" tabindex="-1"></a><span class="st">    &#39;</span></span>
+<span id="cb6-6"><a href="otherSF.html#cb6-6" tabindex="-1"></a>    <span class="fu">run_matlab_code</span>(MatlabCode)</span></code></pre></div>
 </div>
 </div>
-<div id="r与python的无缝对接" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> R与Python的无缝对接</h2>
+<div id="r与python的无缝对接" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> R与Python的无缝对接<a href="otherSF.html#r与python的无缝对接" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>第一步，首先配置好环境</li>
 </ul>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="otherSF.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb93-2"><a href="otherSF.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
-<span id="cb93-3"><a href="otherSF.html#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-4"><a href="otherSF.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
-<span id="cb93-5"><a href="otherSF.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
-<span id="cb93-6"><a href="otherSF.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="fu">py_config</span>()</span>
-<span id="cb93-7"><a href="otherSF.html#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="otherSF.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="fu">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
-<span id="cb93-9"><a href="otherSF.html#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="otherSF.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb7-2"><a href="otherSF.html#cb7-2" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
+<span id="cb7-3"><a href="otherSF.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="otherSF.html#cb7-4" tabindex="-1"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
+<span id="cb7-5"><a href="otherSF.html#cb7-5" tabindex="-1"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
+<span id="cb7-6"><a href="otherSF.html#cb7-6" tabindex="-1"></a><span class="fu">py_config</span>()</span>
+<span id="cb7-7"><a href="otherSF.html#cb7-7" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="otherSF.html#cb7-8" tabindex="-1"></a><span class="fu">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
+<span id="cb7-9"><a href="otherSF.html#cb7-9" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
 <ul>
 <li>第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号$相当于python里面的“.”符号 ，如，</li>
 </ul>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="otherSF.html#cb94-1" aria-hidden="true" tabindex="-1"></a>os <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;os&quot;</span>)</span>
-<span id="cb94-2"><a href="otherSF.html#cb94-2" aria-hidden="true" tabindex="-1"></a>os<span class="sc">$</span><span class="fu">getcwd</span>()</span>
-<span id="cb94-3"><a href="otherSF.html#cb94-3" aria-hidden="true" tabindex="-1"></a>os<span class="sc">$</span><span class="fu">listdir</span>()<span class="co">#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件</span></span>
-<span id="cb94-4"><a href="otherSF.html#cb94-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb94-5"><a href="otherSF.html#cb94-5" aria-hidden="true" tabindex="-1"></a>numpy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;numpy&quot;</span>)</span>
-<span id="cb94-6"><a href="otherSF.html#cb94-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb94-7"><a href="otherSF.html#cb94-7" aria-hidden="true" tabindex="-1"></a>y</span>
-<span id="cb94-8"><a href="otherSF.html#cb94-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> numpy<span class="sc">$</span><span class="fu">array</span>(y)</span>
-<span id="cb94-9"><a href="otherSF.html#cb94-9" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb94-10"><a href="otherSF.html#cb94-10" aria-hidden="true" tabindex="-1"></a>numpy<span class="sc">$</span><span class="fu">transpose</span>(x)<span class="co">#将数组进行转置</span></span>
-<span id="cb94-11"><a href="otherSF.html#cb94-11" aria-hidden="true" tabindex="-1"></a>numpy<span class="sc">$</span>linalg<span class="sc">$</span><span class="fu">eig</span>(x)<span class="co">#求特征根和特征向量</span></span></code></pre></div>
-<div id="其他" class="section level3" number="9.3.1">
-<h3><span class="header-section-number">9.3.1</span> 其他：</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="otherSF.html#cb8-1" tabindex="-1"></a>os <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;os&quot;</span>)</span>
+<span id="cb8-2"><a href="otherSF.html#cb8-2" tabindex="-1"></a>os<span class="sc">$</span><span class="fu">getcwd</span>()</span>
+<span id="cb8-3"><a href="otherSF.html#cb8-3" tabindex="-1"></a>os<span class="sc">$</span><span class="fu">listdir</span>()<span class="co">#您可以使用os包中的listdir（）函数来查看工作目录中的所有文件</span></span>
+<span id="cb8-4"><a href="otherSF.html#cb8-4" tabindex="-1"></a> </span>
+<span id="cb8-5"><a href="otherSF.html#cb8-5" tabindex="-1"></a>numpy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;numpy&quot;</span>)</span>
+<span id="cb8-6"><a href="otherSF.html#cb8-6" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb8-7"><a href="otherSF.html#cb8-7" tabindex="-1"></a>y</span>
+<span id="cb8-8"><a href="otherSF.html#cb8-8" tabindex="-1"></a>x <span class="ot">&lt;-</span> numpy<span class="sc">$</span><span class="fu">array</span>(y)</span>
+<span id="cb8-9"><a href="otherSF.html#cb8-9" tabindex="-1"></a>x</span>
+<span id="cb8-10"><a href="otherSF.html#cb8-10" tabindex="-1"></a>numpy<span class="sc">$</span><span class="fu">transpose</span>(x)<span class="co">#将数组进行转置</span></span>
+<span id="cb8-11"><a href="otherSF.html#cb8-11" tabindex="-1"></a>numpy<span class="sc">$</span>linalg<span class="sc">$</span><span class="fu">eig</span>(x)<span class="co">#求特征根和特征向量</span></span></code></pre></div>
+<div id="其他" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> 其他：<a href="otherSF.html#其他" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>当你发现有些包没有，需要安装的时候，可以如下，</li>
 </ul>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="otherSF.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb95-2"><a href="otherSF.html#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-3"><a href="otherSF.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new environment </span></span>
-<span id="cb95-4"><a href="otherSF.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_create</span>(<span class="st">&quot;r-reticulate&quot;</span>)</span>
-<span id="cb95-5"><a href="otherSF.html#cb95-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-6"><a href="otherSF.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="co"># install SciPy</span></span>
-<span id="cb95-7"><a href="otherSF.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_install</span>(<span class="st">&quot;r-reticulate&quot;</span>, <span class="st">&quot;scipy&quot;</span>)</span>
-<span id="cb95-8"><a href="otherSF.html#cb95-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-9"><a href="otherSF.html#cb95-9" aria-hidden="true" tabindex="-1"></a><span class="co"># import SciPy (it will be automatically discovered in &quot;r-reticulate&quot;)</span></span>
-<span id="cb95-10"><a href="otherSF.html#cb95-10" aria-hidden="true" tabindex="-1"></a>scipy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;scipy&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="otherSF.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb9-2"><a href="otherSF.html#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="otherSF.html#cb9-3" tabindex="-1"></a><span class="co"># create a new environment </span></span>
+<span id="cb9-4"><a href="otherSF.html#cb9-4" tabindex="-1"></a><span class="fu">conda_create</span>(<span class="st">&quot;r-reticulate&quot;</span>)</span>
+<span id="cb9-5"><a href="otherSF.html#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="otherSF.html#cb9-6" tabindex="-1"></a><span class="co"># install SciPy</span></span>
+<span id="cb9-7"><a href="otherSF.html#cb9-7" tabindex="-1"></a><span class="fu">conda_install</span>(<span class="st">&quot;r-reticulate&quot;</span>, <span class="st">&quot;scipy&quot;</span>)</span>
+<span id="cb9-8"><a href="otherSF.html#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="otherSF.html#cb9-9" tabindex="-1"></a><span class="co"># import SciPy (it will be automatically discovered in &quot;r-reticulate&quot;)</span></span>
+<span id="cb9-10"><a href="otherSF.html#cb9-10" tabindex="-1"></a>scipy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;scipy&quot;</span>)</span></code></pre></div>
 <ul>
 <li>这是调用时通常需要的代码：</li>
 </ul>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="otherSF.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb96-2"><a href="otherSF.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_config</span>() <span class="co"># 可以查你有几个版本的python</span></span>
-<span id="cb96-3"><a href="otherSF.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="otherSF.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 想使用哪个版本的python</span></span>
-<span id="cb96-5"><a href="otherSF.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&#39;C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe&#39;</span>)</span>
-<span id="cb96-6"><a href="otherSF.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 或者直接在.Rprofile文件中添加一行如：Sys.setenv(RETICULATE_PYTHON = &quot;D:/usr/Anaconda3&quot;)</span></span>
-<span id="cb96-7"><a href="otherSF.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 以配置路径</span></span>
-<span id="cb96-8"><a href="otherSF.html#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-9"><a href="otherSF.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 检查python可不可用</span></span>
-<span id="cb96-10"><a href="otherSF.html#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="fu">py_available</span>()</span>
-<span id="cb96-11"><a href="otherSF.html#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 检查模块可不可用</span></span>
-<span id="cb96-12"><a href="otherSF.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&#39;tushare&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="otherSF.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb10-2"><a href="otherSF.html#cb10-2" tabindex="-1"></a><span class="fu">py_config</span>() <span class="co"># 可以查你有几个版本的python</span></span>
+<span id="cb10-3"><a href="otherSF.html#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="otherSF.html#cb10-4" tabindex="-1"></a><span class="co"># 想使用哪个版本的python</span></span>
+<span id="cb10-5"><a href="otherSF.html#cb10-5" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&#39;C:/Users/sheng/AppData/Local/Continuum/anaconda3/python.exe&#39;</span>)</span>
+<span id="cb10-6"><a href="otherSF.html#cb10-6" tabindex="-1"></a><span class="co"># 或者直接在.Rprofile文件中添加一行如：Sys.setenv(RETICULATE_PYTHON = &quot;D:/usr/Anaconda3&quot;)</span></span>
+<span id="cb10-7"><a href="otherSF.html#cb10-7" tabindex="-1"></a><span class="co"># 以配置路径</span></span>
+<span id="cb10-8"><a href="otherSF.html#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="otherSF.html#cb10-9" tabindex="-1"></a><span class="co"># 检查python可不可用</span></span>
+<span id="cb10-10"><a href="otherSF.html#cb10-10" tabindex="-1"></a><span class="fu">py_available</span>()</span>
+<span id="cb10-11"><a href="otherSF.html#cb10-11" tabindex="-1"></a><span class="co"># 检查模块可不可用</span></span>
+<span id="cb10-12"><a href="otherSF.html#cb10-12" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&#39;tushare&#39;</span>)</span></code></pre></div>
 </div>
-<div id="r与python的交互控制" class="section level3" number="9.3.2">
-<h3><span class="header-section-number">9.3.2</span> r与python的交互控制</h3>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="otherSF.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb97-2"><a href="otherSF.html#cb97-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> <span class="fu">head</span>(cars, <span class="at">n=</span><span class="dv">15</span>)</span>
-<span id="cb97-3"><a href="otherSF.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="otherSF.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 去往python控制台</span></span>
-<span id="cb97-5"><a href="otherSF.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">repl_python</span>()</span>
-<span id="cb97-6"><a href="otherSF.html#cb97-6" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb97-7"><a href="otherSF.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 载入数据集</span></span>
-<span id="cb97-8"><a href="otherSF.html#cb97-8" aria-hidden="true" tabindex="-1"></a>travel <span class="ot">=</span> <span class="fu">pd.read_excel</span>(“AIR.xlsx”)</span>
-<span id="cb97-9"><a href="otherSF.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="fu">r.mydata.describe</span>() <span class="co"># 利用r对象调用前面R中生成的变量</span></span>
-<span id="cb97-10"><a href="otherSF.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 回到R控制台</span></span>
-<span id="cb97-11"><a href="otherSF.html#cb97-11" aria-hidden="true" tabindex="-1"></a>exit</span>
-<span id="cb97-12"><a href="otherSF.html#cb97-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-13"><a href="otherSF.html#cb97-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 利用py对象调用python中生成的变量</span></span>
-<span id="cb97-14"><a href="otherSF.html#cb97-14" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>travel</span></code></pre></div>
+<div id="r与python的交互控制" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> r与python的交互控制<a href="otherSF.html#r与python的交互控制" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="otherSF.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb11-2"><a href="otherSF.html#cb11-2" tabindex="-1"></a>mydata <span class="ot">=</span> <span class="fu">head</span>(cars, <span class="at">n=</span><span class="dv">15</span>)</span>
+<span id="cb11-3"><a href="otherSF.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="otherSF.html#cb11-4" tabindex="-1"></a><span class="co"># 去往python控制台</span></span>
+<span id="cb11-5"><a href="otherSF.html#cb11-5" tabindex="-1"></a><span class="fu">repl_python</span>()</span>
+<span id="cb11-6"><a href="otherSF.html#cb11-6" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb11-7"><a href="otherSF.html#cb11-7" tabindex="-1"></a><span class="co"># 载入数据集</span></span>
+<span id="cb11-8"><a href="otherSF.html#cb11-8" tabindex="-1"></a>travel <span class="ot">=</span> <span class="fu">pd.read_excel</span>(“AIR.xlsx”)</span>
+<span id="cb11-9"><a href="otherSF.html#cb11-9" tabindex="-1"></a><span class="fu">r.mydata.describe</span>() <span class="co"># 利用r对象调用前面R中生成的变量</span></span>
+<span id="cb11-10"><a href="otherSF.html#cb11-10" tabindex="-1"></a><span class="co"># 回到R控制台</span></span>
+<span id="cb11-11"><a href="otherSF.html#cb11-11" tabindex="-1"></a>exit</span>
+<span id="cb11-12"><a href="otherSF.html#cb11-12" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="otherSF.html#cb11-13" tabindex="-1"></a><span class="co"># 利用py对象调用python中生成的变量</span></span>
+<span id="cb11-14"><a href="otherSF.html#cb11-14" tabindex="-1"></a>py<span class="sc">$</span>travel</span></code></pre></div>
 </div>
 </div>
-<div id="与julia的对接" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> 与julia的对接</h2>
-<div id="juliacall包" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> <code>JuliaCall</code>包</h3>
+<div id="与julia的对接" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> 与julia的对接<a href="otherSF.html#与julia的对接" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="juliacall包" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> <code>JuliaCall</code>包<a href="otherSF.html#juliacall包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>感觉此包没有类似<code>reticulate</code>包调用python那么无缝。</p>
 <ul>
 <li>在R中执行julia脚本</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="otherSF.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JuliaCall)</span>
-<span id="cb98-2"><a href="otherSF.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
-<span id="cb98-3"><a href="otherSF.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_setup</span>(<span class="at">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
-<span id="cb98-4"><a href="otherSF.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
-<span id="cb98-5"><a href="otherSF.html#cb98-5" aria-hidden="true" tabindex="-1"></a>julia<span class="sc">$</span><span class="fu">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
-<span id="cb98-6"><a href="otherSF.html#cb98-6" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> julia<span class="sc">$</span><span class="fu">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
-<span id="cb98-7"><a href="otherSF.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 其他的调用方式</span></span>
-<span id="cb98-8"><a href="otherSF.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
-<span id="cb98-9"><a href="otherSF.html#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
-<span id="cb98-10"><a href="otherSF.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span>
-<span id="cb98-11"><a href="otherSF.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;J%</span> sqrt</span>
-<span id="cb98-12"><a href="otherSF.html#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="otherSF.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(JuliaCall)</span>
+<span id="cb12-2"><a href="otherSF.html#cb12-2" tabindex="-1"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
+<span id="cb12-3"><a href="otherSF.html#cb12-3" tabindex="-1"></a><span class="fu">julia_setup</span>(<span class="at">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
+<span id="cb12-4"><a href="otherSF.html#cb12-4" tabindex="-1"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
+<span id="cb12-5"><a href="otherSF.html#cb12-5" tabindex="-1"></a>julia<span class="sc">$</span><span class="fu">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
+<span id="cb12-6"><a href="otherSF.html#cb12-6" tabindex="-1"></a>ans <span class="ot">&lt;-</span> julia<span class="sc">$</span><span class="fu">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
+<span id="cb12-7"><a href="otherSF.html#cb12-7" tabindex="-1"></a><span class="co"># 其他的调用方式</span></span>
+<span id="cb12-8"><a href="otherSF.html#cb12-8" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
+<span id="cb12-9"><a href="otherSF.html#cb12-9" tabindex="-1"></a><span class="fu">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb12-10"><a href="otherSF.html#cb12-10" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span>
+<span id="cb12-11"><a href="otherSF.html#cb12-11" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;J%</span> sqrt</span>
+<span id="cb12-12"><a href="otherSF.html#cb12-12" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
 <ul>
 <li>R与julia互传变量：前面提到的<code>julia_eval</code>可以把julia中的变量传出来，使用<code>julia_assign</code>可以把R中的变量传到julia中去。</li>
 </ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="otherSF.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb99-2"><a href="otherSF.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="otherSF.html#cb13-1" tabindex="-1"></a><span class="fu">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb13-2"><a href="otherSF.html#cb13-2" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
 <ul>
 <li>julia控制台，而且只要你前期<code>julia_setup()</code>了，这个控制台里面就包含了前期运算时的变量</li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="otherSF.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_console</span>()</span>
-<span id="cb100-2"><a href="otherSF.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 输入exit 可以退出</span></span>
-<span id="cb100-3"><a href="otherSF.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="otherSF.html#cb14-1" tabindex="-1"></a><span class="fu">julia_console</span>()</span>
+<span id="cb14-2"><a href="otherSF.html#cb14-2" tabindex="-1"></a><span class="co"># 输入exit 可以退出</span></span>
+<span id="cb14-3"><a href="otherSF.html#cb14-3" tabindex="-1"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
 <ul>
 <li>它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数</li>
 </ul>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="otherSF.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
-<span id="cb101-2"><a href="otherSF.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  opt <span class="ot">&lt;-</span> <span class="fu">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
-<span id="cb101-3"><a href="otherSF.html#cb101-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">func_list =</span> <span class="fu">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
-<span id="cb101-4"><a href="otherSF.html#cb101-4" aria-hidden="true" tabindex="-1"></a>rosenbrock <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="sc">-</span> x[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">100.0</span> <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb101-5"><a href="otherSF.html#cb101-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> opt<span class="sc">$</span><span class="fu">optimize</span>(rosenbrock, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="sc">$</span><span class="fu">BFGS</span>())</span>
-<span id="cb101-6"><a href="otherSF.html#cb101-6" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="otherSF.html#cb15-1" tabindex="-1"></a><span class="fu">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
+<span id="cb15-2"><a href="otherSF.html#cb15-2" tabindex="-1"></a>  opt <span class="ot">&lt;-</span> <span class="fu">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
+<span id="cb15-3"><a href="otherSF.html#cb15-3" tabindex="-1"></a>                           <span class="at">func_list =</span> <span class="fu">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
+<span id="cb15-4"><a href="otherSF.html#cb15-4" tabindex="-1"></a>rosenbrock <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="sc">-</span> x[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">100.0</span> <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb15-5"><a href="otherSF.html#cb15-5" tabindex="-1"></a>result <span class="ot">&lt;-</span> opt<span class="sc">$</span><span class="fu">optimize</span>(rosenbrock, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="sc">$</span><span class="fu">BFGS</span>())</span>
+<span id="cb15-6"><a href="otherSF.html#cb15-6" tabindex="-1"></a>result</span></code></pre></div>
 </div>
 </div>
-<div id="与c的对接rcpp包" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> 与C++的对接：<code>Rcpp</code>包</h2>
-<div id="rcpp引入的c中的标量向量和矩阵类" class="section level3" number="9.5.1">
-<h3><span class="header-section-number">9.5.1</span> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类</h3>
+<div id="与c的对接rcpp包" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> 与C++的对接：<code>Rcpp</code>包<a href="otherSF.html#与c的对接rcpp包" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rcpp引入的c中的标量向量和矩阵类" class="section level3 hasAnchor" number="9.5.1">
+<h3><span class="header-section-number">9.5.1</span> <code>Rcpp</code>引入的C++中的标量、向量和矩阵类<a href="otherSF.html#rcpp引入的c中的标量向量和矩阵类" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>在写C++时任何变量通常需要首先声明类型，标量类型包括<code>double, int, String, bool</code>。</li>
 <li>向量类型包括<code>NumericVector, IntegerVector, CharacterVector, LogicalVector</code>。这些类型按我的理解，应该是类，对于类就有对应的方法，比如<code>.size()</code>方法就可以计算这个向量的长度。选取向量元素用<code>[]</code>。</li>
@@ -540,25 +552,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="使用sourcecpp函数" class="section level3" number="9.5.2">
-<h3><span class="header-section-number">9.5.2</span> 使用<code>sourceCpp</code>函数</h3>
+<div id="使用sourcecpp函数" class="section level3 hasAnchor" number="9.5.2">
+<h3><span class="header-section-number">9.5.2</span> 使用<code>sourceCpp</code>函数<a href="otherSF.html#使用sourcecpp函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>单独的C++文件头应包含：</li>
 </ul>
-<div class="sourceCode" id="cb102"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb102-1"><a href="otherSF.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb102-2"><a href="otherSF.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
-<span id="cb102-3"><a href="otherSF.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb102-4"><a href="otherSF.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co">/*** R</span></span>
-<span id="cb102-5"><a href="otherSF.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 这里可以跑R代码，从而可以简单测试上述C++语言</span></span>
-<span id="cb102-6"><a href="otherSF.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="otherSF.html#cb16-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb16-2"><a href="otherSF.html#cb16-2" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
+<span id="cb16-3"><a href="otherSF.html#cb16-3" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb16-4"><a href="otherSF.html#cb16-4" tabindex="-1"></a><span class="co">/*** R</span></span>
+<span id="cb16-5"><a href="otherSF.html#cb16-5" tabindex="-1"></a><span class="co"># 这里可以跑R代码，从而可以简单测试上述C++语言</span></span>
+<span id="cb16-6"><a href="otherSF.html#cb16-6" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
 <ul>
 <li>如何从R语言的<code>list</code>类中提取数据？如果<code>mod</code>是从<code>lm</code>返回的<code>list</code>，提取它的残差同时转化为C++的向量，可用<code>as&lt;NumericVector&gt;(mod["residuals"])</code>。
 ### C++代码中调用R函数
 这给我们提供了极大的方便。调用方式如下：</li>
 </ul>
-<div class="sourceCode" id="cb103"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb103-1"><a href="otherSF.html#cb103-1" aria-hidden="true" tabindex="-1"></a>RObject callWithOne<span class="op">(</span>Function f<span class="op">){</span></span>
-<span id="cb103-2"><a href="otherSF.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb103-3"><a href="otherSF.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="otherSF.html#cb17-1" tabindex="-1"></a>RObject callWithOne<span class="op">(</span>Function f<span class="op">){</span></span>
+<span id="cb17-2"><a href="otherSF.html#cb17-2" tabindex="-1"></a>  <span class="cf">return</span> f<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb17-3"><a href="otherSF.html#cb17-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
 <li>用<code>Function</code>声明R函数；</li>
 <li>用<code>RObject</code>表示R函数返回的类型；</li>
@@ -628,20 +640,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
