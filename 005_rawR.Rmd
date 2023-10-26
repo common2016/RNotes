@@ -76,10 +76,27 @@ file.rename(from = fr,to = to)
 update.packages(checkBuilt=TRUE, ask=FALSE)
 ```
 
+- `checkBuilt`参数是说如果是用以前的R安装的包是不是也算旧包需要更新？
 
 ## 大数据的存取
 
-对于大的数据，载入内存运算往往给内存造成很大负担，16G内存的电脑，超过500M，就应该考虑将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
+对于大的数据，载入内存运算往往给内存造成很大负担，16G内存的电脑，超过500M，就应该考虑使用一些专用的包来读取加速。
+
+### `qs`包
+
+`fst`包能高速读取数据框，`qs`包采用了这个技术，但它还能高速读取列表。用法如下
+
+```{r}
+library(qs)
+df1 <- data.frame(x = rnorm(5e6), y = sample(5e6), z=sample(letters, 5e6, replace = T))
+qsave(df1, "myfile.qs")
+df2 <- qread("myfile.qs")
+```
+
+### `SOAR`
+
+该包将数据存到硬盘上，然后利用`SOAR`包进行调用。通常可如下调用
+
 ```{r}
 library(SOAR)
 Store("some_data")
