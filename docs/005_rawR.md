@@ -79,6 +79,38 @@ file.rename(from = fr,to = to)
    1. 点[这里](https://cran.r-project.org/src/contrib/Archive/)找到过期的包，然后下载下来。
    2. 用这个命令安装本地的包：`install.packages('D:/MSBVAR_0.9-3.tar.gz',repos = NULL, type = 'source')`
 
+## 整洁运算
+
+在R语言中存在大量整洁运算，比如`dplyr::rename(dt, newname = oldname)`中`oldname`就不需要引号括起来。那么如何在自己撰写的函数中进行整洁运算，即如何让函数的参数能够不先求值而直接传递到函数中去。一般有两种做法：一是使用`enquo`和`!!`对，二是使用两对花括号`{{}}`。如下：
+
+```r
+# enquo, !!的用法
+myfunction <- function(data, x, y){
+  x <- enquo(x)
+  y <- enquo(y)
+  ggplot(data, aes(!!x, !!y)) + geom_points()
+}
+
+# {{}}的用法
+myfunction <- function(data, x, y){
+  x <- enquo(x)
+  y <- enquo(y)
+  ggplot(data, aes({{x}}, {{y}})) + geom_points()
+}
+```
+
+另外就是`:=`符号可以让左边的变量名也能用上整洁运算，一个例子如下：
+
+```r
+my_function <- function(data, var, suffix = "foo") {
+  # Use `{{` to tunnel function arguments and the usual glue
+  # operator `{` to interpolate plain strings.
+  data %>%
+    summarise("{{ var }}_mean_{suffix}" := mean({{ var }}))
+}
+```
+
+
 ## 更新R
 
 1. 在Mac中更新R，你要去R的官网下载最新的R版本然后装上，它会自动覆盖原有的旧R。你可以进一步打开`/Library/Frameworks/R.frameworks/versions/`在里面删除旧R的残余文件夹。
