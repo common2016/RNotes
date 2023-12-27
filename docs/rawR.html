@@ -420,10 +420,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-7"><a href="rawR.html#cb10-7" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="rawR.html#cb10-8" tabindex="-1"></a><span class="co"># {{}}的用法</span></span>
 <span id="cb10-9"><a href="rawR.html#cb10-9" tabindex="-1"></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y){</span>
-<span id="cb10-10"><a href="rawR.html#cb10-10" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)</span>
-<span id="cb10-11"><a href="rawR.html#cb10-11" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">enquo</span>(y)</span>
-<span id="cb10-12"><a href="rawR.html#cb10-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>({{x}}, {{y}})) <span class="sc">+</span> <span class="fu">geom_points</span>()</span>
-<span id="cb10-13"><a href="rawR.html#cb10-13" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb10-10"><a href="rawR.html#cb10-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>({{x}}, {{y}})) <span class="sc">+</span> <span class="fu">geom_points</span>()</span>
+<span id="cb10-11"><a href="rawR.html#cb10-11" tabindex="-1"></a>}</span>
+<span id="cb10-12"><a href="rawR.html#cb10-12" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="rawR.html#cb10-13" tabindex="-1"></a><span class="co"># 数据框中列名用字符串的方法</span></span>
+<span id="cb10-14"><a href="rawR.html#cb10-14" tabindex="-1"></a>my_var <span class="ot">&lt;-</span> <span class="st">&quot;disp&quot;</span></span>
+<span id="cb10-15"><a href="rawR.html#cb10-15" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(.data[[my_var]]))</span></code></pre></div>
 <p>另外就是<code>:=</code>符号可以让左边的变量名也能用上整洁运算，一个例子如下：</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="rawR.html#cb11-1" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var, <span class="at">suffix =</span> <span class="st">&quot;foo&quot;</span>) {</span>
 <span id="cb11-2"><a href="rawR.html#cb11-2" tabindex="-1"></a>  <span class="co"># Use `{{` to tunnel function arguments and the usual glue</span></span>

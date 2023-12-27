@@ -80,10 +80,12 @@ myfunction <- function(data, x, y){
 
 # {{}}的用法
 myfunction <- function(data, x, y){
-  x <- enquo(x)
-  y <- enquo(y)
   ggplot(data, aes({{x}}, {{y}})) + geom_points()
 }
+
+# 数据框中列名用字符串的方法
+my_var <- "disp"
+mtcars %>% summarise(mean = mean(.data[[my_var]]))
 ```
 
 另外就是`:=`符号可以让左边的变量名也能用上整洁运算，一个例子如下：
