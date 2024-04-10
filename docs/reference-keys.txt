@@ -38,7 +38,11 @@ metropolis-和-m-h算法
 一些带贝叶斯估计的r包使用报告
 rawR
 一句话tips-4
+整洁运算
+更新r
 大数据的存取
+qs包
+soar
 rstudio-server管理
 平行计算
 循环中的平行运算
@@ -102,8 +106,5 @@ rjtools包提供的rmd文件编写
 r语言写latex
 其他-2
 一句话tips-11
+tidyverse包的一些函数列示
 c代码中调用r函数
-更新r
-qs包
-soar
-整洁运算

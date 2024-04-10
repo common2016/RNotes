@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 机器学习和微观计量 | R语言笔记</title>
   <meta name="description" content="8 机器学习和微观计量 | R语言笔记" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 机器学习和微观计量 | R语言笔记" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="math.html"/>
 <link rel="next" href="otherSF.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,15 +48,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
@@ -111,7 +110,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -124,7 +123,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -138,6 +137,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -212,30 +215,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-4"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.2</b> 大数据的存取</a></li>
-<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.3</b> RStudio-server管理</a></li>
-<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.4</b> 平行计算</a>
+<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#整洁运算"><i class="fa fa-check"></i><b>5.2</b> 整洁运算</a></li>
+<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#更新r"><i class="fa fa-check"></i><b>5.3</b> 更新R</a></li>
+<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.4</b> 大数据的存取</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.4.1</b> 循环中的平行运算</a></li>
-<li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.4.2</b> <code>apply</code>族的平行版本</a></li>
+<li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#qs包"><i class="fa fa-check"></i><b>5.4.1</b> <code>qs</code>包</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#soar"><i class="fa fa-check"></i><b>5.4.2</b> <code>SOAR</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.5</b> 类和方法</a>
+<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.5</b> RStudio-server管理</a></li>
+<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.6</b> 平行计算</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.5.1</b> S3类</a></li>
+<li class="chapter" data-level="5.6.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.6.1</b> 循环中的平行运算</a></li>
+<li class="chapter" data-level="5.6.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.6.2</b> <code>apply</code>族的平行版本</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.6</b> 打印到文件</a></li>
-<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.7</b> <code>apply</code>函数族</a></li>
-<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.8</b> Linux中的R</a>
+<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.7</b> 类和方法</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
-<li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
+<li class="chapter" data-level="5.7.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.7.1</b> S3类</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.9</b> macOS与R</a>
+<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.8</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.9</b> <code>apply</code>函数族</a></li>
+<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.10</b> Linux中的R</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.9.1</b> 安装R</a></li>
-<li class="chapter" data-level="5.9.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.9.2</b> 配置R</a></li>
+<li class="chapter" data-level="5.10.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.10.1</b> 如何修改<code>.Rprofile</code>？</a></li>
+<li class="chapter" data-level="5.10.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.10.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.10</b> 如何完美复制项目的结果</a></li>
+<li class="chapter" data-level="5.11" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.11</b> macOS与R</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.11.1</b> 安装R</a></li>
+<li class="chapter" data-level="5.11.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.11.2</b> 配置R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.12</b> 如何完美复制项目的结果</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
 <ul>
@@ -333,10 +342,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ML" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> 机器学习和微观计量</h1>
-<div id="一句话tips-7" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> 一句话Tips</h2>
+<div id="ML" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> 机器学习和微观计量<a href="ML.html#ML" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="一句话tips-7" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 一句话Tips<a href="ML.html#一句话tips-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>gfoRmula</code>：一个处理时变处理干扰的R包。</li>
 <li><code>oem</code>包可以执行各类lasso，group lasso等算法。</li>
@@ -352,16 +361,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>MatchIt</code>做匹配感觉很好。主要函数是<code>matchit</code>，针对这个函数得到的类，使用<code>summay</code>可以得到匹配前后均值变化，经验分位变化等。这个函数返回的类包含有一个元素<code>match.matrix</code>，里面有被匹配的控制组信息。</li>
 </ul>
 </div>
-<div id="roc曲线绘制" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> ROC曲线绘制</h2>
+<div id="roc曲线绘制" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> ROC曲线绘制<a href="ML.html#roc曲线绘制" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ROC曲线可以同时展现所有可能阈值出现的两类错误。其横轴为1-特异度(1-specificity)，纵轴为灵敏度（sensitivity）.</p>
 <p>调用<code>pROC</code>包即可计算。该包的参数如下：</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="ML.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roc</span>(response, predictor, controls, cases,</span>
-<span id="cb86-2"><a href="ML.html#cb86-2" aria-hidden="true" tabindex="-1"></a>density.controls, density.cases,</span>
-<span id="cb86-3"><a href="ML.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="at">levels=</span>base<span class="sc">::</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(response)), <span class="at">percent=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
-<span id="cb86-4"><a href="ML.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="at">direction=</span><span class="fu">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&gt;&quot;</span>), <span class="at">algorithm =</span> <span class="dv">5</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb86-5"><a href="ML.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">auc=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">FALSE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>, <span class="at">smooth.method=</span><span class="st">&quot;binormal&quot;</span>,</span>
-<span id="cb86-6"><a href="ML.html#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="at">ci.method=</span><span class="cn">NULL</span>, <span class="at">density=</span><span class="cn">NULL</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="ML.html#cb90-1" tabindex="-1"></a><span class="fu">roc</span>(response, predictor, controls, cases,</span>
+<span id="cb90-2"><a href="ML.html#cb90-2" tabindex="-1"></a>density.controls, density.cases,</span>
+<span id="cb90-3"><a href="ML.html#cb90-3" tabindex="-1"></a><span class="at">levels=</span>base<span class="sc">::</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(response)), <span class="at">percent=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>,</span>
+<span id="cb90-4"><a href="ML.html#cb90-4" tabindex="-1"></a><span class="at">direction=</span><span class="fu">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&gt;&quot;</span>), <span class="at">algorithm =</span> <span class="dv">5</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb90-5"><a href="ML.html#cb90-5" tabindex="-1"></a><span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">auc=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">FALSE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>, <span class="at">smooth.method=</span><span class="st">&quot;binormal&quot;</span>,</span>
+<span id="cb90-6"><a href="ML.html#cb90-6" tabindex="-1"></a><span class="at">ci.method=</span><span class="cn">NULL</span>, <span class="at">density=</span><span class="cn">NULL</span>, ...)</span></code></pre></div>
 <ul>
 <li><code>response</code>: 原始的<span class="math inline">\(y\)</span>;</li>
 <li><code>pridictor</code>: 估计的<span class="math inline">\(\hat y\)</span>;</li>
@@ -369,13 +378,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>percent</code>:是否百分比的形式显示相关信息，如AUC；</li>
 </ul>
 </div>
-<div id="randomforestsrc包使用报告" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> <code>randomForestSRC</code>包使用报告</h2>
+<div id="randomforestsrc包使用报告" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> <code>randomForestSRC</code>包使用报告<a href="ML.html#randomforestsrc包使用报告" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>这个包有几大特征，我就说我用过的几个：</p>
 <ul>
 <li>可以因变量多变量建模</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="ML.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rfsrc</span>(<span class="fu">cbind</span>(y1, y2, ..., yd) <span class="sc">~</span> . , my.data, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="ML.html#cb91-1" tabindex="-1"></a><span class="fu">rfsrc</span>(<span class="fu">cbind</span>(y1, y2, ..., yd) <span class="sc">~</span> . , my.data, ...)</span></code></pre></div>
 <ul>
 <li>重要性抽样有置信区间</li>
 <li>偏效应计算接口更友好</li>
@@ -450,7 +459,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

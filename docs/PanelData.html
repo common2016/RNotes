@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 面板数据 | R语言笔记</title>
   <meta name="description" content="1 面板数据 | R语言笔记" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 面板数据 | R语言笔记" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="TS.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,15 +48,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
@@ -111,7 +110,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -124,7 +123,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -138,6 +137,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -212,30 +215,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="rawR.html"><a href="rawR.html"><i class="fa fa-check"></i><b>5</b> 原生的R</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="rawR.html"><a href="rawR.html#一句话tips-4"><i class="fa fa-check"></i><b>5.1</b> 一句话Tips</a></li>
-<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.2</b> 大数据的存取</a></li>
-<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.3</b> RStudio-server管理</a></li>
-<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.4</b> 平行计算</a>
+<li class="chapter" data-level="5.2" data-path="rawR.html"><a href="rawR.html#整洁运算"><i class="fa fa-check"></i><b>5.2</b> 整洁运算</a></li>
+<li class="chapter" data-level="5.3" data-path="rawR.html"><a href="rawR.html#更新r"><i class="fa fa-check"></i><b>5.3</b> 更新R</a></li>
+<li class="chapter" data-level="5.4" data-path="rawR.html"><a href="rawR.html#大数据的存取"><i class="fa fa-check"></i><b>5.4</b> 大数据的存取</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.4.1</b> 循环中的平行运算</a></li>
-<li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.4.2</b> <code>apply</code>族的平行版本</a></li>
+<li class="chapter" data-level="5.4.1" data-path="rawR.html"><a href="rawR.html#qs包"><i class="fa fa-check"></i><b>5.4.1</b> <code>qs</code>包</a></li>
+<li class="chapter" data-level="5.4.2" data-path="rawR.html"><a href="rawR.html#soar"><i class="fa fa-check"></i><b>5.4.2</b> <code>SOAR</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.5</b> 类和方法</a>
+<li class="chapter" data-level="5.5" data-path="rawR.html"><a href="rawR.html#rstudio-server管理"><i class="fa fa-check"></i><b>5.5</b> RStudio-server管理</a></li>
+<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#平行计算"><i class="fa fa-check"></i><b>5.6</b> 平行计算</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.5.1</b> S3类</a></li>
+<li class="chapter" data-level="5.6.1" data-path="rawR.html"><a href="rawR.html#循环中的平行运算"><i class="fa fa-check"></i><b>5.6.1</b> 循环中的平行运算</a></li>
+<li class="chapter" data-level="5.6.2" data-path="rawR.html"><a href="rawR.html#apply族的平行版本"><i class="fa fa-check"></i><b>5.6.2</b> <code>apply</code>族的平行版本</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.6</b> 打印到文件</a></li>
-<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.7</b> <code>apply</code>函数族</a></li>
-<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.8</b> Linux中的R</a>
+<li class="chapter" data-level="5.7" data-path="rawR.html"><a href="rawR.html#类和方法"><i class="fa fa-check"></i><b>5.7</b> 类和方法</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.8.1</b> 如何修改<code>.Rprofile</code>？</a></li>
-<li class="chapter" data-level="5.8.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.8.2</b> Ubuntu下安装最新的R</a></li>
+<li class="chapter" data-level="5.7.1" data-path="rawR.html"><a href="rawR.html#s3类"><i class="fa fa-check"></i><b>5.7.1</b> S3类</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.9</b> macOS与R</a>
+<li class="chapter" data-level="5.8" data-path="rawR.html"><a href="rawR.html#打印到文件"><i class="fa fa-check"></i><b>5.8</b> 打印到文件</a></li>
+<li class="chapter" data-level="5.9" data-path="rawR.html"><a href="rawR.html#apply函数族"><i class="fa fa-check"></i><b>5.9</b> <code>apply</code>函数族</a></li>
+<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#linux中的r"><i class="fa fa-check"></i><b>5.10</b> Linux中的R</a>
 <ul>
-<li class="chapter" data-level="5.9.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.9.1</b> 安装R</a></li>
-<li class="chapter" data-level="5.9.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.9.2</b> 配置R</a></li>
+<li class="chapter" data-level="5.10.1" data-path="rawR.html"><a href="rawR.html#如何修改.rprofile"><i class="fa fa-check"></i><b>5.10.1</b> 如何修改<code>.Rprofile</code>？</a></li>
+<li class="chapter" data-level="5.10.2" data-path="rawR.html"><a href="rawR.html#ubuntu下安装最新的r"><i class="fa fa-check"></i><b>5.10.2</b> Ubuntu下安装最新的R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.10</b> 如何完美复制项目的结果</a></li>
+<li class="chapter" data-level="5.11" data-path="rawR.html"><a href="rawR.html#macos与r"><i class="fa fa-check"></i><b>5.11</b> macOS与R</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="rawR.html"><a href="rawR.html#安装r"><i class="fa fa-check"></i><b>5.11.1</b> 安装R</a></li>
+<li class="chapter" data-level="5.11.2" data-path="rawR.html"><a href="rawR.html#配置r"><i class="fa fa-check"></i><b>5.11.2</b> 配置R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="rawR.html"><a href="rawR.html#如何完美复制项目的结果"><i class="fa fa-check"></i><b>5.12</b> 如何完美复制项目的结果</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Eco.html"><a href="Eco.html"><i class="fa fa-check"></i><b>6</b> 经济学中的各种专业计算</a>
 <ul>
@@ -333,10 +342,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="PanelData" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> 面板数据</h1>
-<div id="一句话tips" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> 一句话Tips</h2>
+<div id="PanelData" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> 面板数据<a href="PanelData.html#PanelData" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="一句话tips" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> 一句话Tips<a href="PanelData.html#一句话tips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>sandwich</code>提供了聚类标准误计算(<code>vcovCL</code>)，包括面板数据的聚类(<code>vcovPL</code>)。</li>
 <li><code>PSTR</code>:面板平滑转移模型。</li>
@@ -345,8 +354,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>phtt</code>包，交互效应的面板模型，用的Bai (2009)的估计方法。It offers the possibility of analyzing panel data with large dimensions n and T and can be considered when the unobserved heterogeneity effects are time-varying.</li>
 </ul>
 </div>
-<div id="fixest包" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> <code>fixest</code>包</h2>
+<div id="fixest包" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> <code>fixest</code>包<a href="PanelData.html#fixest包" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>fixest</code>包的优点如下：</p>
 <ul>
 <li>提供了面板高维固定效应估计。</li>
@@ -356,16 +365,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>综上，以后固定效应估计，应该使用该包。</p>
 <p><strong>四个固定效应的泊松面板回归</strong>，<code>|</code>后就是固定效应变量。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="PanelData.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb1-2"><a href="PanelData.html#cb1-2" aria-hidden="true" tabindex="-1"></a>gravity_pois <span class="ot">&lt;-</span> <span class="fu">fepois</span>(Euros <span class="sc">~</span> <span class="fu">log</span>(dist_km) <span class="sc">|</span> Origin <span class="sc">+</span> Destination <span class="sc">+</span> Product <span class="sc">+</span> Year, trade) </span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="PanelData.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb1-2"><a href="PanelData.html#cb1-2" tabindex="-1"></a>gravity_pois <span class="ot">&lt;-</span> <span class="fu">fepois</span>(Euros <span class="sc">~</span> <span class="fu">log</span>(dist_km) <span class="sc">|</span> Origin <span class="sc">+</span> Destination <span class="sc">+</span> Product <span class="sc">+</span> Year, trade) </span></code></pre></div>
 <p>而且你可以通过<code>Origin^Destination</code>的写法来表示两个变量间的交互固定效应。比如<code>Origin</code>如有3个水平，<code>Destination</code>有4个水平，这种写法会产生12个固定效应。</p>
 <p><strong>可变斜率项</strong>，固定效应可以改变斜率，这在控制个体的异质性时间趋势中非常有用。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="PanelData.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our base data for this section</span></span>
-<span id="cb2-2"><a href="PanelData.html#cb2-2" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> iris</span>
-<span id="cb2-3"><a href="PanelData.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;y&quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="st">&quot;fe1&quot;</span>)</span>
-<span id="cb2-4"><a href="PanelData.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create another &quot;fixed-effect&quot;</span></span>
-<span id="cb2-5"><a href="PanelData.html#cb2-5" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>fe2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">30</span>)</span>
-<span id="cb2-6"><a href="PanelData.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="PanelData.html#cb2-1" tabindex="-1"></a><span class="co"># Our base data for this section</span></span>
+<span id="cb2-2"><a href="PanelData.html#cb2-2" tabindex="-1"></a>base <span class="ot">&lt;-</span> iris</span>
+<span id="cb2-3"><a href="PanelData.html#cb2-3" tabindex="-1"></a><span class="fu">names</span>(base) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;y&quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="st">&quot;fe1&quot;</span>)</span>
+<span id="cb2-4"><a href="PanelData.html#cb2-4" tabindex="-1"></a><span class="co"># Create another &quot;fixed-effect&quot;</span></span>
+<span id="cb2-5"><a href="PanelData.html#cb2-5" tabindex="-1"></a>base<span class="sc">$</span>fe2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">30</span>)</span>
+<span id="cb2-6"><a href="PanelData.html#cb2-6" tabindex="-1"></a><span class="fu">head</span>(base)</span></code></pre></div>
 <pre><code>##     y  x1  x2  x3    fe1 fe2
 ## 1 5.1 3.5 1.4 0.2 setosa   a
 ## 2 4.9 3.0 1.4 0.2 setosa   b
@@ -373,9 +382,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 4.6 3.1 1.5 0.2 setosa   d
 ## 5 5.0 3.6 1.4 0.2 setosa   e
 ## 6 5.4 3.9 1.7 0.4 setosa   a</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="PanelData.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x2的斜率系数随着固定效应变化。通常在控制个体的异质性时间趋势中应用。</span></span>
-<span id="cb4-2"><a href="PanelData.html#cb4-2" aria-hidden="true" tabindex="-1"></a>est_vs <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">|</span> fe1[x2], base)</span>
-<span id="cb4-3"><a href="PanelData.html#cb4-3" aria-hidden="true" tabindex="-1"></a>est_vs</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="PanelData.html#cb4-1" tabindex="-1"></a><span class="co"># x2的斜率系数随着固定效应变化。通常在控制个体的异质性时间趋势中应用。</span></span>
+<span id="cb4-2"><a href="PanelData.html#cb4-2" tabindex="-1"></a>est_vs <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">|</span> fe1[x2], base)</span>
+<span id="cb4-3"><a href="PanelData.html#cb4-3" tabindex="-1"></a>est_vs</span></code></pre></div>
 <pre><code>## OLS estimation, Dep. Var.: y
 ## Observations: 150 
 ## Fixed-effects: fe1: 3
@@ -387,7 +396,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## RMSE: 0.298706     Adj. R2: 0.863506
 ##                  Within R2: 0.178944</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="PanelData.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">fixef</span>(est_vs))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="PanelData.html#cb6-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">fixef</span>(est_vs))</span></code></pre></div>
 <pre><code>## Fixed-effects/Slope coefficients
 ##                                 fe1 x2 (slopes: fe1)
 ## Number of fixed-effects/slopes    3                3
@@ -402,22 +411,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   x2 (slopes: fe1): setosa versicolor virginica
 ##                     0.3677     0.6598    0.8903</code></pre>
 <p><strong>未涉及固定效应的交互</strong>，通过在公式中引入<code>i()</code>语法，该函数又<code>ref</code>参数用来设基准组，或者<code>keep</code>参数用来保留哪些组。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="PanelData.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(airquality)</span>
-<span id="cb8-2"><a href="PanelData.html#cb8-2" aria-hidden="true" tabindex="-1"></a>res_i1 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month), airquality)</span>
-<span id="cb8-3"><a href="PanelData.html#cb8-3" aria-hidden="true" tabindex="-1"></a>res_i2 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">ref =</span> <span class="dv">8</span>), airquality)</span>
-<span id="cb8-4"><a href="PanelData.html#cb8-4" aria-hidden="true" tabindex="-1"></a>res_i3 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">keep =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>), airquality)</span>
-<span id="cb8-5"><a href="PanelData.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 展示结果</span></span>
-<span id="cb8-6"><a href="PanelData.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">etable</span>(res_i1, res_i2, res_i3, <span class="at">dict =</span> <span class="fu">c</span>(<span class="st">&quot;6&quot;</span> <span class="ot">=</span> <span class="st">&quot;June&quot;</span>, <span class="st">&quot;Month::5&quot;</span> <span class="ot">=</span> <span class="st">&quot;May&quot;</span>), </span>
-<span id="cb8-7"><a href="PanelData.html#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">order =</span> <span class="fu">c</span>(<span class="st">&quot;Int|May&quot;</span>, <span class="st">&quot;Mon&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="PanelData.html#cb8-1" tabindex="-1"></a><span class="fu">data</span>(airquality)</span>
+<span id="cb8-2"><a href="PanelData.html#cb8-2" tabindex="-1"></a>res_i1 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month), airquality)</span>
+<span id="cb8-3"><a href="PanelData.html#cb8-3" tabindex="-1"></a>res_i2 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">ref =</span> <span class="dv">8</span>), airquality)</span>
+<span id="cb8-4"><a href="PanelData.html#cb8-4" tabindex="-1"></a>res_i3 <span class="ot">=</span> <span class="fu">feols</span>(Ozone <span class="sc">~</span> Solar.R <span class="sc">+</span> <span class="fu">i</span>(Month, <span class="at">keep =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>), airquality)</span>
+<span id="cb8-5"><a href="PanelData.html#cb8-5" tabindex="-1"></a><span class="co"># 展示结果</span></span>
+<span id="cb8-6"><a href="PanelData.html#cb8-6" tabindex="-1"></a><span class="fu">etable</span>(res_i1, res_i2, res_i3, <span class="at">dict =</span> <span class="fu">c</span>(<span class="st">&quot;6&quot;</span> <span class="ot">=</span> <span class="st">&quot;June&quot;</span>, <span class="st">&quot;Month::5&quot;</span> <span class="ot">=</span> <span class="st">&quot;May&quot;</span>), </span>
+<span id="cb8-7"><a href="PanelData.html#cb8-7" tabindex="-1"></a>       <span class="at">order =</span> <span class="fu">c</span>(<span class="st">&quot;Int|May&quot;</span>, <span class="st">&quot;Mon&quot;</span>))</span></code></pre></div>
 <pre><code>##                             res_i1             res_i2             res_i3
 ## Dependent Var.:              Ozone              Ozone              Ozone
 ##                                                                         
-## (Intercept)          3.219 (7.919)   40.12*** (7.828)   25.82*** (6.681)
 ## May                                 -36.90*** (8.201)  -24.50*** (6.936)
 ## Month = June         5.069 (10.98)   -31.83** (11.05)    -19.46. (10.46)
 ## Month = 7         31.04*** (8.018)     -5.861 (8.146)                   
 ## Month = 8         36.90*** (8.201)                                      
 ## Month = 9            8.912 (7.763)  -27.99*** (7.845)                   
+## Constant             3.219 (7.919)   40.12*** (7.828)   25.82*** (6.681)
 ## Solar.R         0.1148*** (0.0300) 0.1148*** (0.0300) 0.1253*** (0.0311)
 ## _______________ __________________ __________________ __________________
 ## S.E. type                      IID                IID                IID
@@ -427,8 +436,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ---
 ## Signif. codes: 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><strong>TWFE估计</strong>，DID的双因素固定效应估计。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="PanelData.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(base_did)</span>
-<span id="cb10-2"><a href="PanelData.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base_did)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="PanelData.html#cb10-1" tabindex="-1"></a><span class="fu">data</span>(base_did)</span>
+<span id="cb10-2"><a href="PanelData.html#cb10-2" tabindex="-1"></a><span class="fu">head</span>(base_did)</span></code></pre></div>
 <pre><code>##             y         x1 id period post treat
 ## 1  2.87530627  0.5365377  1      1    0     1
 ## 2  1.86065272 -3.0431894  1      2    0     1
@@ -436,8 +445,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  3.78147485 -2.8300587  1      4    0     1
 ## 5 -2.55819959 -5.0443544  1      5    0     1
 ## 6  1.72873240 -0.6363849  1      6    1     1</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="PanelData.html#cb12-1" aria-hidden="true" tabindex="-1"></a>est_did <span class="ot">=</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> <span class="fu">i</span>(period, treat, <span class="dv">5</span>) <span class="sc">|</span> id <span class="sc">+</span> period, base_did)</span>
-<span id="cb12-2"><a href="PanelData.html#cb12-2" aria-hidden="true" tabindex="-1"></a>est_did</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="PanelData.html#cb12-1" tabindex="-1"></a>est_did <span class="ot">=</span> <span class="fu">feols</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> <span class="fu">i</span>(period, treat, <span class="dv">5</span>) <span class="sc">|</span> id <span class="sc">+</span> period, base_did)</span>
+<span id="cb12-2"><a href="PanelData.html#cb12-2" tabindex="-1"></a>est_did</span></code></pre></div>
 <pre><code>## OLS estimation, Dep. Var.: y
 ## Observations: 1,080 
 ## Fixed-effects: id: 108,  period: 10
@@ -457,10 +466,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## RMSE: 3.83653     Adj. R2: 0.48783 
 ##                 Within R2: 0.389628</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="PanelData.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iplot</span>(est_did)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="PanelData.html#cb14-1" tabindex="-1"></a><span class="fu">iplot</span>(est_did)</span></code></pre></div>
 <p><img src="001_paneldata_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p><strong>聚类标准误</strong>,在两个固定效应上计算聚类标准误。即便你没有使用固定效应，你也可以用这样的语法聚类标准误。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="PanelData.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gravity_pois, <span class="at">cluster =</span> <span class="sc">~</span>Origin<span class="sc">+</span>Destination)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="PanelData.html#cb15-1" tabindex="-1"></a><span class="fu">summary</span>(gravity_pois, <span class="at">cluster =</span> <span class="sc">~</span>Origin<span class="sc">+</span>Destination)</span></code></pre></div>
 <pre><code>## Poisson estimation, Dep. Var.: Euros
 ## Observations: 38,325 
 ## Fixed-effects: Origin: 15,  Destination: 15,  Product: 20,  Year: 10
@@ -473,22 +482,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##            BIC:  1.405e+12     Squared Cor.: 0.612021</code></pre>
 <p>该包关于标准误的计算非常丰富，可以看它的小短文。</p>
 </div>
-<div id="plm包" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> <code>plm</code>包</h2>
+<div id="plm包" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> <code>plm</code>包<a href="PanelData.html#plm包" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>包中的<code>vcovG</code>函数可以计算聚类标准误。一般这么用:</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="PanelData.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(plm, <span class="at">vcov =</span> <span class="fu">vcovG</span>(plm, <span class="at">cluster =</span> <span class="st">&#39;group&#39;</span>, <span class="at">inner =</span> <span class="st">&#39;cluster&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="PanelData.html#cb17-1" tabindex="-1"></a><span class="fu">summary</span>(plm, <span class="at">vcov =</span> <span class="fu">vcovG</span>(plm, <span class="at">cluster =</span> <span class="st">&#39;group&#39;</span>, <span class="at">inner =</span> <span class="st">&#39;cluster&#39;</span>))</span></code></pre></div>
 <ul>
 <li>包中的<code>fixef</code>函数可以返回个体截距项(<code>type = level</code>)。</li>
 <li><code>update(object, formula)</code>函数可以更新公式重新估计。</li>
 </ul>
 </div>
-<div id="动态面板阈值估计r语言中有一个包dtp其估计函数为" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="PanelData.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Mena)</span>
-<span id="cb18-2"><a href="PanelData.html#cb18-2" aria-hidden="true" tabindex="-1"></a>reg<span class="ot">&lt;-</span><span class="fu">dtp</span>(GDPPC <span class="sc">~</span> FDI<span class="sc">+</span>OPEN<span class="sc">|</span>INF<span class="sc">|</span>INF,Mena,<span class="at">index=</span><span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>,<span class="st">&quot;ann&quot;</span>),<span class="dv">4</span>,<span class="dv">2</span>,<span class="fl">0.95</span>,<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-3"><a href="PanelData.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<div id="动态面板阈值估计r语言中有一个包dtp其估计函数为" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> 动态面板阈值估计：R语言中有一个包<code>dtp</code>，其估计函数为：<a href="PanelData.html#动态面板阈值估计r语言中有一个包dtp其估计函数为" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="PanelData.html#cb18-1" tabindex="-1"></a><span class="fu">data</span>(Mena)</span>
+<span id="cb18-2"><a href="PanelData.html#cb18-2" tabindex="-1"></a>reg<span class="ot">&lt;-</span><span class="fu">dtp</span>(GDPPC <span class="sc">~</span> FDI<span class="sc">+</span>OPEN<span class="sc">|</span>INF<span class="sc">|</span>INF,Mena,<span class="at">index=</span><span class="fu">c</span>(<span class="st">&quot;pays&quot;</span>,<span class="st">&quot;ann&quot;</span>),<span class="dv">4</span>,<span class="dv">2</span>,<span class="fl">0.95</span>,<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="PanelData.html#cb18-3" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
 <p>注意：</p>
 <ul>
 <li>第一根<code>|</code>前的变量是不依赖区制的变量，中间由<code>|</code>夹住的变量是阈值变量，最后一个<code>|</code>后面的变量是依赖区制的变量（好遗憾，貌似只允许一个这样的变量）。</li>
@@ -565,7 +574,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

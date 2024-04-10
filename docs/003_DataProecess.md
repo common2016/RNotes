@@ -33,8 +33,8 @@ Table: (\#tab:unnamed-chunk-1)Data summary
 
 **Variable type: numeric**
 
-|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist       |
-|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:----------|
+|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist  |
+|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:-----|
 |Sepal.Length  |         0|             1| 5.84| 0.83| 4.3| 5.1| 5.80| 6.4|  7.9|▆▇▇▅▂ |
 |Sepal.Width   |         0|             1| 3.06| 0.44| 2.0| 2.8| 3.00| 3.3|  4.4|▁▆▇▂▁ |
 |Petal.Length  |         0|             1| 3.76| 1.77| 1.0| 1.6| 4.35| 5.1|  6.9|▇▁▆▇▂ |
@@ -88,16 +88,6 @@ writeWorksheetToFile("XLConnectExample2.xlsx", data = ChickWeight,
 - `readstata13`包可以读入更高版本的stata数据格式。
 - `zoo::rollapply(x, 30, mean)`就是30天的移动平均求值。
 
-- `select`是一个很牛逼的函数
-
-```r
-select(regdata,id, year) # 选择regdata数据框的id和year两列
-select(regdata,starts_with('abc')) # 匹配以'abc'开头的列
-select(regdata,ends_with('abc')) # 匹配以'abc'结尾的列
-select(regdata,contains('abc')) # 匹配包含'abc'的列
-select(regdata,matches('abc')) # 正则表达匹配
-select(regdata,num_range('x',1:3)) # 匹配x1, x2,x3的列
-```
 - R语言给数组各维数命名
 
 ```r
@@ -134,6 +124,25 @@ pdf_pagesize(pdf, opw = "", upw = "")
 
 
 同时，利用`qpdf`包的`pdf_subset,pdf_combine,pdf_split`可以提取PDF的部分内容，合并PDF文件，把每一页分成一个PDF文件。
+
+## `tidyverse`包的一些函数列示
+
+- `filter, arrange, mutate, relocate`
+- `distinct(flights, origin, dest)`，flights数据框中`origin,dest`两列中唯一的数据行挑出来。
+- `count`与`distinct`类似，但多了个对重复元素计数的列`n`。
+- `rename(a = b)`把`b`重命名为`a`。
+- `slice_head(df, n = 1),slice_taile(df, n= 1),slice_min(df,x,n=1),slice_max(df,x,n=1)`抽取第1个或倒数第一个元素,抽取`x`列最小或最大的第一个元素。
+- `pivot_longer, pivot_wider`长宽改变。
+- `select`是一个很牛逼的函数
+
+```r
+select(regdata,id, year) # 选择regdata数据框的id和year两列
+select(regdata,starts_with('abc')) # 匹配以'abc'开头的列
+select(regdata,ends_with('abc')) # 匹配以'abc'结尾的列
+select(regdata,contains('abc')) # 匹配包含'abc'的列
+select(regdata,matches('abc')) # 正则表达匹配
+select(regdata,num_range('x',1:3)) # 匹配x1, x2,x3的列
+```
 
 ## R与网络交互
 
