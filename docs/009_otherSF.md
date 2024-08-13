@@ -2,6 +2,7 @@
 # 与其他软件的交互 {#otherSF}
 ## 一句话Tips
 
+- 在Mac里面安装万得的R接口，老报错。等报错以后，你看下你存放R包的目录里面有个文件链接`00LOCK-WindR/00new/WindR`，同时目录下直接还有个`WindR`。把前者`WindR`下的全部内容复制到后者目录下即可。
 - Mac中Jupyter配置R核
 
 
