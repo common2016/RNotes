@@ -16,6 +16,7 @@ r中有x12包可以做季节处理
 seasonal包有x13处理更加便捷
 DataProcess
 一句话tips-2
+tidyverse包的一些函数列示
 r与网络交互
 data.table包
 基本操作
@@ -38,6 +39,7 @@ metropolis-和-m-h算法
 一些带贝叶斯估计的r包使用报告
 rawR
 一句话tips-4
+容错机制
 整洁运算
 更新r
 大数据的存取
@@ -106,5 +108,3 @@ rjtools包提供的rmd文件编写
 r语言写latex
 其他-2
 一句话tips-11
-tidyverse包的一些函数列示
-c代码中调用r函数
