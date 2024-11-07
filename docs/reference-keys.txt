@@ -108,3 +108,4 @@ rjtools包提供的rmd文件编写
 r语言写latex
 其他-2
 一句话tips-11
+如何在r中让python找到另外一个安装python包的位置

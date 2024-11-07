@@ -154,6 +154,28 @@ py_available()
 py_module_available('tushare')
 ```
 
+### 如何在R中让python找到另外一个安装python包的位置
+
+问题：在R中调用Python时，某个包不存在。于是你用`py_install()`函数进行了包的安装，默认情况下安装在`/Users/yangnay/.virtualenvs/r-reticulate/lib/python3.12/site-packages`中，但`import()`该包时怎么也无法导入。
+
+你首先应该查看一下，当前使用的python是在哪些位置找python包，命令为`import sys; sys.path`，比如我就发现我的python在如下位置找包：
+```python
+[1] ""                                                                               
+[2] "/Library/Frameworks/Python.framework/Versions/3.12/bin"                         
+[3] "/Users/yangnay/elements2/RLibrary/reticulate/config"                            
+[4] "/Library/Frameworks/Python.framework/Versions/3.12/lib/python312.zip"           
+[5] "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12"              
+[6] "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload"  
+[7] "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages"
+[8] "/Users/yangnay/elements2/RLibrary/reticulate/python"        
+```
+
+这当然找不到刚才默认位置安装的包了。你要把你刚才默认安装包的那个位置告诉python，让它去那里找。方法就是：
+
+1. 在Python能够找到的位置的site-packages目录中放置一个.pth文件，该文件包含你想要添加到Python路径的目录。
+例如，创建一个名为mypackage.pth的文件，内容为"/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages"
+2. 然后将其放置在你的Python环境的site-packages目录中。
+
 ### r与python的交互控制
 
 ```r
