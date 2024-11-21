@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 其他 | R语言笔记</title>
-  <meta name="description" content="13 其他 | R语言笔记" />
+  <title>14 其他 | R语言笔记</title>
+  <meta name="description" content="14 其他 | R语言笔记" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 其他 | R语言笔记" />
+  <meta property="og:title" content="14 其他 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 其他 | R语言笔记" />
+  <meta name="twitter:title" content="14 其他 | R语言笔记" />
   
   
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rmarkdown.html"/>
+<link rel="prev" href="r包发邮件.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -51,6 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -84,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -285,7 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.3.1</b> 其他：</a></li>
-<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.2</b> r与python的交互控制</a></li>
+<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#如何在r中让python找到另外一个安装python包的位置"><i class="fa fa-check"></i><b>9.3.2</b> 如何在R中让python找到另外一个安装python包的位置</a></li>
+<li class="chapter" data-level="9.3.3" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.3</b> r与python的交互控制</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.4</b> 与julia的对接</a>
 <ul>
@@ -322,9 +324,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
+<li class="chapter" data-level="13" data-path="r包发邮件.html"><a href="r包发邮件.html"><i class="fa fa-check"></i><b>13</b> R包发邮件</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="13.1" data-path="r包发邮件.html"><a href="r包发邮件.html#利用blastula包发邮件"><i class="fa fa-check"></i><b>13.1</b> 利用<code>blastula</code>包发邮件</a></li>
+<li class="chapter" data-level="13.2" data-path="r包发邮件.html"><a href="r包发邮件.html#利用mailr包发送邮件"><i class="fa fa-check"></i><b>13.2</b> 利用<code>mailR</code>包发送邮件</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>14</b> 其他</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>14.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -344,10 +351,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="其他-2" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">13</span> 其他<a href="其他-2.html#其他-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="一句话tips-11" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> 一句话Tips<a href="其他-2.html#一句话tips-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="其他-2" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> 其他<a href="其他-2.html#其他-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="一句话tips-11" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> 一句话Tips<a href="其他-2.html#一句话tips-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>officer</code>是一个强大的R与Word，PPT等交互的包。</li>
 <li><code>geosphere::distm</code>根据经纬度算距离。</li>
@@ -357,11 +364,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>DiagrammeR</code>：R语言画流程图，网络图，太棒了。教程网址：<a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a></li>
 <li><code>progress</code>包可以显示进度条。更具体的例子见收藏或者帮助。</li>
 </ul>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="其他-2.html#cb130-1" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
-<span id="cb130-2"><a href="其他-2.html#cb130-2" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
-<span id="cb130-3"><a href="其他-2.html#cb130-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
-<span id="cb130-4"><a href="其他-2.html#cb130-4" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
-<span id="cb130-5"><a href="其他-2.html#cb130-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="其他-2.html#cb134-1" tabindex="-1"></a><span class="fu">library</span>(progress)</span>
+<span id="cb134-2"><a href="其他-2.html#cb134-2" tabindex="-1"></a>pb <span class="ot">&lt;-</span> progress_bar<span class="sc">$</span><span class="fu">new</span>(<span class="at">total =</span> <span class="dv">500</span>) <span class="co"># 循环中的次数</span></span>
+<span id="cb134-3"><a href="其他-2.html#cb134-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>){</span>
+<span id="cb134-4"><a href="其他-2.html#cb134-4" tabindex="-1"></a>    pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb134-5"><a href="其他-2.html#cb134-5" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>swirl</code>可以编写交互式教程。</li>
 <li><code>RSelenium</code>包终于在201901月出来了。</li>
@@ -374,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r包发邮件.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

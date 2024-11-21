@@ -51,6 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -84,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -285,7 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.3.1</b> 其他：</a></li>
-<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.2</b> r与python的交互控制</a></li>
+<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#如何在r中让python找到另外一个安装python包的位置"><i class="fa fa-check"></i><b>9.3.2</b> 如何在R中让python找到另外一个安装python包的位置</a></li>
+<li class="chapter" data-level="9.3.3" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.3</b> r与python的交互控制</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.4</b> 与julia的对接</a>
 <ul>
@@ -322,9 +324,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
+<li class="chapter" data-level="13" data-path="r包发邮件.html"><a href="r包发邮件.html"><i class="fa fa-check"></i><b>13</b> R包发邮件</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="13.1" data-path="r包发邮件.html"><a href="r包发邮件.html#利用blastula包发邮件"><i class="fa fa-check"></i><b>13.1</b> 利用<code>blastula</code>包发邮件</a></li>
+<li class="chapter" data-level="13.2" data-path="r包发邮件.html"><a href="r包发邮件.html#利用mailr包发送邮件"><i class="fa fa-check"></i><b>13.2</b> 利用<code>mailR</code>包发送邮件</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>14</b> 其他</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>14.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -386,15 +393,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>在Description的Suggests域增加testthat;</li>
 <li>创建一个文件<code>tests/testthat.R</code>。这个文件不要动。通常是在<code>tests/testthat/</code>目录下面建立类似这样的测试文件(文件名总以<code>test</code>开始)，</li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="创建包的一些建议.html#cb121-1" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
-<span id="cb121-2"><a href="创建包的一些建议.html#cb121-2" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb121-3"><a href="创建包的一些建议.html#cb121-3" tabindex="-1"></a><span class="co"># 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来</span></span>
-<span id="cb121-4"><a href="创建包的一些建议.html#cb121-4" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb121-5"><a href="创建包的一些建议.html#cb121-5" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
-<span id="cb121-6"><a href="创建包的一些建议.html#cb121-6" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.) <span class="co"># 比较前后两个数值是否一致</span></span>
-<span id="cb121-7"><a href="创建包的一些建议.html#cb121-7" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
-<span id="cb121-8"><a href="创建包的一些建议.html#cb121-8" tabindex="-1"></a>    <span class="fu">expect_ture</span>(object) <span class="co"># 这个函数有着更加广泛的用途，比如可以检验a &lt; b</span></span>
-<span id="cb121-9"><a href="创建包的一些建议.html#cb121-9" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="创建包的一些建议.html#cb122-1" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;string length&quot;</span>)</span>
+<span id="cb122-2"><a href="创建包的一些建议.html#cb122-2" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb122-3"><a href="创建包的一些建议.html#cb122-3" tabindex="-1"></a><span class="co"># 你可以在此写下需要用到的代码，比如用你在包中编制的函数跑一个结果出来</span></span>
+<span id="cb122-4"><a href="创建包的一些建议.html#cb122-4" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb122-5"><a href="创建包的一些建议.html#cb122-5" tabindex="-1"></a><span class="fu">text_that</span>(<span class="st">&#39;&#39;</span>,{</span>
+<span id="cb122-6"><a href="创建包的一些建议.html#cb122-6" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.) <span class="co"># 比较前后两个数值是否一致</span></span>
+<span id="cb122-7"><a href="创建包的一些建议.html#cb122-7" tabindex="-1"></a>    <span class="fu">expect_equal</span>(.,.)</span>
+<span id="cb122-8"><a href="创建包的一些建议.html#cb122-8" tabindex="-1"></a>    <span class="fu">expect_ture</span>(object) <span class="co"># 这个函数有着更加广泛的用途，比如可以检验a &lt; b</span></span>
+<span id="cb122-9"><a href="创建包的一些建议.html#cb122-9" tabindex="-1"></a>})</span></code></pre></div>
 <p>当你完成这些工作以后，你可以简单的输入<code>devtools::test()</code>来一次性检查测试是否成功。</p>
 </div>
 <div id="泛型函数" class="section level2 hasAnchor" number="11.4">
@@ -403,11 +410,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>如果当前函数处理不了这个对象，可在函数末端返回<code>NextMethod('your_method')</code>。<code>your_method</code>方法的输入参数与当前方法相同，该对象最终由<code>your_method</code>来处理。</li>
 </ol>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="创建包的一些建议.html#cb122-1" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
-<span id="cb122-2"><a href="创建包的一些建议.html#cb122-2" tabindex="-1"></a>{</span>
-<span id="cb122-3"><a href="创建包的一些建议.html#cb122-3" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
-<span id="cb122-4"><a href="创建包的一些建议.html#cb122-4" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
-<span id="cb122-5"><a href="创建包的一些建议.html#cb122-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="创建包的一些建议.html#cb123-1" tabindex="-1"></a>t.data.frame <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb123-2"><a href="创建包的一些建议.html#cb123-2" tabindex="-1"></a>{</span>
+<span id="cb123-3"><a href="创建包的一些建议.html#cb123-3" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(x)</span>
+<span id="cb123-4"><a href="创建包的一些建议.html#cb123-4" tabindex="-1"></a>    <span class="fu">NextMethod</span>(<span class="st">&quot;t&quot;</span>)</span>
+<span id="cb123-5"><a href="创建包的一些建议.html#cb123-5" tabindex="-1"></a>}</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>方法要包含原始泛型的所有参数，顺序也要一致。比如<code>summary</code>这个内置的泛型函数的参数为<code>object</code>和<code>...</code>，那么当你拓展该函数的时候，这两个参数的名称是不能改的。</li>
 <li>缺省设置也要和原始泛型一致。</li>
@@ -418,17 +425,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>如果在例子或vignette中使用了某个包，但在函数中并未使用它，那就在<code>Description</code>文件的<code>Suggests</code>域添加该包。不添加该包,<code>check()</code>会报警告，在<code>Imports</code>域添加，<code>rhub::check_on_linux()</code>会报Note。可用如下函数添加，也可以直接修改<code>Description</code>文件。</li>
 </ul>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="创建包的一些建议.html#cb123-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(your_pac, <span class="at">type =</span> <span class="st">&#39;Suggests&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="创建包的一些建议.html#cb124-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(your_pac, <span class="at">type =</span> <span class="st">&#39;Suggests&#39;</span>)</span></code></pre></div>
 <ul>
 <li><p><code>spell_check()</code>检查拼写错误。</p></li>
 <li><p>可以使用<code>devtools::use_readme_rmd()</code>来创建README.Rmd并将其添加到.Rbuildignore，这将可以在readme中生成R代码。</p></li>
 <li><p>使用<code>devtools::use_travis()</code>建立一个基本的<code>.travis.yml</code>配置文件，以便以后每次推送都自动检查是否符合包的规范。当然，这需要在traivis网站中打开这个项目的开关。</p></li>
 <li><p>包中调用<code>ggplot2::aes()</code>时，通常会报错没有显式绑定全局变量（<code>no visible binding for global variable ‘.’</code>），因此最好使用<code>ggplot2::aes_string()</code>。但作者明确表示<code>ggplot2::aes_string()</code>将来会折旧。因此新的解决办法是，</p></li>
 </ul>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="创建包的一些建议.html#cb124-1" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
-<span id="cb124-2"><a href="创建包的一些建议.html#cb124-2" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb124-3"><a href="创建包的一些建议.html#cb124-3" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
-<span id="cb124-4"><a href="创建包的一些建议.html#cb124-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="创建包的一些建议.html#cb125-1" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
+<span id="cb125-2"><a href="创建包的一些建议.html#cb125-2" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb125-3"><a href="创建包的一些建议.html#cb125-3" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y))</span>
+<span id="cb125-4"><a href="创建包的一些建议.html#cb125-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>实际上这种问题还会出现在<code>tidyverse</code>中管道传输时的报错，那么通过在前面引入<code>#' @importFrom rlang .data</code>语句，同时把后面的占位符改成<code>.data</code>是解决这个全局绑定的好办法。</p>
 <ul>
 <li><code>@example /data/stage/chenpu/a.R</code>是把单独文件中的例子添加到函数文档中，而<code>@examples</code>则是直接添加。</li>

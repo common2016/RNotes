@@ -83,6 +83,7 @@ r语言调用matlab
 其他的一些小办法
 r与python的无缝对接
 其他
+如何在r中让python找到另外一个安装python包的位置
 r与python的交互控制
 与julia的对接
 juliacall包
@@ -106,6 +107,9 @@ rmarkdown的语法格式
 递交r-journal的笔记
 rjtools包提供的rmd文件编写
 r语言写latex
+r包发邮件
+利用blastula包发邮件
+利用mailr包发送邮件
 其他-2
 一句话tips-11
-如何在r中让python找到另外一个安装python包的位置
+c代码中调用r函数

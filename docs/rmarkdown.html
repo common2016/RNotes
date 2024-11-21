@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="创建包的一些建议.html"/>
-<link rel="next" href="其他-2.html"/>
+<link rel="next" href="r包发邮件.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -84,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -285,7 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="otherSF.html"><a href="otherSF.html#r与python的无缝对接"><i class="fa fa-check"></i><b>9.3</b> R与Python的无缝对接</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="otherSF.html"><a href="otherSF.html#其他"><i class="fa fa-check"></i><b>9.3.1</b> 其他：</a></li>
-<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.2</b> r与python的交互控制</a></li>
+<li class="chapter" data-level="9.3.2" data-path="otherSF.html"><a href="otherSF.html#如何在r中让python找到另外一个安装python包的位置"><i class="fa fa-check"></i><b>9.3.2</b> 如何在R中让python找到另外一个安装python包的位置</a></li>
+<li class="chapter" data-level="9.3.3" data-path="otherSF.html"><a href="otherSF.html#r与python的交互控制"><i class="fa fa-check"></i><b>9.3.3</b> r与python的交互控制</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="otherSF.html"><a href="otherSF.html#与julia的对接"><i class="fa fa-check"></i><b>9.4</b> 与julia的对接</a>
 <ul>
@@ -322,9 +324,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>13</b> 其他</a>
+<li class="chapter" data-level="13" data-path="r包发邮件.html"><a href="r包发邮件.html"><i class="fa fa-check"></i><b>13</b> R包发邮件</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>13.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="13.1" data-path="r包发邮件.html"><a href="r包发邮件.html#利用blastula包发邮件"><i class="fa fa-check"></i><b>13.1</b> 利用<code>blastula</code>包发邮件</a></li>
+<li class="chapter" data-level="13.2" data-path="r包发邮件.html"><a href="r包发邮件.html#利用mailr包发送邮件"><i class="fa fa-check"></i><b>13.2</b> 利用<code>mailR</code>包发送邮件</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>14</b> 其他</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>14.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -386,9 +393,9 @@ x=1+2\tag{1}\label{eq1}
 <li>该包对图和表的嵌入是分latex和html两个部分来实现，你如果想在网页和PDF中都体现表格或者图，意味着你要写两个语句块。语句块的写法以及引用方式可以参加该包的模板。</li>
 <li><code>knitr::kable()</code>函数生成表格是非常灵活的。这里我们给一个例子。可以看到矩阵的宽度安排是灵活的。另外，如果你的表格包含<code>$</code>等符号，可以设置<code>escape = FALSE</code>进行逃逸。网址 <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/kable.html</a> 给出了很多例子。</li>
 </ul>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="rmarkdown.html#cb127-1" tabindex="-1"></a><span class="co"># ```{r, eval = knitr::is_latex_output()}</span></span>
-<span id="cb127-2"><a href="rmarkdown.html#cb127-2" tabindex="-1"></a><span class="co"># knitr::kable(tb1lt, format = &quot;latex&quot;, caption = &quot;FAVAR Function Description&quot;, align = c(&#39;l&#39;,&#39;p{34em}&#39;), escape = FALSE)</span></span>
-<span id="cb127-3"><a href="rmarkdown.html#cb127-3" tabindex="-1"></a><span class="co"># ```</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="rmarkdown.html#cb128-1" tabindex="-1"></a><span class="co"># ```{r, eval = knitr::is_latex_output()}</span></span>
+<span id="cb128-2"><a href="rmarkdown.html#cb128-2" tabindex="-1"></a><span class="co"># knitr::kable(tb1lt, format = &quot;latex&quot;, caption = &quot;FAVAR Function Description&quot;, align = c(&#39;l&#39;,&#39;p{34em}&#39;), escape = FALSE)</span></span>
+<span id="cb128-3"><a href="rmarkdown.html#cb128-3" tabindex="-1"></a><span class="co"># ```</span></span></code></pre></div>
 </div>
 </div>
 <div id="r语言写latex" class="section level2 hasAnchor" number="12.3">
@@ -399,10 +406,10 @@ x=1+2\tag{1}\label{eq1}
 <li>把以前的tex文档格式直接往里面copy就行了。</li>
 <li>只是涉及到R语言时，使用如下格式：</li>
 </ol>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="rmarkdown.html#cb128-1" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>echo <span class="ot">=</span> <span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb128-2"><a href="rmarkdown.html#cb128-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb128-3"><a href="rmarkdown.html#cb128-3" tabindex="-1"></a><span class="fu">print</span> (x)</span>
-<span id="cb128-4"><a href="rmarkdown.html#cb128-4" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="rmarkdown.html#cb129-1" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>echo <span class="ot">=</span> <span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
+<span id="cb129-2"><a href="rmarkdown.html#cb129-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb129-3"><a href="rmarkdown.html#cb129-3" tabindex="-1"></a><span class="fu">print</span> (x)</span>
+<span id="cb129-4"><a href="rmarkdown.html#cb129-4" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>一些快捷键：</li>
 </ol>
@@ -415,16 +422,16 @@ x=1+2\tag{1}\label{eq1}
 <li>中文状态下，要更改渲染引擎为<code>Tools-Global Options-Sweave-XeLaTex</code></li>
 <li>如果你感兴趣于修改R代码的输出格式，你可以使用<code>knitr</code>包的修改方法，但此时，你要更改RStudio全局设定中<code>Sweave</code>标签中的渲染引擎为<code>knitr</code>，而不是<code>sweave</code>，同时，你要把代码<code>\SweaveOpts{concordance=TRUE}</code>注释掉，然后你要在文本的第一个代码块中进行设置，比如我的一个经常性的设置为，</li>
 </ol>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="rmarkdown.html#cb129-1" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>setup, echo <span class="ot">=</span> <span class="cn">FALSE</span>, include<span class="ot">=</span><span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
-<span id="cb129-2"><a href="rmarkdown.html#cb129-2" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb129-3"><a href="rmarkdown.html#cb129-3" tabindex="-1"></a><span class="fu">render_sweave</span>() <span class="co"># 基准设置是sweave的设置</span></span>
-<span id="cb129-4"><a href="rmarkdown.html#cb129-4" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>) <span class="co"># 全局抑制警告和信息输出</span></span>
-<span id="cb129-5"><a href="rmarkdown.html#cb129-5" tabindex="-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">source =</span> <span class="cf">function</span>(x, options) {</span>
-<span id="cb129-6"><a href="rmarkdown.html#cb129-6" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;&gt; &#39;</span>,x,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>) <span class="co"># 代码输入部分添加 &gt; 符号</span></span>
-<span id="cb129-7"><a href="rmarkdown.html#cb129-7" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=</span><span class="sc">\\</span><span class="st">color{gray},basicstyle = {</span><span class="sc">\\</span><span class="st">ttfamily</span><span class="sc">\\</span><span class="st">color{RoyalBlue}},keywordstyle = </span><span class="sc">\\</span><span class="st">color{RoyalBlue},stepnumber=2]</span><span class="sc">\n</span><span class="st">&quot;</span>, x,</span>
-<span id="cb129-8"><a href="rmarkdown.html#cb129-8" tabindex="-1"></a>        <span class="st">&quot;</span><span class="sc">\\</span><span class="st">end{lstlisting}</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># lstlisting格式的更改</span></span>
-<span id="cb129-9"><a href="rmarkdown.html#cb129-9" tabindex="-1"></a>})</span>
-<span id="cb129-10"><a href="rmarkdown.html#cb129-10" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="rmarkdown.html#cb130-1" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">&lt;</span>setup, echo <span class="ot">=</span> <span class="cn">FALSE</span>, include<span class="ot">=</span><span class="cn">FALSE</span><span class="sc">&gt;</span><span class="er">&gt;=</span></span>
+<span id="cb130-2"><a href="rmarkdown.html#cb130-2" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb130-3"><a href="rmarkdown.html#cb130-3" tabindex="-1"></a><span class="fu">render_sweave</span>() <span class="co"># 基准设置是sweave的设置</span></span>
+<span id="cb130-4"><a href="rmarkdown.html#cb130-4" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>) <span class="co"># 全局抑制警告和信息输出</span></span>
+<span id="cb130-5"><a href="rmarkdown.html#cb130-5" tabindex="-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">source =</span> <span class="cf">function</span>(x, options) {</span>
+<span id="cb130-6"><a href="rmarkdown.html#cb130-6" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;&gt; &#39;</span>,x,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>) <span class="co"># 代码输入部分添加 &gt; 符号</span></span>
+<span id="cb130-7"><a href="rmarkdown.html#cb130-7" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">begin{lstlisting}[language=R,breaklines,aboveskip=0em,belowskip =0em,commentstyle=</span><span class="sc">\\</span><span class="st">color{gray},basicstyle = {</span><span class="sc">\\</span><span class="st">ttfamily</span><span class="sc">\\</span><span class="st">color{RoyalBlue}},keywordstyle = </span><span class="sc">\\</span><span class="st">color{RoyalBlue},stepnumber=2]</span><span class="sc">\n</span><span class="st">&quot;</span>, x,</span>
+<span id="cb130-8"><a href="rmarkdown.html#cb130-8" tabindex="-1"></a>        <span class="st">&quot;</span><span class="sc">\\</span><span class="st">end{lstlisting}</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>) <span class="co"># lstlisting格式的更改</span></span>
+<span id="cb130-9"><a href="rmarkdown.html#cb130-9" tabindex="-1"></a>})</span>
+<span id="cb130-10"><a href="rmarkdown.html#cb130-10" tabindex="-1"></a><span class="sc">@</span></span></code></pre></div>
 
 </div>
 </div>
@@ -434,7 +441,7 @@ x=1+2\tag{1}\label{eq1}
         </div>
       </div>
 <a href="创建包的一些建议.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r包发邮件.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

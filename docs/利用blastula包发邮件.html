@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | R语言笔记</title>
-  <meta name="description" content="References | R语言笔记" />
+  <title>13 利用blastula包发邮件 | R语言笔记</title>
+  <meta name="description" content="13 利用blastula包发邮件 | R语言笔记" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | R语言笔记" />
+  <meta property="og:title" content="13 利用blastula包发邮件 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | R语言笔记" />
+  <meta name="twitter:title" content="13 利用blastula包发邮件 | R语言笔记" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="其他-2.html"/>
-
+<link rel="prev" href="rmarkdown.html"/>
+<link rel="next" href="利用mailr包发送邮件.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,14 +324,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="r包发邮件.html"><a href="r包发邮件.html"><i class="fa fa-check"></i><b>13</b> R包发邮件</a>
+<li class="chapter" data-level="13" data-path="利用blastula包发邮件.html"><a href="利用blastula包发邮件.html"><i class="fa fa-check"></i><b>13</b> 利用<code>blastula</code>包发邮件</a></li>
+<li class="chapter" data-level="14" data-path="利用mailr包发送邮件.html"><a href="利用mailr包发送邮件.html"><i class="fa fa-check"></i><b>14</b> 利用<code>mailR</code>包发送邮件</a></li>
+<li class="chapter" data-level="15" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>15</b> 其他</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="r包发邮件.html"><a href="r包发邮件.html#利用blastula包发邮件"><i class="fa fa-check"></i><b>13.1</b> 利用<code>blastula</code>包发邮件</a></li>
-<li class="chapter" data-level="13.2" data-path="r包发邮件.html"><a href="r包发邮件.html#利用mailr包发送邮件"><i class="fa fa-check"></i><b>13.2</b> 利用<code>mailR</code>包发送邮件</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>14</b> 其他</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>14.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="15.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>15.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -351,17 +348,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="利用blastula包发邮件" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> 利用<code>blastula</code>包发邮件<a href="利用blastula包发邮件.html#利用blastula包发邮件" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>这个包可以使用markdown形式创造邮件内容，比较美观。</p>
+<p>先创造邮件的主体内容，参考作者github的说明如下：</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="利用blastula包发邮件.html#cb131-1" tabindex="-1"></a><span class="co"># Get a nicely formatted date/time string</span></span>
+<span id="cb131-2"><a href="利用blastula包发邮件.html#cb131-2" tabindex="-1"></a>date_time <span class="ot">&lt;-</span> <span class="fu">add_readable_time</span>()</span>
+<span id="cb131-3"><a href="利用blastula包发邮件.html#cb131-3" tabindex="-1"></a></span>
+<span id="cb131-4"><a href="利用blastula包发邮件.html#cb131-4" tabindex="-1"></a><span class="co"># Create an image string using an on-disk</span></span>
+<span id="cb131-5"><a href="利用blastula包发邮件.html#cb131-5" tabindex="-1"></a><span class="co"># image file</span></span>
+<span id="cb131-6"><a href="利用blastula包发邮件.html#cb131-6" tabindex="-1"></a>img_file_path <span class="ot">&lt;-</span></span>
+<span id="cb131-7"><a href="利用blastula包发邮件.html#cb131-7" tabindex="-1"></a>  <span class="fu">system.file</span>(</span>
+<span id="cb131-8"><a href="利用blastula包发邮件.html#cb131-8" tabindex="-1"></a>    <span class="st">&quot;img&quot;</span>, <span class="st">&quot;pexels-photo-267151.jpeg&quot;</span>,</span>
+<span id="cb131-9"><a href="利用blastula包发邮件.html#cb131-9" tabindex="-1"></a>    <span class="at">package =</span> <span class="st">&quot;blastula&quot;</span></span>
+<span id="cb131-10"><a href="利用blastula包发邮件.html#cb131-10" tabindex="-1"></a>  )</span>
+<span id="cb131-11"><a href="利用blastula包发邮件.html#cb131-11" tabindex="-1"></a></span>
+<span id="cb131-12"><a href="利用blastula包发邮件.html#cb131-12" tabindex="-1"></a>img_string <span class="ot">&lt;-</span> <span class="fu">add_image</span>(<span class="at">file =</span> img_file_path)</span>
+<span id="cb131-13"><a href="利用blastula包发邮件.html#cb131-13" tabindex="-1"></a></span>
+<span id="cb131-14"><a href="利用blastula包发邮件.html#cb131-14" tabindex="-1"></a><span class="co"># 使用compose_email函数，以及md函数，还有glue函数构造</span></span>
+<span id="cb131-15"><a href="利用blastula包发邮件.html#cb131-15" tabindex="-1"></a>email <span class="ot">&lt;-</span></span>
+<span id="cb131-16"><a href="利用blastula包发邮件.html#cb131-16" tabindex="-1"></a>  <span class="fu">compose_email</span>(</span>
+<span id="cb131-17"><a href="利用blastula包发邮件.html#cb131-17" tabindex="-1"></a>    <span class="at">body =</span> <span class="fu">md</span>(glue<span class="sc">::</span><span class="fu">glue</span>(</span>
+<span id="cb131-18"><a href="利用blastula包发邮件.html#cb131-18" tabindex="-1"></a><span class="st">&quot;Hello,</span></span>
+<span id="cb131-19"><a href="利用blastula包发邮件.html#cb131-19" tabindex="-1"></a></span>
+<span id="cb131-20"><a href="利用blastula包发邮件.html#cb131-20" tabindex="-1"></a><span class="st">This is a *great* picture I found when looking</span></span>
+<span id="cb131-21"><a href="利用blastula包发邮件.html#cb131-21" tabindex="-1"></a><span class="st">for sun + cloud photos:</span></span>
+<span id="cb131-22"><a href="利用blastula包发邮件.html#cb131-22" tabindex="-1"></a></span>
+<span id="cb131-23"><a href="利用blastula包发邮件.html#cb131-23" tabindex="-1"></a><span class="st">{img_string}</span></span>
+<span id="cb131-24"><a href="利用blastula包发邮件.html#cb131-24" tabindex="-1"></a><span class="st">&quot;</span>)),</span>
+<span id="cb131-25"><a href="利用blastula包发邮件.html#cb131-25" tabindex="-1"></a>    <span class="at">footer =</span> <span class="fu">md</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;Email sent on {date_time}.&quot;</span>))</span>
+<span id="cb131-26"><a href="利用blastula包发邮件.html#cb131-26" tabindex="-1"></a>  )</span>
+<span id="cb131-27"><a href="利用blastula包发邮件.html#cb131-27" tabindex="-1"></a></span>
+<span id="cb131-28"><a href="利用blastula包发邮件.html#cb131-28" tabindex="-1"></a><span class="co"># 还可以如下形式添加附件</span></span>
+<span id="cb131-29"><a href="利用blastula包发邮件.html#cb131-29" tabindex="-1"></a><span class="co"># email &lt;- add_attachment(email, file = &#39;你的文件&#39;)</span></span></code></pre></div>
+<p>然后开始对邮箱进行设置。国内的邮箱都差不多，我尝试了新浪和QQ。</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="利用blastula包发邮件.html#cb132-1" tabindex="-1"></a><span class="co"># 这个命令执行时，会弹出一个窗口，让你填写邮箱的授权码。设好以后，今后发送邮件直接调这个文件就可以了</span></span>
+<span id="cb132-2"><a href="利用blastula包发邮件.html#cb132-2" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(<span class="at">file =</span> <span class="st">&#39;~/Downloads/sina_creds&#39;</span>, <span class="co"># 创造认证文件sina_creds放到你想放的位置</span></span>
+<span id="cb132-3"><a href="利用blastula包发邮件.html#cb132-3" tabindex="-1"></a>                       <span class="at">user =</span> <span class="st">&#39;example@sina.com&#39;</span>, <span class="co"># 你的邮箱地址</span></span>
+<span id="cb132-4"><a href="利用blastula包发邮件.html#cb132-4" tabindex="-1"></a>                       <span class="at">host =</span> <span class="st">&#39;smtp.sina.com&#39;</span>, <span class="co"># 新浪邮箱服务器，如果是QQ邮箱，则将sina改成qq</span></span>
+<span id="cb132-5"><a href="利用blastula包发邮件.html#cb132-5" tabindex="-1"></a>                       <span class="at">port =</span> <span class="dv">465</span>, <span class="co"># 默认端口，sina和QQ都是这个，估计国内都是这个</span></span>
+<span id="cb132-6"><a href="利用blastula包发邮件.html#cb132-6" tabindex="-1"></a>                       <span class="at">use_ssl =</span> T)</span>
+<span id="cb132-7"><a href="利用blastula包发邮件.html#cb132-7" tabindex="-1"></a><span class="co"># 发送成功</span></span>
+<span id="cb132-8"><a href="利用blastula包发邮件.html#cb132-8" tabindex="-1"></a>email <span class="sc">|&gt;</span> <span class="fu">smtp_send</span>(<span class="at">to =</span> <span class="st">&#39;example@qq.com&#39;</span>, <span class="co"># 可以是向量</span></span>
+<span id="cb132-9"><a href="利用blastula包发邮件.html#cb132-9" tabindex="-1"></a>                   <span class="at">from =</span> <span class="st">&#39;example@sina.com&#39;</span>,</span>
+<span id="cb132-10"><a href="利用blastula包发邮件.html#cb132-10" tabindex="-1"></a>                   <span class="at">subject =</span> <span class="st">&quot;Testing the `smtp_send()` function&quot;</span>, <span class="co"># 邮件的标题</span></span>
+<span id="cb132-11"><a href="利用blastula包发邮件.html#cb132-11" tabindex="-1"></a>                   <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="st">&quot;~/Downloads/sina_creds&quot;</span>))</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="其他-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="利用mailr包发送邮件.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

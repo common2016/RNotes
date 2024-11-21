@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | R语言笔记</title>
-  <meta name="description" content="References | R语言笔记" />
+  <title>14 利用mailR包发送邮件 | R语言笔记</title>
+  <meta name="description" content="14 利用mailR包发送邮件 | R语言笔记" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | R语言笔记" />
+  <meta property="og:title" content="14 利用mailR包发送邮件 | R语言笔记" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | R语言笔记" />
+  <meta name="twitter:title" content="14 利用mailR包发送邮件 | R语言笔记" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="其他-2.html"/>
-
+<link rel="prev" href="利用blastula包发邮件.html"/>
+<link rel="next" href="其他-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,14 +324,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="rmarkdown.html"><a href="rmarkdown.html#r语言写latex"><i class="fa fa-check"></i><b>12.3</b> R语言写latex</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="r包发邮件.html"><a href="r包发邮件.html"><i class="fa fa-check"></i><b>13</b> R包发邮件</a>
+<li class="chapter" data-level="13" data-path="利用blastula包发邮件.html"><a href="利用blastula包发邮件.html"><i class="fa fa-check"></i><b>13</b> 利用<code>blastula</code>包发邮件</a></li>
+<li class="chapter" data-level="14" data-path="利用mailr包发送邮件.html"><a href="利用mailr包发送邮件.html"><i class="fa fa-check"></i><b>14</b> 利用<code>mailR</code>包发送邮件</a></li>
+<li class="chapter" data-level="15" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>15</b> 其他</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="r包发邮件.html"><a href="r包发邮件.html#利用blastula包发邮件"><i class="fa fa-check"></i><b>13.1</b> 利用<code>blastula</code>包发邮件</a></li>
-<li class="chapter" data-level="13.2" data-path="r包发邮件.html"><a href="r包发邮件.html#利用mailr包发送邮件"><i class="fa fa-check"></i><b>13.2</b> 利用<code>mailR</code>包发送邮件</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="其他-2.html"><a href="其他-2.html"><i class="fa fa-check"></i><b>14</b> 其他</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>14.1</b> 一句话Tips</a></li>
+<li class="chapter" data-level="15.1" data-path="其他-2.html"><a href="其他-2.html#一句话tips-11"><i class="fa fa-check"></i><b>15.1</b> 一句话Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -351,8 +348,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="利用mailr包发送邮件" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> 利用<code>mailR</code>包发送邮件<a href="利用mailr包发送邮件.html#利用mailr包发送邮件" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="利用mailr包发送邮件.html#cb133-1" tabindex="-1"></a><span class="fu">send.mail</span>(<span class="at">from =</span> <span class="st">&#39;example@sina.com&#39;</span>,</span>
+<span id="cb133-2"><a href="利用mailr包发送邮件.html#cb133-2" tabindex="-1"></a>          <span class="at">to =</span> <span class="st">&#39;example@qq.com&#39;</span>,</span>
+<span id="cb133-3"><a href="利用mailr包发送邮件.html#cb133-3" tabindex="-1"></a>          <span class="at">subject=</span><span class="st">&quot;Subject of the email&quot;</span>,</span>
+<span id="cb133-4"><a href="利用mailr包发送邮件.html#cb133-4" tabindex="-1"></a>          <span class="at">body =</span> <span class="st">&quot;Body of the email&quot;</span>, <span class="co"># 邮件内容</span></span>
+<span id="cb133-5"><a href="利用mailr包发送邮件.html#cb133-5" tabindex="-1"></a>          <span class="at">smtp =</span> <span class="fu">list</span>(<span class="at">host.name =</span> <span class="st">&quot;smtp.sina.com&quot;</span>, <span class="at">port =</span> <span class="dv">465</span>, </span>
+<span id="cb133-6"><a href="利用mailr包发送邮件.html#cb133-6" tabindex="-1"></a>                      <span class="at">passwd =</span> <span class="st">&#39;xxxxx&#39;</span>, <span class="at">user.name =</span> <span class="st">&#39;shengnehs@sina.com&#39;</span>,<span class="at">ssl =</span> <span class="cn">TRUE</span>), <span class="co"># passwd就是授权码</span></span>
+<span id="cb133-7"><a href="利用mailr包发送邮件.html#cb133-7" tabindex="-1"></a>          <span class="at">authenticate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb133-8"><a href="利用mailr包发送邮件.html#cb133-8" tabindex="-1"></a>          <span class="at">send =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb133-9"><a href="利用mailr包发送邮件.html#cb133-9" tabindex="-1"></a>          <span class="co"># attach.files = &#39;~/我的文件.pdf&#39;,</span></span>
+<span id="cb133-10"><a href="利用mailr包发送邮件.html#cb133-10" tabindex="-1"></a>          <span class="at">encoding =</span> <span class="st">&#39;utf-8&#39;</span>)</span></code></pre></div>
 
 </div>
             </section>
@@ -360,8 +367,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="其他-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="利用blastula包发邮件.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="其他-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
