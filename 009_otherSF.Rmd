@@ -165,9 +165,23 @@ py_module_available('tushare')
 
 这当然找不到刚才默认位置安装的包了。你要把你刚才默认安装包的那个位置告诉python，让它去那里找。方法就是：
 
-1. 在Python能够找到的位置的site-packages目录中放置一个.pth文件，该文件包含你想要添加到Python路径的目录。
+1. 在Python能够找到的位置的site-packages目录中放置一个`.pth`文件，该文件包含你想要添加到Python路径的目录。
 例如，创建一个名为mypackage.pth的文件，内容为"/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages"
 2. 然后将其放置在你的Python环境的site-packages目录中。
+
+### `py_install()`安装了包，但无法调用
+
+现在我比较喜欢去python的官网安装最新的python，然后去spyder的官网安装最新的spyder，然后开展数据分析。同时也经常从R语言中用`reticulate`调python。
+
+通常python会在每个环境下，建立自己的包文件目录，从而避免了环境之间的包的影响。比如：
+
+1. python本身有自己的包文件，往往在`C:\Users\admin\AppData\Local\Programs\Python\Python313\Lib\site-packages`目录中。
+
+2. Spyder也有自己的包文件，往往在`C:\Users\admin\AppData\Local\spyder-6\Lib\site-packages`中。
+
+3. 当你在R包`reticulate`中使用`py_install()`安装包时，它又会创造一个新的包文件，往往在`c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages`中。
+
+如果你在R中调用python时，你要用`import sys; sys.path`看它在哪里找包，很可能不会在`c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages`里面找，这样，你当然无法在R中调用刚刚安装的包了。此时，你可以用前面的方法在R中调用python可以找到包的地方创造一个`.pth`文件以包含`c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages`的内容，这就搞定了。
 
 ### r与python的交互控制
 ```{r}
