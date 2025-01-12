@@ -523,23 +523,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>当你在R包<code>reticulate</code>中使用<code>py_install()</code>安装包时，它又会创造一个新的包文件，往往在<code>c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages</code>中。</p></li>
 </ol>
 <p>如果你在R中调用python时，你要用<code>import sys; sys.path</code>看它在哪里找包，很可能不会在<code>c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages</code>里面找，这样，你当然无法在R中调用刚刚安装的包了。此时，你可以用前面的方法在R中调用python可以找到包的地方创造一个<code>.pth</code>文件以包含<code>c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages</code>的内容，这就搞定了。</p>
+<p><strong>或者你直接修改R语言调用的python解释器</strong>，比如</p>
+<pre><code>use_python(&#39;C:/Users/sheng/AppData/Local/Spyder-6/envs/spyder-runtime/python.exe&#39;)
+# 或者直接在.Rprofile文件中添加一行如：Sys.setenv(RETICULATE_PYTHON = &quot;C:/Users/sheng/AppData/Local/Spyder-6/envs/spyder-runtime&quot;)</code></pre>
+<p>那么，只要这个包在spyder里面能用，那么在R里面也就能用了。</p>
 </div>
 <div id="r与python的交互控制" class="section level3 hasAnchor" number="9.3.4">
 <h3><span class="header-section-number">9.3.4</span> r与python的交互控制<a href="otherSF.html#r与python的交互控制" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="otherSF.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb12-2"><a href="otherSF.html#cb12-2" tabindex="-1"></a>mydata <span class="ot">=</span> <span class="fu">head</span>(cars, <span class="at">n=</span><span class="dv">15</span>)</span>
-<span id="cb12-3"><a href="otherSF.html#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="otherSF.html#cb12-4" tabindex="-1"></a><span class="co"># 去往python控制台</span></span>
-<span id="cb12-5"><a href="otherSF.html#cb12-5" tabindex="-1"></a><span class="fu">repl_python</span>()</span>
-<span id="cb12-6"><a href="otherSF.html#cb12-6" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb12-7"><a href="otherSF.html#cb12-7" tabindex="-1"></a><span class="co"># 载入数据集</span></span>
-<span id="cb12-8"><a href="otherSF.html#cb12-8" tabindex="-1"></a>travel <span class="ot">=</span> <span class="fu">pd.read_excel</span>(“AIR.xlsx”)</span>
-<span id="cb12-9"><a href="otherSF.html#cb12-9" tabindex="-1"></a><span class="fu">r.mydata.describe</span>() <span class="co"># 利用r对象调用前面R中生成的变量</span></span>
-<span id="cb12-10"><a href="otherSF.html#cb12-10" tabindex="-1"></a><span class="co"># 回到R控制台</span></span>
-<span id="cb12-11"><a href="otherSF.html#cb12-11" tabindex="-1"></a>exit</span>
-<span id="cb12-12"><a href="otherSF.html#cb12-12" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="otherSF.html#cb12-13" tabindex="-1"></a><span class="co"># 利用py对象调用python中生成的变量</span></span>
-<span id="cb12-14"><a href="otherSF.html#cb12-14" tabindex="-1"></a>py<span class="sc">$</span>travel</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="otherSF.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb13-2"><a href="otherSF.html#cb13-2" tabindex="-1"></a>mydata <span class="ot">=</span> <span class="fu">head</span>(cars, <span class="at">n=</span><span class="dv">15</span>)</span>
+<span id="cb13-3"><a href="otherSF.html#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="otherSF.html#cb13-4" tabindex="-1"></a><span class="co"># 去往python控制台</span></span>
+<span id="cb13-5"><a href="otherSF.html#cb13-5" tabindex="-1"></a><span class="fu">repl_python</span>()</span>
+<span id="cb13-6"><a href="otherSF.html#cb13-6" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb13-7"><a href="otherSF.html#cb13-7" tabindex="-1"></a><span class="co"># 载入数据集</span></span>
+<span id="cb13-8"><a href="otherSF.html#cb13-8" tabindex="-1"></a>travel <span class="ot">=</span> <span class="fu">pd.read_excel</span>(“AIR.xlsx”)</span>
+<span id="cb13-9"><a href="otherSF.html#cb13-9" tabindex="-1"></a><span class="fu">r.mydata.describe</span>() <span class="co"># 利用r对象调用前面R中生成的变量</span></span>
+<span id="cb13-10"><a href="otherSF.html#cb13-10" tabindex="-1"></a><span class="co"># 回到R控制台</span></span>
+<span id="cb13-11"><a href="otherSF.html#cb13-11" tabindex="-1"></a>exit</span>
+<span id="cb13-12"><a href="otherSF.html#cb13-12" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="otherSF.html#cb13-13" tabindex="-1"></a><span class="co"># 利用py对象调用python中生成的变量</span></span>
+<span id="cb13-14"><a href="otherSF.html#cb13-14" tabindex="-1"></a>py<span class="sc">$</span>travel</span></code></pre></div>
 </div>
 </div>
 <div id="与julia的对接" class="section level2 hasAnchor" number="9.4">
@@ -550,38 +554,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>在R中执行julia脚本</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="otherSF.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(JuliaCall)</span>
-<span id="cb13-2"><a href="otherSF.html#cb13-2" tabindex="-1"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
-<span id="cb13-3"><a href="otherSF.html#cb13-3" tabindex="-1"></a><span class="fu">julia_setup</span>(<span class="at">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
-<span id="cb13-4"><a href="otherSF.html#cb13-4" tabindex="-1"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
-<span id="cb13-5"><a href="otherSF.html#cb13-5" tabindex="-1"></a>julia<span class="sc">$</span><span class="fu">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
-<span id="cb13-6"><a href="otherSF.html#cb13-6" tabindex="-1"></a>ans <span class="ot">&lt;-</span> julia<span class="sc">$</span><span class="fu">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
-<span id="cb13-7"><a href="otherSF.html#cb13-7" tabindex="-1"></a><span class="co"># 其他的调用方式</span></span>
-<span id="cb13-8"><a href="otherSF.html#cb13-8" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
-<span id="cb13-9"><a href="otherSF.html#cb13-9" tabindex="-1"></a><span class="fu">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
-<span id="cb13-10"><a href="otherSF.html#cb13-10" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span>
-<span id="cb13-11"><a href="otherSF.html#cb13-11" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;J%</span> sqrt</span>
-<span id="cb13-12"><a href="otherSF.html#cb13-12" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="otherSF.html#cb14-1" tabindex="-1"></a><span class="fu">library</span>(JuliaCall)</span>
+<span id="cb14-2"><a href="otherSF.html#cb14-2" tabindex="-1"></a><span class="co"># 设置存放julia二进制文件的文件夹</span></span>
+<span id="cb14-3"><a href="otherSF.html#cb14-3" tabindex="-1"></a><span class="fu">julia_setup</span>(<span class="at">JULIA_HOME =</span> <span class="st">&#39;D:/Program Files/Julia-1.4.2/bin&#39;</span>)</span>
+<span id="cb14-4"><a href="otherSF.html#cb14-4" tabindex="-1"></a><span class="co"># 几种主要的调用方式，我把我喜欢的写出来的</span></span>
+<span id="cb14-5"><a href="otherSF.html#cb14-5" tabindex="-1"></a>julia<span class="sc">$</span><span class="fu">command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>) <span class="co"># 在julia环境中产生了变量a</span></span>
+<span id="cb14-6"><a href="otherSF.html#cb14-6" tabindex="-1"></a>ans <span class="ot">&lt;-</span> julia<span class="sc">$</span><span class="fu">eval</span>(<span class="st">&quot;a&quot;</span>) <span class="co"># 把变量a的值传给R环境中的ans变量</span></span>
+<span id="cb14-7"><a href="otherSF.html#cb14-7" tabindex="-1"></a><span class="co"># 其他的调用方式</span></span>
+<span id="cb14-8"><a href="otherSF.html#cb14-8" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&quot;a = sqrt(2);&quot;</span>)</span>
+<span id="cb14-9"><a href="otherSF.html#cb14-9" tabindex="-1"></a><span class="fu">julia_eval</span>(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb14-10"><a href="otherSF.html#cb14-10" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span>
+<span id="cb14-11"><a href="otherSF.html#cb14-11" tabindex="-1"></a><span class="dv">2</span> <span class="sc">%&gt;J%</span> sqrt</span>
+<span id="cb14-12"><a href="otherSF.html#cb14-12" tabindex="-1"></a><span class="co">#&gt; [1] 1.414214</span></span></code></pre></div>
 <ul>
 <li>R与julia互传变量：前面提到的<code>julia_eval</code>可以把julia中的变量传出来，使用<code>julia_assign</code>可以把R中的变量传到julia中去。</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="otherSF.html#cb14-1" tabindex="-1"></a><span class="fu">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb14-2"><a href="otherSF.html#cb14-2" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="otherSF.html#cb15-1" tabindex="-1"></a><span class="fu">julia_assign</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb15-2"><a href="otherSF.html#cb15-2" tabindex="-1"></a><span class="fu">julia_command</span>(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
 <ul>
 <li>julia控制台，而且只要你前期<code>julia_setup()</code>了，这个控制台里面就包含了前期运算时的变量</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="otherSF.html#cb15-1" tabindex="-1"></a><span class="fu">julia_console</span>()</span>
-<span id="cb15-2"><a href="otherSF.html#cb15-2" tabindex="-1"></a><span class="co"># 输入exit 可以退出</span></span>
-<span id="cb15-3"><a href="otherSF.html#cb15-3" tabindex="-1"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="otherSF.html#cb16-1" tabindex="-1"></a><span class="fu">julia_console</span>()</span>
+<span id="cb16-2"><a href="otherSF.html#cb16-2" tabindex="-1"></a><span class="co"># 输入exit 可以退出</span></span>
+<span id="cb16-3"><a href="otherSF.html#cb16-3" tabindex="-1"></a><span class="co"># julia&gt; exit</span></span></code></pre></div>
 <ul>
 <li>它的函数调用非常吸引人：你甚至可以用R对象作为julia函数的参数</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="otherSF.html#cb16-1" tabindex="-1"></a><span class="fu">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
-<span id="cb16-2"><a href="otherSF.html#cb16-2" tabindex="-1"></a>  opt <span class="ot">&lt;-</span> <span class="fu">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
-<span id="cb16-3"><a href="otherSF.html#cb16-3" tabindex="-1"></a>                           <span class="at">func_list =</span> <span class="fu">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
-<span id="cb16-4"><a href="otherSF.html#cb16-4" tabindex="-1"></a>rosenbrock <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="sc">-</span> x[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">100.0</span> <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb16-5"><a href="otherSF.html#cb16-5" tabindex="-1"></a>result <span class="ot">&lt;-</span> opt<span class="sc">$</span><span class="fu">optimize</span>(rosenbrock, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="sc">$</span><span class="fu">BFGS</span>())</span>
-<span id="cb16-6"><a href="otherSF.html#cb16-6" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="otherSF.html#cb17-1" tabindex="-1"></a><span class="fu">julia_install_package_if_needed</span>(<span class="st">&quot;Optim&quot;</span>)</span>
+<span id="cb17-2"><a href="otherSF.html#cb17-2" tabindex="-1"></a>  opt <span class="ot">&lt;-</span> <span class="fu">julia_pkg_import</span>(<span class="st">&quot;Optim&quot;</span>,</span>
+<span id="cb17-3"><a href="otherSF.html#cb17-3" tabindex="-1"></a>                           <span class="at">func_list =</span> <span class="fu">c</span>(<span class="st">&quot;optimize&quot;</span>, <span class="st">&quot;BFGS&quot;</span>))</span>
+<span id="cb17-4"><a href="otherSF.html#cb17-4" tabindex="-1"></a>rosenbrock <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (<span class="fl">1.0</span> <span class="sc">-</span> x[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">100.0</span> <span class="sc">*</span> (x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb17-5"><a href="otherSF.html#cb17-5" tabindex="-1"></a>result <span class="ot">&lt;-</span> opt<span class="sc">$</span><span class="fu">optimize</span>(rosenbrock, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span>), opt<span class="sc">$</span><span class="fu">BFGS</span>())</span>
+<span id="cb17-6"><a href="otherSF.html#cb17-6" tabindex="-1"></a>result</span></code></pre></div>
 </div>
 </div>
 <div id="与c的对接rcpp包" class="section level2 hasAnchor" number="9.5">
@@ -603,20 +607,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>单独的C++文件头应包含：</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="otherSF.html#cb17-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb17-2"><a href="otherSF.html#cb17-2" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
-<span id="cb17-3"><a href="otherSF.html#cb17-3" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb17-4"><a href="otherSF.html#cb17-4" tabindex="-1"></a><span class="co">/*** R</span></span>
-<span id="cb17-5"><a href="otherSF.html#cb17-5" tabindex="-1"></a><span class="co"># 这里可以跑R代码，从而可以简单测试上述C++语言</span></span>
-<span id="cb17-6"><a href="otherSF.html#cb17-6" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="otherSF.html#cb18-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb18-2"><a href="otherSF.html#cb18-2" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
+<span id="cb18-3"><a href="otherSF.html#cb18-3" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb18-4"><a href="otherSF.html#cb18-4" tabindex="-1"></a><span class="co">/*** R</span></span>
+<span id="cb18-5"><a href="otherSF.html#cb18-5" tabindex="-1"></a><span class="co"># 这里可以跑R代码，从而可以简单测试上述C++语言</span></span>
+<span id="cb18-6"><a href="otherSF.html#cb18-6" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
 <ul>
 <li>如何从R语言的<code>list</code>类中提取数据？如果<code>mod</code>是从<code>lm</code>返回的<code>list</code>，提取它的残差同时转化为C++的向量，可用<code>as&lt;NumericVector&gt;(mod["residuals"])</code>。
 ### C++代码中调用R函数
 这给我们提供了极大的方便。调用方式如下：</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="otherSF.html#cb18-1" tabindex="-1"></a>RObject callWithOne<span class="op">(</span>Function f<span class="op">){</span></span>
-<span id="cb18-2"><a href="otherSF.html#cb18-2" tabindex="-1"></a>  <span class="cf">return</span> f<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb18-3"><a href="otherSF.html#cb18-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="otherSF.html#cb19-1" tabindex="-1"></a>RObject callWithOne<span class="op">(</span>Function f<span class="op">){</span></span>
+<span id="cb19-2"><a href="otherSF.html#cb19-2" tabindex="-1"></a>  <span class="cf">return</span> f<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb19-3"><a href="otherSF.html#cb19-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
 <li>用<code>Function</code>声明R函数；</li>
 <li>用<code>RObject</code>表示R函数返回的类型；</li>

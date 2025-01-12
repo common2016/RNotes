@@ -183,6 +183,13 @@ py_module_available('tushare')
 
 如果你在R中调用python时，你要用`import sys; sys.path`看它在哪里找包，很可能不会在`c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages`里面找，这样，你当然无法在R中调用刚刚安装的包了。此时，你可以用前面的方法在R中调用python可以找到包的地方创造一个`.pth`文件以包含`c:\users\admin\docume~1\virtua~1\r-reti~1\lib\site-packages`的内容，这就搞定了。
 
+**或者你直接修改R语言调用的python解释器**，比如
+```
+use_python('C:/Users/sheng/AppData/Local/Spyder-6/envs/spyder-runtime/python.exe')
+# 或者直接在.Rprofile文件中添加一行如：Sys.setenv(RETICULATE_PYTHON = "C:/Users/sheng/AppData/Local/Spyder-6/envs/spyder-runtime")
+```
+那么，只要这个包在spyder里面能用，那么在R里面也就能用了。
+
 ### r与python的交互控制
 ```{r}
 library(reticulate)
