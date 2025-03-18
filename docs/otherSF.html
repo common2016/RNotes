@@ -441,14 +441,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>第一步，首先配置好环境</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="otherSF.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb7-2"><a href="otherSF.html#cb7-2" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;D:/Anaconda3&quot;</span>)</span>
-<span id="cb7-3"><a href="otherSF.html#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="otherSF.html#cb7-4" tabindex="-1"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
-<span id="cb7-5"><a href="otherSF.html#cb7-5" tabindex="-1"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
-<span id="cb7-6"><a href="otherSF.html#cb7-6" tabindex="-1"></a><span class="fu">py_config</span>()</span>
-<span id="cb7-7"><a href="otherSF.html#cb7-7" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="otherSF.html#cb7-8" tabindex="-1"></a><span class="fu">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
-<span id="cb7-9"><a href="otherSF.html#cb7-9" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
+<span id="cb7-2"><a href="otherSF.html#cb7-2" tabindex="-1"></a><span class="co"># use_condaenv(&quot;D:/Anaconda3&quot;)</span></span>
+<span id="cb7-3"><a href="otherSF.html#cb7-3" tabindex="-1"></a><span class="co"># 这是从官网下载python并安装的默认位置，我在spyder中也设定了调用这个python</span></span>
+<span id="cb7-4"><a href="otherSF.html#cb7-4" tabindex="-1"></a><span class="co"># 我把这个命令也放在了.Rprofile文件中，免得每次调python都跑一下</span></span>
+<span id="cb7-5"><a href="otherSF.html#cb7-5" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&#39;/usr/local/bin/python3&#39;</span>) </span>
+<span id="cb7-6"><a href="otherSF.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="otherSF.html#cb7-7" tabindex="-1"></a><span class="co"># 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在</span></span>
+<span id="cb7-8"><a href="otherSF.html#cb7-8" tabindex="-1"></a><span class="co"># use_condaenv()后，以使配置生效</span></span>
+<span id="cb7-9"><a href="otherSF.html#cb7-9" tabindex="-1"></a><span class="fu">py_config</span>()</span>
+<span id="cb7-10"><a href="otherSF.html#cb7-10" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="otherSF.html#cb7-11" tabindex="-1"></a><span class="fu">py_available</span>()<span class="co">#[1] TRUE   #检查您的系统是否安装过Python</span></span>
+<span id="cb7-12"><a href="otherSF.html#cb7-12" tabindex="-1"></a><span class="fu">py_module_available</span>(<span class="st">&quot;pandas&quot;</span>)<span class="co">#检查“pandas”是否安装</span></span></code></pre></div>
 <ul>
 <li>第二步，调用有多种方法。我最喜欢这种，就是直接导入python模块，然后用R的风格来调用。此时R里面的美元符号$相当于python里面的“.”符号 ，如，</li>
 </ul>

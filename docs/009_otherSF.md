@@ -96,7 +96,10 @@ Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调
 
 ```r
 library(reticulate)
-use_condaenv("D:/Anaconda3")
+# use_condaenv("D:/Anaconda3")
+# 这是从官网下载python并安装的默认位置，我在spyder中也设定了调用这个python
+# 我把这个命令也放在了.Rprofile文件中，免得每次调python都跑一下
+use_python('/usr/local/bin/python3') 
 
 # 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在
 # use_condaenv()后，以使配置生效

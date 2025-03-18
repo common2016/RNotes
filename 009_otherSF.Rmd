@@ -92,10 +92,12 @@ Matlab里面的三维画图比R要省事很多。这里探讨一下如何从R调
 - 第一步，首先配置好环境
 ```{r}
 library(reticulate)
-use_condaenv("D:/Anaconda3")
+# use_condaenv("D:/Anaconda3")
+# 这是从官网下载python并安装的默认位置，我在spyder中也设定了调用这个python
+# 我把这个命令也放在了.Rprofile文件中，免得每次调python都跑一下
+use_python('/usr/local/bin/python3') 
 
-# 安装的python版本环境查看，显示anaconda和numpy的详细信息。放在
-# use_condaenv()后，以使配置生效
+# 安装的python版本环境查看，显示anaconda和numpy的详细信息。
 py_config()
 
 py_available()#[1] TRUE   #检查您的系统是否安装过Python
@@ -117,20 +119,10 @@ x
 numpy$transpose(x)#将数组进行转置
 numpy$linalg$eig(x)#求特征根和特征向量
 ```
+
 ### 其他：
-- 当你发现有些包没有，需要安装的时候，可以如下，
-```{r}
-library(reticulate)
+- 当你发现有些包没有，需要安装的时候，建议在spyder中去安装，然后注意使用`use_python('<python的位置>')`调用和spyder同样的python解释器即可。
 
-# create a new environment 
-conda_create("r-reticulate")
-
-# install SciPy
-conda_install("r-reticulate", "scipy")
-
-# import SciPy (it will be automatically discovered in "r-reticulate")
-scipy <- import("scipy")
-```
 - 这是调用时通常需要的代码：
 ```{r}
 library(reticulate)
