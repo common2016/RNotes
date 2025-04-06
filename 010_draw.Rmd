@@ -84,3 +84,15 @@ ggdraw() + draw_image('E:/202110.jpg', width = 0.9, height = 0.5,x=0.06,y=0.1) +
   draw_plot(gg)
 ```
 
+## 双坐标绘图
+
+```{r eval=TRUE}
+data("mtcars")
+library(ggplot2)
+ggplot(mtcars, aes(x = mpg, y = disp)) + geom_line() +
+  geom_line(aes(y = wt*mean(disp)/mean(wt)), linetype = 3, size = .3, color = I('red')) +
+  scale_y_continuous(name = 'disp', sec.axis = sec_axis(~.*mean(mtcars$wt)/mean(mtcars$disp), name = 'wt'))
+```
+
+- `ggplot`开始的第一行代码画主轴，第二行代码把副轴的数据范围变化到和主轴的范围差不多，第三行代码`sec.axis`是把副轴刻度显示进行缩放。比如第二行代码把副轴的y数据扩大了20倍，那么此处副轴刻度显示就要缩小20倍。
+
