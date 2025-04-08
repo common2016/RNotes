@@ -82,22 +82,41 @@ file.rename(from = fr,to = to)
 
 ## 容错机制
 
-R中使用`tryCatch`进行容错。一个例子如下，
+R中使用`tryCatch`进行容错。语法如下：
+
 
 ```r
 tryCatch(
-  message = function(cnd) 'There',
-  {
-    message('Here')
-    stop('This code is never run!')
-  }
+  expr, 
+  error = function(e) { ... },
+  warning = function(w) { ... },
+  finally = { ... }
 )
 ```
 
+- expr：需要尝试执行的代码。
+- error：一个函数，当expr中出现错误时会被调用，e是错误对象。
+- warning：一个函数，当expr中出现警告时会被调用，w是警告对象。
+- finally：一个表达式，无论是否出现错误或警告，都会在tryCatch执行完成后运行。
+
+一个例子如下，
+
+```r
+result <- tryCatch(
+  {
+    # 尝试执行的代码
+    seq.Date(as.Date('2025-01-10'), as.Date('2025-01-09'))
+  },
+  error = function(e) {
+    # 错误处理代码
+    message("发生错误：", e$message)
+    return(NA)  # 返回一个默认值
+  }
+)
+print(result)
 ```
-## [1] "There"
-```
-`tryCatch`可以捕捉信息（`message`）、错误（`error`）和警告（`warnings`）。在大括号中执行代码时，一旦抛出信息、错误和警告，则执行`function`中的内容，并把该函数的返回作为`tryCatch`的返回。`function`的参数似乎没有什么用。
+
+在这个例子中，10 / 0会导致错误，tryCatch会捕获这个错误，并执行error函数中的代码，返回NA。
 
 ## 整洁运算
 
@@ -261,8 +280,10 @@ methods('mean')
 ```
 
 ```
-## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
-## [6] mean.quosure*
+##  [1] mean,ANY-method          mean,denseMatrix-method  mean,sparseMatrix-method
+##  [4] mean,sparseVector-method mean.Date                mean.default            
+##  [7] mean.difftime            mean.POSIXct             mean.POSIXlt            
+## [10] mean.quosure*           
 ## see '?methods' for accessing help and source code
 ```
 
@@ -273,10 +294,11 @@ methods(class = 'ts')
 
 ```
 ##  [1] [             [<-           aggregate     as.data.frame cbind        
-##  [6] coerce        cycle         diff          diffinv       initialize   
-## [11] kernapply     lines         Math          Math2         monthplot    
-## [16] na.omit       Ops           plot          print         show         
-## [21] slotsFromS3   t             time          window        window<-     
+##  [6] cbind2        coerce        cycle         diff          diffinv      
+## [11] initialize    kernapply     kronecker     lines         Math         
+## [16] Math2         monthplot     na.omit       Ops           plot         
+## [21] print         rbind2        show          slotsFromS3   t            
+## [26] time          window        window<-     
 ## see '?methods' for accessing help and source code
 ```
 
